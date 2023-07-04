@@ -9,7 +9,7 @@ Fork the given repository to your GitHub profile
 After forking the repository, clone the repository to your pc/desktop, and then create a folder with your **TeamName** as the folder name.
 
 ## Step - 3: Project Code Base
-Push Your code base is in this folder.
+Push Your code base in this folder.
 This should include all your files for frontend as well as the backend
 * Make sure to include your smart contract code in a file and upload it here.
      
