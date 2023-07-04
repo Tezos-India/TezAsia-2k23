@@ -5,7 +5,7 @@ Please find attached the rules and steps to submit your project for the hackatho
 ## Step - 1: Fork the repository
 Fork the given repository to your GitHub profile
 
-## Step - 2:  Create our folder
+## Step - 2:  Create your folder
 After forking the repository, clone the repository to your pc/desktop, and then create a folder with your **TeamName** as the folder name.
 
 ## Step - 3: Project Code Base
