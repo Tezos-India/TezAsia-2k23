@@ -36,6 +36,6 @@ Make a Pull Request from your forked repo to this repo's main branch while menti
 
 ## Guides and Rules for submission:
 1. Make sure you fork the repository first, and create a folder with your team name.
-2. Make all that your code added to your forked repo, and then push the code to your main branch after your project is complete.
+2. Make all your code added to your forked repo, and then push the code to your main branch after your project is complete.
 3. Make sure to push files to your folder only.
 4. Changing or doing any edits to other folders is strictly prohibited. 
