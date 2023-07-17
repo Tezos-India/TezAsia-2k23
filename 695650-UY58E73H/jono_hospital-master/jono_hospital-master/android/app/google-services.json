@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "359558977429",
+    "project_id": "jono-queue",
+    "storage_bucket": "jono-queue.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:359558977429:android:f855db07fb28e7b077889c",
+        "android_client_info": {
+          "package_name": "com.elysian.jono"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "359558977429-6e4sh9dkk4bf6dt2f930pcoum33dgh0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTCzQcA6fwM-2Fz2QSowLGOiO8kECIfOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "359558977429-6e4sh9dkk4bf6dt2f930pcoum33dgh0g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "359558977429-1ab4c3f4i8hmgi9opva33carv81kai8g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.elysian.jono"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:359558977429:android:08ab2d512c1319d277889c",
+        "android_client_info": {
+          "package_name": "com.elysian.jono_hospital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "359558977429-6e4sh9dkk4bf6dt2f930pcoum33dgh0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTCzQcA6fwM-2Fz2QSowLGOiO8kECIfOM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "359558977429-6e4sh9dkk4bf6dt2f930pcoum33dgh0g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "359558977429-1ab4c3f4i8hmgi9opva33carv81kai8g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.elysian.jono"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
