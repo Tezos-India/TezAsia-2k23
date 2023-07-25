@@ -36,11 +36,11 @@ In your **TeamName** folder, make sure to include the below details in the READM
 
 ## Step - 5:  Submitting the code: Making a Pull request
 After you have pushed your files and code base,
-create an issue in the main repository as:
-  Issue:  Team Name: Submission
-  Issue description should include a small glimpse of your project, what is it doing, and how are you trying to achieve it.
-After the issue is assigned,
-Make a Pull Request from your forked repo to this repo's main branch while mentioning issue no. assigned to it.
+[create an issue](https://github.com/Tezos-India/TezAsia-2k23/issues/new) in the main repository as:
+ - Issue:  Team Name: Submission
+ - Issue description should include a small glimpse of your project, what is it doing, and how are you trying to achieve it.
+
+After the issue is assigned, make a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your forked repo to this repo's main branch while mentioning issue no. assigned to it.
 
 ## Guides and Rules for submission:
 1. Make sure you fork the repository first, and create a folder with your team name.
