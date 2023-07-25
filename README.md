@@ -2,7 +2,7 @@
 
 ![tezosindia1](https://github.com/TauqeerAhmad5201/TezAsia-2k23/assets/68806440/735f95af-4a62-4095-bdbd-c9fe4f4c57b1)
 
-Welcome to **Tezasia '23 Hackathon** powered by **Tezos India** 
+Welcome to [**Tezasia '23 Hackathon**](https://unstop.com/competitions/tezasia-hackathon-30-tezos-india-695650?ref=NvNQjzFl) powered by [**Tezos India**](https://tezosindia.org.in/) 
 Please find attached the rules and steps to submit your project for the hackathon : 
 
 ## Step - 1: Fork the repository
