@@ -14,6 +14,8 @@ Fork the given repository to your GitHub profile.
 ## Step - 2:  Create your folder
 After forking the repository, clone the repository to your pc/desktop, and then create a folder with your **TeamName** as the folder name.
 
+Unclear about cloning? No problem, we've got your back. Click [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to learn about it. 
+
 ## Step - 3: Project Code Base
 Push Your code base in this folder.
 This should include all your files for frontend as well as the backend
