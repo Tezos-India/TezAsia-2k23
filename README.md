@@ -6,7 +6,10 @@ Welcome to [**Tezasia '23 Hackathon**](https://unstop.com/competitions/tezasia-h
 Please find attached the rules and steps to submit your project for the hackathon : 
 
 ## Step - 1: Fork the repository
-Fork the given repository to your GitHub profile
+Fork the given repository to your GitHub profile.
+
+![Screenshot from 2023-07-25 22-28-46](https://github.com/TauqeerAhmad5201/TezAsia-2k23/assets/68806440/ab08cb62-2521-4968-8933-14356844026b)
+
 
 ## Step - 2:  Create your folder
 After forking the repository, clone the repository to your pc/desktop, and then create a folder with your **TeamName** as the folder name.
