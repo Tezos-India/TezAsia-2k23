@@ -5,6 +5,7 @@ import { setupSocketIO } from './config/socketio';
 
 const PORT = process.env.PORT || 5000;
 
+<<<<<<< HEAD
 const app = express();
 const server = http.createServer(app);
 
@@ -12,6 +13,20 @@ const server = http.createServer(app);
 setupSocketIO(server);
 
 // Middleware
+=======
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  // Add any other CORS-related configurations here if needed
+};
+
+
+const prisma = new PrismaClient();
+const app = express();
+const port = 5001;
+
+app.use(cors());
+>>>>>>> a59bd1b (basic ui)
 app.use(express.json());
 
 // Routes

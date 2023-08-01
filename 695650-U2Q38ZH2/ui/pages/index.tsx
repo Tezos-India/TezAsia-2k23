@@ -1,10 +1,15 @@
-import Navbar from '../components/Navbar';
+import { Homepage } from "@/components/Homepage";
+import Navbar from "../components/Navbar";
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <div className=" bg-[#150a3f]">
       <Navbar />
-      <h1>Welcome to MyAwesomeDapp!</h1>
+      <hr className="border-t border-white h-2 my-2"></hr>
+      <Homepage />
+      
+
+      
     </div>
   );
 };

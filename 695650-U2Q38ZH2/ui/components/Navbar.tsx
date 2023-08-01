@@ -1,37 +1,24 @@
-import { useState } from 'react';
-import { connectWallet } from '../dapp/tezos';
+import { useState } from "react";
+import { connectWallet } from "../dapp/tezos";
+import Form from "./Form";
 
 export default function Navbar() {
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [walletAddress, setWalletAddress] = useState('');
-
-  const onConnectWallet = async () => {
-    try {
-      const { userAddress } = await connectWallet();
-      setWalletAddress(userAddress);
-      setIsWalletConnected(true);
-    } catch (error) {
-      console.error('Failed to connect wallet:', error);
-    }
+  
+  const [showLoginComponent, setShowLoginComponent] = useState(false);
+  const handleLoginClick = () => {
+    setShowLoginComponent(true);
   };
 
-  const onDisconnectWallet = () => {
-    // Depending on the implementation of connectWallet, this may need to be updated.
-    setIsWalletConnected(false);
-    setWalletAddress('');
-  };
+ 
 
   return (
-    <div>
-      <h1>My Dapp</h1>
-      {!isWalletConnected ? (
-        <button onClick={onConnectWallet}>Connect Wallet</button>
-      ) : (
-        <>
-          <button onClick={onDisconnectWallet}>Disconnect Wallet</button>
-          <p>Connected wallet address: {walletAddress}</p>
-        </>
-      )}
+    <div className="flex justify-between items-center gap-8 ml-[80px] mr-8  pt-6 pb-6">
+      <div className="text-white text-6xl font-sans">EtherStrike</div>
+     
+        <Form/>
+     
+     
     </div>
   );
 }
+
