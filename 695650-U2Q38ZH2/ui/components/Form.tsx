@@ -86,7 +86,7 @@ const Form = () => {
               </button>
             </div>
           )}
-          <button className="text-white text-3xl bg-blue-500 rounded-full h-12 px-8 font-['Roboto'] " type="button" onClick={handleButtonClick} type="button" onClick={onDisconnectWallet}>
+          <button className="text-white text-3xl bg-blue-500 rounded-full h-12 px-8 font-['Roboto'] "   type="button" onClick={onDisconnectWallet}>
             Disconnect Wallet
           </button>
           </div>
