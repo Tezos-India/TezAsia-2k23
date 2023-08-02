@@ -3,7 +3,7 @@ import http from 'http';
 import userRoutes from './api/user/user.routes';
 import { setupSocketIO } from './config/socketio';
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 const app = express();
 const server = http.createServer(app);
@@ -19,7 +19,7 @@ const corsOptions = {
 };
 
 
-const prisma = new PrismaClient();
+//const prisma = new PrismaClient();
 
 const port = 5001;
 
