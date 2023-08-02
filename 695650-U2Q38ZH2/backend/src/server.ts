@@ -24,6 +24,7 @@ const corsOptions = {
 const prisma = new PrismaClient();
 const app = express();
 const port = 5001;
+const port = 5001;
 
 app.use(cors());
 >>>>>>> a59bd1b (basic ui)
