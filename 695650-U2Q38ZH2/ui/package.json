@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@airgap/beacon-sdk": "^4.0.6",
+    "@material-tailwind/react": "^2.0.8",
     "@taquito/beacon-wallet": "^17.1.1",
     "@taquito/taquito": "^17.1.1",
     "@temple-wallet/dapp": "^8.0.0",
