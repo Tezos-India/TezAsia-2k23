@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "./Card";
 import { Footer } from "./Footer";
+import Image from "next/image";
 
 export const Homepage = () => {
   return (
@@ -23,7 +24,7 @@ export const Homepage = () => {
             own NFTs.
           </div>
         </div>
-        <img
+        <Image
           src="/1.png"
           alt=""
           className="absolute ml-[600px] w-[800px] h-[600px]"
@@ -53,21 +54,26 @@ export const Homepage = () => {
             ChessUnleashed
           </div>
           <div className="text-2xl font-sans font-light text-gray-400 pl-[80px] pt-8">
-            Embrace the thrill of traditional chess <br/> with a modern twist as we
-            tie unique  <br/> NFTs to every chess piece, adding a  <br/> captivating new
-            dimension to your<br/> gameplay.
+            Embrace the thrill of traditional chess <br /> with a modern twist
+            as we tie unique <br /> NFTs to every chess piece, adding a <br />{" "}
+            captivating new dimension to your
+            <br /> gameplay.
           </div>
           <div className="pl-[90px] pt-8">
-          <button className="text-white text-3xl bg-blue-500 rounded-full h-12 px-8 font-['Roboto'] ">
-            Play Now
-          </button>
+            <button className="text-white text-3xl bg-blue-500 rounded-full h-12 px-8 font-['Roboto'] ">
+              Play Now
+            </button>
           </div>
         </div>
         <div>
-          <img src="/2.png" alt=""  className="w-[462px] h-[437px] ml-[200px]"/>
+          <Image
+            src="/2.png"
+            alt=""
+            className="w-[462px] h-[437px] ml-[200px]"
+          />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

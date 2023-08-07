@@ -1,9 +1,10 @@
-import express from 'express';
-import http from 'http';
-import userRoutes from './api/user/user.routes';
-import { setupSocketIO } from './config/socketio';
+import express from "express";
+import http from "http";
+import userRoutes from "./api/user/user.routes";
+import { setupSocketIO } from "./config/socketio";
+import cors from "cors";
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 const server = http.createServer(app);
@@ -12,17 +13,6 @@ const server = http.createServer(app);
 setupSocketIO(server);
 
 // Middleware
-const cors = require('cors');
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  // Add any other CORS-related configurations here if needed
-};
-
-
-//const prisma = new PrismaClient();
-
-const port = 5001;
-
 app.use(cors());
 app.use(express.json());
 
@@ -30,10 +20,10 @@ app.use(express.json());
 app.use(userRoutes);
 
 // Home Route
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
 server.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`)
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
