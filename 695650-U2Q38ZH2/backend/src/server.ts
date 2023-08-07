@@ -1,7 +1,8 @@
-import express from 'express';
-import http from 'http';
-import userRoutes from './api/user/user.routes';
-import { setupSocketIO } from './config/socketio';
+import express from "express";
+import http from "http";
+import userRoutes from "./api/user/user.routes";
+import { setupSocketIO } from "./config/socketio";
+import cors from "cors";
 
 const PORT = process.env.PORT || 5000;
 
@@ -12,16 +13,17 @@ const server = http.createServer(app);
 setupSocketIO(server);
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // Routes
 app.use(userRoutes);
 
 // Home Route
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
 server.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`)
+  console.log(`Server is running at http://localhost:${PORT}`);
 });
