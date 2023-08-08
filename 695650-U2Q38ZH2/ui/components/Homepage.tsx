@@ -27,6 +27,8 @@ export const Homepage = () => {
         <Image
           src="/1.png"
           alt=""
+          width={800}
+          height={600}
           className="absolute ml-[600px] w-[800px] h-[600px]"
         />
       </div>
@@ -69,6 +71,8 @@ export const Homepage = () => {
           <Image
             src="/2.png"
             alt=""
+            width={462}
+            height={437}
             className="w-[462px] h-[437px] ml-[200px]"
           />
         </div>

@@ -22,6 +22,8 @@ export const Footer = () => {
       <Image
         src="https://file.rendit.io/n/aK53xcPsdbAxc3UbBRzf.svg"
         className="min-h-0 min-w-0"
+        width={100}
+        height={100}
         alt={""}
       />
       <div className="whitespace-nowrap text-xs font-['Averia_Serif_Libre'] font-bold text-[#777777] mb-5 w-56">
