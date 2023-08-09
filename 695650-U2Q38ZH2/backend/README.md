@@ -98,6 +98,13 @@ If you're using `Yarn`, you can run:
 yarn start
 ```
 
+### 8. Visualize postgres DB with prisma
+
+```bash
+npx prisma studio
+```
+
+
 Your server should now be running at `http://localhost:5000`.
 
 ## Repository Structure and Components
