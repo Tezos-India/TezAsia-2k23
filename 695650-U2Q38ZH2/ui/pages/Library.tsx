@@ -1,6 +1,6 @@
 import { Footer } from '@/components/Footer'
 import LargeCard from '@/components/LargeCard'
-import Navbar from '@/components/Navbar'
+import {Navbar} from '@/components/Navbar'
 import React from 'react'
 
 const Library = () => {
