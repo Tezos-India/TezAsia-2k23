@@ -1,0 +1,17 @@
+{
+  "name": "tezasia-2k23",
+  "version": "1.0.0",
+  "description": "Welcome to **Tezasia '23 Hackathon** powered by **Tezos India** \r Please find attached the rules and steps to submit your project for the hackathon :",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}

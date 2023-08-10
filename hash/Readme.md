@@ -9,9 +9,9 @@ The eye-catching leaderboard recognizes outstanding performers, delivering a rew
 
 What problem you are trying to solve : Enhancing player engagement and trust in sports gaming with Tezos blockchain and virtual teams featuring real-life players.
 
-**Tech Stack used while building the project : **
+**Tech Stack used while building the project :**
 
-**Project Demo Photos, Videos :  **
+**Project Demo Photos, Videos :**
 
 **Your Deployed Smart Contract's Link : ( write NA if no contract is deployed)**
 
@@ -19,7 +19,7 @@ What problem you are trying to solve : Enhancing player engagement and trust in 
 
 **Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository :**
 
-**Github repository link **
+**Github repository link**
 
 **Your PPT file  :** 
 
