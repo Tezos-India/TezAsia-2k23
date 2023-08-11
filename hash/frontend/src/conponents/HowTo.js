@@ -1,4 +1,5 @@
 import React from 'react'
+import './Navbar.css';
 
 export default function HowTo() {
   return (
@@ -6,8 +7,7 @@ export default function HowTo() {
     <div className="heading">
       <h1>How To <span>Play</span></h1>
     </div>
-    <div className="account">
-    </div>
+    <div className="account"></div>
   </section>
   )
 }
