@@ -16,6 +16,13 @@ span {
     color: #5469D4;
 }
 
+h1 {
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
 /* Navbar CSS */
 .navbar {
     padding: 15px 0;
