@@ -16,6 +16,7 @@ span {
     color: #5469D4;
 }
 
+/* Navbar CSS */
 .navbar {
     padding: 15px 0;
 }
@@ -35,37 +36,25 @@ span {
     padding: 0.5rem 1rem;
 }
 
-/* Custom CSS to add smooth underline animation on hover */
 .navbar-nav .nav-link {
     position: relative;
-    /* Required for positioning pseudo-element */
     color: black;
-    /* Default link color */
     text-decoration: none;
-    /* Remove default underline */
 }
 
-/* Pseudo-element for underline */
 .navbar-nav .nav-link::before {
     content: '';
-    /* Required for pseudo-elements */
     position: absolute;
     left: 0;
     bottom: -2px;
-    /* Adjust the distance from the text to the underline */
     width: 0;
     height: 2px;
-    /* Underline thickness */
     background-color: #5469D4;
-    /* Underline color */
     transition: width 0.2s;
-    /* Smooth transition on hover */
 }
 
-/* Add the underline effect on hover */
 .navbar-nav .nav-link:hover::before {
     width: 100%;
-    /* Fully display the underline on hover */
 }
 
 
@@ -79,7 +68,6 @@ span {
     color: #5469D4;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
     .navbar-brand {
         margin-right: 0;
@@ -95,6 +83,9 @@ span {
     }
 }
 
+/* Navbar CSS End */
+
+/* Home Section */
 #home {
     position: relative;
     height: 100vh;
@@ -171,13 +162,14 @@ span {
     }
 }
 
-/* CSS for the about section */
+/* Home Section End*/
+
+/* About Section */
 #about {
     text-align: center;
     padding: 20px;
 }
 
-/* CSS for the heading */
 .heading {
     margin-bottom: 20px;
 }
@@ -187,10 +179,7 @@ span {
     margin-bottom: 10px;
 }
 
-
-/* CSS for the tech section */
 .tech {
-    /* display: flex; */
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -205,10 +194,8 @@ span {
     border-radius: 8px;
     transition: border-color 0.3s ease;
     margin: 30px;
-    /* Add spacing between each image */
 }
 
-/* Hover effect for clickable images */
 .tech img:hover {
     border-color: black;
 }
@@ -237,11 +224,8 @@ span {
 .list-box ul {
     list-style-type: disc;
     display: inline-block;
-    /* Make the list box inline-block to center it */
     text-align: left;
-    /* Align the list items to the left */
     padding-left: 0;
-    /* Remove default padding for unordered list */
 }
 
 .list-box li {
@@ -250,17 +234,24 @@ span {
     margin-bottom: 5px;
 }
 
-/* CSS code for the Creators section */
-#creators {
-    max-width: 1100px;
-    /* Adjust the width as per your layout */
-    margin: 0 auto;
-    /* Center the section on the page */
-    padding: 20px 0;
-    /* Add some padding for better spacing */
+/* About Section */
+
+
+/* How To */
+#howTo {
+    text-align: center;
 }
 
-/* CSS code for the heading */
+/* How To End */
+
+
+/* Creators section */
+#creators {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
 .heading {
     margin-bottom: 20px;
 }
@@ -270,66 +261,35 @@ span {
     font-weight: bold;
 }
 
-
-/* Style the 'creators' section */
-/* CSS code for the Creators section */
-#creators {
-    max-width: 1100px;
-    /* Adjust the width as per your layout */
-    margin: 0 auto;
-    /* Center the section on the page */
-    padding: 20px 0;
-    /* Add some padding for better spacing */
-}
-
-/* CSS code for the heading */
-.heading {
-    margin-bottom: 20px;
-}
-
-.heading h1 {
-    font-size: 36px;
-    font-weight: bold;
-}
-
-/* Style the 'creators' section */
 #creators {
     padding: 40px;
     text-align: center;
 }
 
-/* Style the heading inside the 'creators' section */
 #creators .heading h1 {
     font-size: 36px;
     margin-bottom: 40px;
 }
 
-
-/* Style the 'creators-profile' container */
 #creators .creators-profile {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-/* Style each 'figure' element inside 'creators-profile' */
 #creators .creators-profile figure {
     margin: 10px;
     position: relative;
-    /* Add relative positioning for the hover effect */
 }
 
-/* Style the 'img' element inside 'figure' */
 #creators .creators-profile figure img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     border: 2px solid #333;
     transition: all 0.3s ease;
-    /* Add smooth transition for the hover effect */
 }
 
-/* Style the 'figcaption' element inside 'figure' */
 #creators .creators-profile figure figcaption {
     margin-top: 10px;
     font-size: 16px;
@@ -354,9 +314,10 @@ span {
     cursor: pointer;
 }
 
+/* Creators section End*/
+
 
 /* Contact Section */
-
 #contact {
     margin: 0;
     padding: 0;
@@ -452,8 +413,10 @@ span {
     }
 }
 
+/* Contact Section End*/
 
-/* Style the footer section */
+
+/* Footer Section */
 #footer {
     background-color: #212121;
     color: #fff;
@@ -461,66 +424,28 @@ span {
     text-align: center;
 }
 
-/* Style the copyright text */
 .footer p {
     font-size: 14px;
 }
 
-/* Style the copyright link */
 .footer p a {
     color: #fff;
     text-decoration: none;
 }
 
-/* Style the privacy & terms link */
 .footer p a:hover {
     text-decoration: underline;
 }
 
-/* Add a media query for smaller screens */
 @media screen and (max-width: 768px) {
 
-    /* Adjust padding and font-size for smaller screens */
     #footer {
         padding: 10px;
     }
 
-    /* Center-align the text for smaller screens */
     .footer p {
         text-align: center;
     }
 }
 
-/* Scroll Icon */
-/* Scroll to top button styles */
-#scrollToTopBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    color: black;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    background-color: #212121;
-    /* Add a background color for better visibility */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    /* Add a subtle shadow effect */
-}
-
-.arrow-up-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-135deg);
-    /* Combine transform properties */
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-}
-
-#scrollToTopBtn.show {
-    display: block;
-}
+/* Footer Section End*/

@@ -4517,13 +4517,17 @@ fieldset:disabled .btn {
     --bs-navbar-toggler-border-radius: var(--bs-border-radius);
     --bs-navbar-toggler-focus-width: 0.25rem;
     --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x)
+    padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
+
+
 
 .navbar>.container,
 .navbar>.container-fluid,
