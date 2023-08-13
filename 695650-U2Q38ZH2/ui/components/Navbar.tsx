@@ -15,9 +15,9 @@ function WelcomePopup({
 }) {
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-4 rounded">
-        <p>Welcome, {avatarName}!</p>
-        <button onClick={onClose}>Close</button>
+      <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+        <p className="text-black font-semibold">Welcome, {avatarName}!</p>
+        <button onClick={onClose} className="mt-2 bg-purple-600 text-white rounded-full px-4 py-2 hover:bg-purple-700">Close</button>
       </div>
     </div>
   );
@@ -108,22 +108,22 @@ export function Navbar() {
 
   return (
     <>
-      <div className="flex justify-between items-center gap-8 ml-[80px] mr-8 pt-6 pb-6">
+      <div className="flex justify-between items-center gap-8 p-6 bg-gradient-to-br from-gray-900 to-black">
         <Link href="/">
-          <div className="text-white text-6xl font-sans cursor-pointer">
-            EtherStrike
-          </div>
+          <span className="text-purple-400 text-4xl font-bold hover:text-purple-600 transition duration-200">
+            BLOCKS
+          </span>
         </Link>
         <Link href="/Library">
-          <button className="text-white text-3xl bg-blue-500 rounded-full h-12 px-8 font-['Roboto'] ">
+          <span className="text-purple-400 text-2xl hover:text-purple-600 transition duration-200">
             Library
-          </button>
+          </span>
         </Link>
         {account ? (
           <div className="relative">
             <FontAwesomeIcon
               icon={faUser}
-              className="w-12 h-12 cursor-pointer"
+              className="w-8 h-8 text-gray-300 cursor-pointer hover:text-purple-400 transition duration-200"
               onClick={() => setShowDropdown(!showDropdown)}
             />
             {showDropdown && (
@@ -135,7 +135,7 @@ export function Navbar() {
           </div>
         ) : (
           <button
-            className="text-white text-3xl bg-blue-500 rounded-full h-12 px-8 font-['Roboto']"
+            className="text-white text-xl bg-purple-600 hover:bg-purple-700 transition px-5 py-2 rounded-full"
             onClick={handleConnectWallet}
           >
             Connect Wallet

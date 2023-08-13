@@ -1,15 +1,12 @@
-import { Homepage } from "@/components/Homepage";
+import { Homepage } from "../components/Homepage";
 import {Navbar} from "../components/Navbar";
 
 const Home: React.FC = () => {
   return (
-    <div className=" bg-gray-800">
+    <div className="bg-gradient-to-br from-gray-800 to-purple-900 min-h-screen">
       <Navbar />
-      <hr className="border-t border-white h-2 my-2"></hr>
+      <hr className="border-t border-white"></hr>
       <Homepage />
-      
-
-      
     </div>
   );
 };
