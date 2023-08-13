@@ -1,35 +1,45 @@
-import Image from "next/image";
-import React from "react";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import Image from 'next/image';
 
 export const Footer = () => {
   return (
-    <div className="bg-black flex flex-col pt-px gap-6 h-64 shrink-0 items-center">
-      <div className="border-solid border-white self-stretch mb-10 h-px shrink-0 border-t border-b-0 border-x-0" />
-      <div className="flex flex-row mb-1 gap-20 w-1/2 items-center">
-        <div className="text-2xl font-['Averia_Serif_Libre'] text-[#777777] mr-2 w-16 shrink-0">
-          Home
-        </div>
-        <div className="whitespace-nowrap text-2xl font-['Averia_Serif_Libre'] text-[#777777] w-[180px] shrink-0">
-          Term of services
-        </div>
-        <div className="whitespace-nowrap text-2xl font-['Averia_Serif_Libre'] text-[#777777] mr-4 w-[116px] shrink-0">
-          Contact us
-        </div>
-        <div className="text-2xl font-['Averia_Serif_Libre'] text-[#777777] w-12 shrink-0">
-          FAQ
-        </div>
+    <div className="bg-black p-10 text-center">
+      <div className="border-t border-white opacity-50 mb-10" />
+      
+      {/* Navigation Links */}
+      <div className="flex justify-center space-x-8 mb-6">
+        <a href="#" className="text-2xl text-gray-400 hover:text-white transition duration-200">Home</a>
+        <a href="#" className="text-2xl text-gray-400 hover:text-white transition duration-200">Term of services</a>
+        <a href="#" className="text-2xl text-gray-400 hover:text-white transition duration-200">Contact us</a>
+        <a href="#" className="text-2xl text-gray-400 hover:text-white transition duration-200">FAQ</a>
       </div>
-      <Image
-        src="https://file.rendit.io/n/aK53xcPsdbAxc3UbBRzf.svg"
-        className="min-h-0 min-w-0"
-        width={100}
-        height={100}
-        alt={""}
-      />
-      <div className="whitespace-nowrap text-xs font-['Averia_Serif_Libre'] font-bold text-[#777777] mb-5 w-56">
-        C 2023 EtherStrike, All right reserved.
+
+      {/* Logo */}
+
+      {/* Social Media Icons */}
+      <div className="flex justify-center space-x-5 mb-6">
+        <a href="#" className="text-gray-400 hover:text-white transition duration-200">
+          <FontAwesomeIcon icon={faFacebook} size="2x" />
+        </a>
+        <a href="#" className="text-gray-400 hover:text-white transition duration-200">
+          <FontAwesomeIcon icon={faTwitter} size="2x" />
+        </a>
+        <a href="#" className="text-gray-400 hover:text-white transition duration-200">
+          <FontAwesomeIcon icon={faInstagram} size="2x" />
+        </a>
+        <a href="#" className="text-gray-400 hover:text-white transition duration-200">
+          <FontAwesomeIcon icon={faLinkedin} size="2x" />
+        </a>
       </div>
-      <div className="border-solid border-white self-stretch h-px shrink-0 border-t border-b-0 border-x-0" />
+
+      {/* Copyright Text */}
+      <div className="text-xs text-gray-400 mb-5">
+        © 2023 BLOCKS Gaming, All rights reserved.
+      </div>
+
+      <div className="border-t border-white opacity-50" />
     </div>
   );
 };
