@@ -1,0 +1,61 @@
+
+.farm-minning__first {
+    position: relative;
+    background: linear-gradient(
+      95.33deg,
+      rgba(146, 71, 219, 0.2) 0%,
+      rgba(11, 53, 153, 0.2) 103.1%
+    );
+    border-radius: 14px;
+  }
+  
+  .farm-minning__third {
+    position: relative;
+  
+    background: rgba(0, 0, 0, 0.466);
+  
+    border-radius: 14px;
+  }
+  
+  .farm-minning__first h1 {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: #ffffff;
+  }
+  
+  .farm-minning__first p {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  .farm-minning__third small {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  .farm-minning__third__button button {
+    margin: 0 1rem;
+    border: none;
+    min-width: 250px;
+    background: rgba(0, 0, 0, 0.466);
+    border-radius: 37px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+  .myrow {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
