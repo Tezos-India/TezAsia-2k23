@@ -1,4 +1,4 @@
-TezAsia 23 Hackathon Submission form Details
+## TezAsia 23 Hackathon Submission form Details
 
 
 1. Team Name : VIJAY04
@@ -13,6 +13,6 @@ TezAsia 23 Hackathon Submission form Details
 10. Github repository link :https://github.com/IN4111/TezAsia-2k23/commit/fc1b5b88d6e724bf71b082ae759ad199f775ea47
 11. Your PPT file  :https://github.com/IN4111/TezAsia-2k23/blob/main/VIJAY04/Application_description.pptx
 12. Your Team members Info.
-      team_mate_1:
+        team_mate_1:
         Name:VIJAY.N
         Email:inin4111@gmail.com
