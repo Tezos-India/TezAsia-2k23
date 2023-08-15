@@ -12,6 +12,6 @@
   in Admin_app.py with your connection user name and password.
 # 4.Add a reseller
   Before adding a reseller ,create a tezos account in mainnet/ghostnet and dont forget to change the shell rpc.
-# 4.Application for Reseller
+# 5.Application for Reseller
   To run Reseller application ,follow the following command ```python Reseller_app.py``` and modify ```owner_account``` with admin public key in Reseller_app.py
   
