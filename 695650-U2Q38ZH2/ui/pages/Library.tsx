@@ -31,7 +31,7 @@ const Library = () => {
         <div className="flex flex-row">
           <div className="pt-20">
             <h1 className="text-5xl text-white mb-6 font-bold">Game Library</h1>
-            <p className="text-xl text-gray-300 mb-12">
+            <p className="text-xl text-purple-500 mb-12">
               Discover games and let the adventure begin!
             </p>
           </div>
