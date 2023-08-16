@@ -28,7 +28,7 @@ const LargeCard: React.FC<LargeCardProps> = ({
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
-        <div className='flex flex-col md:flex-row bg-gradient-to-br from-purple-800 to-purple-900 rounded-lg shadow-lg p-6 md:p-12 hover:shadow-2xl transition duration-500 w-full mb-6'>
+        <div className='pointer-events-auto flex flex-col md:flex-row bg-gradient-to-br from-purple-800 to-purple-900 rounded-lg shadow-lg p-6 md:p-12 hover:shadow-2xl transition duration-500 w-full mb-6'>
             <div className='relative w-full md:w-1/3 mb-6 md:mb-0 rounded-lg overflow-hidden hover:shadow-lg'>
                 <Image src={img} alt={title} width={400} height={225} objectFit="cover" />
             </div>
