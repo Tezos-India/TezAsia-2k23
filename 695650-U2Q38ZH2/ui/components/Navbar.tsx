@@ -108,7 +108,7 @@ export function Navbar() {
 
   return (
     <>
-      <div className="flex justify-between items-center gap-8 p-6 bg-gradient-to-br from-gray-900 to-black">
+      <div className="pointer-events-auto flex justify-between items-center gap-8 p-6 bg-gradient-to-br from-gray-900 to-black">
         <Link href="/">
           <span className="text-purple-400 text-4xl font-bold hover:text-purple-600 transition duration-200">
             BLOCKS
