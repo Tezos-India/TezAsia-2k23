@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Card } from "./Card";
 import { Footer } from "./Footer";
 import Image from "next/image";
+import Link from "next/link";
 
 // Homepage Component
 export const Homepage = () => {
@@ -127,9 +128,11 @@ export const Homepage = () => {
           />
         </div>
         <div className="flex justify-center">
-          <button className="text-white text-3xl bg-gradient-to-br from-purple-500 to-purple-700 hover:from-purple-400 hover:to-purple-600 transition duration-300 ease-in-out transform hover:translate-y-1 px-10 py-3.5 font-semibold rounded-full shadow-xl">
-            Explore More!
-          </button>
+          <Link href="/aboutus">
+            <button className="text-white text-3xl bg-gradient-to-br from-purple-500 to-purple-700 hover:from-purple-400 hover:to-purple-600 transition duration-300 ease-in-out transform hover:translate-y-1 px-10 py-3.5 font-semibold rounded-full shadow-xl">
+              Explore More!
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -143,9 +146,11 @@ export const Homepage = () => {
             chess piece is tied to a unique NFT, adding a captivating new
             dimension to your gameplay.
           </p>
+
           <button className="text-white text-3xl bg-gradient-to-br from-gray-800 to-blue-900 hover:from-gray-700 hover:to-blue-800 transition-all duration-300 ease-in-out transform hover:translate-y-1 px-10 py-3.5 font-semibold rounded-full shadow-2xl">
             Play Now
           </button>
+
         </div>
         <div className="relative mt-12 lg:mt-0 z-10">
           <Image src="/2.png" alt="Chess Image" width={462} height={437} />
