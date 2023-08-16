@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const Footer = () => {
   return (
-    <div className="bg-black p-10 text-center">
+    <div className="pointer-events-auto bg-black p-10 text-center">
       <div className="border-t border-white opacity-50 mb-10" />
       
       {/* Navigation Links */}

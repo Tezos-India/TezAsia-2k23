@@ -10,7 +10,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import VisionSection from '@/components/exploreus/VisionSection';
 
-const aboutus = () => {
+const AboutUs = () => {
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -43,4 +43,4 @@ const aboutus = () => {
     </div>
   )
 }
-export default aboutus
+export default AboutUs

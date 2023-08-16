@@ -17,7 +17,12 @@ function WelcomePopup({
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-gray-100 p-4 rounded-lg shadow-md">
         <p className="text-black font-semibold">Welcome, {avatarName}!</p>
-        <button onClick={onClose} className="mt-2 bg-purple-600 text-white rounded-full px-4 py-2 hover:bg-purple-700">Close</button>
+        <button
+          onClick={onClose}
+          className="mt-2 bg-purple-600 text-white rounded-full px-4 py-2 hover:bg-purple-700"
+        >
+          Close
+        </button>
       </div>
     </div>
   );
@@ -114,11 +119,19 @@ export function Navbar() {
             BLOCKS
           </span>
         </Link>
-        <Link href="/Library">
-          <span className="text-purple-400 text-2xl hover:text-purple-600 transition duration-200">
-            Library
-          </span>
-        </Link>
+        <div className="">
+          <Link href="/Library">
+            <span className="text-purple-400 text-2xl hover:text-purple-600 transition duration-200 mr-6">
+              Library
+            </span>
+          </Link>
+          <Link href="/AboutUs">
+            <span className="text-purple-400 text-2xl hover:text-purple-600 transition duration-200">
+              About Us
+            </span>
+          </Link>
+        </div>
+
         {account ? (
           <div className="relative">
             <FontAwesomeIcon
