@@ -1,114 +1,66 @@
-// import React, { useState, useEffect, useContext } from 'react'
-// import io from 'socket.io-client'
+import React, { useState, useEffect, useContext, ReactNode } from 'react';
+import Cookies from 'js-cookie';
 
-// const UserContext = React.createContext()
+type UserContextType = {
+  id: string | null;
+  username: string | null;
+  updateUsername: (u: string) => void;
+};
 
-// export function useUser() {
-//   return useContext(UserContext)
-// }
+const UserContext = React.createContext<UserContextType | undefined>(undefined);
 
-// import { generateId } from '../helpers'
-
-// export function UserProvider({ children }) {
-//   const [id, setId] = useState()
-//   const [username, setUsername] = useState(() => {
-//     let n = localStorage.getItem('username')
-//     if(n) return JSON.parse(n)
-//     return null
-//   })
-
-  
-
-//   useEffect(() => {
-//     let uid = localStorage.getItem('uid')
-//     if(!uid) {
-//       let id = generateId()
-//       localStorage.setItem('uid', id)
-//       setId(id)
-//     }else {
-//       setId(uid)
-//     }
-
-//     if(!username) {
-//       let name;
-//       while(name == null || name === '') {
-//         name = prompt('Choose a username')
-//       }
-//       localStorage.setItem("username", JSON.stringify(name))
-//       setUsername(name)
-//     }
-//   }, [])
-
-//   useEffect(() => {
-//     if(!username) return
-//     localStorage.setItem('username', JSON.stringify(username))
-//   }, [username])
-
-//   function updateUsername(u) {
-//     setUsername(u)
-//   }
-
-//   const value = { id, username, updateUsername }
-//   return (
-//     <UserContext.Provider value={value}>
-//       { children }
-//     </UserContext.Provider>
-//   )
-// }
-
-
-import React, { useState, useEffect, useContext } from 'react';
-import Cookies from 'js-cookie'; // Import js-cookie
-
-const UserContext = React.createContext();
-
-export function useUser() {
-  return useContext(UserContext);
+export function useUser(): UserContextType {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error('useUser must be used within a UserProvider');
+  }
+  return context;
 }
 
 import { generateId } from '../helpers';
 
-export function UserProvider({ children }) {
-  const [id, setId] = useState();
-  const [username, setUsername] = useState(() => {
-    const n = Cookies.get('username'); // Use Cookies.get
-    if (n) return n;
-    return null;
+type UserProviderProps = {
+  children: ReactNode;
+};
+
+export function UserProvider({ children }: UserProviderProps): JSX.Element {
+  const [id, setId] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(() => {
+    const n = Cookies.get('username');
+    return n || null;
   });
 
   useEffect(() => {
-    let uid = Cookies.get('uid'); // Use Cookies.get
+    let uid = Cookies.get('uid');
     if (!uid) {
-      let id = generateId();
-      Cookies.set('uid', id); // Use Cookies.set
-      setId(id);
+      uid = generateId();
+      Cookies.set('uid', uid);
+      setId(uid);
     } else {
       setId(uid);
     }
 
     if (!username) {
-      let name;
-      while (name == null || name === '') {
+      let name: string | null = null;
+      while (!name) {
         name = prompt('Choose a username');
       }
-      Cookies.set('username', name); // Use Cookies.set
+      Cookies.set('username', name);
       setUsername(name);
     }
   }, []);
 
   useEffect(() => {
-    if (!username) return;
-    Cookies.set('username', username); // Use Cookies.set
+    if (username) {
+      Cookies.set('username', username);
+    }
   }, [username]);
 
-  function updateUsername(u) {
+  function updateUsername(u: string) {
     setUsername(u);
   }
 
   const value = { id, username, updateUsername };
-  return (
-    <UserContext.Provider value={value}>
-      {children}
-    </UserContext.Provider>
-  );
+
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 }
