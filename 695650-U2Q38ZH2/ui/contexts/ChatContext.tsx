@@ -1,10 +1,21 @@
-// contexts/ChatContext.js
+// contexts/ChatContext.tsx
 import React, { createContext, useContext, useState } from 'react';
 
-const ChatContext = createContext();
+export type Message = {
+  text: string;
+  sender: string | null;// Ensure sender is only of type 'string'
+};
 
-export function ChatProvider({ children }) {
-  const [messages, setMessages] = useState([]);
+const ChatContext = createContext<{
+  messages: Message[];
+  setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+}>({
+  messages: [],
+  setMessages: () => {},
+});
+
+export function ChatProvider({ children }: { children: React.ReactNode }) {
+  const [messages, setMessages] = useState<Message[]>([]);
 
   return (
     <ChatContext.Provider value={{ messages, setMessages }}>

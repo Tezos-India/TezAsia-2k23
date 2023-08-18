@@ -1,32 +1,44 @@
-import React, { useState } from 'react'
-import { XIcon } from '@heroicons/react/outline'
+import React, { useState, ReactNode, MouseEvent } from "react";
 
-function Modal({ children, onClose }) {
-  const [open, setOpen] = useState(true)
-  return open && (
-    <div className='modal-container'>
-      <div className='modal'>
-        { children }
-        <div className='modal-close' style={{color: 'black'}} onClick={onClose}>X</div>
+interface ModalProps {
+  children: ReactNode;
+  onClose: () => void;
+}
+
+function Modal({ children, onClose }: ModalProps) {
+  const [open, setOpen] = useState(true);
+  return (
+    open && (
+      <div className="modal-container">
+        <div className="modal">
+          {children}
+          <div
+            className="modal-close"
+            style={{ color: "black" }}
+            onClick={onClose}
+          >
+            X
+          </div>
+        </div>
       </div>
-    </div>
-  )
+    )
+  );
 }
 
-Modal.Header = function(props) {
-  return (
-    <div className='modal-header'>
-      { props.children }
-    </div>
-  )
+interface ModalHeaderProps {
+  children: ReactNode;
 }
 
-Modal.Body = function({ children }) {
-  return (
-    <div className='modal-body'>
-      { children }
-    </div>
-  )
+Modal.Header = function (props: ModalHeaderProps) {
+  return <div className="modal-header">{props.children}</div>;
+};
+
+interface ModalBodyProps {
+  children: ReactNode;
 }
 
-export default Modal
+Modal.Body = function (props: ModalBodyProps) {
+  return <div className="modal-body">{props.children}</div>;
+};
+
+export default Modal;

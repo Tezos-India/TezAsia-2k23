@@ -1,23 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, KeyboardEvent } from 'react';
 import { useSocket } from '@/contexts/SocketContext';
 import { useUser } from '@/contexts/UserContext';
 import { useChat } from '@/contexts/ChatContext';
+import type { Message } from '@/contexts/ChatContext'; 
+interface MessagesProps {
+  gameId: string;
+}
 
-export default function Messages({ gameId }) {
+export default function Messages({ gameId }: MessagesProps) {
   const { messages, setMessages } = useChat();
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState<string>('');
   const socket = useSocket();
-  const scrollRef = useRef();
-  const audioRef = useRef();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const { id } = useUser();
 
   useEffect(() => {
     if (!socket) return;
 
-    const handleIncomingMessage = (data) => {
+    const handleIncomingMessage = (data: Message) => {
       if (data.sender !== id) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play();
+        audioRef.current && (audioRef.current.currentTime = 0);
+        audioRef.current && audioRef.current.play();
       }
       addMessage(data);
     };
@@ -32,22 +36,24 @@ export default function Messages({ gameId }) {
   function handleSubmit() {
     if (message.trim() === '') return;
 
-    const data = { text: message, sender: id };
-    socket.emit('message', data, gameId);
+    const data: Message = { text: message, sender: id };
+    if (socket) {
+      socket.emit('message', data, gameId);
+    }
     addMessage(data);
     setMessage('');
   }
 
-  function addMessage(data) {
+  function addMessage(data: Message) {
     setMessages(prevMessages => [...prevMessages, data]);
   }
 
   useEffect(() => {
     localStorage.setItem('messages-' + gameId, JSON.stringify(messages));
-    scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
   }, [messages, gameId]);
 
-  function handleKeyPress(e) {
+  function handleKeyPress(e: KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === 'Enter' && message.trim() !== '') {
       e.preventDefault();
       handleSubmit();
@@ -80,4 +86,3 @@ export default function Messages({ gameId }) {
     </div>
   );
 }
-
