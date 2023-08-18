@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Socket } from "socket.io-client";
-import Chess from "../lib/chess";
+import Chess from "@/lib/chess";
 import { useSocket } from "./SocketContext";
 import { useUser } from "./UserContext";
+
 
 type GameContextType = {
   game?: typeof Chess;
@@ -33,25 +34,28 @@ interface GamesProviderProps {
   children: React.ReactNode;
 }
 
-export function GamesProvider({ children }:GamesProviderProps) {
+export function GamesProvider({ children }: GamesProviderProps) {
   const socket = useSocket() as Socket;
 
-  const [game, setGame] = useState<typeof Chess | null>(null);
-  const [moves, setMoves] = useState<string[]>([]);
-  const [orientation, setOrientation] = useState<string>("");;
-  const [players, setPlayers] = useState([]);
-  const [turn, setTurn] = useState(false);
-  const [gameOver, setGameOver] = useState();
-  const [fen, setFen] = useState("");
-  const [fenArr, setFenArr] = useState<string[]>([]);
-  const [lastMove, setLastMove] = useState();
-  const [publicGame, setPublicGame] = useState(false);
-  const [opponent, setOpponent] = useState();
-  const [timeLeft, setTimeLeft] = useState([1000, 1000]);
+  const [game, setGame] = useState<any | null>(null);
 
-  const moveSoundRef = useRef<HTMLAudioElement|null>(null);
-  const captureSoundRef = useRef<HTMLAudioElement|null>(null);
-  const playerJoinedRef = useRef<HTMLAudioElement|null>(null);
+
+
+  const [moves, setMoves] = useState<string[]>([]);
+  const [orientation, setOrientation] = useState<string>("");
+  const [players, setPlayers] = useState<any[]>([]);
+  const [turn, setTurn] = useState<boolean>(false);
+  const [gameOver, setGameOver] = useState<any | null>(null); // Adjust the type here
+  const [fen, setFen] = useState<string>("");
+  const [fenArr, setFenArr] = useState<string[]>([]);
+  const [lastMove, setLastMove] = useState<any | null>(null); // Adjust the type here
+  const [publicGame, setPublicGame] = useState<boolean>(false);
+  const [opponent, setOpponent] = useState<any | null>(null); // Adjust the type here
+  const [timeLeft, setTimeLeft] = useState<number[]>([1000, 1000]);
+
+  const moveSoundRef = useRef<HTMLAudioElement | null>(null);
+  const captureSoundRef = useRef<HTMLAudioElement | null>(null);
+  const playerJoinedRef = useRef<HTMLAudioElement | null>(null);
 
   const { id } = useUser();
 
@@ -60,8 +64,8 @@ export function GamesProvider({ children }:GamesProviderProps) {
     socket.on("game", initGame);
     socket.on("players", (_players) => {
       setPlayers(_players);
-      playerJoinedRef.current.currentTime = 0;
-      playerJoinedRef.current.play();
+      playerJoinedRef.current!.currentTime = 0;
+      playerJoinedRef.current!.play();
     });
     socket.on("gameover", (data) => {
       setGameOver(data);
@@ -69,7 +73,7 @@ export function GamesProvider({ children }:GamesProviderProps) {
     });
     socket.on("time-left", (time, sentAt) => {
       let tick = Date.now() - sentAt;
-      setTimeLeft(time.map((t) => t - tick));
+      setTimeLeft(time.map((t:any) => t - tick));
     });
     return () => {
       socket.off("game");
@@ -81,10 +85,10 @@ export function GamesProvider({ children }:GamesProviderProps) {
     console.log("time", timeLeft);
   }, [timeLeft]);
 
-  function initGame(gameData) {
-    const g = new Chess();
-    const fenHistory = [];
-    let _lastMove;
+  function initGame(gameData: any) {
+    const g: Chess = new Chess(gameData.initialFEN); // Explicitly annotate the type
+    const fenHistory: string[] = [];
+    let _lastMove: any | null = null; // Adjust the type here
     for (var i = 0; i < gameData.moves.length; i++) {
       _lastMove = g.move(gameData.moves[i]);
       fenHistory.push(g.fen());
@@ -93,7 +97,7 @@ export function GamesProvider({ children }:GamesProviderProps) {
     setFenArr(fenHistory);
     setPublicGame(gameData.isPublic);
     let _orientation: string =
-      gameData.players.findIndex((p: { id: string | null; }) => p.id === id) === 0 ? "white" : "black";
+      gameData.players.findIndex((p: { id: string | null }) => p.id === id) === 0 ? "white" : "black";
     setOrientation(_orientation);
     setMoves(gameData.moves);
     setTurn(g.turn() === _orientation[0]);
@@ -109,7 +113,7 @@ export function GamesProvider({ children }:GamesProviderProps) {
     socket.on("move", makeMove);
     return () => {
       socket.off("move");
-    }
+    };
   }, [socket, game, moves]);
 
   useEffect(() => {
@@ -117,9 +121,9 @@ export function GamesProvider({ children }:GamesProviderProps) {
     setTurn(game.turn() === orientation[0]);
   }, [game, orientation]);
 
-  function getGameOver(game) {
+  function getGameOver(game: Chess) {
     if (!game.game_over()) return;
-    let obj = {};
+    let obj: any = {};
     if (game.in_checkmate()) {
       obj.reason = "checkmate";
       obj.winner = game.turn() === "w" ? 1 : 0;
@@ -142,7 +146,7 @@ export function GamesProvider({ children }:GamesProviderProps) {
     }
   }, [game]);
 
-  function createGame(data) {
+  function createGame(data: any) {
     socket.emit("create", data);
   }
 
@@ -150,13 +154,13 @@ export function GamesProvider({ children }:GamesProviderProps) {
     setPublicGame(true);
   }
 
-  function setMove(index) {
+  const setMove = (index: number) => {
     if (index < 0 || index >= fenArr.length) return;
     setLastMove(null);
     setFen(fenArr[index]);
   }
 
-  function makeMove(move) {
+  function makeMove(move: any) {
     if (!game) return;
     if (game.game_over()) return;
     const saveGame = { ...game };
@@ -168,11 +172,11 @@ export function GamesProvider({ children }:GamesProviderProps) {
       setFen(saveGame.fen());
       setLastMove(testMove);
       if (/x/.test(testMove.san)) {
-        captureSoundRef.current.currentTime = 0;
-        captureSoundRef.current.play();
+        captureSoundRef.current!.currentTime = 0;
+        captureSoundRef.current!.play();
       } else {
-        moveSoundRef.current.currentTime = 0;
-        moveSoundRef.current.play();
+        moveSoundRef.current!.currentTime = 0;
+        moveSoundRef.current!.play();
       }
       if (saveGame.game_over()) {
         socket.emit("gameover", getGameOver(saveGame));
@@ -181,8 +185,8 @@ export function GamesProvider({ children }:GamesProviderProps) {
     return testMove;
   }
 
-  function safeGameMutate(modify) {
-    setGame((g) => {
+  function safeGameMutate(modify: (update: typeof Chess) => void) {
+    setGame((g:any) => {
       const update = { ...g };
       modify(update);
       return update;
@@ -191,7 +195,7 @@ export function GamesProvider({ children }:GamesProviderProps) {
 
   function rematch() {
     let g = new Chess();
-    setGame();
+    setGame(null);
     setOrientation(orientation === "white" ? "black" : "white");
     setMoves([]);
     setLastMove(g.fen());
@@ -199,7 +203,7 @@ export function GamesProvider({ children }:GamesProviderProps) {
     setFen(g.fen());
   }
 
-  const value = {
+  const value: GameContextType = {
     game,
     createGame,
     makeMove,
@@ -217,6 +221,7 @@ export function GamesProvider({ children }:GamesProviderProps) {
     opponent,
     timeLeft,
   };
+
   return (
     <GamesContext.Provider value={value}>
       <audio src="/move.mp3" ref={moveSoundRef}></audio>
