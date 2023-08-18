@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { parseTime } from '@/helpers';
 
-export default function Timer({ time, running }) {
+interface TimerProps {
+  time: number;     // Specify the correct type for time
+  running: boolean; // Specify the correct type for running
+}
+
+export default function Timer({ time, running }: TimerProps) {
   const [timeLeft, setTimeLeft] = useState(time);
   const [jump, setJump] = useState(100)
   const intervalRef = useRef();
@@ -20,8 +25,8 @@ export default function Timer({ time, running }) {
     }
     let lastTick = Date.now()
     intervalRef.current = setInterval(() => {
-      setTimeLeft((prev) => prev - (Date.now() - lastTick));
-      lastTick = Date.now()
+      setTimeLeft((prev: number) => prev - (Date.now() - lastTick));
+      lastTick = Date.now();
     }, jump);
   }, [running]);
   return (

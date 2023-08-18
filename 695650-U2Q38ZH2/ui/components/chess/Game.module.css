@@ -1,0 +1,243 @@
+.p{
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMkAx29JVcw8KWOzmoPe0-IqApFLQyemd2HA&usqp=CAU');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width:100vw;
+  height: 50vh;
+
+}
+
+
+.smokeDarkTheme {
+  background-color: #111;
+  color: #fff;
+  padding: 20px;
+  transition: background-color 0.3s; /* Smooth transition on hover */
+
+  /* Define the initial smoke position */
+  position: relative;
+  overflow: hidden;
+}
+
+.smokeDarkTheme::before {
+  content: '';
+  position: absolute;
+  top: -50px; /* Adjust the starting position */
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white color */
+  animation: smokeAnimation 4s infinite linear;
+}
+
+/* Define the smoke animation */
+@keyframes smokeAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+
+/* Game.css */
+
+.waiting-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh; /* Use viewport height for full-screen effect */
+  background-color: #292929;
+  margin-top: -17rem;
+  width: 40vw;
+}
+
+.waiting-content {
+  text-align: center;
+  color: white;
+}
+
+.waiting-title {
+  font-size: 36px;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  color: white;
+}
+
+.waiting-subtitle {
+  font-size: 20px;
+  margin-bottom: 1.5em;
+  color: #9e9e9e;
+}
+
+.waiting-info {
+  font-size: 24px;
+  margin-bottom: 1em;
+  font-weight: bold;
+  color: white;
+}
+
+.waiting-message {
+  font-size: 18px;
+  font-family: monospace;
+  color: #9e9e9e;
+  margin-top: 1em;
+}
+
+.copy-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 1em;
+}
+
+.copy-button:hover {
+  background-color: #0056b3;
+}
+
+/* Add hover effect */
+.smokeDarkTheme:hover {
+  background-color: #333; /* Change background color on hover */
+}
+.smoke-wrap {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 222px;
+  }
+  
+  .smoke,
+  .smoke2,
+  .smoke3 {
+    filter: blur(5px);
+    transform-origin: 50% 50%;
+  }
+  
+  .smoke {
+    height: 10rem;
+    animation: smoke1 3s linear infinite;
+    animation-delay: 0.5s;
+  }
+  
+  .smoke2 {
+    animation: smoke2 3s linear infinite;
+    animation-delay: 1.5s;
+  }
+  
+  .smoke3 {
+    width: 500px;
+    animation: smoke3 4s linear infinite;
+    animation-delay: 2.5s;
+  }
+
+
+  
+  
+  @keyframes smoke1 {
+    0% {
+      filter: blur(0px);
+      transform: translateY(0px) scale(-1, 1);
+      opacity: 0;
+    }
+  
+    25% {
+      filter: blur(3px);
+      transform: translateY(-10px) scale(-1, 1.05);
+      opacity: 0.5;
+    }
+  
+    50% {
+      filter: blur(5px);
+      transform: translateY(-20px) scale(-1, 1.1);
+      opacity: 1;
+    }
+  
+    75% {
+      filter: blur(5px);
+      transform: translateY(-30px) scale(-1, 1.15);
+      opacity: 0.5;
+    }
+  
+    100% {
+      filter: blur(7px);
+      transform: translateY(-40px) scale(-1, 1.2);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes smoke2 {
+    0% {
+      filter: blur(0px);
+      transform: translateY(0px) scale(1);
+      opacity: 0;
+    }
+  
+    25% {
+      filter: blur(3px);
+      transform: translateY(-10px) scale(1.05);
+      opacity: 0.5;
+    }
+  
+    50% {
+      filter: blur(5px);
+      transform: translateY(-20px) scale(1.1);
+      opacity: 1;
+    }
+  
+    75% {
+      filter: blur(5px);
+      transform: translateY(-30px) scale(1.15);
+      opacity: 0.5;
+    }
+  
+    100% {
+      filter: blur(7px);
+      transform: translateY(-40px) scale(1.2);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes smoke3 {
+    0% {
+      filter: blur(0px);
+      transform: translateY(0px) scale(1);
+      opacity: 0;
+    }
+  
+    25% {
+      filter: blur(3px);
+      transform: translateY(-20px) scale(1.05);
+      opacity: 0.5;
+    }
+  
+    50% {
+      filter: blur(5px);
+      transform: translateY(-40px) scale(1.1);
+      opacity: 1;
+    }
+  
+    75% {
+      filter: blur(5px);
+      transform: translateY(-60px) scale(1.15);
+      opacity: 0.5;
+    }
+  
+    100% {
+      filter: blur(7px);
+      transform: translateY(-80px) scale(1.2);
+      opacity: 0;
+    }
+  }
