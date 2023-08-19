@@ -5,30 +5,7 @@ import { UserDashboard } from "./UserDashboard";
 import { DropdownMenu } from "./DropdownMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-
-function WelcomePopup({
-  avatarName,
-  onClose,
-}: {
-  avatarName: string;
-  onClose: () => void;
-}) {
-  return (
-    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-gray-100 p-8 rounded-lg shadow-md ">
-        <p className="text-black font-semibold text-lg">Welcome, {avatarName}!</p>
-        <div className="flex justify-center">
-        <button
-          onClick={onClose}
-          className="mt-2 bg-purple-600 text-white text-lg font-sans rounded-full px-6 py-2 hover:bg-purple-700 flex justify-center"
-        >
-          Close
-        </button>
-        </div>
-      </div>
-    </div>
-  );
-}
+import WelcomePopup from "./WelcomePopup";
 
 export function Navbar() {
   const [account, setAccount] = useState<string>("");
@@ -36,6 +13,7 @@ export function Navbar() {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [showDashboard, setShowDashboard] = useState<boolean>(false);
   const [showWelcomePopup, setShowWelcomePopup] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchAccount() {
@@ -67,7 +45,8 @@ export function Navbar() {
       if (response.status === 404) {
         console.log(`DEBUG: User does not exist, show dashboard is true`);
         setShowDashboard(true);
-        return; // return early since the user does not exist
+        setEditMode(true);
+        return;
       }
 
       const user = await response.json(); // Only attempt to parse JSON for valid responses
@@ -158,13 +137,29 @@ export function Navbar() {
         )}
       </div>
       {showDashboard && (
-        <UserDashboard
-          avatarName={avatarName || ""}
-          setAvatarName={setAvatarName}
-          onSave={saveForm}
-          onBack={() => setShowDashboard(false)}
-        />
+        <div className="fixed inset-0 flex justify-center items-center z-50">
+          <div className="absolute inset-0 bg-black opacity-60"></div>
+          <div className="z-0">
+            <UserDashboard
+              avatarName={avatarName || ""}
+              setAvatarName={setAvatarName}
+              onSave={() => {
+                saveForm();
+                setEditMode(false);
+              }}
+              onBack={() => {
+                if (editMode) {
+                  alert("Please save avatar details first.");
+                } else {
+                  setShowDashboard(false);
+                }
+              }}
+              editMode={editMode}
+            />
+          </div>
+        </div>
       )}
+
       {showWelcomePopup && (
         <WelcomePopup
           avatarName={avatarName || ""}
