@@ -25,7 +25,8 @@ export function Navbar() {
         const data = await response.json();
         if (data && data.avatarName) {
           setAvatarName(data.avatarName);
-        }
+          localStorage.setItem('avatarName', data.avatarName);
+      }
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -82,7 +83,8 @@ export function Navbar() {
       if (response.ok) {
         alert("Avatar created successfully");
         setShowDashboard(false);
-      } else {
+        localStorage.setItem('avatarName', avatarName);  // Store avatar name in local storage
+    }  else {
         const data = await response.json();
         alert("Error saving avatar:" + (data.message || "Unknown error"));
       }

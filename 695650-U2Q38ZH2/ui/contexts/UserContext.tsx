@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, ReactNode } from 'react';
-import Cookies from 'js-cookie';
+import { generateId } from '../helpers';
 
 type UserContextType = {
   id: string | null;
@@ -17,46 +17,34 @@ export function useUser(): UserContextType {
   return context;
 }
 
-import { generateId } from '../helpers';
-
 type UserProviderProps = {
   children: ReactNode;
 };
 
 export function UserProvider({ children }: UserProviderProps): JSX.Element {
   const [id, setId] = useState<string | null>(null);
-  const [username, setUsername] = useState<string | null>(() => {
-    const n = Cookies.get('username');
-    return n || null;
-  });
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
-    let uid = Cookies.get('uid');
+    const n = typeof window !== "undefined" ? localStorage.getItem('avatarName') : null;
+    setUsername(n);
+
+    let uid = typeof window !== "undefined" ? localStorage.getItem('uid') : null;
     if (!uid) {
       uid = generateId();
-      Cookies.set('uid', uid);
+      if (typeof window !== "undefined") {
+        localStorage.setItem('uid', uid);
+      }
       setId(uid);
     } else {
       setId(uid);
     }
-
-    if (!username) {
-      let name: string | null = null;
-      while (!name) {
-        name = prompt('Choose a username');
-      }
-      Cookies.set('username', name);
-      setUsername(name);
-    }
   }, []);
 
-  useEffect(() => {
-    if (username) {
-      Cookies.set('username', username);
-    }
-  }, [username]);
-
   function updateUsername(u: string) {
+    if (typeof window !== "undefined") {
+      localStorage.setItem('avatarName', u);
+    }
     setUsername(u);
   }
 
