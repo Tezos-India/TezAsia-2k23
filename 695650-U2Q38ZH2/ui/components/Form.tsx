@@ -17,7 +17,7 @@ const Form = () => {
 
   const onConnectWallet = async () => {
     try {
-      const { userAddress } = await connectWallet();
+      const { userAddress }:any = await connectWallet();
       setWalletAddress(userAddress);
       setIsWalletConnected(true);
     } catch (error) {
