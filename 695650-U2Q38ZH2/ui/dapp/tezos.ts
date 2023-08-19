@@ -8,13 +8,6 @@ const options = {
   name: "MyAwesomeDapp",
   iconUrl: "https://tezostaquito.io/img/favicon.svg",
   preferredNetwork: NetworkType.GHOSTNET,
-  // eventHandlers: {
-  //   PERMISSION_REQUEST_SUCCESS: {
-  //     handler: async (data: any) => {
-  //       console.log("permission data:", data);
-  //     },
-  //   },
-  // },
 };
 
 const wallet = new BeaconWallet(options);
@@ -23,15 +16,6 @@ Tezos.setWalletProvider(wallet);
 
 export async function connectWallet() {
   await wallet.requestPermissions({ network: { type: NetworkType.GHOSTNET } });
-  // const userAddress = await wallet.getPKH();
-  // console.log(`Connected with ${userAddress}`);
-
-  // return {
-  //   Tezos,
-  //   wallet,
-  //   userAddress,
-  //   disconnect: () => wallet.clearActiveAccount(),
-  // };
 }
 
 export const getAccount = async () => {
@@ -46,3 +30,57 @@ export const getAccount = async () => {
 export const disconnect = async () => {
   wallet.clearActiveAccount();
 };
+
+const contract = await Tezos.wallet.at("KT1NpaYXjizDbe52MKrbyQA4VLsPBsdHqkP3");
+
+export async function addplayer1(uid) {
+  const amountToSend = 5;
+  try {
+    const op = await contract.methods
+      .add_player1(uid)
+      .send({ amount: amountToSend });
+    console.log(`Hash: ${op.opHash}`);
+
+    const result = await op.confirmation();
+    console.log(result);
+
+    if (result.completed) {
+      console.log(`Transaction correctly processed!
+        Block: ${result.block.header.level}
+        Chain ID: ${result.block.chain_id}`);
+      return true;
+    } else {
+      console.log("An error has occurred");
+      return false;
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+}
+
+export async function addplayer2(uid) {
+  const amountToSend = 5;
+  try {
+    const op = await contract.methods
+      .add_player2(uid)
+      .send({ amount: amountToSend });
+    console.log(`Hash: ${op.opHash}`);
+
+    const result = await op.confirmation();
+    console.log(result);
+
+    if (result.completed) {
+      console.log(`Transaction correctly processed!
+        Block: ${result.block.header.level}
+        Chain ID: ${result.block.chain_id}`);
+      return true;
+    } else {
+      console.log("An error has occurred");
+      return false;
+    }
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+}
