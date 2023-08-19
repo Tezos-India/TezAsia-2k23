@@ -1,44 +1,19 @@
+import { InMemorySigner } from "@taquito/signer";
 import { TezosToolkit } from "@taquito/taquito";
-import { BeaconWallet } from "@taquito/beacon-wallet";
-import { NetworkType } from "@airgap/beacon-sdk";
 
 const Tezos = new TezosToolkit("https://ghostnet.smartpy.io");
 
-const options = {
-  name: "MyAwesomeDapp",
-  iconUrl: "https://tezostaquito.io/img/favicon.svg",
-  preferredNetwork: NetworkType.GHOSTNET,
-};
-
-const wallet = new BeaconWallet(options);
-
-Tezos.setWalletProvider(wallet);
-
-export async function connectWallet() {
-  await wallet.requestPermissions({ network: { type: NetworkType.GHOSTNET } });
-}
-
-export const getAccount = async () => {
-  const connectedWallet = await wallet.client.getActiveAccount();
-  if (connectedWallet) {
-    return connectedWallet.address;
-  } else {
-    return "";
-  }
-};
-
-export const disconnect = async () => {
-  wallet.clearActiveAccount();
-};
+Tezos.setProvider({
+  signer: await InMemorySigner.fromSecretKey(
+    "edskRnT7i4kHKbJtznWi5KFjJ1y9HQoburPBVmBAebdxby5GUiTpm1KpwCkR7si4v7ofNUsNVfQ7nEuyruu2GaQh8MuJVgkWDF"
+  ),
+});
 
 const contract = await Tezos.wallet.at("KT1DdegaPz1V54ReKSHuw5Vfw3nC7pAJF3jh");
 
-export async function addplayer1(uid) {
-  const amountToSend = 5;
+export async function wingame(uid, winner) {
   try {
-    const op = await contract.methods
-      .add_player1(uid)
-      .send({ amount: amountToSend });
+    const op = await contract.methods.wingame(uid, winner).send();
     console.log(`Hash: ${op.opHash}`);
 
     const result = await op.confirmation();
@@ -59,12 +34,9 @@ export async function addplayer1(uid) {
   }
 }
 
-export async function addplayer2(uid) {
-  const amountToSend = 5;
+export async function drawgame(uid) {
   try {
-    const op = await contract.methods
-      .add_player2(uid)
-      .send({ amount: amountToSend });
+    const op = await contract.methods.drawgame(uid).send();
     console.log(`Hash: ${op.opHash}`);
 
     const result = await op.confirmation();
