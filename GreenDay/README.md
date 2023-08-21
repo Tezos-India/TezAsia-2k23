@@ -1,3 +1,10 @@
+# Team GreenDay
+- Members: 1. AMAN PORWAL
+- Email: aman07porwal@gmail.com
+- College: Bharati Vidyapeeth College of engineering.
+- Linkedin: https://www.linkedin.com/in/aman-porwal-5933b120b/
+
+
 # Resume Analyzer Web App :memo::computer:
 
 ![GitHub](https://img.shields.io/github/license/iamamanporwal/resume-ranker)
