@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analyzer AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <center>
+    <img src = "https://d8it4huxumps7.cloudfront.net/uploads/images/150x150/uploadedManual-64a519d421041_ti_logo__1_.png?d=110x110" width="50" height="50" >
+    <h1>Resume Analyzer AI</h1>
+    A ranking system to find the best candidate.
+    </center>
+    
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="job_description">Job Description:</label>
+        <textarea name="job_description" rows="4" cols="50" required></textarea>
+        <br>
+        <label for="resume_files">Upload Resumes (PDF):</label>
+        <input type="file" name="resume_files" accept=".pdf" multiple required>
+        <br>
+        <input type="submit" value="Analyze Resumes">
+    </form>
+    <br>
+    {% if results %}
+    <h2>Ranked Resumes:</h2>
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Similarity in %</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ result[0][0] }}</td>
+            <td>{{ result[1][0] }}</td>
+            <td>{{ result[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if results %}
+    <br>
+    <a href="{{ url_for('download_csv') }}" download="ranked_resumes.csv" class="download-link">
+        Download CSV
+    </a>
+    
+{% endif %}
+
+    {% endif %}
+</body>
+</html>
