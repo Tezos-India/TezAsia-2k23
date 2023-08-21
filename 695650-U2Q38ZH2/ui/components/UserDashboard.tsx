@@ -6,6 +6,7 @@ interface UserDashboardProps {
   onSave: () => void;
   onBack: () => void;
   editMode: boolean;
+  onEdit?: () => void;
 }
 
 export const UserDashboard: FC<UserDashboardProps> = ({
@@ -15,18 +16,22 @@ export const UserDashboard: FC<UserDashboardProps> = ({
   onBack,
   editMode,
 }) => {
-  const [isNameSaved, setIsNameSaved] = useState(avatarName !== "");
+  const [initialAvatarName, setInitialAvatarName] = useState(avatarName);
   const [isEditing, setIsEditing] = useState(editMode);
 
   useEffect(() => {
+    setIsEditing(editMode);
+  }, [editMode]);
+
+  useEffect(() => {
     if (avatarName) {
-      setIsNameSaved(true);
+      setInitialAvatarName(avatarName);
     }
   }, [avatarName]);
 
   const handleBackClick = () => {
-    if (editMode && !isNameSaved) {
-      alert("Please save avatar details first.");
+    if (isEditing && initialAvatarName !== avatarName) {
+      alert("You have unsaved changes. Please save avatar details first.");
     } else {
       onBack();
     }
@@ -40,7 +45,9 @@ export const UserDashboard: FC<UserDashboardProps> = ({
       >
         ✖
       </button>
-      <h2 className="text-purple-500 text-4xl mb-6 border-b border-purple-400 pb-2">User Dashboard</h2>
+      <h2 className="text-purple-500 text-4xl mb-6 border-b border-purple-400 pb-2">
+        User Dashboard
+      </h2>
 
       {isEditing ? (
         <form
@@ -69,12 +76,8 @@ export const UserDashboard: FC<UserDashboardProps> = ({
       ) : (
         <div className="flex flex-col mb-6">
           <div className="flex justify-between items-center mb-2">
-            <div className="text-white font-semibold text-lg">
-              Avatar Name:
-            </div>
-            <div className="text-white font-semibold text-lg">
-              {avatarName}
-            </div>
+            <div className="text-white font-semibold text-lg">Avatar Name:</div>
+            <div className="text-white font-semibold text-lg">{avatarName}</div>
           </div>
           <button
             onClick={() => setIsEditing(true)}
