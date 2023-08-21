@@ -30,7 +30,7 @@ export default function GamePage() {
             (gameOver.winner === 1 && orientation === "black")
             ? "You Win!"
             : (gameOver.winner === 0 ? "white" : "black") + " wins"
-          : "Draw";
+          :  "Draw";
       setPopup({
         message,
         extra: "by " + gameOver.reason,

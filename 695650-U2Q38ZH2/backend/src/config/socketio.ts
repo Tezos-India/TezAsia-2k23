@@ -2,7 +2,7 @@ import { Server as ServerSocket, Socket } from "socket.io";
 import { Server as HttpServer } from "http";
 import { generateId } from "../chess/helpers";
 import Game from "../chess/Game";
-
+import initializeTezos from "./organizer";
 let games: Game[] = [];
 let waitlistGameId: string | null = null;
 interface User {
@@ -114,14 +114,32 @@ export const setupSocketIO = (server: HttpServer) => {
       }
     });
 
-    socket.on("gameover", (data) => {
+    socket.on("gameover", async (data) => {
+      const { wingame,drawgame } = await initializeTezos();
       const gameIndex = games.findIndex((g) => g.id === currentGameId);
       if (gameIndex === -1) return;
       const game = games[gameIndex];
-      console.log(data);
+      const gameId = game.id;
+      const gameId_ = gameId.toString()
+      if (game.gameOver !== null) {
+
+        if(game.gameOver.winner === undefined){
+          const result = await drawgame(gameId_);
+                  }
+
+        else{  
+          const winner = game.gameOver.winner;
+          const winnerString = winner.toString();
+          
+          const result = await wingame(gameId_, winnerString);
+          if (result) {
+            console.log("Wingame transaction successful!");
+          } else {
+            console.log("Wingame transaction failed!");
+          }
+        }}
       game.setGameOver(data);
     });
-
     socket.on("move", (move, sentAt) => {
       const gameIndex = games.findIndex((g) => g.id === currentGameId);
       if (gameIndex === -1) return;
@@ -166,3 +184,4 @@ export const setupSocketIO = (server: HttpServer) => {
     io.emit("get-games", games.filter((g) => g.players.length === 2).length);
   }, 200);
 };
+

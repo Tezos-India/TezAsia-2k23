@@ -26,10 +26,12 @@ export default function Menu() {
   };
 
   const handleJoinWithGameId = async () => {
+    setLoading(true)
     console.log("Joining game with ID:", gameId);
     await addplayer2(gameId).then((ans) => {
       if (ans) {
         router.push("/chess/" + gameId);
+        setLoading(false)
       }
     });
   };
@@ -168,6 +170,10 @@ export default function Menu() {
                     >
                       Join with Game ID
                     </button>
+                    {
+                      loading ?
+                      <Loader/>:''
+                    }
                   </div>
                 )}
               </div>
