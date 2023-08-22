@@ -1,5 +1,13 @@
 import React, { FC, useState, useEffect } from "react";
 
+
+interface GameStats {
+  gamesPlayed: number;
+  gamesWon: number;
+  gamesLost: number;
+  gamesDrawn: number;
+}
+
 interface UserDashboardProps {
   avatarName: string;
   setAvatarName: (name: string) => void;
@@ -7,6 +15,7 @@ interface UserDashboardProps {
   onBack: () => void;
   editMode: boolean;
   onEdit?: () => void;
+  gameStats: GameStats | null;
 }
 
 export const UserDashboard: FC<UserDashboardProps> = ({
@@ -15,6 +24,7 @@ export const UserDashboard: FC<UserDashboardProps> = ({
   onSave,
   onBack,
   editMode,
+  gameStats,
 }) => {
   const [initialAvatarName, setInitialAvatarName] = useState(avatarName);
   const [isEditing, setIsEditing] = useState(editMode);
@@ -99,6 +109,13 @@ export const UserDashboard: FC<UserDashboardProps> = ({
         {/* Achievement items here */}
         {/* Placeholder if no Achievements */}
         <p className="text-white opacity-70">Play games to unlock</p>
+        {/* Games statistics*/}
+        <div className="mt-4">
+        <p className="text-white font-semibold text-lg">Games Played: {gameStats?.gamesPlayed || 0}</p>
+        <p className="text-white font-semibold text-lg">Games Won: {gameStats?.gamesWon || 0}</p>
+        <p className="text-white font-semibold text-lg">Games Lost: {gameStats?.gamesLost || 0}</p>
+        <p className="text-white font-semibold text-lg">Games Drawn: {gameStats?.gamesDrawn || 0}</p>
+        </div>
       </section>
     </div>
   );
