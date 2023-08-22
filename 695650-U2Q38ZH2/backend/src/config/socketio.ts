@@ -60,6 +60,8 @@ export const setupSocketIO = (server: HttpServer) => {
           io.in(currentGameId).emit("gameover", data);
         }
       };
+
+
       socket.emit("game", game.data());
       if (game.players.length === 2) {
         game.start();
@@ -105,7 +107,7 @@ export const setupSocketIO = (server: HttpServer) => {
 
     socket.on("waitlist", (_username) => {
       if (waitlistGameId) {
-        socket.emit("game id", waitlistGameId);
+        socket.emit("ramdom id", waitlistGameId);
         console.log("User " + _username + " joined game as black");
         waitlistGameId = null;
       } else {

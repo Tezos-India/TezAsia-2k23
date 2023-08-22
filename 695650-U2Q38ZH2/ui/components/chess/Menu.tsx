@@ -7,6 +7,7 @@ import { inDevelopment } from "@/vars";
 import styles from "./Menu.module.css";
 import Image from "next/image";
 import { addplayer1, addplayer2 } from "@/dapp/tezos";
+import SmokeBackground from "./Particles";
 export default function Menu() {
   const router = useRouter();
   const [myGames, setMyGames] = useState<any[]>([]); // Specify the type for myGames
@@ -15,7 +16,6 @@ export default function Menu() {
   const [onlineUsers, setOnlineUsers] = useState<string[]>([]); // Specify the type for onlineUsers
   const [joiningGame, setJoiningGame] = useState(false);
   const [gameId, setGameId] = useState("");
-
   const handleGameIdChange = (event) => {
     setGameId(event.target.value);
   };
@@ -54,11 +54,23 @@ export default function Menu() {
         }
       });
     }
+
+    async function gotoram(gameId: string) {
+      await addplayer2(gameId).then((ans) => {
+        if (ans) {
+          router.push("/chess/" + gameId);
+        }
+      });
+    }
+
+
     socket.on("game id", gotogame);
+    socket.on("ramdom id", gotoram);
     socket.emit("get-users");
     socket.on("get-users", (_users) => {
       setOnlineUsers(_users);
     });
+    
     return () => {
       socket.off("game id", gotogame);
       socket.off("get-users");
@@ -76,8 +88,13 @@ export default function Menu() {
         marginLeft: "-10.3rem",
       }}
     >
+          <div className={styles["parti"]} >
+      <SmokeBackground   />
+      </div>
+     
       <div className={styles["menu-container"]}>
         <div className="smoke-wrap">
+       
           <Image
             className={styles["smoke"]}
             src="/smoke.png"
@@ -228,7 +245,10 @@ export default function Menu() {
             height={700}
           />
         </div>
+        
       </div>
+     
+      
     </div>
   );
 }

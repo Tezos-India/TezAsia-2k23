@@ -1,198 +1,197 @@
-/* Menu.module.css */
 
 .menu-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  
-  .menu-card {
-    width: 40rem;
-    padding: 20px;
-    /* background-color: rgba(255, 255, 255, 0.8);  */
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    margin-top: 17rem;
-    margin-left: -10rem;
-  }
-  
-  
-  .menu-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: rgba(236, 126, 218, 0.85);
-    text-shadow: 1px 1px 2px #e0e4e7, 0 0 0 black, 1px 4px 6px #def;
-  }
-  
-  .menu-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.menu-card {
+  width: 40rem;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-top: -40rem;
+  margin-left: -10rem;
+}
+
+
+.menu-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(236, 126, 218, 0.85);
+  text-shadow: 1px 1px 2px #e0e4e7, 0 0 0 black, 1px 4px 6px #def;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.menu-buttons-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  color: white;
+}
+
+.menu-button {
+  padding: 10px;
+  background-color: #44dbe5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-button:hover {
+  background-color: #38c2cd;
+  transform: scale(1.05);
+}
+
+.menu-message {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.menu-dev-message {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ff4d4d;
+}
+.smoke-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 222px;
+}
+
+.smoke,
+.smoke2,
+.smoke3 {
+  filter: blur(5px);
+  transform-origin: 50% 50%;
+  margin-top: -45rem;
+}
+
+.smoke {
+  height: 10rem;
+  animation: smoke1 3s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.smoke2 {
+  animation: smoke2 3s linear infinite;
+  animation-delay: 1.5s;
+}
+
+.smoke3 {
+  width: 500px;
+  animation: smoke3 4s linear infinite;
+  animation-delay: 2.5s;
+}
+
+
+
+
+@keyframes smoke1 {
+  0% {
+    filter: blur(0px);
+    transform: translateY(0px) scale(-1, 1);
+    opacity: 0;
   }
 
-  .menu-buttons-1 {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-    color: white;
+  25% {
+    filter: blur(3px);
+    transform: translateY(-10px) scale(-1, 1.05);
+    opacity: 0.5;
   }
-  
-  .menu-button {
-    padding: 10px;
-    background-color: #44dbe5;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .menu-button:hover {
-    background-color: #38c2cd;
-    transform: scale(1.05);
-  }
-  
-  .menu-message {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .menu-dev-message {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #ff4d4d;
-  }
-  .smoke-wrap {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 222px;
-  }
-  
-  .smoke,
-  .smoke2,
-  .smoke3 {
+
+  50% {
     filter: blur(5px);
-    transform-origin: 50% 50%;
-  }
-  
-  .smoke {
-    height: 10rem;
-    animation: smoke1 3s linear infinite;
-    animation-delay: 0.5s;
-  }
-  
-  .smoke2 {
-    animation: smoke2 3s linear infinite;
-    animation-delay: 1.5s;
-  }
-  
-  .smoke3 {
-    width: 500px;
-    animation: smoke3 4s linear infinite;
-    animation-delay: 2.5s;
+    transform: translateY(-20px) scale(-1, 1.1);
+    opacity: 1;
   }
 
+  75% {
+    filter: blur(5px);
+    transform: translateY(-30px) scale(-1, 1.15);
+    opacity: 0.5;
+  }
 
-  
-  
-  @keyframes smoke1 {
-    0% {
-      filter: blur(0px);
-      transform: translateY(0px) scale(-1, 1);
-      opacity: 0;
-    }
-  
-    25% {
-      filter: blur(3px);
-      transform: translateY(-10px) scale(-1, 1.05);
-      opacity: 0.5;
-    }
-  
-    50% {
-      filter: blur(5px);
-      transform: translateY(-20px) scale(-1, 1.1);
-      opacity: 1;
-    }
-  
-    75% {
-      filter: blur(5px);
-      transform: translateY(-30px) scale(-1, 1.15);
-      opacity: 0.5;
-    }
-  
-    100% {
-      filter: blur(7px);
-      transform: translateY(-40px) scale(-1, 1.2);
-      opacity: 0;
-    }
+  100% {
+    filter: blur(7px);
+    transform: translateY(-40px) scale(-1, 1.2);
+    opacity: 0;
   }
-  
-  @keyframes smoke2 {
-    0% {
-      filter: blur(0px);
-      transform: translateY(0px) scale(1);
-      opacity: 0;
-    }
-  
-    25% {
-      filter: blur(3px);
-      transform: translateY(-10px) scale(1.05);
-      opacity: 0.5;
-    }
-  
-    50% {
-      filter: blur(5px);
-      transform: translateY(-20px) scale(1.1);
-      opacity: 1;
-    }
-  
-    75% {
-      filter: blur(5px);
-      transform: translateY(-30px) scale(1.15);
-      opacity: 0.5;
-    }
-  
-    100% {
-      filter: blur(7px);
-      transform: translateY(-40px) scale(1.2);
-      opacity: 0;
-    }
+}
+
+@keyframes smoke2 {
+  0% {
+    filter: blur(0px);
+    transform: translateY(0px) scale(1);
+    opacity: 0;
   }
-  
-  @keyframes smoke3 {
-    0% {
-      filter: blur(0px);
-      transform: translateY(0px) scale(1);
-      opacity: 0;
-    }
-  
-    25% {
-      filter: blur(3px);
-      transform: translateY(-20px) scale(1.05);
-      opacity: 0.5;
-    }
-  
-    50% {
-      filter: blur(5px);
-      transform: translateY(-40px) scale(1.1);
-      opacity: 1;
-    }
-  
-    75% {
-      filter: blur(5px);
-      transform: translateY(-60px) scale(1.15);
-      opacity: 0.5;
-    }
-  
-    100% {
-      filter: blur(7px);
-      transform: translateY(-80px) scale(1.2);
-      opacity: 0;
-    }
+
+  25% {
+    filter: blur(3px);
+    transform: translateY(-10px) scale(1.05);
+    opacity: 0.5;
   }
+
+  50% {
+    filter: blur(5px);
+    transform: translateY(-20px) scale(1.1);
+    opacity: 1;
+  }
+
+  75% {
+    filter: blur(5px);
+    transform: translateY(-30px) scale(1.15);
+    opacity: 0.5;
+  }
+
+  100% {
+    filter: blur(7px);
+    transform: translateY(-40px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes smoke3 {
+  0% {
+    filter: blur(0px);
+    transform: translateY(0px) scale(1);
+    opacity: 0;
+  }
+
+  25% {
+    filter: blur(3px);
+    transform: translateY(-20px) scale(1.05);
+    opacity: 0.5;
+  }
+
+  50% {
+    filter: blur(5px);
+    transform: translateY(-40px) scale(1.1);
+    opacity: 1;
+  }
+
+  75% {
+    filter: blur(5px);
+    transform: translateY(-60px) scale(1.15);
+    opacity: 0.5;
+  }
+
+  100% {
+    filter: blur(7px);
+    transform: translateY(-80px) scale(1.2);
+    opacity: 0;
+  }
+} 
