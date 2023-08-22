@@ -11,7 +11,7 @@
 8. If your project is deployed , then include the Live Project Link ( optional ) :NA
 9. Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository :https://github.com/IN4111/TezAsia-2k23/commit/fc1b5b88d6e724bf71b082ae759ad199f775ea47
 10. Github repository link :https://github.com/IN4111/TezAsia-2k23/commit/fc1b5b88d6e724bf71b082ae759ad199f775ea47
-11. Your PPT file  :https://github.com/IN4111/TezAsia-2k23/blob/main/Application_description.pdf
+11. Your PPT file  :https://docs.google.com/presentation/d/1PT8F_KjF2Vzo33Q_X0s8f2qhTZlc0qhH/edit?usp=share_link&ouid=109290593335147932927&rtpof=true&sd=true
 12. Your Team members Info.
         team_mate_1:
         Name:VIJAY.N
