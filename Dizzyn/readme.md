@@ -19,8 +19,18 @@
   <p>The smart contract address is <code>KT1KKknhpn1iiBqB315okxm7iiscPtpRWgwy</code>
   You can see it on blockchain explorer <code>https://ghostnet.tzkt.io/KT1KKknhpn1iiBqB315okxm7iiscPtpRWgwy/entrypoints</code></p>
 
+  <h2>Detailed Presentation PPT</h2>
+
+  [![image](https://github.com/Pranay-Pandey/TezAsia-2k23/assets/79053599/3672caec-1730-45b8-8404-55686a995274)
+](https://github.com/Pranay-Pandey/TezAsia-2k23/blob/main/Dizzyn/PPT.pdf)
+
+[![Link to PPT](https://github.com/Pranay-Pandey/TezAsia-2k23/raw/main/assets/79053599/3672caec-1730-45b8-8404-55686a995274.png)](https://github.com/Pranay-Pandey/TezAsia-2k23/raw/main/Dizzyn/PPT.pdf)
+
+
+
+
 <h2>Live Project Link</h2>
-<p>Can be accessed from the left side of this repository or you can directly access it from https://hrm-chi.vercel.app/</p>
+<p>Can be accessed from the right side of this repository in deployments or you can directly access it from https://hrm-chi.vercel.app/</p>
 
 <h2>Team Info</h2>
 <p>Team name - <b>Dizzyn</b>
