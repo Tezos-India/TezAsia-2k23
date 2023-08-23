@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useGame } from "@/contexts/GamesContext";
+import styles from "./Loader.module.css";
 interface LoaderProps {
   color?: string;
   size?: string;
@@ -14,18 +15,26 @@ function Loader({ color, size }: LoaderProps) {
     height: size || '40px'
   }
   return (
+    <div> 
+          <ul className={styles.bubbles}>
+    {[...Array(7)].map((_, index) => (
+      <li key={index} className={styles.bubble}></li>
+    ))}
+  </ul>
     <div className='loader-container'>
-      <div className='loader' style={style}></div>
       {st && (
-        <p style={{color:"white"}} >Starting The Game...</p>
+        <p className={styles.p}>Starting The Game...</p>
       )}
        {jg && (
-        <p style={{color:"white"}} >Joining The Game...</p>
+        <p className={styles.p} >Joining The Game...</p>
       )}
        {rg && (
-        <p style={{color:"white"}} >Joining Ramdom Game...</p>
+        <p className={styles.p}>Joining Ramdom Game...</p>
       )}
+      </div>
+  
     </div>
+
   )
 }
 

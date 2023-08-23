@@ -242,27 +242,42 @@ code {
   /* border-radius: 0 0 20px 20px; */
   margin-bottom: 1em;
   /* padding: 1em; */
-  background: #e9ece6;
+
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   min-height: 0;
-  color: black;
+  color: white;
+
+  background-color: #222;
+
+  border-radius: 10px;
+  box-shadow: 0 0 20px red;
+  animation: glowAnimation 2s infinite alternate;
+}
+
+@keyframes glowAnimation {
+  0% {
+    box-shadow: 0 0 10px #34ffea;
+  }
+  100% {
+    box-shadow: 0 0 40px #34ffea;
+  }
 }
 
 .game-sidebar::-webkit-scrollbar {
   width: 0;
-  color: black;
+  color: white;
 }
 
 .sidebar-header {
-  background: var(--color-dark);
+  
   grid-area: header;
   display: flex;
   align-items: center;
   justify-content: center;
   /* margin-top: 1em; */
-  color: black;
+  color: white;
 }
 
 @media (max-width: 800px) {
@@ -276,7 +291,7 @@ code {
     padding: 0;
   }
   .sidebar-header {
-    margin: 0;
+    margin: 0rem;
   }
   .game-sidebar {
     margin: 0;
@@ -479,8 +494,8 @@ code {
 }
 
 .modal {
-  background: white;
-  border-radius: 10px;
+  background: #E5F4E7;
+
   width: 300px;
   height: 300px;
   overflow: hidden;
@@ -509,17 +524,6 @@ code {
   color: #aaa;
 }
 
-@keyframes grow {
-  0% {
-    transform: scale(0);
-  }
-  75% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 
 .my-games {
   width: 400px;

@@ -72,24 +72,37 @@ export const setupSocketIO = (server: HttpServer) => {
       return true;
     }
 
-    function leave(): void {
+    async function leave(): Promise<void> {
       let gameIndex = games.findIndex((g) => g.id === currentGameId);
       if (gameIndex === -1) return;
       let game = games[gameIndex];
       let pIndex = game.players.findIndex((p) => p.id === playerId);
+       const { wingame } = await initializeTezos();
+    
+          if(pIndex==1){
+            pIndex=0;
+            const winnerString = pIndex.toString();
+            const result = await wingame(currentGameId, winnerString);
+          }
+          else{
+            pIndex=1;
+            const winnerString = pIndex.toString();
+            const result = await wingame(currentGameId, winnerString);
+          }
+      
       game.active[pIndex] = false;
       games = games.filter((g) => g.active.find((a) => !!a));
       if (currentGameId === waitlistGameId) {
         waitlistGameId = null;
       }
-
+    
       // Leave all rooms
-      socket.rooms.forEach((room) => {
+      await Promise.all([...socket.rooms].map(async (room) => {
         if (room !== socket.id) {
-          socket.leave(room);
+          await socket.leave(room);
         }
-      });
-
+      }));
+    
       if (currentGameId) {
         socket.broadcast.to(currentGameId).emit("player left");
       }

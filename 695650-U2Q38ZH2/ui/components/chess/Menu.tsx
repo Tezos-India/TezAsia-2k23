@@ -88,12 +88,19 @@ export default function Menu() {
     socket?.emit("create");
     
   };
+  const gotolib = () =>{
+    router.push("/Library");
+  }
 
   return (
+    <>
+    
     <div>
+ 
     <div
       className={styles["img"]}
     >
+                
           <div className={styles["parti"]} >
       <SmokeBackground   />
       </div>
@@ -128,6 +135,7 @@ export default function Menu() {
             height={1}
           />
         </div>
+        
         <div className="smoke-wrap">
           <Image
             className={styles["smoke3"]}
@@ -152,6 +160,7 @@ export default function Menu() {
             <Loader />
           ) : (
             <>
+           
               <div className={styles["menu-buttons"]}>
                 <button
                   onClick={handlePrivateGameClick}
@@ -182,12 +191,12 @@ export default function Menu() {
   placeholder="Enter Game ID"
   value={gameId}
   onChange={handleGameIdChange}
-  className={`w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 shadow-white hover:shadow-lg`}
+  className={` w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 shadow-white hover:shadow-lg`}
   required
 />
           <button
             onClick={handleJoinWithGameId}
-            className={`mt-4 w-full p-2 bg-green-500 text-white rounded-md focus:outline-none focus:ring focus:border-blue-300`}
+            className={` ${styles["menu-button"]}   mt-4 w-full p-2 bg-green-500 text-white rounded-md focus:outline-none focus:ring focus:border-blue-300`}
           >
             Join with Game ID
           </button>
@@ -202,7 +211,17 @@ export default function Menu() {
                 <div className={styles["menu-buttons-1"]}>
                   Online: {onlineUsers.length}
                 </div>
+                
               )}
+              <div>
+              <button
+                  onClick={gotolib}
+                  className={`${styles["menu-button_2"]} ${styles["menu-button-secondary"]}`}
+                >
+                  Library
+                </button>
+              </div>
+              
               {inDevelopment && (
                 <div className={styles["menu-dev-message"]}>
                   Development in process. Sorry for any inconvenience.
@@ -254,5 +273,6 @@ export default function Menu() {
       
     </div>
     </div>
+    </>
   );
 }

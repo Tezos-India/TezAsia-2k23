@@ -1,11 +1,202 @@
-.p{
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMkAx29JVcw8KWOzmoPe0-IqApFLQyemd2HA&usqp=CAU');
-  background-size: cover;
-  background-repeat: no-repeat;
-  width:100vw;
-  height: 50vh;
+/* AnimatedButton.module.css */
 
+.body1{
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
 }
+
+.animated-button {
+  position: absolute;
+  top: 50%;
+  /* left: 50%; */
+  transform: translate(-50%, -50%);
+  color: #34ffea;
+  overflow: hidden;
+  padding: 30px 70px;
+  font-size: 30px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 20px 50px rgb(255 255 255 / 5%);
+}
+
+@media (max-width: 800px) {
+  .waiting-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto; /* Adjust height for smaller screens */
+    background-color: #292929;
+    margin-top: 2rem; /* Adjust margin for spacing */
+    padding: 1rem; /* Add padding for spacing */
+  }
+
+  .waiting-content {
+    text-align: center;
+    color: white;
+    margin-top: 1rem;
+    
+    /* Adjust margin for spacing */
+  }
+
+  .waiting-title {
+    font-size: 24px; /* Adjust font size for smaller screens */
+  }
+
+  .waiting-subtitle {
+    font-size: 16px; /* Adjust font size for smaller screens */
+    margin-bottom: 1em;
+  }
+
+  .waiting-info {
+    font-size: 20px; /* Adjust font size for smaller screens */
+    margin-bottom: 0.5em;
+  }
+
+  .waiting-message {
+    font-size: 16px; /* Adjust font size for smaller screens */
+    margin-top: 1em;
+  }
+
+  .copy-button {
+    font-size: 16px; /* Adjust font size for smaller screens */
+    margin-top: 1em;
+  }
+}
+
+
+.animated-button:before {
+  position: absolute;
+  width: 50%;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  content: "";
+  background: rgb(142 255 240 / 10%);
+}
+
+.animated-button span:nth-child(1) {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, #002b9d, #34ffea);
+  animation: animate1 2s linear infinite;
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animated-button span:nth-child(2) {
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: linear-gradient(to bottom, #002b9d, #34ffea);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animated-button span:nth-child(3) {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(to left, #002b9d, #34ffea);
+  animation: animate3 2s linear infinite;
+}
+
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animated-button span:nth-child(4) {
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to top, #002b9d, #34ffea);
+  animation: animate4 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.waiting-section {
+  position: relative;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.waiting-content {
+  padding: 1rem;
+ 
+  border-radius: 10px;
+}
+
+.waiting-content h1 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.waiting-content span {
+  display: block;
+  color: #f3d34a;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.waiting-content button {
+  background-color: #34ffea;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #001632;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.waiting-content button:hover {
+  background-color: #001632;
+  color: #34ffea;
+}
+
 
 
 .smokeDarkTheme {
@@ -47,8 +238,6 @@
   }
 }
 
-
-/* Game.css */
 
 .waiting-section {
   display: flex;
@@ -241,3 +430,6 @@
       opacity: 0;
     }
   }
+
+
+  

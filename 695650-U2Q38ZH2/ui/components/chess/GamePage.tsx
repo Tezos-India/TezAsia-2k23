@@ -82,14 +82,12 @@ export default function GamePage() {
         message = "Draw";
         result = "draw";
       }
-
+      setShowConfetti(true)
       setPopup({
         message,
         extra: "by " + gameOver.reason,
         element: (
-          <button onClick={() => socket?.emit("rematch", gameId)}>
-            Rematch
-          </button>
+       <></>
         ),
       });
       setIsRematch(0);
@@ -113,11 +111,18 @@ export default function GamePage() {
       router.push("/");
     };
 
+    const gotogame = () => {
+      router.push("/Game");
+    };
+
     const playerLeftHandler = () => {
+      
       setPopup({
         message: "Your opponent left.",
-        extra: "they may return...",
-        element: <></>, // Replace with the appropriate JSX element
+        extra: "",
+        element: <>
+        <button onClick={gotogame} >Game Page</button>
+        </>, // Replace with the appropriate JSX element
       });
     };
 
@@ -148,6 +153,7 @@ export default function GamePage() {
         />
 
         {popup && socket && (
+          <>
           <Modal onClose={() => setPopup(null)}>
             <Modal.Header>{popup.message}</Modal.Header>
             <Modal.Body>
@@ -155,6 +161,7 @@ export default function GamePage() {
               {popup.element}
             </Modal.Body>
           </Modal>
+          </>
         )}
       </div>
     </div>
