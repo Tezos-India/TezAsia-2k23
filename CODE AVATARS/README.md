@@ -1,5 +1,5 @@
 # Project Name - Dice Game
-
+# Issue No -  #20
 # Project Description
 Build a dice-rolling game. A group of people initially (invite only) will join in, guess a number from the range
 [1, 6], and then put a bet upon their guess. The one who guesses the output correctly is treated as the
