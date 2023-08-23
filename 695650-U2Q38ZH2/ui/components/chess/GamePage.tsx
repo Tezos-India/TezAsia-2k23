@@ -119,12 +119,14 @@ export default function GamePage() {
       
       setPopup({
         message: "Your opponent left.",
-        extra: "",
+        extra: "9ꜩ have been added to your wallet",
         element: <>
-        <button onClick={gotogame} >Game Page</button>
+        <button onClick={gotogame} className={styles["copy-button"]} >Game Page</button>
         </>, // Replace with the appropriate JSX element
       });
     };
+
+    // 
 
     const rematchHandler = () => {
       setIsRematch(1);
