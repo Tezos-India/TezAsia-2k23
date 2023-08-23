@@ -24,9 +24,16 @@
   [![image](https://github.com/Pranay-Pandey/TezAsia-2k23/assets/79053599/3672caec-1730-45b8-8404-55686a995274)
 ](https://github.com/Pranay-Pandey/TezAsia-2k23/blob/main/Dizzyn/PPT.pdf)
 
-[![Link to PPT](https://github.com/Pranay-Pandey/TezAsia-2k23/raw/main/assets/79053599/3672caec-1730-45b8-8404-55686a995274.png)](https://github.com/Pranay-Pandey/TezAsia-2k23/raw/main/Dizzyn/PPT.pdf)
+[Link to PPT](https://github.com/Pranay-Pandey/TezAsia-2k23/raw/main/Dizzyn/PPT.pdf)
 
 
+<h2>Demo Video</h2>
+
+
+
+https://github.com/Pranay-Pandey/TezAsia-2k23/assets/79053599/8c5e98f9-310a-4dd8-99e8-b59ba4464ba5
+
+or access the demo video from [here](https://github.com/Pranay-Pandey/TezAsia-2k23/blob/main/Dizzyn/Application%20Demo.mkv)
 
 
 <h2>Live Project Link</h2>
