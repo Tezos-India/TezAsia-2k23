@@ -18,7 +18,13 @@ type GameContextType = {
   setMove?: (index: number) => void;
   lastMove?: any;
   publicGame?: boolean;
+  st?:boolean;
+  jg?:boolean;
+  rg?:boolean;
   makePublic?: () => void;
+  makest?:()=>void;
+  makejg?:()=>void;
+  makerg?:()=>void;
   initGame?: (gameData: any) => void;
   opponent?: any;
   timeLeft?: number[];
@@ -50,6 +56,9 @@ export function GamesProvider({ children }: GamesProviderProps) {
   const [fenArr, setFenArr] = useState<string[]>([]);
   const [lastMove, setLastMove] = useState<any | null>(null); // Adjust the type here
   const [publicGame, setPublicGame] = useState<boolean>(false);
+  const [st, setSt] = useState<boolean>(false);
+  const [jg, setJg] = useState<boolean>(false);
+  const [rg, setRg] = useState<boolean>(false);
   const [opponent, setOpponent] = useState<any | null>(null); // Adjust the type here
   const [timeLeft, setTimeLeft] = useState<number[]>([1000, 1000]);
 
@@ -155,6 +164,25 @@ export function GamesProvider({ children }: GamesProviderProps) {
     setPublicGame(true);
   }
 
+
+  function makest() {
+    setSt(true);
+    setJg(false);
+    setRg(false);
+  }
+
+  function makejg() {
+    setJg(true);
+    setSt(false);
+    setRg(false);
+  }
+
+  function makerg() {
+    setRg(true);
+    setSt(false);
+    setJg(false);
+  }
+
   const setMove = (index: number) => {
     if (index < 0 || index >= fenArr.length) return;
     setLastMove(null);
@@ -218,6 +246,12 @@ export function GamesProvider({ children }: GamesProviderProps) {
     lastMove,
     publicGame,
     makePublic,
+    makest,
+    makejg,
+    makerg,
+    st,
+    jg,
+    rg,
     initGame,
     opponent,
     timeLeft,

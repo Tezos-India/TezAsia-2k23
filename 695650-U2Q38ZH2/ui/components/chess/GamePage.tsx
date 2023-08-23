@@ -4,6 +4,10 @@ import Sidebar from "./Sidebar";
 import { useRouter } from "next/router";
 import { useSocket } from "@/contexts/SocketContext";
 import { useGame } from "@/contexts/GamesContext";
+
+import useWindowSize from 'react-use/lib/useWindowSize';
+import Confetti from 'react-confetti';
+
 import Modal from "./Modal";
 import styles from "./Game.module.css";
 export default function GamePage() {
@@ -12,6 +16,9 @@ export default function GamePage() {
     extra: string;
     element: JSX.Element;
   };
+
+  const { width, height } = useWindowSize();
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const socket = useSocket();
   const [popup, setPopup] = useState<Popup | null>(null);
@@ -31,6 +38,7 @@ export default function GamePage() {
             ? "You Win!"
             : (gameOver.winner === 0 ? "white" : "black") + " wins"
           :  "Draw";
+          setShowConfetti(true);
       setPopup({
         message,
         extra: "by " + gameOver.reason,
@@ -39,6 +47,7 @@ export default function GamePage() {
             Rematch
           </button>
         ),
+        
       });
       setIsRematch(0);
     } else {
@@ -78,6 +87,12 @@ export default function GamePage() {
 
   return (
     <div className={styles["smokeDarkTheme"]}>
+       {showConfetti && (
+        <Confetti
+          width={width}
+          height={height}
+        />
+      )}
       <div className="game-container">
         <div className="board-container">
           {gameId && <Game gameId={gameId as string} />}
@@ -85,7 +100,9 @@ export default function GamePage() {
         <Sidebar
           gameId={gameId ? (Array.isArray(gameId) ? gameId[0] : gameId) : ""}
         />
+
         {popup && socket && (
+          
           <Modal onClose={() => setPopup(null)}>
             <Modal.Header>{popup.message}</Modal.Header>
             <Modal.Body>

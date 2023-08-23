@@ -229,7 +229,7 @@ useEffect(() => {
             <span className=  {styles["waiting-message"]} >
               The next person that joins will play against you
             </span> :
-            <button className= {styles["copy-button"]} onClick={() => copyToClipboard(gameId)}>Copy URL to Clipboard</button>
+            <button className= {styles["copy-button"]} onClick={() => copyToClipboard(gameId)}>Copy GameID to Clipboard</button>
           }
        </div>
     </div>

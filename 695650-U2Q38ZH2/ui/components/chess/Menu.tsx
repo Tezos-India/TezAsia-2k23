@@ -8,6 +8,7 @@ import styles from "./Menu.module.css";
 import Image from "next/image";
 import { addplayer1, addplayer2 } from "@/dapp/tezos";
 import SmokeBackground from "./Particles";
+import { useGame } from "@/contexts/GamesContext";
 export default function Menu() {
   const router = useRouter();
   const [myGames, setMyGames] = useState<any[]>([]); // Specify the type for myGames
@@ -16,6 +17,9 @@ export default function Menu() {
   const [onlineUsers, setOnlineUsers] = useState<string[]>([]); // Specify the type for onlineUsers
   const [joiningGame, setJoiningGame] = useState(false);
   const [gameId, setGameId] = useState("");
+
+  const { makest , makerg , makejg } = useGame() || {};
+
   const handleGameIdChange = (event) => {
     setGameId(event.target.value);
   };
@@ -26,6 +30,7 @@ export default function Menu() {
   };
 
   const handleJoinWithGameId = async () => {
+    makejg();
     setLoading(true)
     console.log("Joining game with ID:", gameId);
     await addplayer2(gameId).then((ans) => {
@@ -77,16 +82,17 @@ export default function Menu() {
     };
   }, [socket]);
 
+  const handlePrivateGameClick = () => {
+    makest()
+    setLoading(true);
+    socket?.emit("create");
+    
+  };
+
   return (
+    <div>
     <div
-      style={{
-        backgroundImage: "url('chess-bg.jpg')",
-        backgroundSize: "cover", // or any other value like 'contain'
-        backgroundRepeat: "no-repeat",
-        width: "100vw", // set your desired width
-        height: "100vh", // set your desired height
-        marginLeft: "-10.3rem",
-      }}
+      className={styles["img"]}
     >
           <div className={styles["parti"]} >
       <SmokeBackground   />
@@ -148,10 +154,7 @@ export default function Menu() {
             <>
               <div className={styles["menu-buttons"]}>
                 <button
-                  onClick={() => {
-                    setLoading(true);
-                    socket?.emit("create");
-                  }}
+                  onClick={handlePrivateGameClick}
                   className={styles["menu-button"]}
                 >
                   Private Game
@@ -160,6 +163,7 @@ export default function Menu() {
                   onClick={() => {
                     setLoading(true);
                     socket?.emit("waitlist", username);
+                    makerg();
                   }}
                   className={`${styles["menu-button"]} ${styles["menu-button-secondary"]}`}
                 >
@@ -172,27 +176,26 @@ export default function Menu() {
                   Join Game
                 </button>
                 {joiningGame && (
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Enter Game ID"
-                      value={gameId}
-                      onChange={handleGameIdChange}
-                      required
-                    />
-                    <br />
-                    <button
-                      onClick={handleJoinWithGameId}
-                      className={`${styles["menu-button"]} ${styles["menu-button-secondary"]}`}
-                    >
-                      Join with Game ID
-                    </button>
-                    {
-                      loading ?
-                      <Loader/>:''
-                    }
-                  </div>
-                )}
+        <div className={`menu-buttons-1  p-8 rounded-lg shadow-md w-full max-w-sm`}>
+       <input
+  type="text"
+  placeholder="Enter Game ID"
+  value={gameId}
+  onChange={handleGameIdChange}
+  className={`w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 shadow-white hover:shadow-lg`}
+  required
+/>
+          <button
+            onClick={handleJoinWithGameId}
+            className={`mt-4 w-full p-2 bg-green-500 text-white rounded-md focus:outline-none focus:ring focus:border-blue-300`}
+          >
+            Join with Game ID
+          </button>
+          {loading && <Loader />}
+        </div>
+      )}
+
+                
               </div>
 
               {showOnline && (
@@ -249,6 +252,7 @@ export default function Menu() {
       </div>
      
       
+    </div>
     </div>
   );
 }

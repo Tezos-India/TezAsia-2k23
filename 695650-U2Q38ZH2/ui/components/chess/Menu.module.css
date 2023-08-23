@@ -1,4 +1,103 @@
+.menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.menu-card {
+  width: 40rem;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-top: -40rem;
+  margin-left: -10rem;
+}
+
+.menu-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(236, 126, 218, 0.85);
+  text-shadow: 1px 1px 2px #e0e4e7, 0 0 0 black, 1px 4px 6px #def;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.menu-buttons-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  color: whitesmoke;
+  background-color: #dd7973;
+  border-radius: 5px;
+}
+
+.menu-button {
+  padding: 10px;
+  background-color: #a881af;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-button:hover {
+  background-color: #ED0800;
+  transform: scale(1.05);
+}
+
+.menu-message {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.menu-dev-message {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ff4d4d;
+}
+
+.smoke-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 222px;
+}
+
+.smoke,
+.smoke2,
+.smoke3 {
+  filter: blur(5px);
+  transform-origin: 50% 50%;
+  margin-top: -45rem;
+}
+
+.smoke {
+  height: 10rem;
+  animation: smoke1 3s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.smoke2 {
+  animation: smoke2 3s linear infinite;
+  animation-delay: 1.5s;
+}
+
+.smoke3 {
+  width: 500px;
+  animation: smoke3 4s linear infinite;
+  animation-delay: 2.5s;
+}
+
+/* 
 .menu-container {
   display: flex;
   justify-content: center;
@@ -65,6 +164,9 @@
   font-size: 14px;
   color: #ff4d4d;
 }
+
+
+
 .smoke-wrap {
   position: absolute;
   left: 50%;
@@ -95,7 +197,7 @@
   width: 500px;
   animation: smoke3 4s linear infinite;
   animation-delay: 2.5s;
-}
+} */
 
 
 
@@ -194,4 +296,34 @@
     transform: translateY(-80px) scale(1.2);
     opacity: 0;
   }
-} 
+}  
+
+.img{
+  background-image: url('/chess-bg.jpg'); /* Reference without "public" in the path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  margin-left: -10.3rem;
+}
+
+
+@media (max-width: 768px) {
+  .menu-card {
+    width: 100%; 
+    margin-top: -45rem; 
+    margin-left:0.5rem;
+  }
+  .img{
+    background-repeat: no-repeat;
+    width: 104vw;
+    height: 100vh;
+    margin-left: -1rem;
+  }
+  .smoke,
+  .smoke2,
+  .smoke3 {
+    height: 0rem; 
+    width: 300px; 
+  }
+}
