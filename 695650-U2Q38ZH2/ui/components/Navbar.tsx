@@ -7,24 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import WelcomePopup from "./WelcomePopup";
 
-interface GameStats {
-  gamesPlayed: number;
-  gamesWon: number;
-  gamesLost: number;
-  gamesDrawn: number;
-}
-
-
 export function Navbar() {
   const [account, setAccount] = useState<string>("");
   const [avatarName, setAvatarName] = useState<string | null>(null);
-  const [userid, setUserId] = useState<number | null>(null);
-  const [gameStats, setGameStats] = useState<GameStats | null>(null);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [showDashboard, setShowDashboard] = useState<boolean>(false);
   const [showWelcomePopup, setShowWelcomePopup] = useState<boolean>(false);
   const [editMode, setEditMode] = useState<boolean>(false);
-
 
   useEffect(() => {
     async function fetchAccount() {
@@ -37,9 +26,10 @@ export function Navbar() {
         if (data && data.avatarName) {
           setAvatarName(data.avatarName);
           localStorage.setItem('avatarName', data.avatarName);
-          setUserId(data.id);
-          localStorage.setItem('userid', data.id);
-        }
+          localStorage.setItem('userId', data.id);
+          console.log("Setting userId in localStorage:", data.id);
+
+      }
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -75,39 +65,6 @@ export function Navbar() {
     }
   };
 
-
-  // In your Navbar component after fetching gameStats
-  useEffect(() => {
-    async function fetchGameStats() {
-      try {
-        const response = await fetch(`http://localhost:5000/gameStats/${userid}`);
-        if (response.ok) {
-          const stats: GameStats = await response.json();
-
-          // Save gameStats in localStorage
-          localStorage.setItem('gameStats', JSON.stringify(stats));
-
-          setGameStats(stats);
-        } else {
-          console.error('Error fetching game stats:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error fetching game stats:', error);
-      }
-    }
-
-    // Check if gameStats is already in localStorage
-    const cachedGameStats = localStorage.getItem('gameStats');
-    if (cachedGameStats) {
-      const parsedGameStats = JSON.parse(cachedGameStats);
-      setGameStats(parsedGameStats);
-    } else {
-      fetchGameStats();
-    }
-  }, [userid]);
-
-
-
   const handleDisconnectWallet = () => {
     console.log(`DEBUG:Disconnect Wallet`);
     disconnect();
@@ -119,7 +76,7 @@ export function Navbar() {
   const saveForm = async () => {
     try {
       const url = "http://localhost:5000/user/upsert";
-
+  
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -127,7 +84,7 @@ export function Navbar() {
         },
         body: JSON.stringify({ avatarName, walletAddress: account }),
       });
-
+  
       if (response.ok) {
         alert(editMode ? "Avatar updated successfully" : "Avatar created successfully");
         setShowDashboard(false);
@@ -141,33 +98,7 @@ export function Navbar() {
       alert("Failed to save avatar.");
     }
   };
-
-  const updateUserStats = async (result) => {
-    try {
-        const response = await fetch('/gameStats/update', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                userId: userid, // You'll need to fetch the user's ID and provide it here
-                result: result
-            }),
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to update user stats');
-        }
-
-        const data = await response.json();
-        console.log('Game stats updated:', data);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-
-
+  
 
   return (
     <>
@@ -216,7 +147,7 @@ export function Navbar() {
       {showDashboard && (
         <div className="fixed inset-0 flex justify-center items-center z-50">
           <div className="absolute inset-0 bg-black opacity-60"></div>
-          <div className="z-0 w-1/2">
+          <div className="z-0">
             <UserDashboard
               avatarName={avatarName || ""}
               setAvatarName={setAvatarName}
@@ -233,7 +164,6 @@ export function Navbar() {
                 }
               }}
               editMode={editMode}
-              gameStats={gameStats}
             />
           </div>
         </div>

@@ -1,12 +1,11 @@
 import React, { FC, useState, useEffect } from "react";
-
-
-interface GameStats {
-  gamesPlayed: number;
-  gamesWon: number;
-  gamesLost: number;
-  gamesDrawn: number;
-}
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTrophy,
+  faGamepad,
+  faTimesCircle,
+  faDrawPolygon,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface UserDashboardProps {
   avatarName: string;
@@ -15,7 +14,6 @@ interface UserDashboardProps {
   onBack: () => void;
   editMode: boolean;
   onEdit?: () => void;
-  gameStats: GameStats | null;
 }
 
 export const UserDashboard: FC<UserDashboardProps> = ({
@@ -24,10 +22,37 @@ export const UserDashboard: FC<UserDashboardProps> = ({
   onSave,
   onBack,
   editMode,
-  gameStats,
 }) => {
   const [initialAvatarName, setInitialAvatarName] = useState(avatarName);
   const [isEditing, setIsEditing] = useState(editMode);
+  const [gameStats, setGameStats] = useState({
+    gamesPlayed: 0,
+    gamesWon: 0,
+    gamesLost: 0,
+    gamesDrawn: 0,
+  });
+
+  async function fetchGameStats() {
+    try {
+      const userId = localStorage.getItem("userId");
+      console.log(`DEBUG: user ID ${userId}`)
+      if (!userId) {
+        console.warn("User ID is not available yet.");
+        return;
+    }
+
+      const response = await fetch(`http://localhost:5000/gameStats/${userId}`);
+      const data = await response.json();
+      setGameStats(data);
+      console.log(`DEBUG: fetch game stats: ${gameStats}`)
+    } catch (error) {
+      console.error("Error fetching game stats:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchGameStats();
+  }, []);
 
   useEffect(() => {
     setIsEditing(editMode);
@@ -100,22 +125,43 @@ export const UserDashboard: FC<UserDashboardProps> = ({
 
       <section className="mb-6">
         <h3 className="text-purple-500 mb-2 text-2xl">MyNFT’s</h3>
-        {/* NFT items here */}
-        {/* Placeholder if no NFTs */}
         <p className="text-white opacity-70">Play games to unlock</p>
       </section>
+
       <section className="mb-6">
         <h3 className="text-purple-500 mb-2 text-2xl">Achievements</h3>
-        {/* Achievement items here */}
-        {/* Placeholder if no Achievements */}
         <p className="text-white opacity-70">Play games to unlock</p>
-        {/* Games statistics*/}
-        <div className="mt-4">
-        <p className="text-white font-semibold text-lg">Games Played: {gameStats?.gamesPlayed || 0}</p>
-        <p className="text-white font-semibold text-lg">Games Won: {gameStats?.gamesWon || 0}</p>
-        <p className="text-white font-semibold text-lg">Games Lost: {gameStats?.gamesLost || 0}</p>
-        <p className="text-white font-semibold text-lg">Games Drawn: {gameStats?.gamesDrawn || 0}</p>
+      </section>
+
+      <section className="mb-6">
+        <h3 className="text-purple-500 mb-4 text-2xl">Chess Game Stats</h3>
+        {gameStats ? (
+          <div className="grid grid-cols-2 gap-4">
+          {[
+            { icon: faGamepad, count: gameStats.gamesPlayed, label: "Games Played" },
+            { icon: faTrophy, count: gameStats.gamesWon, label: "Games Won" },
+            { icon: faTimesCircle, count: gameStats.gamesLost, label: "Games Lost" },
+            { icon: faDrawPolygon, count: gameStats.gamesDrawn, label: "Games Drawn" },
+          ].map((item, index) => (
+            <div key={index} className="bg-gray-800 p-4 rounded shadow-lg flex items-center justify-between space-x-4">
+              <FontAwesomeIcon icon={item.icon} size="2x" className="text-gray-400" />
+              <div className="text-right">
+                <p className="text-white text-xl font-bold">{item.count}</p>
+                <p className="text-gray-400 text-sm">{item.label}</p>
+              </div>
+            </div>
+          ))}
         </div>
+        
+        ) : (
+          <p className="text-white opacity-70">Fetching stats...</p>
+        )}
+        <button
+          onClick={fetchGameStats}
+          className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 mt-4 rounded"
+        >
+          Refresh Stats
+        </button>
       </section>
     </div>
   );
