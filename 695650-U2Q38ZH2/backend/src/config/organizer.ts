@@ -11,7 +11,7 @@ async function initializeTezos() {
     ),
   });
 
-  const contract = await Tezos.wallet.at("KT1DdegaPz1V54ReKSHuw5Vfw3nC7pAJF3jh");
+  const contract = await Tezos.wallet.at("KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN");
 
   async function wingame(uid, winner) {
     try {
