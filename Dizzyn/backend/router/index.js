@@ -2,7 +2,6 @@ const router = require("express").Router()
 const axios = require("axios")
 const {storage, getAESkey} = require("./get_Storage")
 const RSA = require("./RSA")
-const encryptionKey = require("./encryption")
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
@@ -10,7 +9,7 @@ const pinataSDK = require('@pinata/sdk');
 const fs = require('fs');
 const { Readable } = require('stream'); 
 
-const pinata = new pinataSDK("5284b7b23e2439ac77fa", "204fe8bf966d0ef42263c5d20ce72b74da0d700d15fbba123dd1d68417855e1a")
+const pinata = new pinataSDK(process.env.CLIENT_ID, process.env.CLIENT_API)
 const upload = multer().single('document')
 router.post('/upload', (req, res) => {
     console.log('Request body:', req.body);
