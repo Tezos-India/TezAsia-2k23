@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# TezAsia-2k23
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![tezosindia1](https://github.com/TauqeerAhmad5201/TezAsia-2k23/assets/68806440/735f95af-4a62-4095-bdbd-c9fe4f4c57b1)
 
-## Available Scripts
+Welcome to [**Tezasia '23 Hackathon**](https://unstop.com/competitions/tezasia-hackathon-30-tezos-india-695650?ref=NvNQjzFl) powered by [**Tezos India**](https://tezosindia.org.in/)
+Please find attached the rules and steps to submit your project for the hackathon :
 
-In the project directory, you can run:
+## Step - 1: Fork the repository
 
-### `npm start`
+Fork the given repository to your GitHub profile.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Screenshot from 2023-07-25 22-28-46](https://github.com/TauqeerAhmad5201/TezAsia-2k23/assets/68806440/ab08cb62-2521-4968-8933-14356844026b)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Step - 2: Create your folder
 
-### `npm test`
+After forking the repository, clone the repository to your pc/desktop, and then create a folder with your **TeamName** as the folder name.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Unclear about cloning? No problem, we've got your back. Click [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to learn about it.
 
-### `npm run build`
+## Step - 3: Project Code Base
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Push Your code base in this folder.
+This should include all your files for frontend as well as the backend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Make sure to include your smart contract code in a file and upload it here.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Step - 4: Team Info and Project Info
 
-### `npm run eject`
+In your **TeamName** folder, make sure to include the below details in the README.md:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Your Project
+2. Your Project's Description
+3. What problem you are trying to solve
+4. Tech Stack used while building the project
+5. Project Demo Photos, Videos
+6. Your Deployed Smart Contract's Link
+7. If your project is deployed, then include the Live Project Link
+8. Your PPT link (Make sure to upload the PPT in this folder along with the project)
+9. Your Team Members' Info.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Step - 5: Submitting the code: Making a Pull request
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+After you have pushed your files and code base,
+[create an issue](https://github.com/Tezos-India/TezAsia-2k23/issues/new) in the main repository as:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Issue: Team Name: Submission
+- Issue description should include a small glimpse of your project, what is it doing, and how are you trying to achieve it.
 
-## Learn More
+After the issue is assigned, make a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your forked repo to this repo's main branch while mentioning issue no. assigned to it.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Guides and Rules for submission:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Make sure you fork the repository first, and create a folder with your team name.
+2. Make all your code added to your forked repo, and then push the code to your main branch after your project is complete.
+3. Make sure to push files to your folder only.
+4. Changing or doing any edits to other folders is strictly prohibited.
