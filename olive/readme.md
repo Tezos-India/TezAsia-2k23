@@ -36,8 +36,7 @@ socket.io: A JavaScript library used for real-time, bidirectional communication 
         Name:UJJWAL SRIVASTAVA
         Email: srivatavaujjwal2485@gmail.com
 
-        v
-        team_mate_1:aditya gupta
+        team_mate_2:aditya gupta
         Name: aditya gupta
         Email: agaditya1000@gmail.com
 
