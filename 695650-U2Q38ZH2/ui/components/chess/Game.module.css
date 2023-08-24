@@ -9,7 +9,7 @@
 .animated-button {
   position: absolute;
   top: 50%;
-  /* left: 50%; */
+  left: 50%;
   transform: translate(-50%, -50%);
   color: #34ffea;
   overflow: hidden;
@@ -174,6 +174,12 @@
   margin: 1rem 0;
 }
 
+.waiting-content h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
 .waiting-content span {
   display: block;
   color: #f3d34a;
@@ -247,9 +253,11 @@
   background-color: #292929;
   margin-top: -17rem;
   width: 40vw;
+  
 }
 
 .waiting-content {
+  
   text-align: center;
   color: white;
 }

@@ -496,8 +496,8 @@ code {
 .modal {
   background: #E5F4E7;
 
-  width: 300px;
-  height: 300px;
+  width: 370px;
+  height: 320px;
   overflow: hidden;
   animation: grow 0.3s ease forwards;
   position: relative;

@@ -60,7 +60,9 @@ export default function GamePage() {
       console.error("Error:", error);
     }
   };
-
+  const gotogame = () => {
+    router.push("/Game");
+  };
   useEffect(() => {
     if (!orientation) return;
 
@@ -85,9 +87,9 @@ export default function GamePage() {
       setShowConfetti(true)
       setPopup({
         message,
-        extra: "by " + gameOver.reason,
+        extra:  `Congratulations, ${(gameOver.winner === 0 ? "white" : "black")} ! ${" wins " + "by " + gameOver.reason} , ${(gameOver.winner === 0 ? "white's" : "black's")} wallet is now credited with 9ꜩ`,
         element: (
-       <></>
+       <><button onClick={gotogame} className={styles["copy-button"]} >Game Page</button></>
         ),
       });
       setIsRematch(0);
@@ -122,7 +124,7 @@ export default function GamePage() {
         extra: "9ꜩ have been added to your wallet",
         element: <>
         <button onClick={gotogame} className={styles["copy-button"]} >Game Page</button>
-        </>, // Replace with the appropriate JSX element
+        </>, 
       });
     };
 
@@ -142,6 +144,7 @@ export default function GamePage() {
       socket.off("rematch", rematchHandler);
     };
   }, [socket]);
+  const {  players } = useGame() || {};
 
   return (
     <div className={styles["smokeDarkTheme"]}>
@@ -150,10 +153,9 @@ export default function GamePage() {
         <div className="board-container">
           {gameId && <Game gameId={gameId as string} />}
         </div>
-        <Sidebar
+        {players && players.length === 2 ? <Sidebar
           gameId={gameId ? (Array.isArray(gameId) ? gameId[0] : gameId) : ""}
-        />
-
+        /> : <></>}
         {popup && socket && (
           <>
           <Modal onClose={() => setPopup(null)}>
