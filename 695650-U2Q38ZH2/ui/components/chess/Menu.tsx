@@ -101,7 +101,7 @@ export default function Menu() {
       className={styles["img"]}
     >
                  <div className={styles["slow-moving-text"]}>
-                 A chess game on the Tezos blockchain where you can stake 5 ꜩ to start either a regular game or a chess match at random. Win and receive 9 ꜩ, but if you leave early, the other player gets the prize. Blockchain incentives and strategic gameplay in one fascinating package.
+                 A chess game on the Tezos blockchain where you can stake 5 ꜩ to start either a private game or a public chess match at random. Win and receive 9 ꜩ, but if you leave early, the other player gets the prize. Blockchain incentives and strategic gameplay in one fascinating package.
     </div>
           <div className={styles["parti"]} >
       <SmokeBackground   />
