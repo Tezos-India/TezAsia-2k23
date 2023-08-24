@@ -1,49 +1,128 @@
-# TezAsia-2k23
+Team Name  : Block Developer
 
-![tezosindia1](https://github.com/TauqeerAhmad5201/TezAsia-2k23/assets/68806440/735f95af-4a62-4095-bdbd-c9fe4f4c57b1)
-
-Welcome to [**Tezasia '23 Hackathon**](https://unstop.com/competitions/tezasia-hackathon-30-tezos-india-695650?ref=NvNQjzFl) powered by [**Tezos India**](https://tezosindia.org.in/) 
-Please find attached the rules and steps to submit your project for the hackathon : 
-
-## Step - 1: Fork the repository
-Fork the given repository to your GitHub profile.
-
-![Screenshot from 2023-07-25 22-28-46](https://github.com/TauqeerAhmad5201/TezAsia-2k23/assets/68806440/ab08cb62-2521-4968-8933-14356844026b)
+Project name : Chess Bajar
+ 
 
 
-## Step - 2:  Create your folder
-After forking the repository, clone the repository to your pc/desktop, and then create a folder with your **TeamName** as the folder name.
+What problem you are trying to solve  : 
 
-Unclear about cloning? No problem, we've got your back. Click [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to learn about it. 
+Polyess is a groundbreaking platform that seamlessly blends the timeless game of chess with cutting-edge blockchain technology and the exciting world of Web3. Here's a breakdown of its key features and offerings:
 
-## Step - 3: Project Code Base
-Push Your code base in this folder.
-This should include all your files for frontend as well as the backend
-* Make sure to include your smart contract code in a file and upload it here.
-     
+1. **In-Game Currency (HT Token)** 💸
+   - Polyess introduces an in-game currency called the HT token.
+   - Users can acquire HT tokens, either through gameplay or by purchasing them, and even exchange them for Matic.
 
-## Step - 4: Team Info and Project Info
-In your **TeamName** folder, make sure to include the below details in the README.md: 
-  1. Your Project
-  2. Your Project's Description
-  3. What problem you are trying to solve
-  4. Tech Stack used while building the project
-  5. Project Demo Photos, Videos 
-  6. Your Deployed Smart Contract's Link
-  7. If your project is deployed, then include the Live Project Link
-  8. Your PPT link (Make sure to upload the PPT in this folder along with the project)
-  9. Your Team Members' Info.
+2. **NFT Marketplace** 📈📉
+   - Polyess boasts a robust NFT marketplace that hosts 35 exquisite NFTs of legendary chess players.
+   - This marketplace is accessible through both the mobile app and web platform.
 
-## Step - 5:  Submitting the code: Making a Pull request
-After you have pushed your files and code base,
-[create an issue](https://github.com/Tezos-India/TezAsia-2k23/issues/new) in the main repository as:
- - Issue:  Team Name: Submission
- - Issue description should include a small glimpse of your project, what is it doing, and how are you trying to achieve it.
+3. **Visual NFT Battle** ⚔️🗡
+   - The NFTs on Polyess aren't just collectibles; they serve as avatars in thrilling NFT staking games.
+   - These NFT battles offer personalized gaming experiences as you strategize with your chosen NFT as the king.
 
-After the issue is assigned, make a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your forked repo to this repo's main branch while mentioning issue no. assigned to it.
+4. **Diverse Game Modes** ♟♟
+   - Polyess caters to all types of chess enthusiasts with three distinct game modes:
+     - Free-to-Play: Enjoy casual chess games with friends and fellow players.
+     - Token Betting: Add stakes to your games by betting with Hess tokens.
+     - NFT Staking: Participate in exclusive NFT battles, wagering your NFTs and competing against friends.
 
-## Guides and Rules for submission:
-1. Make sure you fork the repository first, and create a folder with your team name.
-2. Make all your code added to your forked repo, and then push the code to your main branch after your project is complete.
-3. Make sure to push files to your folder only.
-4. Changing or doing any edits to other folders is strictly prohibited. 
+5. **Leaderboard** 🪧🎯
+   - The leaderboard adds a competitive edge to the platform, promoting engagement and improvement.
+   - As you play more games and hone your skills, your rank on the leaderboard reflects your progress.
+
+6. **User Profiles** 👨🏼‍⚕️🧑🏽‍🎓
+   - Each user has a personalized profile that showcases their gaming statistics.
+   - You can view your wins, losses, NFT collection, and the number of Hess Tokens in your account, all under your unique username.
+
+7. **Video Chat** 📹🕹
+   - Enhance your gaming experience with real-time video chat while playing chess.
+   - Connect with your opponent, adding a social dimension to your games.
+
+8. **Stunning User Experience and Graphics** 🌟
+   - Polyess prioritizes an exceptional user experience with user-friendly interfaces and eye-catching graphics.
+   - The Android app offers seamless gaming on the go.
+
+Tech Stack used while building the project * 
+
+Certainly, here's a concise list of the key technologies used in Polyess for your README:
+
+**Technologies Used:**
+
+- **Solidity**: Used for creating smart contracts on the Ethereum blockchain to manage in-game assets and NFTs.
+
+- **IPFS (InterPlanetary File System)**: Utilized for decentralized storage and distribution of NFT data and game content.
+
+- **React**: The primary library for building the interactive and responsive web interface of Polyess.
+
+- **Flutter**: Employed for developing the Android app, ensuring a consistent user experience across platforms.
+
+- **Web3**: Enabling decentralized gaming and NFT ownership through integration with blockchain and cryptocurrency technologies.
+
+- **Blockchain**: The underlying technology powering secure and transparent transactions, NFT ownership, and the HT token.
+
+- **ERC-1155**: A multi-token standard used to manage the NFT marketplace, allowing for the creation and exchange of various NFTs.
+
+- **Polygon**: Integrated to enhance platform scalability and cost-effectiveness through layer-2 scaling for Ethereum.
+
+- **Full-Stack Web Development**: Comprehensive development approach covering both front-end (React) and back-end (Solidity) for a seamless user experience.
+
+Project Demo Photos, Videos * 
+
+
+Your Deployed Smart Contract's Link * ( write NA if no contract is deployed)
+If your project is deployed , then include the Live Project Link ( optional ) 
+Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository * 
+Github repository link 
+Your PPT file  * 
+Your Team members Info.
+
+- Dharmendra
+
+
+
+
+
+
+
+## Installation
+
+
+1. Run the development console.
+    ```javascript
+    truffle develop
+    ```
+
+2. Compile and migrate the smart contracts. Note inside the development console we don't preface commands with `truffle`.
+    ```javascript
+    compile
+    migrate
+    ```
+
+3. In the `client` directory, we run the React app. Smart contract changes must be manually recompiled and migrated.
+    ```javascript
+    // in another terminal (i.e. not in the truffle develop prompt)
+    cd client
+    npm run start
+    ```
+
+4. Truffle can run tests written in Solidity or JavaScript against your smart contracts. Note the command varies slightly if you're in or outside of the development console.
+    ```javascript
+    // inside the development console.
+    test
+
+    // outside the development console..
+    truffle test
+    ```
+
+5. Jest is included for testing React components. Compile your contracts before running Jest, or you may receive some file not found errors.
+    ```javascript
+    // ensure you are inside the client directory when running this
+    npm run test
+    ```
+
+6. To build the application for production, use the build script. A production build will be in the `client/build` folder.
+    ```javascript
+    // ensure you are inside the client directory when running this
+    npm run build
+    ```
+
