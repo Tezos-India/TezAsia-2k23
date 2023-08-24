@@ -6,7 +6,7 @@ export default function WelcomePopup({
     onClose: () => void;
   }) {
     return (
-      <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="pointer-events-auto fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
         <div className="bg-gray-100 p-8 rounded-lg shadow-md ">
           <p className="text-black font-semibold text-lg">Welcome, {avatarName}!</p>
           <div className="flex justify-center">

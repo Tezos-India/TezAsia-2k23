@@ -6,9 +6,10 @@ import { DropdownMenu } from "./DropdownMenu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import WelcomePopup from "./WelcomePopup";
+import { useAccount } from "@/contexts/AccountContext";
 
 export function Navbar() {
-  const [account, setAccount] = useState<string>("");
+  const { account, setAccount } = useAccount();
   const [avatarName, setAvatarName] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [showDashboard, setShowDashboard] = useState<boolean>(false);
@@ -25,17 +26,16 @@ export function Navbar() {
         const data = await response.json();
         if (data && data.avatarName) {
           setAvatarName(data.avatarName);
-          localStorage.setItem('avatarName', data.avatarName);
-          localStorage.setItem('userId', data.id);
+          localStorage.setItem("avatarName", data.avatarName);
+          localStorage.setItem("userId", data.id);
           console.log("Setting userId in localStorage:", data.id);
-
-      }
+        }
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
     }
     fetchAccount();
-  }, []);
+  }, [setAccount]);
 
   const handleConnectWallet = async () => {
     try {
@@ -53,12 +53,12 @@ export function Navbar() {
         return;
       }
 
-      const user = await response.json(); // Only attempt to parse JSON for valid responses
+      const user = await response.json();
 
       if (user && user.avatarName) {
         // User exists
         setAvatarName(user.avatarName);
-        setShowWelcomePopup(true); // Show the welcome popup for existing users
+        setShowWelcomePopup(true);
       }
     } catch (err) {
       console.error("Error connecting wallet:", err);
@@ -76,7 +76,7 @@ export function Navbar() {
   const saveForm = async () => {
     try {
       const url = "http://localhost:5000/user/upsert";
-  
+
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -84,11 +84,15 @@ export function Navbar() {
         },
         body: JSON.stringify({ avatarName, walletAddress: account }),
       });
-  
+
       if (response.ok) {
-        alert(editMode ? "Avatar updated successfully" : "Avatar created successfully");
+        alert(
+          editMode
+            ? "Avatar updated successfully"
+            : "Avatar created successfully"
+        );
         setShowDashboard(false);
-        localStorage.setItem('avatarName', avatarName);  // Store avatar name in local storage
+        localStorage.setItem("avatarName", avatarName);
       } else {
         const data = await response.json();
         alert("Error saving avatar:" + (data.message || "Unknown error"));
@@ -98,7 +102,6 @@ export function Navbar() {
       alert("Failed to save avatar.");
     }
   };
-  
 
   return (
     <>
@@ -114,7 +117,7 @@ export function Navbar() {
               Library
             </span>
           </Link>
-          <Link href="/aboutus">
+          <Link href="/AboutUs">
             <span className="text-purple-400 text-2xl hover:text-purple-600 transition duration-200">
               About Us
             </span>
