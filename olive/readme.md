@@ -42,12 +42,16 @@ https://github.com/pydeep9026/TezAsia-2k23/assets/91087103/8b22462d-d9af-4c3d-b2
 12. Your PPT file  : NA 
 
 13. Your Team members Info.
-    
-        team_mate_1:UJJWAL SRIVASTAVA
+
+         team_mate_1:pradeep singh
+        Name:pradeep singh
+        Email: pradeepsi2120032@gmail.com
+        
+        team_mate_2:UJJWAL SRIVASTAVA
         Name:UJJWAL SRIVASTAVA
         Email: srivatavaujjwal2485@gmail.com
 
-        team_mate_2:aditya gupta
+        team_mate_3:aditya gupta
         Name: aditya gupta
         Email: agaditya1000@gmail.com
 
