@@ -19,18 +19,33 @@ socket.io: A JavaScript library used for real-time, bidirectional communication 
 
 6. Project Demo Photos, Videos :
 
+   https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/videos/chatnexus.mp4
 
-7. Your Deployed Smart Contract's Link : NA
+   https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/chatopen.png
+   
+https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/chatwelcome.png
+   
+https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/profile.png
 
-8. If your project is deployed , then include the Live Project Link ( optional ) : https://chatnexus.tech/
+https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/signuppage.png
 
-9. Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository :https://github.com/IN4111/TezAsia-2k23/tree/main/OLIVE
+https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/report.png
 
-10. Github repository link :https://github.com/IN4111/TezAsia-2k23/tree/main/OLIVE
+https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/loginpage.png
 
-11. Your PPT file  : NA 
 
-12. Your Team members Info.
+
+8. Your Deployed Smart Contract's Link : NA
+
+9. If your project is deployed , then include the Live Project Link ( optional ) : https://chatnexus.tech/
+
+10. Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository :https://github.com/IN4111/TezAsia-2k23/tree/main/OLIVE
+
+11. Github repository link :https://github.com/IN4111/TezAsia-2k23/tree/main/OLIVE
+
+12. Your PPT file  : NA 
+
+13. Your Team members Info.
     
         team_mate_1:UJJWAL SRIVASTAVA
         Name:UJJWAL SRIVASTAVA
