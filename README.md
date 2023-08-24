@@ -35,7 +35,17 @@ https://github.com/akashgreninja/Blockchain-based-Verification-System-for-Produc
 
 
 If your project is deployed , then include the Live Project Link ( optional ) 
+N/A
 
 
 
 Your Team members Info.
+1)
+- **Name:** Akash Uday
+- **Email:** akashuhulekal@gmail.com
+- **College:** Bangalore Institute of Technology
+
+2)
+- **Name:** Varsha V
+- **Email:** varsha6420@gmail.com
+- **College:** Bangalore Institute of Technology
