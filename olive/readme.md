@@ -37,11 +37,12 @@ https://github.com/pydeep9026/TezAsia-2k23/assets/91087103/8b22462d-d9af-4c3d-b2
 
 10. Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository :https://github.com/IN4111/TezAsia-2k23/tree/main/OLIVE
 
-11. Github repository link :https://github.com/IN4111/TezAsia-2k23/tree/main/OLIVE
+11. Github repository link : https://github.com/pydeep9026/TezAsia-2k23/blob/main/olive
+    
 
-12. Your PPT file  : NA 
+13. Your PPT file  : NA 
 
-13. Your Team members Info.
+14. Your Team members Info.
 
          team_mate_1:pradeep singh
         Name:pradeep singh
