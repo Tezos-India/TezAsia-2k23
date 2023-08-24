@@ -1,3 +1,39 @@
+@keyframes moveLeftToRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.slow-moving-text {
+  position: absolute;
+  white-space: nowrap;
+  animation: moveLeftToRight 40s linear infinite;
+  color: #ffffff; /* White text color */
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+  
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .slow-moving-text {
+    font-size: 14px;
+    width: 80%; /* Adjust the width as needed */
+    left: 10%; /* Center the text horizontally */
+    bottom: 20px; /* Position from the bottom */
+    animation: moveLeftToRight 15s linear infinite; /* Shorter animation for smaller screens */
+  }
+}
+
+
+
 .menu-container {
   display: flex;
   justify-content: center;
@@ -213,9 +249,9 @@
   background-image: url('/chess-bg.jpg'); /* Reference without "public" in the path */
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100vw;
+  width: 101vw;
   height: 100vh;
-  margin-left: -10.3rem;
+  margin-left: -10.9rem;
 }
 
 
