@@ -6,20 +6,17 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract ProductVerification is ERC721, Ownable {
     uint256 public tokenIdCounter;
-    
-    // Mapping from product ID to its corresponding token ID
+
     mapping(string => uint256) private productIdToTokenId;
-    
-    // Mapping from token ID to product details
     mapping(uint256 => Product) private products;
-    
+
     struct Product {
         string productId;
         address manufacturer;
-        string productDetails; // Additional details about the product
+        string productDetails;
         uint256 manufacturingDate;
         uint256 batchNumber;
-        string[] supplyChain; // List of addresses involved in the supply chain
+        string[] supplyChain;
     }
 
     constructor() ERC721("ProductVerificationNFT", "PVNFT") {
@@ -33,7 +30,7 @@ contract ProductVerification is ERC721, Ownable {
         uint256 _batchNumber
     ) external onlyOwner {
         require(productIdToTokenId[_productId] == 0, "Product already registered");
-        
+
         _mint(msg.sender, tokenIdCounter);
         products[tokenIdCounter] = Product({
             productId: _productId,
@@ -43,7 +40,7 @@ contract ProductVerification is ERC721, Ownable {
             batchNumber: _batchNumber,
             supplyChain: new string[](0)
         });
-        
+
         productIdToTokenId[_productId] = tokenIdCounter;
         tokenIdCounter++;
     }
@@ -51,7 +48,7 @@ contract ProductVerification is ERC721, Ownable {
     function addSupplyChainEntry(uint256 _tokenId, address _entity) external {
         require(_exists(_tokenId), "Token ID does not exist");
         require(ownerOf(_tokenId) == msg.sender || owner() == msg.sender, "Not authorized to add supply chain entry");
-        
+
         products[_tokenId].supplyChain.push(addressToString(_entity));
     }
 
@@ -59,12 +56,11 @@ contract ProductVerification is ERC721, Ownable {
         require(_exists(_tokenId), "Token ID does not exist");
         return products[_tokenId];
     }
-    
+
     function verifyProduct(string memory _productId, uint256 _tokenId) external view returns (bool) {
         return productIdToTokenId[_productId] == _tokenId;
     }
 
-    // Additional functionality to enhance the contract
     function updateProductDetails(
         uint256 _tokenId,
         string memory _newProductDetails,
@@ -73,17 +69,17 @@ contract ProductVerification is ERC721, Ownable {
     ) external {
         require(_exists(_tokenId), "Token ID does not exist");
         require(ownerOf(_tokenId) == msg.sender || owner() == msg.sender, "Not authorized to update");
-        
+
         Product storage product = products[_tokenId];
         product.productDetails = _newProductDetails;
         product.manufacturingDate = _newManufacturingDate;
         product.batchNumber = _newBatchNumber;
     }
-    
+
     function addressToString(address _addr) private pure returns (string memory) {
-        bytes32 value = bytes32(uint256(_addr));
+        bytes32 value = bytes32(uint256(uint160(_addr)));
         bytes memory alphabet = "0123456789abcdef";
-    
+
         bytes memory str = new bytes(42);
         str[0] = '0';
         str[1] = 'x';
