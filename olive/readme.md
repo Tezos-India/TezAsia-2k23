@@ -19,19 +19,15 @@ socket.io: A JavaScript library used for real-time, bidirectional communication 
 
 6. Project Demo Photos, Videos :
 
-   https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/videos/chatnexus.mp4
 
-   https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/chatopen.png
-   
-https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/chatwelcome.png
-   
-https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/profile.png
+https://github.com/pydeep9026/TezAsia-2k23/assets/91087103/8b22462d-d9af-4c3d-b2bd-860f016531b7
 
-https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/signuppage.png
-
-https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/report.png
-
-https://github.com/pydeep9026/portfolio-website-windows11/blob/main/src/components/projects/projectassets/images/loginpage.png
+![signuppage](https://github.com/pydeep9026/TezAsia-2k23/assets/91087103/30c2840d-3bf6-4d90-93c3-08f34296412f)
+![report](https://github.com/pydeep9026/TezAsia-2k23/assets/91087103/d6f08b70-6f6d-427c-85c3-956dcd47c6d2)
+![profile](https://github.com/pydeep9026/TezAsia-2k23/assets/91087103/e7fafbb3-3e1a-46a7-95e9-34e6cf58337c)
+![loginpage](https://github.com/pydeep9026/TezAsia-2k23/assets/91087103/f69ebd3b-4317-4806-b56c-ec06d11d1569)
+![chatwelcome](https://github.com/pydeep9026/TezAsia-2k23/assets/91087103/e3c8598b-ddfa-42c3-99ec-ec7990cd5d9b)
+![chatopen](https://github.com/pydeep9026/TezAsia-2k23/assets/91087103/79bfadbd-821d-43c6-828d-cf99db842805)
 
 
 
