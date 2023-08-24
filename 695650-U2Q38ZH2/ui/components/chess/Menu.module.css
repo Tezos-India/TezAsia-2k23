@@ -1,198 +1,297 @@
-/* Menu.module.css */
+@keyframes moveLeftToRight {
+  100% {
+    transform: translateX(-100%);
+  }
+  0% {
+    transform: translateX(100%);
+  }
+}
+
+.slow-moving-text {
+  position: absolute;
+  white-space: nowrap;
+  animation: moveLeftToRight 40s linear infinite;
+  color: #ffffff; /* White text color */
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+  
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .slow-moving-text {
+    font-size: 14px;
+    width: 80%; /* Adjust the width as needed */
+    left: 10%; /* Center the text horizontally */
+    bottom: 20px; /* Position from the bottom */
+    animation: moveLeftToRight 15s linear infinite; /* Shorter animation for smaller screens */
+  }
+}
+
+
 
 .menu-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  
-  .menu-card {
-    width: 40rem;
-    padding: 20px;
-    /* background-color: rgba(255, 255, 255, 0.8);  */
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    margin-top: 17rem;
-    margin-left: -10rem;
-  }
-  
-  
-  .menu-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: rgba(236, 126, 218, 0.85);
-    text-shadow: 1px 1px 2px #e0e4e7, 0 0 0 black, 1px 4px 6px #def;
-  }
-  
-  .menu-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-card {
+  width: 40rem;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin-top: -40rem;
+  margin-left: -10rem;
+}
+
+.menu-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(236, 126, 218, 0.85);
+  text-shadow: 1px 1px 2px #e0e4e7, 0 0 0 black, 1px 4px 6px #def;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.menu-buttons-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  color: black;
+  background-color: #A8DF8E;
+  border-radius: 5px;
+}
+
+.menu-button {
+  padding: 10px;
+  background-color: #FFE5E5;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.menu-button:hover {
+  background-color: #A8DF8E;
+  transform: scale(1.05);
+}
+
+.menu-button_2 {
+  padding: 10px;
+  margin-top: 1.5rem;
+  background-color: #FFE5E5;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu-button_2:hover {
+  background-color: #A8DF8E;
+  transform: scale(1.05);
+}
+
+
+.menu-message {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.menu-dev-message {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ff4d4d;
+}
+
+.smoke-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 222px;
+}
+
+.smoke,
+.smoke2,
+.smoke3 {
+  filter: blur(5px);
+  transform-origin: 50% 50%;
+  margin-top: -45rem;
+}
+
+.smoke {
+  height: 10rem;
+  animation: smoke1 3s linear infinite;
+  animation-delay: 0.5s;
+}
+
+.smoke2 {
+  animation: smoke2 3s linear infinite;
+  animation-delay: 1.5s;
+}
+
+.smoke3 {
+  width: 500px;
+  animation: smoke3 4s linear infinite;
+  animation-delay: 2.5s;
+}
+
+@keyframes smoke1 {
+  0% {
+    filter: blur(0px);
+    transform: translateY(0px) scale(-1, 1);
+    opacity: 0;
   }
 
-  .menu-buttons-1 {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-    color: white;
+  25% {
+    filter: blur(3px);
+    transform: translateY(-10px) scale(-1, 1.05);
+    opacity: 0.5;
   }
-  
-  .menu-button {
-    padding: 10px;
-    background-color: #44dbe5;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+
+  50% {
+    filter: blur(5px);
+    transform: translateY(-20px) scale(-1, 1.1);
+    opacity: 1;
   }
-  
-  .menu-button:hover {
-    background-color: #38c2cd;
-    transform: scale(1.05);
+
+  75% {
+    filter: blur(5px);
+    transform: translateY(-30px) scale(-1, 1.15);
+    opacity: 0.5;
   }
-  
-  .menu-message {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
+
+  100% {
+    filter: blur(7px);
+    transform: translateY(-40px) scale(-1, 1.2);
+    opacity: 0;
   }
-  
-  .menu-dev-message {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #ff4d4d;
+}
+
+@keyframes smoke2 {
+  0% {
+    filter: blur(0px);
+    transform: translateY(0px) scale(1);
+    opacity: 0;
   }
-  .smoke-wrap {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 222px;
+
+  25% {
+    filter: blur(3px);
+    transform: translateY(-10px) scale(1.05);
+    opacity: 0.5;
   }
-  
+
+  50% {
+    filter: blur(5px);
+    transform: translateY(-20px) scale(1.1);
+    opacity: 1;
+  }
+
+  75% {
+    filter: blur(5px);
+    transform: translateY(-30px) scale(1.15);
+    opacity: 0.5;
+  }
+
+  100% {
+    filter: blur(7px);
+    transform: translateY(-40px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes smoke3 {
+  0% {
+    filter: blur(0px);
+    transform: translateY(0px) scale(1);
+    opacity: 0;
+  }
+
+  25% {
+    filter: blur(3px);
+    transform: translateY(-20px) scale(1.05);
+    opacity: 0.5;
+  }
+
+  50% {
+    filter: blur(5px);
+    transform: translateY(-40px) scale(1.1);
+    opacity: 1;
+  }
+
+  75% {
+    filter: blur(5px);
+    transform: translateY(-60px) scale(1.15);
+    opacity: 0.5;
+  }
+
+  100% {
+    filter: blur(7px);
+    transform: translateY(-80px) scale(1.2);
+    opacity: 0;
+  }
+}  
+
+.img{
+  background-image: url('/chess-bg.jpg'); /* Reference without "public" in the path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 101vw;
+  height: 100vh;
+  margin-left: -10.9rem;
+}
+
+
+@media (max-width: 768px) {
+  .menu-card {
+    width: 100%; 
+    margin-top: -45rem; 
+    margin-left:0.5rem;
+  }
+  .img{
+    background-repeat: no-repeat;
+    width: 104vw;
+    height: 100vh;
+    margin-left: -1rem;
+  }
   .smoke,
   .smoke2,
   .smoke3 {
-    filter: blur(5px);
-    transform-origin: 50% 50%;
+    height: 0rem; 
+    width: 300px; 
   }
-  
-  .smoke {
-    height: 10rem;
-    animation: smoke1 3s linear infinite;
-    animation-delay: 0.5s;
+}
+
+
+@media (max-width: 1280px) {
+  .menu-card {
+    width: 100%; 
+    margin-top: -45rem; 
+    margin-left:0.5rem;
   }
-  
-  .smoke2 {
-    animation: smoke2 3s linear infinite;
-    animation-delay: 1.5s;
+  .img{
+    background-repeat: no-repeat;
+    width: 114vw;
+    height: 100vh;
+    margin-left: -3rem;
   }
-  
+  .smoke,
+  .smoke2,
   .smoke3 {
-    width: 500px;
-    animation: smoke3 4s linear infinite;
-    animation-delay: 2.5s;
+    height: 0rem; 
+    width: 300px; 
   }
-
-
-  
-  
-  @keyframes smoke1 {
-    0% {
-      filter: blur(0px);
-      transform: translateY(0px) scale(-1, 1);
-      opacity: 0;
-    }
-  
-    25% {
-      filter: blur(3px);
-      transform: translateY(-10px) scale(-1, 1.05);
-      opacity: 0.5;
-    }
-  
-    50% {
-      filter: blur(5px);
-      transform: translateY(-20px) scale(-1, 1.1);
-      opacity: 1;
-    }
-  
-    75% {
-      filter: blur(5px);
-      transform: translateY(-30px) scale(-1, 1.15);
-      opacity: 0.5;
-    }
-  
-    100% {
-      filter: blur(7px);
-      transform: translateY(-40px) scale(-1, 1.2);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes smoke2 {
-    0% {
-      filter: blur(0px);
-      transform: translateY(0px) scale(1);
-      opacity: 0;
-    }
-  
-    25% {
-      filter: blur(3px);
-      transform: translateY(-10px) scale(1.05);
-      opacity: 0.5;
-    }
-  
-    50% {
-      filter: blur(5px);
-      transform: translateY(-20px) scale(1.1);
-      opacity: 1;
-    }
-  
-    75% {
-      filter: blur(5px);
-      transform: translateY(-30px) scale(1.15);
-      opacity: 0.5;
-    }
-  
-    100% {
-      filter: blur(7px);
-      transform: translateY(-40px) scale(1.2);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes smoke3 {
-    0% {
-      filter: blur(0px);
-      transform: translateY(0px) scale(1);
-      opacity: 0;
-    }
-  
-    25% {
-      filter: blur(3px);
-      transform: translateY(-20px) scale(1.05);
-      opacity: 0.5;
-    }
-  
-    50% {
-      filter: blur(5px);
-      transform: translateY(-40px) scale(1.1);
-      opacity: 1;
-    }
-  
-    75% {
-      filter: blur(5px);
-      transform: translateY(-60px) scale(1.15);
-      opacity: 0.5;
-    }
-  
-    100% {
-      filter: blur(7px);
-      transform: translateY(-80px) scale(1.2);
-      opacity: 0;
-    }
-  }
+}

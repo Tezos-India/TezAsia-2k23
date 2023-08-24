@@ -1,12 +1,11 @@
 import { Request, Response } from 'express';
 import * as UserService from './user.service';
 
-export const createUser = async (req: Request, res: Response) => {
+export const upsertUser = async (req: Request, res: Response) => {
   try {
-    const user = await UserService.createUser(req.body);
+    const user = await UserService.upsertUser(req.body);
     res.json(user);
   } catch (err) {
-    // Handle error
     console.error(err);
     res.sendStatus(500);
   }

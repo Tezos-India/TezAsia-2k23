@@ -1,112 +1,57 @@
-/* Sidebar.css */
+/* 
+.glowingCard {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px red;
+  animation: glowAnimation 2s infinite alternate;
+}
 
-.sidebar-header {
-    padding: 1rem;
-    background-color: #333;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
+.content {
+  text-align: center;
+  color: #fff;
+}
+
+@keyframes glowAnimation {
+  0% {
+    box-shadow: 0 0 10px #34ffea;
   }
-  
-  .game-sidebar {
-    background-color: #f5f5f5;
-    padding: 1rem;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  100% {
+    box-shadow: 0 0 40px #34ffea;
   }
-  
-  .game-over {
-    text-align: center;
-    font-size: 18px;
-    color: #ff6347;
-    margin-top: 1rem;
+} */
+/* Sidebar.module.css */
+.glowingCard {
+  background-color: #222;
+
+  border-radius: 10px;
+  box-shadow: 0 0 20px red;
+  animation: glowAnimation 2s infinite alternate;
+}
+
+.content {
+  text-align: center;
+  color: #fff;
+}
+
+@keyframes glowAnimation {
+  0% {
+    box-shadow: 0 0 10px #34ffea;
   }
-  
-  .move-indicator {
-    text-align: center;
-    font-size: 18px;
-    color: #333;
-    margin-top: 1rem;
+  100% {
+    box-shadow: 0 0 40px #34ffea;
   }
+}
+
+/* ... Other existing styles ... */
+
+/* Responsive styles */
+@media (max-width: 800px) {
+  .glowingCard {
+
+    box-shadow: 0 0 20px red; 
   
-  .messages-section {
-    margin-top: 1.5rem;
   }
-  
-  .messages-header {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-  
-  .message {
-    padding: 0.5rem;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
-  }
-  
-  .message-author {
-    font-weight: bold;
-    color: #007bff;
-  }
-  
-  .message-content {
-    margin-top: 0.5rem;
-    color: #333;
-  }
-  
-  .pgn-viewer {
-    margin-top: 1.5rem;
-  }
-  
-  .pgn-title {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 0.5rem;
-  }
-  
-  .pgn-moves {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 0.5rem;
-    max-height: 150px;
-    overflow-y: auto;
-  }
-  
-  .pgn-move {
-    margin-bottom: 0.25rem;
-    color: #333;
-  }
-  
-  .tap-message-info {
-    font-size: 14px;
-    color: #777;
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  .tap-message-icon {
-    font-size: 30px;
-    color: #007bff;
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Media Query for Mobile Responsiveness */
-  @media screen and (max-width: 768px) {
-    .game-sidebar {
-      padding: 0.5rem;
-    }
-  
-    .message {
-      font-size: 14px;
-    }
-  
-    .pgn-move {
-      font-size: 14px;
-    }
-  }
-  
+
+}
+

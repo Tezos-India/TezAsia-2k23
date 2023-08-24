@@ -1,6 +1,7 @@
 import express from "express";
 import http from "http";
 import userRoutes from "./api/user/user.routes";
+import gameRoutes from "./api/gameStats/gameStats.routes";
 import { setupSocketIO } from "./config/socketio";
 import cors from "cors";
 
@@ -18,6 +19,7 @@ app.use(express.json());
 
 // Routes
 app.use(userRoutes);
+app.use(gameRoutes);
 
 // Home Route
 app.get("/", (req, res) => {

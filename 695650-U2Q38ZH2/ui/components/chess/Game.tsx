@@ -10,6 +10,7 @@ import { copyToClipboard } from '@/helpers';
 import { useUser } from '@/contexts/UserContext';
 import { useGame } from '@/contexts/GamesContext';
 import { BoardOrientation } from 'react-chessboard/dist/chessboard/types';
+import Sidebar from "./Sidebar";
 interface GameProps {
   gameId: string;
 }
@@ -212,6 +213,7 @@ useEffect(() => {
             ref={chessboardRef}
           />
         </div>
+        
         <div className='player-name' style={{color:"white"}} >
           <span>{ username || 'Guest' }</span>
           {<Timer
@@ -219,20 +221,45 @@ useEffect(() => {
   time={orientation === 'white' ? timeLeft?.[1] || 0 : timeLeft?.[0] || 0}
 />}
         </div>
+      
       </> ):
-       <div className= {styles["waiting-section"]} >
-       <div className= {styles["waiting-content"]} >
-          <h1 className={styles["waiting-title"]} >Invite a Friend to the Game</h1>
-          <h1 className={styles["waiting-subtitle"]} >Your Game Id {gameId}</h1> 
-          <h1 className= {styles["waiting-info"]} >Waiting for opponent...</h1>
-          { publicGame ? 
-            <span className=  {styles["waiting-message"]} >
-              The next person that joins will play against you
-            </span> :
-            <button className= {styles["copy-button"]} onClick={() => copyToClipboard(gameId)}>Copy URL to Clipboard</button>
-          }
-       </div>
+      <>
+  <div className={styles.body}>
+      <a href="#" className={styles['animated-button']}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div>
+          <div className={styles['waiting-content']}>
+
+            <div>
+            
+            {publicGame ? (
+              <>
+             
+             <h1> The next person that joins will play against you</h1>
+              
+               <h1>Waiting for opponent...</h1>
+              
+               </>
+            ) : (
+              <>
+              <h1>Invite a Friend to the Game</h1>
+              <h2>Your Game Id {gameId}</h2>
+              <h1>Waiting for opponent...</h1>
+              <button onClick={() => copyToClipboard(gameId)}>
+                  Copy GameID to Clipboard
+                </button>
+                </>
+            )}
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
+   
+    </>
   );
   
 }

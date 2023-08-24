@@ -31,7 +31,7 @@ export const disconnect = async () => {
   wallet.clearActiveAccount();
 };
 
-const contract = await Tezos.wallet.at("KT1NpaYXjizDbe52MKrbyQA4VLsPBsdHqkP3");
+const contract = await Tezos.wallet.at("KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN");
 
 export async function addplayer1(uid) {
   const amountToSend = 5;

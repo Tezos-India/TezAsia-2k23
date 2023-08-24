@@ -26,6 +26,9 @@ export function Navbar() {
         if (data && data.avatarName) {
           setAvatarName(data.avatarName);
           localStorage.setItem('avatarName', data.avatarName);
+          localStorage.setItem('userId', data.id);
+          console.log("Setting userId in localStorage:", data.id);
+
       }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -72,19 +75,21 @@ export function Navbar() {
 
   const saveForm = async () => {
     try {
-      const response = await fetch("http://localhost:5000/user", {
+      const url = "http://localhost:5000/user/upsert";
+  
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ avatarName, walletAddress: account }),
       });
-
+  
       if (response.ok) {
-        alert("Avatar created successfully");
+        alert(editMode ? "Avatar updated successfully" : "Avatar created successfully");
         setShowDashboard(false);
         localStorage.setItem('avatarName', avatarName);  // Store avatar name in local storage
-    }  else {
+      } else {
         const data = await response.json();
         alert("Error saving avatar:" + (data.message || "Unknown error"));
       }
@@ -93,6 +98,7 @@ export function Navbar() {
       alert("Failed to save avatar.");
     }
   };
+  
 
   return (
     <>
@@ -149,6 +155,7 @@ export function Navbar() {
                 saveForm();
                 setEditMode(false);
               }}
+              onEdit={() => setEditMode(true)}
               onBack={() => {
                 if (editMode) {
                   alert("Please save avatar details first.");

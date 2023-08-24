@@ -14,6 +14,7 @@ export default function Sidebar({ gameId }: SidebarProps) {
 
   return (
     <React.Fragment>
+   
       <div className='sidebar-header'  >
         <h3 style={{ textAlign: 'center' }}>
           {gameOver ? `Game Over ${gameOver.result}` : game && game.turn() === 'w' ? "White to move" : "Black to move"}
@@ -23,6 +24,7 @@ export default function Sidebar({ gameId }: SidebarProps) {
         <PGNViewer />
         {publicGame && !allowLiveChat ? <TapMessages gameId={gameId} /> : <Messages gameId={gameId} />}
       </div>
+      
     </React.Fragment>
   );
 }
