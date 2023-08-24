@@ -31,14 +31,15 @@ socket.io: A JavaScript library used for real-time, bidirectional communication 
 11. Your PPT file  : NA 
 
 12. Your Team members Info.
+    
         team_mate_1:UJJWAL SRIVASTAVA
         Name:UJJWAL SRIVASTAVA
-        Email: 
+        Email: srivatavaujjwal2485@gmail.com
 
         v
         team_mate_1:aditya gupta
         Name: aditya gupta
-        Email:   
+        Email: agaditya1000@gmail.com
 
 
 
