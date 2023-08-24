@@ -290,7 +290,102 @@ const searchResults = [
                         ]
                     },
                 ]
-            }
+            },
+            {
+                id: 1,
+                poster: poster,
+                name: "Oppenheimer",
+                description: "During World War II, Lt. Gen. Leslie Groves Jr. appoints physicist J. Robert Oppenheimer to work on the top-secret Manhattan Project. Oppenheimer and a team of scientists spend years developing and designing the atomic bomb. Their work comes to fruition on July 16, 1945, as they witness the world's first nuclear explosion, forever changing the course of history.",
+                location: "INOX: Odeon, Connaught Place",
+                screenNo: "5",
+                price: 0.6,
+                dates: [
+                    {
+                        date: "26 Aug 2023",
+                        shows: [
+                            {
+                                time: "10:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "15:00",
+                                booked: ["A1", "A2", "D3"],
+                            },
+                            {
+                                time: "19:00",
+                                booked: ["A1", "B2", "A3"],
+                            },
+                            {
+                                time: "23:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                        ]
+                    },
+                    {
+                        date: "27 Aug 2023",
+                        shows: [
+                            {
+                                time: "10:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "15:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "19:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "23:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                        ]
+                    },
+                    {
+                        date: "28 Aug 2023",
+                        shows: [
+                            {
+                                time: "10:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "15:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "19:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "23:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                        ]
+                    },
+                    {
+                        date: "29 Aug 2023",
+                        shows: [
+                            {
+                                time: "10:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "15:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "19:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                            {
+                                time: "23:00",
+                                booked: ["A1", "A2", "A3"],
+                            },
+                        ]
+                    },
+                ]
+            },
         ]
     },
     {

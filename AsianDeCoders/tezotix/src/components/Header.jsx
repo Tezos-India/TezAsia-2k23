@@ -53,7 +53,6 @@ export default function Header() {
 
     useEffect(() => {
         if (address) {
-            console.log(address)
             setMinifiedAddress(address.slice(0, 5) + "..." + address.slice(-5));
         }
     }, [address]);

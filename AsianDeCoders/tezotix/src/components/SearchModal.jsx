@@ -27,7 +27,7 @@ export default function SearchModal({ data, setOpenMovieModal }) {
                                 All movies in {data.name.length > 20 ? data.name.slice(0, 20) + "..." : data.name}
                             </HeadingUnderline>
 
-                            <div className="flex justify-center gap-7">
+                            <div className="flex pb-4 gap-7 max-w-full overflow-x-auto scroll-hor">
                                 {
                                     data.activeMovies.map((item) => {
                                         return (<MovieCard data={item} />)

@@ -49,3 +49,28 @@ body {
 .font-900 {
   font-weight: 900;
 }
+
+.scroll-hor::-webkit-scrollbar {
+  height: 7px;
+}
+.scroll-ver::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll-hor::-webkit-scrollbar-track,
+.scroll-ver::-webkit-scrollbar-track {
+  border-radius: 10px;
+  border: 0.3px solid rgba(255, 255, 255, 0.2);
+}
+
+.scroll-hor::-webkit-scrollbar-thumb,
+.scroll-ver::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.scroll-hor::-webkit-scrollbar-thumb:hover,
+.scroll-ver::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
