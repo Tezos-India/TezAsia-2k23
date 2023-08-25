@@ -56,7 +56,11 @@ const InflationRateChart = lazy(() => import('../pages/StatisticsChart/monetary/
 const LiquidityChart = lazy(() => import('../pages/StatisticsChart/monetary/Liquidity'))
 const ScriptList = lazy(() => import('../pages/ScriptList'))
 const FeeRateTracker = lazy(() => import('../pages/FeeRateTracker'))
+import { TezosToolkit } from '@taquito/taquito';
 
+
+
+const tezos = new TezosToolkit('https://mainnet.smartpy.io');
 const Containers: CustomRouter.Route[] = [
   {
     name: 'Home',
