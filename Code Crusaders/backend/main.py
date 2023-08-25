@@ -1,4 +1,7 @@
+from flask import Flask, request, jsonify
 import smartpy as sp
+
+app = Flask(__name__)
 
 class ProductVerification(sp.Contract):
     def __init__(self):
@@ -27,52 +30,25 @@ class ProductVerification(sp.Contract):
         )
         self.data.products[token_id] = product
 
-    @sp.entry_point
-    def addSupplyChainEntry(self, params):
-        product = self.data.products[params.tokenId]
-        sp.verify(sp.sender == product.manufacturer, "Not authorized to add supply chain entry")
+    # ... other entry points ...
 
-        product.supplyChain.push(params.entity)
+# Create an instance of your Tezos contract
+contract_instance = ProductVerification()
 
-    @sp.entry_point
-    def updateProductDetails(self, params):
-        product = self.data.products[params.tokenId]
-        sp.verify(sp.sender == product.manufacturer, "Not authorized to update")
+@app.route('/api/register-product', methods=['POST'])
+def register_product():
+    data = request.json
+    params = sp.record(
+        productId=data['productId'],
+        productDetails=data['productDetails'],
+        manufacturingDate=data['manufacturingDate'],
+        batchNumber=data['batchNumber']
+    )
 
-        product.productDetails = params.newProductDetails
-        product.manufacturingDate = params.newManufacturingDate
-        product.batchNumber = params.newBatchNumber
+    contract_instance.registerProduct(params)  # Call the contract's entry point
+    return jsonify({"message": "Product registered successfully"})
 
-@sp.add_test(name="test")
-def test():
-    scenario = sp.test_scenario()
+# ... other API endpoints ...
 
-    scenario.h1("Product Verification")
-    c1 = ProductVerification()
-    scenario += c1
-
-    scenario.h2("Register Product")
-    scenario += c1.registerProduct(
-        productId="123",
-        productDetails="Sample Product",
-        manufacturingDate=1630339200,
-        batchNumber=1,
-    ).run(sender=sp.address("tz1..."))
-
-    scenario.h2("Add Supply Chain Entry")
-    scenario += c1.addSupplyChainEntry(tokenId=1, entity=sp.address("tz2...")).run(sender=sp.address("tz1..."))
-
-    scenario.h2("Update Product Details")
-    scenario += c1.updateProductDetails(
-        tokenId=1,
-        newProductDetails="Updated Product",
-        newManufacturingDate=1632777600,
-        newBatchNumber=2,
-    ).run(sender=sp.address("tz1..."))
-
-    scenario.h2("Get Product Details")
-    scenario += c1.getProductDetails(1)
-
-    scenario.h2("Verify Product")
-    scenario += c1.verifyProduct(productId="123", tokenId=1)
-
+if __name__ == '__main__':
+    app.run(debug=True)
