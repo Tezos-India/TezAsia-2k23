@@ -6,7 +6,7 @@
 3. Project's Description : Created a Contract To provide a trustable dice game and rewarding with prizes based on bet contribution(For better profit).
 4. What problem you are trying to solve : Provides trust between game organiser and players,Winners gets Profit in this game ,price distributed to all winners and game organiser gets profit on float point normalization of prizes(example: prize=10.000600 tez and distributing prize with 10.000000 tez provide the organiser with 0.000600 tez profit).
 5. Tech Stack used while building the project :smartpy
-6. Project Demo Photos, Videos :https://github.com/IN4111/TezAsia-2k23/blob/main/VIJAY04/Photo.png
+6. Project Demo Photos, Videos :
 7. Your Deployed Smart Contract's Link : 1)code:https://smartpy.io/ide?cid=QmYN66TC5PeoAi63FtcwFbBd1ixuCbFy6AyDPNx4MvxTba&k=c38da2eca90dd124c409
 2)deployed contract address: KT1GtGy2Bwt7JTnUZYiiH5XAvAjnpkPxMKD7
 8. If your project is deployed , then include the Live Project Link ( optional ) :https://smartpy.io/ide?cid=QmYN66TC5PeoAi63FtcwFbBd1ixuCbFy6AyDPNx4MvxTba&k=c38da2eca90dd124c409
