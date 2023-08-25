@@ -6,11 +6,11 @@
 3. Project's Description : Creating Kivy cross-platform Application to interact Web2 Technologies such as api and database to connect web3 technologies.
 4. What problem you are trying to solve : Application that provides confidentiality of their show tickets sold on a fair price for an Authorized Reseller
 5. Tech Stack used while building the project :pytezos module api for verification of users and to perform transaction from resellers to the admin
-6. Project Demo Photos, Videos :https://github.com/IN4111/TezAsia-2k23/blob/main/VIJAY04/Photo.png
+6. Project Demo Photos, Videos :https://github.com/IN4111/TezAsia-2k23/blob/main/VIJAY04/VIJAY04-Track-Web3%20integration%20with%20Web2/Photo.png
 7. Your Deployed Smart Contract's Link : NA
 8. If your project is deployed , then include the Live Project Link ( optional ) :NA
-9. Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository :https://github.com/IN4111/TezAsia-2k23/tree/main/VIJAY04
-10. Github repository link :https://github.com/IN4111/TezAsia-2k23/tree/main/VIJAY04
+9. Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository :NA
+10. Github repository link :https://github.com/IN4111/TezAsia-2k23/tree/main/VIJAY04/VIJAY04-Track-Web3%20integration%20with%20Web2
 11. Your PPT file  :https://docs.google.com/presentation/d/1PT8F_KjF2Vzo33Q_X0s8f2qhTZlc0qhH/edit?usp=share_link&ouid=109290593335147932927&rtpof=true&sd=true
 12. Your Team members Info.
         team_mate_1:
