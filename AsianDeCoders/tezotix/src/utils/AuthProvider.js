@@ -43,10 +43,8 @@ export default function AuthHolder(props) {
         (async () => {
             // Get the active account
             const account = await getAccount();
-            if (address) {
-                setAddress(account.address);
-                setConnected(true);
-            }
+            setAddress(account.address);
+            setConnected(true);
         })();
     }, []);
 
