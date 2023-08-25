@@ -376,6 +376,10 @@ export const fetchStatisticInflationRate = () =>
   axiosIns(`/monetary_data/nominal_apc50-nominal_inflation_rate-real_inflation_rate`).then((res: AxiosResponse) =>
     toCamelcase<Response.Wrapper<State.StatisticInflationRates>>(res.data.data),
   )
+export const fetchfullcards = () =>
+  axiosIns(`/cards`).then((res: AxiosResponse) =>
+    toCamelcase<Response.Wrapper<State.StatisticInflationRates>>(res.data.data),
+  )
 
 export const fetchStatisticLiquidity = () =>
   axiosIns(`/daily_statistics/circulating_supply-liquidity`).then((res: AxiosResponse) => {
@@ -420,7 +424,4 @@ export const fetchTokens = (page: number, size: number) =>
     },
   }).then((res: AxiosResponse) => toCamelcase<Response.Response<Response.Wrapper<State.UDT>[]>>(res.data))
 
-export const fetchMaintenanceInfo = () =>
-  axiosIns(`/statistics/maintenance_info`).then((res: AxiosResponse) =>
-    toCamelcase<Response.Wrapper<State.MaintenanceInfo>>(res.data.data),
-  )
+
