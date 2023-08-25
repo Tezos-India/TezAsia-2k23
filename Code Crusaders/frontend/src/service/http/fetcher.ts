@@ -410,14 +410,7 @@ export const fetchSimpleUDTTransactions = (typeHash: string, page: number, size:
     },
   }).then((res: AxiosResponse) => toCamelcase<Response.Response<Response.Wrapper<State.Transaction>[]>>(res.data))
 
-export const fetchSimpleUDTTransactionsWithAddress = (address: string, typeHash: string, page: number, size: number) =>
-  axiosIns(`/address_udt_transactions/${address}`, {
-    params: {
-      type_hash: typeHash,
-      page,
-      page_size: size,
-    },
-  }).then((res: AxiosResponse) => toCamelcase<Response.Response<Response.Wrapper<State.Transaction>[]>>(res.data))
+
 
 export const fetchTokens = (page: number, size: number) =>
   axiosIns(`/udts`, {
