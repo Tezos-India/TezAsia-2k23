@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowDown,
@@ -34,11 +35,14 @@ const LargeCard: React.FC<LargeCardProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [showConnectModal, setShowConnectModal] = useState(false);
   const { account } = useAccount();
+  const router = useRouter();
 
   const handlePlay = () => {
     if (!account) {
       setShowConnectModal(true);
       return;
+    }else{
+      router.push("/Game");
     }
   };
   return (
