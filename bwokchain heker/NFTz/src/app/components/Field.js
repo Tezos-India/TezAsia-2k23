@@ -9,7 +9,7 @@ function Field(props) {
       <FormLabel fontWeight={"extrabold"}>Api Key:</FormLabel>
       <Input
         key={props.key}
-        name="key"
+        name={props.name}
         placeholder={props.placeholder1}
         onChange={(e) => props.addHandle(e)}
         type="text"
@@ -19,7 +19,7 @@ function Field(props) {
       <FormLabel fontWeight={"extrabold"}>Secret:</FormLabel>
       <Input
         key={props.key}
-        name="value"
+        name={props.name}
         placeholder={props.placeholder2}
         onChange={(e) => props.addHandle(e)}
         type="text"

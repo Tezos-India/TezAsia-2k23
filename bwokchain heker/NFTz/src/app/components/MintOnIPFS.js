@@ -8,6 +8,11 @@ import {
   Box,
   Image,
   Input,
+  InputGroup,
+  InputRightElement,
+  Link,
+  LinkBox,
+  LinkOverlay,
   FormLabel,
   FormControl,
   FormHelperText,
@@ -32,11 +37,14 @@ import { char2Bytes, bytes2Char } from "@taquito/utils";
 function MintOnIPFS() {
   const [userData, setUserData] = useState([]);
   const [contractAddress, setContractAddress] = useState("");
-  const key = process.env.NEXT_PUBLIC_PINATA_KEY;
+  const [show, setShow] = useState(false);
+  const [key, setKey] = useState(process.env.NODE_ENV==="development" ? process.env.NEXT_PUBLIC_PINATA_KEY : "");
   // I know it's a bad practice to store secret in frontend but let's do it for now
-  const secret = process.env.NEXT_PUBLIC_PINATA_SECRET;
+  const [secret, setSecret] = useState(process.env.NODE_ENV==="development" ? process.env.NEXT_PUBLIC_PINATA_SECRET : "");
   const [metadataBytes, setMetadataBytes] = useState("");
   const [fieldCount, setFieldCount] = useState(1);
+
+  const isEmpty = !key || !secret;
 
   const formData = new FormData();
   const toast = useToast();
@@ -52,41 +60,42 @@ function MintOnIPFS() {
     });
   };
 
-  const addField = () => {
-    setFieldCount((prevFieldCount) => prevFieldCount + 1);
-  };
+  // const addField = () => {
+  // setFieldCount((prevFieldCount) => prevFieldCount + 1);
+  // };
 
-  const [fields, setFields] = useState([
-    <Field
-      key={fieldCount}
-      addHandle={handleChange}
-      placeholder1={"name"}
-      placeholder2={"Bored Apes"}
-      addField={addField}
-    />,
-  ]);
-  useEffect(() => {
-    function setNewFields() {
-      if (fieldCount > fields.length) {
-        setFields((prevFields) => {
-          return [
-            ...prevFields,
-            <Field
-              key={fieldCount}
-              addHandle={handleChange}
-              addField={addField}
-            />,
-          ];
-        });
-      }
-    }
-    setNewFields();
-  }, [fieldCount]);
+  // const [fields, setFields] = useState([
+  //   <Field
+  //     key={fieldCount}
+  //     addHandle={handleChange}
+  //     placeholder1={"name"}
+  //     placeholder2={"Bored Apes"}
+  //     addField={addField}
+  //   />
+  // ]);
+
+  // useEffect(() => {
+  //   function setNewFields() {
+  //     if (fieldCount > fields.length) {
+  //       setFields((prevFields) => {
+  //         return [
+  //           ...prevFields,
+  //           <Field
+  //             key={fieldCount}
+  //             addHandle={handleChange}
+  //             addField={addField}
+  //           />,
+  //         ];
+  //       });
+  //     }
+  //   }
+  //   setNewFields();
+  // }, [fieldCount]);
 
   const [formInput, setFormInput] = useState({
     name: "",
     description: "",
-    fileUri: "",
+    fileUrl: "",
   });
 
   useEffect(() => {
@@ -134,7 +143,7 @@ function MintOnIPFS() {
       setFormInput((prevFormInput) => {
         return {
           ...prevFormInput,
-          fileUri: response.IpfsHash,
+          fileUrl: `ipfs://${response.IpfsHash}`,
         };
       });
     } catch (error) {
@@ -181,28 +190,30 @@ function MintOnIPFS() {
       });
   };
 
-  const sendToIPFS = async () => {
-    if (!formInput.name || !formInput.description || !formInput.fileUri) return;
+  // We dont' need it as tezos can hold json data
 
-    let metadataURI = await pinJSONToIPFS(formInput);
-    console.log("Before:", metadataURI);
-  };
+  // const sendToIPFS = async () => {
+  //   if (!formInput.name || !formInput.description || !formInput.fileUrl) return;
+
+  //   let metadataURI = await pinJSONToIPFS(formInput);
+  //   console.log("Before:", metadataURI);
+  // };
 
   // We don't really want to allow users to mint NFTs to our contract
   // We want to mint NFTs to their own contract
 
-  // const mintingToContract = async (metadataURI) => {
-  //   console.log('After:', metadataURI)
-  //   // how do we interact with tezos contract?
-  //   const contract = await Tezos.wallet.at(config.contractAddress);
-  //   let bytes = "";
-  //   for (var i = 0; i < metadataURI.length; i++) {
-  //     bytes += metadataURI.charCodeAt(i).toString(16).slice(-4);
-  //   }
+  const mintingToContract = async (formInput) => {
+    console.log('After:', formInput)
+    // how do we interact with tezos contract?
+    const contract = await Tezos.wallet.at(config.contractAddress);
+    let bytes = "";
+    for (var i = 0; i < metadataURI.length; i++) {
+      bytes += metadataURI.charCodeAt(i).toString(16).slice(-4);
+    }
   //   // TODO: pass michelson map to mint function
-  //   const op = await contract.methods.mint(char2Bytes(metadataURI)).send();
-  //   await op.confirmation();
-  // }
+    const op = await contract.methods.mint(char2Bytes(metadataURI)).send();
+    await op.confirmation();
+  }
 
   const readmintedNFTs = async () => {
     const contract = await Tezos.wallet.at(config.contractAddress);
@@ -211,75 +222,110 @@ function MintOnIPFS() {
 
   return (
     <div>
-      {/* <Flex pl={"10"} pr={"10"}> */}
-        <Box maxW="2xl" margin={"auto"}>
-          <Heading size={"lg"}>Create Metadata for NFTs</Heading>
-          <Box h={"xs"}>
-            <ReactJson
-              theme="apathy:inverted"
-              src={formInput}
-              onEdit={(edit) => {
-                return edit.updated_src;
-              }}
-              onDelete={(edit) => {
-                return edit.updated_src;
-              }}
-              onAdd={(edit) => {
-                return edit.updated_src;
-              }}
-              enableClipboard={false}
-            />
-          </Box>
+      <Box maxW="2xl" margin={"auto"} borderStyle={"dotted"} p={"2"} borderRadius={"2xl"} borderColor={"yellow"} borderWidth={"thick"}>
+        <Heading size={"lg"}>Create JSON Metadata for NFTs</Heading>
+        <Box h={"2xs"}>
+          <ReactJson
+            theme="apathy:inverted"
+            src={formInput}
+            onEdit={(edit) => {
+              setFormInput(edit.updated_src);
+              return edit.updated_src;
+            }}
+            onDelete={(edit) => {
+              setFormInput(edit.updated_src);
+              return edit.updated_src;
+            }}
+            onAdd={(edit) => {
+              setFormInput(edit.updated_src);
+              return edit.updated_src;
+            }}
+            enableClipboard={false}
+          />
+          <p>
+            Shortcut: Press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>enter</kbd> to
+            save the value in input.
+          </p><br/>
+          <p><code>fileUrl</code> can be entered manually if you already have a url otherwise you can put the file on IPFS using option given below.</p>
         </Box>
-        <Flex p={"10"}>
-          <FormControl maxW={"lg"}>
-            {/* {fields} */}
-            <FormLabel fontWeight={"extrabold"}>File:</FormLabel>
-            <Input
-              id="fileUri"
-              onChange={(e) => handleFileChange(e)}
-              type="file"
-            />
-            <FormHelperText>Please select a File</FormHelperText>
-            {formInput?.fileUri && (
-              <Image src={formInput?.fileUri} alt={"Uploaded Image"}></Image>
-            )}
-            <FormLabel fontWeight={"extrabold"}>Contract Address:</FormLabel>
+      </Box>
+      <Flex p={"10"}>
+        <FormControl maxW={"lg"}>
+          {/* {fields} */}
+          <FormLabel fontWeight={"extrabold"}>Upload File for NFT:</FormLabel>
+          <Input
+            variant={"none"}
+            id="fileUrl"
+            onChange={(e) => handleFileChange(e)}
+            type="file"
+          />
+          <FormHelperText>Please select a File</FormHelperText>
+          {formInput?.fileUrl && (
+            <Image src={`https://gateway.pinata.cloud/ipfs/${formInput?.fileUrl?.split('://')[1]}`} alt={"Uploaded Image"}></Image>
+          )}
+          <FormLabel fontWeight={"extrabold"}>Contract Address:</FormLabel>
             <Input
               id="contractAddress"
               onChange={(e) => handleContractAddressChange(e)}
               type="text"
             />
             <FormHelperText fontWeight={"thin"}>
-              Please enter your deployed contract address. Don't have one? Go
+              Please enter your deployed contract address. Don&apos;t have one? Go
               HERE
             </FormHelperText>
-            <Button onClick={sendToIPFS}>Put NFTs on IPFS</Button>
-          </FormControl>
-          <Spacer />
-          <Box maxW="xl">
-            <Heading size={"lg"}>
-              Put your Pinata keys if you want to put File on IPFS
-            </Heading>
-            <Field placeholder1={"Pinata Key"} placeholder2={"Pinata Secret"} />
-          </Box>
-        </Flex>
-        {/* <Spacer /> */}
-      {/* </Flex> */}
-      <TableContainer>
+          <Button onClick={mintingToContract}>Mint Your NFT</Button>
+        </FormControl>
+        <Spacer />
+        <Box maxW="xl">
+          <Heading size={"lg"}>
+            Put your Pinata keys if you want to put File on IPFS
+          </Heading>
+            <FormControl maxW={"lg"}>
+            <FormLabel isInvalid={isEmpty} fontWeight={"extrabold"}>Api Key:</FormLabel>
+            <Input
+              id="pinata_key"
+              placeholder={"Pinata Key"}
+              onChange={(e)=> setKey(e.target.value)}
+              type="text"
+            />
+            <FormLabel fontWeight={"extrabold"}>Secret:</FormLabel>
+            <InputGroup>
+            <Input
+              type={show? "text" : "password"}
+              placeholder={"Pinata Secret"}
+              onChange={(e)=> setSecret(e.target.value)}
+            />
+            <InputRightElement width="4.5rem">
+              <Button h="1.75rem" size="sm" onClick={() => setShow(prevShow => !prevShow)}>
+                {show ? "Hide" : "Show"}
+              </Button>
+            </InputRightElement>
+            </InputGroup>
+            <FormHelperText>{' '} <Link color={"blue.200"} href="https://app.pinata.cloud">Get it from here</Link></FormHelperText>
+            </FormControl>
+        </Box>
+      </Flex>
+      <TableContainer size="xl">
         <Table variant={"striped"}>
           <TableCaption>Information for minting NFTs on explorers</TableCaption>
           <Thead>
             <Tr>
-              <Th>Metadata (Strings)</Th>
-              <Th>IPFS hash (Bytes)</Th>
+              <Th>#</Th>
+              <Th>Key (Strings)</Th>
+              <Th>Value (Bytes)</Th>
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>metadata</Td>
-              <Td>{metadataBytes}</Td>
-            </Tr>
+            {/*  */}
+            {Object.keys(formInput).map((item, index) => {
+              return (
+                <Tr key={index}>
+                  <Td>{index + 1}</Td>
+                  <Td>{item}</Td>
+                  <Td>{char2Bytes(formInput[item])}</Td>
+                </Tr>
+              );
+            })}
           </Tbody>
         </Table>
       </TableContainer>
