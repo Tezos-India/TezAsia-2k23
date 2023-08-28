@@ -116,7 +116,7 @@ export const Homepage = () => {
         style={{ backgroundColor: "rgba(219, 112, 199, 1)" }}
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          <Card title="Play to Earn" description="Stake Tezos and win" />
+          <Card title="Play to Earn" description="Stake Tezos and win." />
           <Card
             title="Tezos Blockchain"
             description="Our games are powered by Tezos ensuring transparency, fairness, and security."
@@ -128,7 +128,7 @@ export const Homepage = () => {
           />
         </div>
         <div className="flex justify-center">
-          <Link href="/aboutus">
+          <Link href="/AboutUs">
             <button className="text-white text-3xl bg-gradient-to-br from-purple-500 to-purple-700 hover:from-purple-400 hover:to-purple-600 transition duration-300 ease-in-out transform hover:translate-y-1 px-10 py-3.5 font-semibold rounded-full shadow-xl">
               Explore More!
             </button>
@@ -146,11 +146,11 @@ export const Homepage = () => {
             chess piece is tied to a unique NFT, adding a captivating new
             dimension to your gameplay.
           </p>
-
-          <button className="text-white text-3xl bg-gradient-to-br from-gray-800 to-blue-900 hover:from-gray-700 hover:to-blue-800 transition-all duration-300 ease-in-out transform hover:translate-y-1 px-10 py-3.5 font-semibold rounded-full shadow-2xl">
-            Play Now
-          </button>
-
+          <Link href="/Library">
+            <button className="text-white text-3xl bg-gradient-to-br from-gray-800 to-blue-900 hover:from-gray-700 hover:to-blue-800 transition-all duration-300 ease-in-out transform hover:translate-y-1 px-10 py-3.5 font-semibold rounded-full shadow-2xl">
+              Play Now
+            </button>
+          </Link>
         </div>
         <div className="relative mt-12 lg:mt-0 z-10">
           <Image src="/2.png" alt="Chess Image" width={462} height={437} />

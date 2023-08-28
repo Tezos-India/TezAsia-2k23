@@ -7,7 +7,7 @@ export default function MultiLayerParallax() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "110%"]);
 
   return (
     <div ref={ref} className="w-full h-screen overflow-hidden relative grid place-items-center " >
@@ -15,7 +15,7 @@ export default function MultiLayerParallax() {
         style={{ y: textY }}
         className="font-bold text-white text-7xl md:text-8xl relative z-10 pb-[400px]"
       >
-        Explore our core Features.
+        Explore our core Features
       </motion.h1>
       <div
         className="absolute inset-0 z-20 mt-[345px]"

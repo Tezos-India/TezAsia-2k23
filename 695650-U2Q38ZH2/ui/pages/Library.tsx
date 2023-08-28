@@ -20,8 +20,9 @@ const Library = () => {
   const games = [
     {
       title: "Chess",
-      short_desc: "Collect, Play, and Conquer...",
-      long_desc: "This is the long description of the game...",
+      short_desc: "Strategize, Challenge, and Checkmate!",
+      long_desc:
+        "Chess is a two-player, abstract strategy game that simulates medieval warfare on an 8x8 board. Players command an army filled with various pieces, each with its unique moves – from the cunning knight's L-shaped move to the powerful queen's dominance over the board. The game's objective is simple yet challenging: trap the opposing king in a position known as 'checkmate,' where escape is impossible. As you immerse yourself, you'll not only enjoy the thrill of the battle but also enhance your cognitive abilities, improve memory, and foster strategic thinking. Whether you're a beginner or a grandmaster, every game is a new journey. Dive in and let the timeless duel begin!",
       review_stars: "4.5",
       max_users: "12k",
       img: "/chess_thumb.jpg",
@@ -29,7 +30,7 @@ const Library = () => {
       tags: ["strategy", "multiplayer"],
     },
   ];
-
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-black to-gray-900">
       <Particles
@@ -70,24 +71,23 @@ const Library = () => {
             </span>
           </div>
 
-            {games
-              .filter((game) =>
-                game.title.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-              .map((game) => (
-                <LargeCard
-                  key={game.title}
-                  title={game.title}
-                  short_desc={game.short_desc}
-                  long_desc={game.long_desc}
-                  review_stars={game.review_stars}
-                  max_users={game.max_users}
-                  img={game.img}
-                  link={game.link}
-                  tags={game.tags} // Added tags
-                />
-              ))}
-      
+          {games
+            .filter((game) =>
+              game.title.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            .map((game) => (
+              <LargeCard
+                key={game.title}
+                title={game.title}
+                short_desc={game.short_desc}
+                long_desc={game.long_desc}
+                review_stars={game.review_stars}
+                max_users={game.max_users}
+                img={game.img}
+                link={game.link}
+                tags={game.tags} // Added tags
+              />
+            ))}
         </div>
 
         <Footer />
