@@ -1,0 +1,33 @@
+#include "./answerNft.jsligo"
+const default_storage = {
+    administrators: Set.literal(
+        list(["tz1SpVVF9iiw2vXxYzMjstCGVu7Dwp9ZzSTA" as address])
+    ) as set<address>,
+    offers: Map.empty as map<nat, offer>,
+    ledger: Big_map.empty as NFT.Ledger.t,
+    metadata: Big_map.literal(
+        list(
+            [
+                ["", bytes `tezos-storage:data`],
+                [
+                    "data",
+                    bytes
+                    `{
+    "name":"AnswerNFT Marketplace",
+    "description":"Storing answer as NFT minting selling buying them",
+    "version":"0.0.1",
+    "license":{"name":"MIT"},
+    "authors":["Saksham Bisen"],
+    "homepage":"",
+    "interfaces":["TZIP-012"],
+    "errors": [],
+    "views": []
+    }`
+                ]
+            ]
+        )
+    ) as NFT.Metadata.t,
+    token_metadata: Big_map.empty as NFT.TokenMetadata.t,
+    operators: Big_map.empty as NFT.Operators.t,
+    token_ids: Set.empty as set<NFT.token_id>
+};
