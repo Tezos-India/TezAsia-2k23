@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-
+import { useRouter } from "next/router";
 type FAQPageProps = {
   id: string;
 };
 
 const FAQPage: React.FC<FAQPageProps> = ({ id }) => {
+
+  const router = useRouter();
+
+  const handleContactClick = () => {
+    router.push("/contact");
+  };
+
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const faqData = [
@@ -89,7 +96,7 @@ const FAQPage: React.FC<FAQPageProps> = ({ id }) => {
         ))}
       </div>
       <div className="text-center pt-12 text-xl font-semibold text-gray-400 cursor-pointer hover:text-white">
-        {`Can't find your question?`} <span className="underline">Contact Us!</span>
+        {`Can't find your question?`} <span className="underline" onClick={handleContactClick}>Contact Us!</span>
       </div>
     </div>
   );

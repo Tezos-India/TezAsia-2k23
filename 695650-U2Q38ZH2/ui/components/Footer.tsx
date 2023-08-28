@@ -9,7 +9,8 @@ export const Footer = () => {
       <div className="border-t border-white opacity-50 mb-10" />
       <div className="flex justify-center space-x-8 mb-6">
         <a href="/" className="text-2xl text-gray-400 hover:text-white transition duration-200">Home</a>
-        <a href="/AboutUs" className="text-2xl text-gray-400 hover:text-white transition duration-200">About</a>
+        <a href="/aboutus" className="text-2xl text-gray-400 hover:text-white transition duration-200">About</a>
+        <a href="/contact" className="text-2xl text-gray-400 hover:text-white transition duration-200">Contact Us</a>
         <a href="/AboutUs#faq-section" className="text-2xl text-gray-400 hover:text-white transition duration-200">FAQ</a>
       </div>
       <div className="flex justify-center space-x-5 mb-6">
