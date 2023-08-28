@@ -13,7 +13,7 @@ export default function OffersPage() {
   return (
     <Paper>
       <Typography sx={{ paddingBottom: "10px" }} variant="h5">
-        Sell my bottles
+        Sell AnswerNFTs
       </Typography>
       {nftContratTokenMetadataMap.size > 0 ? (
         <Fragment>//TODO</Fragment>

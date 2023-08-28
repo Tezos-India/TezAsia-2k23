@@ -1,3 +1,4 @@
+import sha256 from "sha256";
 import {
   AddCircleOutlined,
   Close,
@@ -45,9 +46,12 @@ export default function MintPage() {
   const isTablet = useMediaQuery("(min-width:600px)");
 
   const validationSchema = yup.object({
-    name: yup.string().required("Name is required"),
-    description: yup.string().required("Description is required"),
-    symbol: yup.string().required("Symbol is required"),
+    name: yup.string().required("Question is required!"),
+    symbol: yup.string().required("Symbol is required!"),
+    question: yup.string().required("Question Description is required, write the question again if it is enough!"),
+    answerType: yup.string().required("Answer Type is required!"),
+    answerLength: yup.string().required("Answer Length is required!"),
+    answer: yup.string().required("Answer is required!")
   });
 
   const formik = useFormik({
@@ -55,21 +59,22 @@ export default function MintPage() {
       name: "",
       description: "",
       question: "",
-      questionType: "",
-      questionLength: "",
+      answerType: "",
+      answerLength: "",
       token_id: 0,
       symbol: "AnsNFT",
-      answerHash: "",
+      answer: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      values.description = `QuestionDescription: ${values.question} QuestionType: ${values.questionType} QuestionLength(in Chars) ${values.questionLength}`
+      const newDescription = `QuestionDescription: ${values.question} AnswerType: ${values.answerType} AnswerLength(in Chars) ${values.answerLength}`;
+      console.log(values);
       mint({
         name: values.name,
-        description: values.description,
+        description: newDescription,
         token_id: values.token_id,
         symbol: values.symbol,
-        answerHash: values.answerHash,
+        answerHash: sha256(values.answer),
       } as TZIP21TokenMetadata);
     },
   });
@@ -101,6 +106,7 @@ export default function MintPage() {
   const { enqueueSnackbar } = useSnackbar();
 
   const mint = async (newTokenDefinition: TZIP21TokenMetadata) => {
+    console.log(newTokenDefinition);
     try {
       //IPFS
       if (file) {
@@ -143,7 +149,7 @@ export default function MintPage() {
             char2Bytes(thumbnailUri) as bytes,
             char2Bytes(newTokenDefinition.answerHash) as bytes
           )
-          .send();
+          .send({amount: 1.5});
 
         //close directly the form
         setFormOpen(false);
@@ -195,7 +201,6 @@ export default function MintPage() {
     <Paper>
       {storage ? (
         <Button
-          disabled={storage.administrators.indexOf(userAddress! as address) < 0}
           sx={{
             p: 1,
             position: "absolute",
@@ -205,10 +210,7 @@ export default function MintPage() {
           }}
           onClick={toggleDrawer(!formOpen)}
         >
-          {" Mint Form " +
-            (storage!.administrators.indexOf(userAddress! as address) < 0
-              ? " (You are not admin)"
-              : "")}
+          Mint Form
           <OpenWithIcon />
         </Button>
       ) : (
@@ -251,10 +253,10 @@ export default function MintPage() {
           </Button>
           <form onSubmit={formik.handleSubmit}>
             <Stack spacing={2} margin={2} alignContent={"center"}>
-              <Typography variant="h5">Mint a new collection</Typography>
+              <Typography variant="h5">Mint a new collection (Minting Fee: 1Tez)</Typography>
 
               <TextField
-                id="standard-basic"
+                id="standard-basic-token_id"
                 name="token_id"
                 label="token_id"
                 value={formik.values.token_id}
@@ -262,9 +264,9 @@ export default function MintPage() {
                 variant="filled"
               />
               <TextField
-                id="standard-basic"
+                id="standar-basic-question"
                 name="name"
-                label="Question (Best in 1-line)"
+                label="Question"
                 required
                 value={formik.values.name}
                 onChange={formik.handleChange}
@@ -273,20 +275,22 @@ export default function MintPage() {
                 variant="filled"
               />
               <TextField
-                id="standard-basic"
+                id="standar-basic-symbol"
                 name="symbol"
                 label="symbol"
                 required
                 value={formik.values.symbol}
                 onChange={formik.handleChange}
                 error={formik.touched.symbol && Boolean(formik.errors.symbol)}
-                helperText={formik.touched.symbol && formik.errors.symbol}
+                helperText={
+                  formik.touched.symbol && formik.errors.symbol
+                }
                 variant="filled"
               />
               <TextField
-                id="standard-basic"
+                id="standar-basic-description"
                 name="question"
-                label="Question Description (Conditions, Answer Hints, Explanations, Contexts or References)"
+                label="Question Description"
                 required
                 value={formik.values.question}
                 onChange={formik.handleChange}
@@ -295,39 +299,56 @@ export default function MintPage() {
                   Boolean(formik.errors.question)
                 }
                 helperText={
-                  formik.touched.question && formik.errors.question
+                  `Conditions, Answer Hints, Explanations, Contexts or References ${formik.touched.question && formik.errors.question}`
                 }
                 variant="filled"
               />
               <TextField
-                id="standard-basic"
-                name="questionType"
-                label="Question Type (Text, Number, Yes or No, Alphanumeric)"
+                id="standar-basic-qtype"
+                name="answerType"
+                label="Answer Type"
                 required
-                value={formik.values.questionType}
+                value={formik.values.answerType}
                 onChange={formik.handleChange}
                 error={
-                  formik.touched.questionType &&
-                  Boolean(formik.errors.questionType)
+                  formik.touched.answerType &&
+                  Boolean(formik.errors.answerType)
                 }
                 helperText={
-                  formik.touched.questionType && formik.errors.questionType
+                  `Text, Number, Yes or No, Alphanumeric ${formik.touched.answerType && formik.errors.answerType}`
                 }
                 variant="filled"
               />
               <TextField
-                id="standard-basic"
-                name="questionLength"
-                label="Question Length (Length of all characters (Include Spaces also))"
+                id="standar-basic-qlength"
+                name="answerLength"
+                label="Answer Length"
                 required
-                value={formik.values.questionLength}
+                value={formik.values.answerLength}
                 onChange={formik.handleChange}
                 error={
-                  formik.touched.questionLength &&
-                  Boolean(formik.errors.questionLength)
+                  formik.touched.answerLength &&
+                  Boolean(formik.errors.answerLength)
                 }
                 helperText={
-                  formik.touched.questionLength && formik.errors.questionLength
+                  `Length of all characters, Count Spaces also (if any) ${formik.touched.answerLength && formik.errors.answerLength}`
+                }
+                variant="filled"
+              />
+              <TextField
+                id="standar-basic-ans"
+                type="password"
+                name="answer"
+                label="Answer To Question"
+                required
+                value={formik.values.answer}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.answer &&
+                  Boolean(formik.errors.answer)
+                }
+                helperText={
+                  formik.touched.answer && formik.errors.answer
                 }
                 variant="filled"
               />
@@ -338,7 +359,7 @@ export default function MintPage() {
               )}
               <Button variant="contained" component="label" color="primary">
                 <AddCircleOutlined />
-                Upload an image
+                Upload an Image(If required with question)
                 <input
                   type="file"
                   hidden
@@ -378,16 +399,10 @@ export default function MintPage() {
                     display: "block",
                     maxWidth: "80vw",
                     overflow: "hidden",
+                    paddingTop:"2vw",
                   }}
                   key={token_id.toString()}
                 >
-                  <CardHeader
-                    titleTypographyProps={
-                      isTablet ? { fontSize: "1.5em" } : { fontSize: "1em" }
-                    }
-                    title={token.name}
-                  />
-
                   <CardMedia
                     sx={
                       isTablet
@@ -401,10 +416,15 @@ export default function MintPage() {
                     component="img"
                     image={token.thumbnailUri?.replace(
                       "ipfs://",
-                      "https://gateway.pinata.cloud/ipfs/"
+                      `https://gateway.pinata.cloud/ipfs/`,
                     )}
                   />
-
+                  <CardHeader
+                    titleTypographyProps={
+                      isTablet ? { fontSize: "1.3em" } : { fontSize: "0.8em" }
+                    }
+                    title={token.name}
+                  />
                   <CardContent>
                     <Box>
                       <Typography>{"ID : " + token_id}</Typography>
@@ -450,7 +470,7 @@ export default function MintPage() {
         </Box>
       ) : (
         <Typography sx={{ py: "2em" }} variant="h4">
-          Sorry, there is not NFT yet, you need to mint bottles first
+          Sorry, there is not NFT yet, you need to mint first
         </Typography>
       )}
     </Paper>

@@ -69,7 +69,7 @@ export default function Navigator(props: DrawerProps) {
               path: "/" + PagesPaths.CATALOG,
             },
             {
-              id: "Sell bottles",
+              id: "Sell NFTs",
               icon: <SellIcon />,
               path: "/" + PagesPaths.OFFERS,
             },
