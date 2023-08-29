@@ -9,6 +9,7 @@ const errorMap: Map<string, string> = new Map([
     "Not enough funds, you need to pay at least quantity * bif price to get the tokens",
   ],
   ["6", "Cannot find the contract relative to implicit address"],
+  
 ]);
 
 export class TransactionInvalidBeaconError {

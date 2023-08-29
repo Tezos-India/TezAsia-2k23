@@ -1,6 +1,7 @@
 import SellIcon from "@mui/icons-material/Sell";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SummarizeIcon from '@mui/icons-material/Summarize';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import { Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -16,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { UserContext, UserContextType } from "./App";
+import { address } from "./type-aliases";
 
 export enum PagesPaths {
   CATALOG = "",
@@ -35,10 +37,10 @@ const item = {
 export default function Navigator(props: DrawerProps) {
   const { ...other } = props;
   const location = useLocation();
-  const { userAddress, nftContratTokenMetadataMap } = React.useContext(
+  const { userAddress, nftContratTokenMetadataMap, storage, nftContrat } = React.useContext(
     UserContext
   ) as UserContextType;
-
+  const [disableWithdraw, setDisableWithdraw] = useState<boolean>(false);
   const [categories, setCategories] = useState<
     {
       id: string;
@@ -56,7 +58,28 @@ export default function Navigator(props: DrawerProps) {
       ],
     },
   ]);
+  const withdrawAdmin = async () => {
+    try {
+      const op = await nftContrat?.methods
+        .withdraw().send();
+      await op?.confirmation(2);
 
+      enqueueSnackbar(
+        "AnswerNFT Miniting Fees Withdrawed",
+        { variant: "success" }
+      );
+
+      refreshUserContextOnPageReload(); //force all app to refresh the context
+    } catch (error) {
+      console.table(`Error: ${JSON.stringify(error, null, 2)}`);
+      let tibe: TransactionInvalidBeaconError =
+        new TransactionInvalidBeaconError(error);
+      enqueueSnackbar(tibe.data_message, {
+        variant: "error",
+        autoHideDuration: 10000,
+      });
+    }
+  }
   useEffect(() => {
     if (nftContratTokenMetadataMap && nftContratTokenMetadataMap.size > 0)
       setCategories([
@@ -129,6 +152,31 @@ export default function Navigator(props: DrawerProps) {
                   <Divider sx={{ mt: 2 }} />
                 </Box>
               ))
+            : ""}
+          {(storage && storage.administrators.indexOf(userAddress! as address) >= 0) ?
+              <Box key="admin-dqwiq14c1-withdraw">
+                <ListItem sx={{ py: 1, px: 2 }}>
+                  <ListItemText>
+                    <Typography variant="h5">Withdraw(Admin only)</Typography>
+                  </ListItemText>
+                </ListItem>
+                  <ListItem
+                    disablePadding
+                    key="child-admin-withdraw"
+                  >
+                    <ListItemButton disbaled={disableWithdraw} onClick={() => {
+                  setDisableWithdraw(true);
+                  nftContract.methods
+                      setDisableWithdraw(false);
+                    }}>
+                        <Stack direction="row">
+                          <ListItemIcon><MonetizationOnIcon/></ListItemIcon>
+                          <ListItemText>Withdraw</ListItemText>
+                        </Stack>
+                    </ListItemButton>
+                  </ListItem>
+                <Divider sx={{ mt: 2 }} />
+              </Box>
             : ""}
         </List>
       </Box>
