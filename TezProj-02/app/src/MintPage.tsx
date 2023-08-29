@@ -66,11 +66,11 @@ export default function MintPage() {
       answer: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(true);
       const newDescription = `QuestionDescription: ${values.question} AnswerType: ${values.answerType} AnswerLength(in Chars) ${values.answerLength}`;
       console.log(values);
-      mint({
+      await mint({
         name: values.name,
         description: newDescription,
         token_id: values.token_id,
@@ -151,7 +151,7 @@ export default function MintPage() {
             char2Bytes(thumbnailUri) as bytes,
             char2Bytes(newTokenDefinition.answerHash) as bytes
           )
-          .send({amount: 1.5});
+          .send({amount: 1000010, mutez:true});
 
         //close directly the form
         setFormOpen(false);

@@ -64,6 +64,7 @@ type Methods = {
         operator: address,
         token_id: nat,
     ) => Promise<void>;
+    withdraw: () => Promise<void>;
 };
 
 type MethodsObject = {
@@ -109,6 +110,7 @@ type MethodsObject = {
         operator: address,
         token_id: nat,
     }) => Promise<void>;
+    withdraw: () => Promise<void>;
 };
 
 type contractTypes = { methods: Methods, methodsObject: MethodsObject, storage: Storage, code: { __type: 'AnswerNftCode', protocol: string, code: object[] } };

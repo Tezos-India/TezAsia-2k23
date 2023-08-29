@@ -9,6 +9,7 @@
       ["5", "Not enough funds, you need to pay at least quantity * offer price to get the tokens"],
       ["6", "Cannot find the contract relative to implicit address"],
       ["7", "Answer Hash provided is Incorrect Cannot buy"],
+      ["8", "Invaild question answer not stored"]
     ]));
 */
 
@@ -128,15 +129,10 @@ const mint = (
       Some: (x : tez) => x,
       None: () => (failwith("Not valid amount") as tez)
     });
-    let receiverAdd : contract<unit> =
-    match (((Tezos.get_contract_opt (Tezos.get_sender())) as option<contract<unit>>), {
-      Some: (contract : contract<unit>) => contract,
-      None: () => ((failwith ("Not a contract")) as contract<unit>)
-    });
     opsList = list([Tezos.transaction(
       unit,
       amtEx,
-      receiverAdd
+      Tezos.get_contract_with_error(Tezos.get_sender(), "6")
     )]) as list<operation>;
   }
   const token_info: map<string, bytes> =
@@ -225,9 +221,9 @@ const buy = ([token_id, seller, answerHash]: [nat, address, bytes], s: storage):
         let storedMetadata : NFT.TokenMetadata.data = NFT.TokenMetadata.get_token_metadata(token_id, s.token_metadata);
         let storedAnswerHash :  bytes = match(Map.find_opt("answerHash", storedMetadata.token_info),{
           Some: (sAnsHash as bytes) => sAnsHash,
-          None: () => (failwith("Invaild question answer not stores") as bytes)
+          None: () => (failwith("8") as bytes)
         });
-        if(storedAnswerHash != answerHash) return failwith("Incorrect Answer Hash");
+        if(storedAnswerHash != answerHash) return failwith("7");
 
         //check if amount have been paid enough
         if (Tezos.get_amount() < offer.price * (1 as mutez)) return failwith(
@@ -263,4 +259,22 @@ const buy = ([token_id, seller, answerHash]: [nat, address, bytes], s: storage):
       }
     }
   )
+};
+@entry
+const withdraw = (
+  _: unit,
+  s: storage
+): ret => {
+  if (!Set.mem(Tezos.get_sender(), s.administrators)) return failwith("1");
+  const contBalance = Tezos.get_balance();
+  return [
+    list([
+      Tezos.transaction(
+        unit,          
+        contBalance,     
+        Tezos.get_contract_with_error(Tezos.get_sender(), "6")
+      )
+    ]) as list<operation>,
+    s
+  ]
 };

@@ -14,6 +14,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { TransactionInvalidBeaconError } from "./TransactionInvalidBeaconError";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { UserContext, UserContextType } from "./App";
@@ -24,7 +25,6 @@ export enum PagesPaths {
   OFFERS = "offers",
   MINT = "mint",
 }
-
 const item = {
   py: "2px",
   px: 3,
@@ -37,9 +37,13 @@ const item = {
 export default function Navigator(props: DrawerProps) {
   const { ...other } = props;
   const location = useLocation();
-  const { userAddress, nftContratTokenMetadataMap, storage, nftContrat } = React.useContext(
-    UserContext
-  ) as UserContextType;
+  const {
+    userAddress,
+    nftContratTokenMetadataMap,
+    storage,
+    nftContrat,
+    refreshUserContextOnPageReload
+  } = React.useContext(UserContext) as UserContextType;
   const [disableWithdraw, setDisableWithdraw] = useState<boolean>(false);
   const [categories, setCategories] = useState<
     {
@@ -61,12 +65,12 @@ export default function Navigator(props: DrawerProps) {
   const withdrawAdmin = async () => {
     try {
       const op = await nftContrat?.methods
-        .withdraw().send();
+        .withdraw().send({amount: 10, mutez: true});
       await op?.confirmation(2);
 
-      enqueueSnackbar(
+      console.log(
         "AnswerNFT Miniting Fees Withdrawed",
-        { variant: "success" }
+        // { variant: "success" }
       );
 
       refreshUserContextOnPageReload(); //force all app to refresh the context
@@ -74,10 +78,11 @@ export default function Navigator(props: DrawerProps) {
       console.table(`Error: ${JSON.stringify(error, null, 2)}`);
       let tibe: TransactionInvalidBeaconError =
         new TransactionInvalidBeaconError(error);
-      enqueueSnackbar(tibe.data_message, {
-        variant: "error",
-        autoHideDuration: 10000,
-      });
+      console.log(tibe.data_message)
+      //   , {
+      //   variant: "error",
+      //   autoHideDuration: 10000,
+      // });
     }
   }
   useEffect(() => {
@@ -164,9 +169,9 @@ export default function Navigator(props: DrawerProps) {
                     disablePadding
                     key="child-admin-withdraw"
                   >
-                    <ListItemButton disbaled={disableWithdraw} onClick={() => {
-                  setDisableWithdraw(true);
-                  nftContract.methods
+                    <ListItemButton disabled={disableWithdraw} onClick={async () => {
+                      setDisableWithdraw(true);
+                      await withdrawAdmin();
                       setDisableWithdraw(false);
                     }}>
                         <Stack direction="row">
