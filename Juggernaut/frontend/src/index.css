@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&family=Righteous&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: #101010;
+  color: #fff;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  h1 {
+    @apply text-gradient w-fit py-2 font-secondary text-h1;
+  }
+  h2 {
+    @apply text-gradient w-fit pb-2 font-secondary text-h2;
+  }
+  h3 {
+    @apply w-fit font-primary text-h3;
+  }
+  h4 {
+    @apply w-fit font-primary text-h4;
+  }
+}
+
+@layer utilities {
+  .bg-gradient {
+    @apply bg-gradient-to-r from-themePink via-themeBlue to-activeGreen;
+  }
+  .bg-gradient-secondary {
+    @apply bg-gradient-to-r from-themePink to-themeBlue;
+  }
+  .bg-gradient-reverse {
+    @apply bg-gradient-to-r from-activeGreen via-themeBlue to-themePink;
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-themePink to-themeBlue bg-clip-text text-transparent;
+  }
+  .pop-on-hover {
+    @apply transition duration-300 ease-in-out hover:scale-105;
+  }
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(-25%);
+      animation-timing-function: linear;
+    }
+    50% {
+      transform: none;
+      animation-timing-function: linear;
+    }
+  }
+  .animate-float {
+    animation: float 3s infinite;
+  }
+  
+}
