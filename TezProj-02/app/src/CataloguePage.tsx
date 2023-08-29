@@ -1,3 +1,4 @@
+import sha256 from "sha256";
 import { InfoOutlined } from "@mui/icons-material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
@@ -10,12 +11,13 @@ import {
   CardMedia,
   ImageList,
   Pagination,
+  TextField,
   Tooltip,
   useMediaQuery,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-
+import { char2Bytes } from "@taquito/utils";
 import BigNumber from "bignumber.js";
 import { useFormik } from "formik";
 import { useSnackbar } from "notistack";
@@ -24,7 +26,7 @@ import * as yup from "yup";
 import { UserContext, UserContextType } from "./App";
 import ConnectButton from "./ConnectWallet";
 import { TransactionInvalidBeaconError } from "./TransactionInvalidBeaconError";
-import { address, nat } from "./type-aliases";
+import { address, nat, bytes } from "./type-aliases";
 
 const itemPerPage: number = 6;
 
@@ -37,7 +39,7 @@ type Offer = {
 
 const validationSchema = yup.object({});
 
-export default function WineCataloguePage() {
+export default function CataloguePage() {
   const {
     Tezos,
     nftContratTokenMetadataMap,
@@ -55,25 +57,27 @@ export default function WineCataloguePage() {
   const formik = useFormik({
     initialValues: {
       quantity: 1,
+      answer:""
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
       console.log("onSubmit: (values)", values, selectedOfferEntry);
-      buy(selectedOfferEntry!);
+      buy(selectedOfferEntry!, sha256(values.answer));
     },
   });
   const { enqueueSnackbar } = useSnackbar();
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(1);
 
-  const buy = async (selectedOfferEntry: OfferEntry) => {
+  const buy = async (selectedOfferEntry: OfferEntry, inputAnswer: string) => {
     try {
       const op = await nftContrat?.methods
         .buy(
           BigNumber(selectedOfferEntry[0]) as nat,
-          selectedOfferEntry[1].owner
+          selectedOfferEntry[1].owner,
+          char2Bytes(inputAnswer) as bytes
         )
         .send({
-          amount: selectedOfferEntry[1].price.toNumber(),
+          amount: selectedOfferEntry[1].price.toNumber() + 1,
           mutez: true,
         });
 
@@ -82,7 +86,7 @@ export default function WineCataloguePage() {
       enqueueSnackbar(
         "Bought " +
           1 +
-          " unit of Wine collection (token_id:" +
+          " unit of collection (token_id:" +
           selectedOfferEntry[0] +
           ")",
         {
@@ -106,7 +110,7 @@ export default function WineCataloguePage() {
   return (
     <Paper>
       <Typography style={{ paddingBottom: "10px" }} variant="h5">
-        Wine catalogue
+        QnA Questions
       </Typography>
 
       {storage?.offers && storage?.offers.size != 0 ? (
@@ -132,7 +136,12 @@ export default function WineCataloguePage() {
                   : false
               )
               .map(([token_id, offer]) => (
-                <Card key={offer.owner + "-" + token_id.toString()}>
+                <Card
+                  sx={{
+                    paddingTop:"4vw"
+                  }}
+                  key={offer.owner + "-" + token_id.toString()}
+                >
                   <CardHeader
                     avatar={
                       <Tooltip
@@ -173,7 +182,7 @@ export default function WineCataloguePage() {
                       )}
                   />
 
-                  <CardContent>
+                  <CardContent sx={{marginTop: "3vw"}}>
                     <Box>
                       <Typography variant="body2">
                         {" "}
@@ -202,8 +211,23 @@ export default function WineCataloguePage() {
                           setSelectedOfferEntry([token_id, offer]);
                           formik.handleSubmit(values);
                         }}
-                      >
-                        <Button type="submit" aria-label="add to favorites">
+                        >
+                          <TextField
+                            sx={{width:"100%"}}
+                          id="standar-basic-answer"
+                          name="answer"
+                          label="Answer To Question"
+                          required
+                          value={formik.values.answer}
+                          onChange={formik.handleChange}
+                          error={formik.touched.answer && Boolean(formik.errors.answer)}
+                          helperText={
+                            formik.touched.answer && formik.errors.answer
+                          }
+                          variant="filled"
+                        />
+                        <br />
+                        <Button type="submit" aria-label="add to favorites" sx={{marginTop:"2vw"}}>
                           <ShoppingCartIcon /> BUY
                         </Button>
                       </form>
@@ -215,8 +239,7 @@ export default function WineCataloguePage() {
         </Fragment>
       ) : (
         <Typography sx={{ py: "2em" }} variant="h4">
-          Sorry, there is not NFT to buy yet, you need to mint or sell bottles
-          first
+          Sorry, there is not NFT to buy yet, you need to mint or sell first
         </Typography>
       )}
     </Paper>

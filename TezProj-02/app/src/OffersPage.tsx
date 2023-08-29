@@ -137,7 +137,7 @@ export default function OffersPage() {
       await op?.confirmation(2);
 
       enqueueSnackbar(
-        "Wine collection (token_id=" +
+        "AnswerNFT collection (token_id=" +
           token_id +
           ") offer for " +
           1 +
@@ -165,7 +165,7 @@ export default function OffersPage() {
   return (
     <Paper>
       <Typography style={{ paddingBottom: "10px" }} variant="h5">
-        Sell my bottles
+        Sell my AnswerNFTs
       </Typography>
       {ownerTokenIds && ownerTokenIds.size != 0 ? (
         <Fragment>
@@ -190,7 +190,12 @@ export default function OffersPage() {
                   : false
               )
               .map(([token_id]) => (
-                <Card key={token_id + "-" + token_id.toString()}>
+                <Card
+                  sx={{
+                    paddingTop:"4vw"
+                  }}
+                  key={token_id + "-" + token_id.toString()}
+                >
                   <CardHeader
                     avatar={
                       <Tooltip
@@ -228,7 +233,7 @@ export default function OffersPage() {
                       )}
                   />
 
-                  <CardContent>
+                  <CardContent sx={{marginTop: "3vw"}}>
                     <Box>
                       <Typography variant="body2">
                         {offersTokenIDMap.get(token_id)
@@ -304,7 +309,7 @@ export default function OffersPage() {
         </Fragment>
       ) : (
         <Typography sx={{ py: "2em" }} variant="h4">
-          Sorry, you don't own any bottles, buy or mint some first
+          Sorry, you don't own any NFTs, buy or mint some first
         </Typography>
       )}
     </Paper>

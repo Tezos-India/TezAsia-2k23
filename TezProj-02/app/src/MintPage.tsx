@@ -66,7 +66,8 @@ export default function MintPage() {
       answer: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, { setSubmitting }) => {
+      setSubmitting(true);
       const newDescription = `QuestionDescription: ${values.question} AnswerType: ${values.answerType} AnswerLength(in Chars) ${values.answerLength}`;
       console.log(values);
       mint({
@@ -76,6 +77,7 @@ export default function MintPage() {
         symbol: values.symbol,
         answerHash: sha256(values.answer),
       } as TZIP21TokenMetadata);
+      setSubmitting(false);
     },
   });
 
@@ -374,7 +376,9 @@ export default function MintPage() {
                 />
               </Button>
 
-              <Button variant="contained" type="submit">
+              <Button variant="contained" type="submit"
+                disabled={formik.isSubmitting}
+              >
                 Mint
               </Button>
             </Stack>
@@ -382,7 +386,7 @@ export default function MintPage() {
         </Box>
       </SwipeableDrawer>
 
-      <Typography variant="h5">Mint your Answer NFT collection</Typography>
+      <Typography variant="h5">Mint your Answer NFT collection: Here are some NFTs</Typography>
 
       {nftContratTokenMetadataMap.size != 0 ? (
         <Box sx={{ width: "70vw" }}>
