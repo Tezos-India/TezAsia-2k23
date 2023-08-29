@@ -70,7 +70,7 @@ const AboutUs = () => {
           {`NFT's`}
         </div>
         <div className="flex items-center space-x-8">
-          <Image src="/astro2.png" alt="NFT" width={200} height={400} />
+          <Image src="/nfts.png" alt="NFT" width={500} height={1000} />
           <div className="text-gray-300 text-justify flex-1">
             {`Non-Fungible Tokens (NFTs) have revolutionized the digital asset
             space, providing verifiable uniqueness and ownership of digital
