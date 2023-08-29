@@ -6,7 +6,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import "./App.css";
 import { NftWalletType, Storage } from "./nft.types";
 import Paperbase from "./Paperbase";
-import { bytes, nat } from "./type-aliases";
+import { nat } from "./type-aliases";
 
 export type TZIP21TokenMetadata = TokenMetadata & {
   artifactUri?: string; //A URI (as defined in the JSON Schema Specification) to the asset.
