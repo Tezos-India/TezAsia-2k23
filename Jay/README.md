@@ -5,3 +5,5 @@ In the realm of higher education, the reliance on centralized databases for stud
 
 ## The Solution
 ![uni diagram 1](utils/img2.png)
+Our solution is a blockchain-based web application that securely stores student data, eliminating vulnerabilities associated with centralized databases. This technology ensures data transparency, tamper resistance, and reliable record-keeping, addressing the challenges of unauthorized admissions and data manipulation prevalent in conventional systems.
+![uni diagram 2](utils/img3.png)
