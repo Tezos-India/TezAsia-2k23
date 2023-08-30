@@ -12,6 +12,10 @@ The "AnswerNFT" project leverages the uniqueness of NFTs and brings together NFT
 The idea is to mint questions, riddles, mathematical problems, and puzzles as NFTs. To acquire these NFTs, buyers must solve the associated challenge correctly. Using TypeScript, React, and Material-UI, the user interface is designed to be intuitive and engaging for creators and buyers alike.
 "AnswerNFT" aims to tap into NFT’s potential by combining NFT Economics with engaging content, providing an innovative platform for users.
 
+## Demo
+**Video Link:**
+https://drive.google.com/file/d/1WnZk6VIMi57g2s5Ou8-cPFyJ9mXnJVWq/view?usp=sharing
+
 ## Working
 
 Creators craft questions or puzzles and embed the answer hash into the NFT's metadata. Interested buyers can attempt to solve the challenge to purchase the NFT. If their answer matches the stored hash, they can buy the NFT using cryptocurrency.The "AnswerNFT" project adheres to the FA2 standard deployed on Tezos Ghostnet test network and utilizes the Ligo compiler version 0.72.0, with the protocol "Nairobi." The project's key functionalities have been developed using Taqueria, React (TypeScript), and Material UI. Taqueria facilitates the compilation, deployment, and generating of TypeScript interfaces, types, and aliases for React. The contract enables the minting, buying, and selling of NFTs and the withdrawal of funds for the Admin(who deployed the contract).
