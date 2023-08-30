@@ -40,7 +40,7 @@ export const pinataWrapper = async (name, type, image) => {
       displayUri: image,
       thumbnailUri: image,
       decimals: 0,
-
+      owner:name,
       attributes: [
         {
           name: "Owner Name",
