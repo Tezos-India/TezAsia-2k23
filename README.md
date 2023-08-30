@@ -66,15 +66,26 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 
 - **Full-Stack Web Development**: Comprehensive development approach covering both front-end (React) and back-end (Solidity) for a seamless user experience.
 
-Project Demo Photos, Videos * 
+## Project Demo Photos, Videos * 
+
+![3](https://github.com/ProgrammingPirates/TezAsia-2k23/assets/78801686/0fb85a5a-37f1-43ec-a9c5-df56dd84a7fc)
+
+![2](https://github.com/ProgrammingPirates/TezAsia-2k23/assets/78801686/470253bd-88a8-474c-8462-d22f2241ce4a)
+
+![3](https://github.com/ProgrammingPirates/TezAsia-2k23/assets/78801686/fb0118a5-7808-4e76-a08f-a780bc2eb960)
+
+
+![4](https://github.com/ProgrammingPirates/TezAsia-2k23/assets/78801686/49dcc9bb-c8af-49f3-90dc-692175180c18)
+
+
 
  
 ## Your Deployed Smart Contract's Link * ( write NA if no contract is deployed)
 
-INFURA_KEY = '254ab7d222334c87bf12345678910027'
-CONTRACT_ADDRESS = '0x66dy6492j5F212B81A1723336bDaf235b6932ha1'
-BASE_URI='https://ipfs.io/ipfs/xyz'
-ALCHMEY_API='https://eth-rinkeby.alchemyapi.io/v2/xyz'
+- INFURA_KEY = '254ab7d222334c87bf12345678910027'
+- CONTRACT_ADDRESS = '0x66dy6492j5F212B81A1723336bDaf235b6932ha1'
+- BASE_URI='https://ipfs.io/ipfs/xyz'
+- ALCHMEY_API='https://eth-rinkeby.alchemyapi.io/v2/xyz'
 
 
 Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository * 
