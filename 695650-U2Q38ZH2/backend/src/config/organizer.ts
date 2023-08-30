@@ -1,5 +1,8 @@
 const { InMemorySigner } = require("@taquito/signer");
 const { TezosToolkit } = require("@taquito/taquito");
+import { char2Bytes } from "@taquito/utils";
+import { pinataWrapper } from "./pinata";
+
 
 const Tezos = new TezosToolkit("https://ghostnet.smartpy.io");
 
@@ -209,7 +212,7 @@ export async function mintKing(player) {
 }
 
 export async function mint(batch) {
-  const tezos = initializeTezos();
+  const tezos = await initializeTezos();
   const contract_nft = tezos.wallet.at("KT1MKeXcAXCKaJ1CffQnX1VPc3G8HZUyziaF");
   try {
     console.log("inside mint");
