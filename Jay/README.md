@@ -53,10 +53,10 @@ Our solution is a blockchain-based web application that securely stores student 
 ![Demo 10](utils/demo/10.jpg) ![Demo 11](utils/demo/11.jpg)
 
 - 10 -> Snapshot of storage.
-![Demo 10](utils/demo/10.jpg) ![Demo 11](utils/demo/11.jpg)
+![Demo 10](utils/demo/12.jpg)
 
 - 11 -> Once done with all the admissions , the Admin can close the admissions and now no one can manipulate the data until the portal is opened again next year by the Admin
-![Demo 10](utils/demo/10.jpg) ![Demo 11](utils/demo/11.jpg)
+![Demo 10](utils/demo/13.jpg) ![Demo 11](utils/demo/15.jpg)
 
 ## Links
 
