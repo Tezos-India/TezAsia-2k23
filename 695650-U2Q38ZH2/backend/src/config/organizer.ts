@@ -20,7 +20,7 @@ export async function initializeTezos() {
 // Wingame function
 export async function wingame(tezos, uid, winner) {
   try {
-    const contract = tezos.wallet.at("KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN");
+    const contract = await tezos.wallet.at("KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN");
     const op = await contract.methods.wingame(uid, winner).send();
     console.log(`Hash: ${op.opHash}`);
 
@@ -45,7 +45,7 @@ Chain ID: ${result.block.chain_id}`);
 // Drawgame function
 export async function drawgame(tezos, uid) {
   try {
-    const contract = tezos.wallet.at("KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN");
+    const contract = await tezos.wallet.at("KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN");
     const op = await contract.methods.drawgame(uid).send();
     console.log(`Hash: ${op.opHash}`);
 

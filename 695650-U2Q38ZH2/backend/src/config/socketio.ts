@@ -2,13 +2,30 @@ import { Server as ServerSocket, Socket } from "socket.io";
 import { Server as HttpServer } from "http";
 import { generateId } from "../chess/helpers";
 import Game from "../chess/Game";
-import { initializeTezos, wingame, drawgame } from "./organizer";
+import {
+  initializeTezos,
+  wingame,
+  drawgame,
+  mintPawn,
+  mintKing,
+  mintQueen,
+  mintRook,
+  mintKnight,
+  mintBishop,
+} from "./organizer";
 let games: Game[] = [];
 let waitlistGameId: string | null = null;
 interface User {
   username: string;
   inGame: boolean;
+  accountAddress?: string;
 }
+function selectRandomNFT() {
+  const nftTypes = ["Pawn", "Bishop", "Knight", "Rook", "King", "Queen"];
+  const randomIndex = Math.floor(Math.random() * nftTypes.length);
+  return nftTypes[randomIndex];
+}
+
 let dev_users: { [playerId: string]: User } = {};
 export const setupSocketIO = (server: HttpServer) => {
   // const io = new ServerSocket(server);
@@ -37,6 +54,15 @@ export const setupSocketIO = (server: HttpServer) => {
       if (!_username) return;
       username = _username;
       dev_users[playerId] = { username: _username, inGame: false };
+    });
+
+    socket.on("send-account-address", (accountAddress) => {
+      console.log("Received account address:", accountAddress);
+      // Save the account address to the relevant game or user.
+      if (dev_users[playerId]) {
+        dev_users[playerId].accountAddress = accountAddress;
+        console.log(`dev users`, dev_users);
+      }
     });
 
     console.log("Client connected: " + playerId);
@@ -86,12 +112,12 @@ export const setupSocketIO = (server: HttpServer) => {
       if (gameIndex === -1) return;
       let game = games[gameIndex];
       let pIndex = game.players.findIndex((p) => p.id === playerId);
-    
+
       if (!tezosInstance) {
         console.log("Tezos  not initialized");
         return;
       }
-    
+
       try {
         const winnerString = pIndex === 1 ? "0" : "1";
         await wingame(tezosInstance, currentGameId!, winnerString);
@@ -148,11 +174,11 @@ export const setupSocketIO = (server: HttpServer) => {
         console.log("Tezos  not initialized");
         return;
       }
-    
+
       const gameIndex = games.findIndex((g) => g.id === currentGameId);
       if (gameIndex === -1) return;
       const game = games[gameIndex];
-    
+
       try {
         if (game.gameOver !== null) {
           if (game.gameOver.winner === undefined) {
@@ -160,6 +186,43 @@ export const setupSocketIO = (server: HttpServer) => {
           } else {
             const winnerString = game.gameOver.winner.toString();
             await wingame(tezosInstance, currentGameId!, winnerString);
+            const winnerAddress =
+              dev_users[game.players[game.gameOver.winner].id].accountAddress;
+            console.log(
+              game.players[game.gameOver.winner].id,
+              dev_users[game.players[game.gameOver.winner].id]
+            );
+
+            console.log(`Minting NFT for user: ${winnerAddress}`);
+            console.log(`Minting NFT for user: ${winnerAddress}`);
+            if (winnerAddress) {
+              const nftType = selectRandomNFT();
+              console.log(
+                `Minting ${nftType} NFT for user: ${
+                  dev_users[game.players[game.gameOver.winner].id]?.username
+                }`
+              );
+              switch (nftType) {
+                case "Pawn":
+                  await mintPawn(winnerAddress);
+                  break;
+                case "Bishop":
+                  await mintBishop(winnerAddress);
+                  break;
+                case "Knight":
+                  await mintKnight(winnerAddress);
+                  break;
+                case "Rook":
+                  await mintRook(winnerAddress);
+                  break;
+                case "King":
+                  await mintKing(winnerAddress);
+                  break;
+                case "Queen":
+                  await mintQueen(winnerAddress);
+                  break;
+              }
+            }
           }
         }
       } catch (err) {

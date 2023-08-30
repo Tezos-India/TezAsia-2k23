@@ -4,7 +4,6 @@ import userRoutes from "./api/user/user.routes";
 import gameRoutes from "./api/gameStats/gameStats.routes";
 import { setupSocketIO } from "./config/socketio";
 import cors from "cors";
-import { mintRook } from "./config/organizer"
 
 const PORT = process.env.PORT || 5000;
 
@@ -30,5 +29,3 @@ app.get("/", (req, res) => {
 server.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
-
-mintRook("tz1MRhZjNxhRY4qkKX3mPAbkcLpZvGX4R18M")

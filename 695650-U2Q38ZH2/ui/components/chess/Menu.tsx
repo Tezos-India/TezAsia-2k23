@@ -9,6 +9,9 @@ import Image from "next/image";
 import { addplayer1, addplayer2 } from "@/dapp/tezos";
 import SmokeBackground from "./Particles";
 import { useGame } from "@/contexts/GamesContext";
+import { useAccount } from "@/contexts/AccountContext";
+
+
 export default function Menu() {
   const router = useRouter();
   const [myGames, setMyGames] = useState<any[]>([]); // Specify the type for myGames
@@ -17,6 +20,9 @@ export default function Menu() {
   const [onlineUsers, setOnlineUsers] = useState<string[]>([]); // Specify the type for onlineUsers
   const [joiningGame, setJoiningGame] = useState(false);
   const [gameId, setGameId] = useState("");
+  const { account } = useAccount();
+
+
 
   const { makest , makerg , makejg } = useGame() || {};
 
@@ -33,6 +39,9 @@ export default function Menu() {
     makejg();
     setLoading(true)
     console.log("Joining game with ID:", gameId);
+
+
+    
     await addplayer2(gameId).then((ans) => {
       if (ans) {
         router.push("/chess/" + gameId);
@@ -48,6 +57,7 @@ export default function Menu() {
   useEffect(() => {
     if (!socket) return;
     socket.emit("username", username);
+    socket.emit("send-account-address", account);
   }, [username, socket]);
 
   useEffect(() => {

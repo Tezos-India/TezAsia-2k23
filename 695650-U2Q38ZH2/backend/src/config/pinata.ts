@@ -1,5 +1,4 @@
 import axios from "axios";
-import FormData from "form-data";
 
 const jsonToPinata = async (json) => {
   console.log("inside JSON to pinata");
@@ -7,7 +6,7 @@ const jsonToPinata = async (json) => {
     const data = JSON.stringify(json);
 
     var config = {
-      method: "post",
+      method: 'post' as const,
       url: "https://api.pinata.cloud/pinning/pinJSONToIPFS",
       headers: {
         "Content-Type": "application/json",

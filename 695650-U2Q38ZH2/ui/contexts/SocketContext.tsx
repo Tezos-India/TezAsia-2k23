@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext, ReactNode } from "react";
 import { Socket, io } from "socket.io-client";
 import { useUser } from "./UserContext";
+import { useAccount } from "@/contexts/AccountContext";
 
 interface SocketContextProps {
   children: ReactNode;
@@ -15,6 +16,7 @@ export function useSocket(): Socket | undefined {
 export function SocketProvider({ children }: SocketContextProps): JSX.Element {
   const { username, id } = useUser();
   const [socket, setSocket] = useState<Socket | undefined>();
+  const { account } = useAccount();
 
   useEffect(() => {
     if (!id) return;
@@ -32,7 +34,8 @@ export function SocketProvider({ children }: SocketContextProps): JSX.Element {
   useEffect(() => {
     if (!socket || !username) return;
     socket.emit("username", username);
-  }, [socket, username]);
+     socket.emit("send-account-address", account);
+  }, [account, socket, username]);
 
   useEffect(() => {
     if (!socket) return;
