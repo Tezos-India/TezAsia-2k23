@@ -8,7 +8,7 @@ Project is about game with AI plays with us by collecting data using cvzone syst
 <br>
 Our project Resources is avalable in the Folder
 <br>
-![Alt text](<Screenshot (29).png>)
+![Screenshot (30)](https://github.com/Tarunnagpal7/TezAsia-2k23/assets/116642663/96771a2c-7fda-452b-a221-da38e0ca5975)
 <br>
 Created BY TARUN NAGPAL (SOLO MEMBER)
 <br>
