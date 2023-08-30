@@ -31,6 +31,7 @@ export const UserDashboard: FC<UserDashboardProps> = ({
     gamesLost: 0,
     gamesDrawn: 0,
   });
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   async function fetchGameStats() {
     try {
@@ -41,7 +42,7 @@ export const UserDashboard: FC<UserDashboardProps> = ({
         return;
     }
 
-      const response = await fetch(`http://localhost:5000/gameStats/${userId}`);
+      const response = await fetch(`${apiUrl}/gameStats/${userId}`);
       const data = await response.json();
       setGameStats(data);
       console.log(`DEBUG: fetch game stats: ${gameStats}`)

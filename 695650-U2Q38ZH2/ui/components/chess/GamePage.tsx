@@ -28,6 +28,7 @@ export default function GamePage() {
   const { gameOver, orientation } = useGame();
   const [isRematch, setIsRematch] = useState(0);
   const [hasUpdatedStats, setHasUpdatedStats] = useState(false);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const updateUserStats = async (result: any) => {
     try {
@@ -39,7 +40,7 @@ export default function GamePage() {
       // Convert userId from string to number
       const userId = parseInt(userIdString);
 
-      const response = await fetch("http://localhost:5000/gameStats/update", {
+      const response = await fetch(`${apiUrl}/gameStats/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -27,7 +27,7 @@ export default function Login() {
     <div>
       <label>Choose a name</label>
       <input type='text' value={username} onChange={handleChange} />
-      <button onClick={handleSubmit}>Let's Go!</button>
+      <button onClick={handleSubmit}>{`Let's Go!`}</button>
     </div>
   );
 }

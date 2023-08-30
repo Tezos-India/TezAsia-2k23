@@ -15,6 +15,7 @@ export function Navbar() {
   const [showDashboard, setShowDashboard] = useState<boolean>(false);
   const [showWelcomePopup, setShowWelcomePopup] = useState<boolean>(false);
   const [editMode, setEditMode] = useState<boolean>(false);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     async function fetchAccount() {
@@ -22,7 +23,7 @@ export function Navbar() {
       setAccount(account);
 
       try {
-        const response = await fetch(`http://localhost:5000/user/${account}`);
+        const response = await fetch(`${apiUrl}/user/${account}`);
         const data = await response.json();
         if (data && data.avatarName) {
           setAvatarName(data.avatarName);
@@ -44,7 +45,7 @@ export function Navbar() {
       setAccount(account);
       console.log(`DEBUG: handling Connect`);
 
-      const response = await fetch(`http://localhost:5000/user/${account}`);
+      const response = await fetch(`${apiUrl}/user/${account}`);
 
       if (response.status === 404) {
         console.log(`DEBUG: User does not exist, show dashboard is true`);
@@ -75,7 +76,7 @@ export function Navbar() {
 
   const saveForm = async () => {
     try {
-      const url = "http://localhost:5000/user/upsert";
+      const url = `${apiUrl}/user/upsert`;
 
       const response = await fetch(url, {
         method: "POST",

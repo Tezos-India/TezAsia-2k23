@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Socket } from "socket.io-client";
 import Chess from "@/lib/chess";

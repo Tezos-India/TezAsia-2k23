@@ -14,6 +14,7 @@ const Form = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState("");
   const [isNewUser, setIsNewUser] = useState(false);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const onConnectWallet = async () => {
     try {
@@ -33,7 +34,7 @@ const Form = () => {
   const fetchUserData = async () => {
     try {
       const userDataResponse = await fetch(
-        `http://localhost:5000/user/${walletAddress}`
+        `${apiUrl}/user/${walletAddress}`
       );
       if (!userDataResponse.ok) {
         setIsNewUser(true);
@@ -51,7 +52,7 @@ const Form = () => {
 
   const registerAvatarName = async (name: any) => {
     try {
-      await fetch("http://localhost:5000/user", {
+      await fetch(`${apiUrl}/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

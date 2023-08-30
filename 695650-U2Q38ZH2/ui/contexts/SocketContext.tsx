@@ -17,10 +17,11 @@ export function SocketProvider({ children }: SocketContextProps): JSX.Element {
   const { username, id } = useUser();
   const [socket, setSocket] = useState<Socket | undefined>();
   const { account } = useAccount();
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     if (!id) return;
-    const newSocket = io("http://localhost:5000", {
+    const newSocket = io(`${apiUrl}`, {
       query: { id },
     });
     setSocket(newSocket);

@@ -3,7 +3,8 @@ import Chessboard from 'chessboardjsx';
 import { Chess } from 'chess.js';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000'); // Server port updated based on your server
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+const socket = io(`${apiUrl}`); // Server port updated based on your server
 
 const ChessBoard1 = () => {
   const [fen, setFen] = useState('start');
