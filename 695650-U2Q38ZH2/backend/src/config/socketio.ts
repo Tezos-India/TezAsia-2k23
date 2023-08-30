@@ -18,10 +18,10 @@ export const setupSocketIO = (server: HttpServer) => {
     },
   });
 
-  let contractInstance;
+  let tezosInstance;
   initializeTezos()
-    .then((contract) => {
-      contractInstance = contract;
+    .then((tezos) => {
+      tezosInstance = tezos;
     })
     .catch((error) => {
       console.error("Error initializing Tezos:", error);
@@ -87,14 +87,14 @@ export const setupSocketIO = (server: HttpServer) => {
       let game = games[gameIndex];
       let pIndex = game.players.findIndex((p) => p.id === playerId);
     
-      if (!contractInstance) {
-        console.log("Tezos contract not initialized");
+      if (!tezosInstance) {
+        console.log("Tezos  not initialized");
         return;
       }
     
       try {
         const winnerString = pIndex === 1 ? "0" : "1";
-        await wingame(contractInstance, currentGameId!, winnerString);
+        await wingame(tezosInstance, currentGameId!, winnerString);
       } catch (err) {
         console.log("Error sending wingame transaction:", err);
       }
@@ -144,8 +144,8 @@ export const setupSocketIO = (server: HttpServer) => {
     });
 
     socket.on("gameover", async (data) => {
-      if (!contractInstance) {
-        console.log("Tezos contract not initialized");
+      if (!tezosInstance) {
+        console.log("Tezos  not initialized");
         return;
       }
     
@@ -156,10 +156,10 @@ export const setupSocketIO = (server: HttpServer) => {
       try {
         if (game.gameOver !== null) {
           if (game.gameOver.winner === undefined) {
-            await drawgame(contractInstance, currentGameId!);
+            await drawgame(tezosInstance, currentGameId!);
           } else {
             const winnerString = game.gameOver.winner.toString();
-            await wingame(contractInstance, currentGameId!, winnerString);
+            await wingame(tezosInstance, currentGameId!, winnerString);
           }
         }
       } catch (err) {
