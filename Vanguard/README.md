@@ -12,6 +12,8 @@
 ## Project Description
 Storycraft is a revolutionary platform that takes storytelling to the next level by allowing collaborative writing and voting. Authors can publish alternative chapters for their stories, and readers, called "Crafters," vote to choose the path the story will take. All of this is done securely and transparently on the blockchain.
 
+## Target Track - Web3 Integration with Web2
+
 ## Problem Statement
 Traditional storytelling methods lack interactivity and leave readers as mere spectators. Authors also miss out on real-time feedback and community engagement. Storycraft bridges this gap by creating a decentralized environment for storytelling where readers and authors both play an active role in shaping the narrative.
 
