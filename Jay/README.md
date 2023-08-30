@@ -64,7 +64,7 @@ Our solution is a blockchain-based web application that securely stores student 
 - Smartpy -> `KT1Na3Ewa9fodgAcut79fkSsh5kUiKgjNxYN`
 
 ### PPT
-- ppt -> `link`
+- ppt -> `[link](https://gamma.app/docs/dri4rhhtky9zxom?token=&following_id=us1upoa5v7kvkmf&follow_on_start=true)https://gamma.app/docs/dri4rhhtky9zxom?token=&following_id=us1upoa5v7kvkmf&follow_on_start=true`
 
 ## Team
 - Jay Patidar
