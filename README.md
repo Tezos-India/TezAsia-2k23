@@ -68,19 +68,23 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 
 Project Demo Photos, Videos * 
 
+ 
+## Your Deployed Smart Contract's Link * ( write NA if no contract is deployed)
 
-Your Deployed Smart Contract's Link * ( write NA if no contract is deployed)
-If your project is deployed , then include the Live Project Link ( optional ) 
+INFURA_KEY = '254ab7d222334c87bf12345678910027'
+CONTRACT_ADDRESS = '0x66dy6492j5F212B81A1723336bDaf235b6932ha1'
+BASE_URI='https://ipfs.io/ipfs/xyz'
+ALCHMEY_API='https://eth-rinkeby.alchemyapi.io/v2/xyz'
+
+
 Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository * 
-Github repository link 
-Your PPT file  * 
-Your Team members Info.
+## Github repository link  https://github.com/ProgrammingPirates/TezAsia-2k23
+## Your PPT file  : https://www.canva.com/design/DAFtAqQBeoo/3DjXImN4X-JaROHlCnOhFQ/view?utm_content=DAFtAqQBeoo&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+
+
+## Your Team members Info.
 
 - Dharmendra
-
-
-
-
 
 
 
