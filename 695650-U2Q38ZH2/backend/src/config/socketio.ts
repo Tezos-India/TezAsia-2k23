@@ -2,7 +2,7 @@ import { Server as ServerSocket, Socket } from "socket.io";
 import { Server as HttpServer } from "http";
 import { generateId } from "../chess/helpers";
 import Game from "../chess/Game";
-import initializeTezos from "./organizer";
+import { initializeTezos, wingame, drawgame } from "./organizer";
 let games: Game[] = [];
 let waitlistGameId: string | null = null;
 interface User {
@@ -17,6 +17,16 @@ export const setupSocketIO = (server: HttpServer) => {
       origin: "*",
     },
   });
+
+  let contractInstance;
+  initializeTezos()
+    .then((contract) => {
+      contractInstance = contract;
+    })
+    .catch((error) => {
+      console.error("Error initializing Tezos:", error);
+    });
+
   io.on("connection", (socket) => {
     const playerId: string = socket.handshake.query.id as string;
     let currentGameId: string | null = null;
@@ -61,7 +71,6 @@ export const setupSocketIO = (server: HttpServer) => {
         }
       };
 
-
       socket.emit("game", game.data());
       if (game.players.length === 2) {
         game.start();
@@ -77,37 +86,42 @@ export const setupSocketIO = (server: HttpServer) => {
       if (gameIndex === -1) return;
       let game = games[gameIndex];
       let pIndex = game.players.findIndex((p) => p.id === playerId);
-       const { wingame } = await initializeTezos();
     
-          if(pIndex==1){
-            pIndex=0;
-            const winnerString = pIndex.toString();
-            const result = await wingame(currentGameId, winnerString);
-          }
-          else{
-            pIndex=1;
-            const winnerString = pIndex.toString();
-            const result = await wingame(currentGameId, winnerString);
-          }
-      
+      if (!contractInstance) {
+        console.log("Tezos contract not initialized");
+        return;
+      }
+    
+      try {
+        const winnerString = pIndex === 1 ? "0" : "1";
+        await wingame(contractInstance, currentGameId!, winnerString);
+      } catch (err) {
+        console.log("Error sending wingame transaction:", err);
+      }
+
       game.active[pIndex] = false;
       games = games.filter((g) => g.active.find((a) => !!a));
+
       if (currentGameId === waitlistGameId) {
         waitlistGameId = null;
       }
-    
+
       // Leave all rooms
-      await Promise.all([...socket.rooms].map(async (room) => {
-        if (room !== socket.id) {
-          await socket.leave(room);
-        }
-      }));
-    
+      await Promise.all(
+        [...socket.rooms].map(async (room) => {
+          if (room !== socket.id) {
+            await socket.leave(room);
+          }
+        })
+      );
+
       if (currentGameId) {
         socket.broadcast.to(currentGameId).emit("player left");
       }
+
       currentGameId = null;
     }
+
     socket.on("create", (data) => {
       console.log("socket create");
       createGame(data);
@@ -130,31 +144,31 @@ export const setupSocketIO = (server: HttpServer) => {
     });
 
     socket.on("gameover", async (data) => {
-      const { wingame,drawgame } = await initializeTezos();
+      if (!contractInstance) {
+        console.log("Tezos contract not initialized");
+        return;
+      }
+    
       const gameIndex = games.findIndex((g) => g.id === currentGameId);
       if (gameIndex === -1) return;
       const game = games[gameIndex];
-      const gameId = game.id;
-      const gameId_ = gameId.toString()
-      if (game.gameOver !== null) {
-
-        if(game.gameOver.winner === undefined){
-          const result = await drawgame(gameId_);
-                  }
-
-        else{  
-          const winner = game.gameOver.winner;
-          const winnerString = winner.toString();
-          
-          const result = await wingame(gameId_, winnerString);
-          if (result) {
-            console.log("Wingame transaction successful!");
+    
+      try {
+        if (game.gameOver !== null) {
+          if (game.gameOver.winner === undefined) {
+            await drawgame(contractInstance, currentGameId!);
           } else {
-            console.log("Wingame transaction failed!");
+            const winnerString = game.gameOver.winner.toString();
+            await wingame(contractInstance, currentGameId!, winnerString);
           }
-        }}
+        }
+      } catch (err) {
+        console.log("Error in gameover event:", err);
+      }
+
       game.setGameOver(data);
     });
+
     socket.on("move", (move, sentAt) => {
       const gameIndex = games.findIndex((g) => g.id === currentGameId);
       if (gameIndex === -1) return;
@@ -199,4 +213,3 @@ export const setupSocketIO = (server: HttpServer) => {
     io.emit("get-games", games.filter((g) => g.players.length === 2).length);
   }, 200);
 };
-
