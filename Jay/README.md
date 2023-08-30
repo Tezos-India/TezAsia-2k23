@@ -60,5 +60,11 @@ Our solution is a blockchain-based web application that securely stores student 
 
 ## Links
 
-## Smart Contract
-- Smartpy -> 
+### Smart Contract
+- Smartpy -> `KT1Na3Ewa9fodgAcut79fkSsh5kUiKgjNxYN`
+
+### PPT
+- ppt -> `link`
+
+## Team
+- Jay Patidar
