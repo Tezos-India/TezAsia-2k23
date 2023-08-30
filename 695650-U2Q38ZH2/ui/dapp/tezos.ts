@@ -34,9 +34,18 @@ export const disconnect = async () => {
   wallet.clearActiveAccount();
 };
 
-const contract = await Tezos.wallet.at("KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN");
+let contract;
+
+async function getContract() {
+  if (!contract) {
+    contract = await Tezos.wallet.at("KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN");
+  }
+  return contract;
+}
+
 
 export async function addplayer1(uid) {
+  const contractInstance = await getContract();
   const amountToSend = 5;
   try {
     const op = await contract.methods
@@ -63,6 +72,7 @@ export async function addplayer1(uid) {
 }
 
 export async function addplayer2(uid) {
+  const contractInstance = await getContract();
   const amountToSend = 5;
   try {
     const op = await contract.methods
