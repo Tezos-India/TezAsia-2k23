@@ -24,35 +24,36 @@ Our solution is a blockchain-based web application that securely stores student 
 - Taquito for Tezos integration
 
 ## Project Demo
-![Demo 1](utils/demo/1.jpg)
+
 - 1 -> Since this is the First time , we need to "Open Admission". So we will go to the Admin Page.
+![Demo 1](utils/demo/1.jpg)
 
-![Demo 2](utils/demo/2.jpg)
 - 2 -> We can see the "Admission Status" which is "closed" , now click on "Open Admission".
+![Demo 2](utils/demo/2.jpg)
 
-![Demo 3](utils/demo/3.jpg)
 - 3 -> Since this operation is going to change the state of Blockchain , hence we need to pay some tez.
+![Demo 3](utils/demo/3.jpg)
 
-![Demo 4](utils/demo/4.jpg) ![Demo 4](utils/demo/5.jpg)
 - 4 -> Once it is done , we can see a pop up confirming the same and the status gets changed to "Open".
+![Demo 4](utils/demo/4.jpg) ![Demo 4](utils/demo/5.jpg)
 
-![Demo 6](utils/demo/6.jpg)
 - 5 -> Now we will go to the Students section to enter the details.
+![Demo 6](utils/demo/6.jpg)
 
-![Demo 7](utils/demo/7.jpg)
 - 6 -> Enter detail in the input box and hit submit.
+![Demo 6](utils/demo/6.jpg)
 
-![Demo 8](utils/demo/8.jpg)
 - 7 -> Since this will change the state of blockchain we need to pay some tez, this could be thought of as the admission/application fee charged by the colleges.
+![Demo 8](utils/demo/8.jpg)
 
-![Demo 9](utils/demo/9.jpg)
 - 8 -> Once the Operation is succesfull we will get the pop up.
+![Demo 9](utils/demo/9.jpg)
 
-![Demo 10](utils/demo/10.jpg) ![Demo 11](utils/demo/11.jpg)
 - 9 -> The Admins can retrieve the data using "Display" in the Admin page
+![Demo 10](utils/demo/10.jpg) ![Demo 11](utils/demo/11.jpg)
 
-![Demo 12](utils/demo/12.jpg)
 - 10 -> Snapshot of storage.
+![Demo 10](utils/demo/10.jpg) ![Demo 11](utils/demo/11.jpg)
 
-![Demo 13](utils/demo/13.jpg) ![Demo 15](utils/demo/15.jpg)
 - 11 -> Once done with all the admissions , the Admin can close the admissions and now no one can manipulate the data until the portal is opened again next year by the Admin
+![Demo 10](utils/demo/10.jpg) ![Demo 11](utils/demo/11.jpg)
