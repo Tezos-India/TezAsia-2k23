@@ -23,6 +23,18 @@ Our solution is a blockchain-based web application that securely stores student 
 ### Backend
 - Taquito for Tezos integration
 
-- ## Project Demo
-- ![Demo 1](utils/demo/1.jpg)
-- 1) Since this is the First time , we need to "Open Admission". So we will go to the Admin Page.
+## Project Demo
+![Demo 1](utils/demo/1.jpg)
+- 1 -> Since this is the First time , we need to "Open Admission". So we will go to the Admin Page.
+
+![Demo 2](utils/demo/2.jpg)
+- 2 -> We can see the "Admission Status" which is "closed" , now click on "Open Admission".
+
+![Demo 3](utils/demo/3.jpg)
+- 3 -> Since this operation is going to change the state of Blockchain , hence we need to pay some tez.
+
+![Demo 4](utils/demo/4.jpg) ![Demo 4](utils/demo/5.jpg)
+- 4 -> Once it is done , we can see a pop up confirming the same.
+
+
+
