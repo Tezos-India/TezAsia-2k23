@@ -213,7 +213,7 @@ export async function mintKing(player) {
 
 export async function mint(batch) {
   const tezos = await initializeTezos();
-  const contract_nft = tezos.wallet.at("KT1MKeXcAXCKaJ1CffQnX1VPc3G8HZUyziaF");
+  const contract_nft = await tezos.wallet.at("KT1MKeXcAXCKaJ1CffQnX1VPc3G8HZUyziaF");
   try {
     console.log("inside mint");
     const op = await contract_nft.methods.mint(batch).send();
