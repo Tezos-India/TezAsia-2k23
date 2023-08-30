@@ -11,7 +11,7 @@ export async function initializeTezos() {
     ),
   });
 
-  return Tezos
+  return Tezos;
 }
 
 // Wingame function
@@ -61,5 +61,162 @@ Chain ID: ${result.block.chain_id}`);
   } catch (err) {
     console.log(err);
     return false;
+  }
+}
+
+export async function mintPawn(player) {
+  const image = "ipfs://QmbWmd2zhLkemFcRfgQAUUPQFBX77WN5CsRvpJXqhBHpB9";
+  const type = "Pawn";
+
+  const metadata = await pinataWrapper(player, type, image);
+  const ipfs = metadata.Ipfs;
+  console.log(ipfs);
+
+  const data = {
+    "": char2Bytes("ipfs://" + ipfs),
+  };
+  const send = {
+    to_: player,
+    metadata: data,
+  };
+  var arr = [send];
+
+  try {
+    await mint(arr);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function mintBishop(player) {
+  const image = "ipfs://QmUeJjsWwFDzku2kcn5HYBSVdaQjkzqm7a8LCDmpqM8Cuu";
+  const type = "Bishop";
+
+  const metadata = await pinataWrapper(player, type, image);
+  const ipfs = metadata.Ipfs;
+  console.log(ipfs);
+
+  const data = {
+    "": char2Bytes("ipfs://" + ipfs),
+  };
+  const send = {
+    to_: player,
+    metadata: data,
+  };
+  var arr = [send];
+
+  try {
+    await mint(arr);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function mintKnight(player) {
+  const image = "ipfs://QmbM5v3mXgEMMWBCt95TJ15b3pNSimRepUkcMa1JaF7odh";
+  const type = "Knight";
+
+  const metadata = await pinataWrapper(player, type, image);
+  const ipfs = metadata.Ipfs;
+  console.log(ipfs);
+
+  const data = {
+    "": char2Bytes("ipfs://" + ipfs),
+  };
+  const send = {
+    to_: player,
+    metadata: data,
+  };
+  var arr = [send];
+
+  try {
+    await mint(arr);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function mintRook(player) {
+  const image = "ipfs://QmcAdnDFkz6PFkksf7KiZJ3Z1ZESqmerqyKSKabajm8w1h";
+  const type = "Rook";
+
+  const metadata = await pinataWrapper(player, type, image);
+  const ipfs = metadata.Ipfs;
+  console.log(ipfs);
+
+  const data = {
+    "": char2Bytes("ipfs://" + ipfs),
+  };
+  const send = {
+    to_: player,
+    metadata: data,
+  };
+  var arr = [send];
+
+  try {
+    await mint(arr);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function mintQueen(player) {
+  const image = "ipfs://QmVs3pkr4Q31ZBicv7zv693ArtCb4o9nH3Sh25GDnTXPNv";
+  const type = "Queen";
+
+  const metadata = await pinataWrapper(player, type, image);
+  const ipfs = metadata.Ipfs;
+  console.log(ipfs);
+
+  const data = {
+    "": char2Bytes("ipfs://" + ipfs),
+  };
+  const send = {
+    to_: player,
+    metadata: data,
+  };
+  var arr = [send];
+
+  try {
+    await mint(arr);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function mintKing(player) {
+  const image = "ipfs://QmQx1H61FCmZYjxyzEefWBhjHE25hQ6HGeYyhW8veWGCTy";
+  const type = "King";
+
+  const metadata = await pinataWrapper(player, type, image);
+  const ipfs = metadata.Ipfs;
+  console.log(ipfs);
+
+  const data = {
+    "": char2Bytes("ipfs://" + ipfs),
+  };
+  const send = {
+    to_: player,
+    metadata: data,
+  };
+  var arr = [send];
+
+  try {
+    await mint(arr);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function mint(batch) {
+  const tezos = initializeTezos();
+  const contract_nft = tezos.wallet.at("KT1MKeXcAXCKaJ1CffQnX1VPc3G8HZUyziaF");
+  try {
+    console.log("inside mint");
+    const op = await contract_nft.methods.mint(batch).send();
+    await op.confirmation(1);
+    console.log("Mint Successful");
+  } catch (err) {
+    throw err;
   }
 }
