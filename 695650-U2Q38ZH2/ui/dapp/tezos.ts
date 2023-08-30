@@ -4,15 +4,18 @@ import { NetworkType } from "@airgap/beacon-sdk";
 
 const Tezos = new TezosToolkit("https://ghostnet.smartpy.io");
 
-const options = {
-  name: "MyAwesomeDapp",
-  iconUrl: "https://tezostaquito.io/img/favicon.svg",
-  preferredNetwork: NetworkType.GHOSTNET,
-};
+let wallet;
 
-const wallet = new BeaconWallet(options);
+if (typeof window !== 'undefined') {
+  const options = {
+    name: "MyAwesomeDapp",
+    iconUrl: "https://tezostaquito.io/img/favicon.svg",
+    preferredNetwork: NetworkType.GHOSTNET,
+  };
 
-Tezos.setWalletProvider(wallet);
+  wallet = new BeaconWallet(options);
+  Tezos.setWalletProvider(wallet);
+}
 
 export async function connectWallet() {
   await wallet.requestPermissions({ network: { type: NetworkType.GHOSTNET } });
