@@ -41,7 +41,7 @@ Our solution is a blockchain-based web application that securely stores student 
 ![Demo 6](utils/demo/6.jpg)
 
 - 6 -> Enter detail in the input box and hit submit.
-![Demo 6](utils/demo/6.jpg)
+![Demo 6](utils/demo/7.jpg)
 
 - 7 -> Since this will change the state of blockchain we need to pay some tez, this could be thought of as the admission/application fee charged by the colleges.
 ![Demo 8](utils/demo/8.jpg)
