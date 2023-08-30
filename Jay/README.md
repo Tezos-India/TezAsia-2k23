@@ -57,3 +57,8 @@ Our solution is a blockchain-based web application that securely stores student 
 
 - 11 -> Once done with all the admissions , the Admin can close the admissions and now no one can manipulate the data until the portal is opened again next year by the Admin
 ![Demo 10](utils/demo/10.jpg) ![Demo 11](utils/demo/11.jpg)
+
+## Links
+
+## Smart Contract
+- Smartpy -> 
