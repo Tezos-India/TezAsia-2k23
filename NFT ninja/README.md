@@ -1,4 +1,4 @@
-# Hedera NFT Minter App
+# NFT Minter App
 
 An example web app that demonstrates how you can mint NFTs on the Hedera network using [HashPack ](https://hips.hedera.com/hip/hip-412) or [Blade](https://hips.hedera.com/hip/hip-412) wallet and upload metadata with an image to IPFS provider supporting [HIP-412 standard](https://hips.hedera.com/hip/hip-412). App also included simply ``My NFT Gallery`` page, where connected user NFTs are listed.
 
@@ -73,6 +73,8 @@ If installing the dependencies was successful, now try to run the app
 ```
 npm run start
 ```
+# PPT link : 
+https://www.canva.com/design/DAFtHXaGvuc/6N2SougupqTuhzZiw0fa1A/edit?utm_content=DAFtHXaGvuc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 ## Demo Video
 
 
@@ -201,6 +203,12 @@ to [oss@hedera.com](mailto:oss@hedera.com).
 ![Image 3](https://github.com/Dev-Hoax/TezAsia-2k23/assets/85429816/e88913d2-14f8-4bce-a79f-63e140d679be)
 
 ![Image 2023 4](https://github.com/Dev-Hoax/TezAsia-2k23/assets/85429816/ca57202b-ed3a-4d9b-8ceb-0ca1dc1237e0)
+
+# TEAM Details
+Prasannaram R - sit20cs130@sairamatap.edu.in
+Rohit das - sit20cs081@sairamtap.edu.in
+Vigneshwaran V - sit20cs034@sairamtap.edu.in
+Nihaal Tharwat - sit20cs038@sairamtap.edu.in
 
 ## LICENSE
 
