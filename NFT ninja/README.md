@@ -73,6 +73,11 @@ If installing the dependencies was successful, now try to run the app
 ```
 npm run start
 ```
+## Demo Video
+
+
+https://github.com/Dev-Hoax/TezAsia-2k23/assets/85429816/6ec6815e-112f-4e04-81ea-b5b83b88ab82
+
 
 ## Application design
 
