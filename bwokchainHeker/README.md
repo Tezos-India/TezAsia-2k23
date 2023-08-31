@@ -18,7 +18,7 @@ SmartPy
 IPFS
     
 ## Project Demo Photos, Videos
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Z-5KkC_G4wU?si=merzPkKRg24_B1cA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>  
+[![No code NFT solution for tezos](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FZ-5KkC_G4wU%3Fsi%3DEIhyLukUqULhVWYB)](https://youtu.be/Z-5KkC_G4wU?si=EIhyLukUqULhVWYB) 
 
 ## Your Deployed Smart Contract's Link
     
