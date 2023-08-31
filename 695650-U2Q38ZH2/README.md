@@ -85,9 +85,10 @@ Blocks Gaming emerges as the beacon in this landscape, specifically tailored to 
 
 ## Project Demo
 
-Get a visual taste of the **Blocks Gaming** experience with our demo [here](demo_video_link). 
+Get a visual taste of the **Blocks Gaming** experience with our demo [here](https://drive.google.com/file/d/1tJ7PEndGZ4tJemGrV1VQlVLz_1f9ZZlY/view?usp=sharing). 
 
-![Demo Screenshots](demo_screenshots.png)
+**Demo Screenshots**
+  - [Home](https://drive.google.com/file/d/1NQRbyL7qQUHgPlFtTfx5eEPyop2EeDr6/view?usp=sharing)
 
 ## Smart Contract
 
@@ -96,11 +97,11 @@ NFT View Ghostnet: https://ghostnet.tzkt.io/KT1J82VHvCFMwPypUsr3vctf6kLpYFhgSJwB
 
 ## Live Project
 
-Why just read when you can experience? Dive into **Blocks Gaming** by visiting our live project [here](live_project_link). 
+Why just read when you can experience? Dive into **Blocks Gaming** by visiting our live project [here](https://blocks-sand-kappa.vercel.app/). 
 
 ## Presentation
 
-To dive deeper into the intricacies of our project, its development phases, and more, please view our presentation [here](ppt_link).
+To dive deeper into the intricacies of our project, its development phases, and more, please view our presentation [here](https://docs.google.com/presentation/d/1S9rDeJi_wR9dXKZoZ7W68-JOA3p7CIBrcaYY6eB3dvg/edit?usp=sharing).
 
 ## Team Members
 
