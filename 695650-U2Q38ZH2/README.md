@@ -91,7 +91,8 @@ Get a visual taste of the **Blocks Gaming** experience with our demo [here](demo
 
 ## Smart Contract
 
-Delve into the specifics of our blockchain integration. Here's the link to our deployed smart contract [here](smart_contract_link).
+Delve into the specifics of our blockchain integration. Here's the link to our deployed smart contract [here](Staking View Ghostnet: https://ghostnet.tzkt.io/KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN/operations/
+NFT View Ghostnet: https://ghostnet.tzkt.io/KT1J82VHvCFMwPypUsr3vctf6kLpYFhgSJwB/operations/).
 
 ## Live Project
 
