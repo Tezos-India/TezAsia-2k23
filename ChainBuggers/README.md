@@ -24,7 +24,7 @@ Traditional movie ticket booking platforms lack transparency in ticket reselling
 - Taquito.js: Framework for smart contract development and testing.
 
 ## Project Demo
-![Demo](https://drive.google.com/drive/folders/1pR-StDvUugu-eIaK4UGxXl4ZAzuusLNi?usp=sharing)
+[Demo](https://drive.google.com/drive/folders/1pR-StDvUugu-eIaK4UGxXl4ZAzuusLNi?usp=sharing)
 
 ## Deployed Smart Contract
 Smart Contract Address: [Insert Smart Contract Address]
