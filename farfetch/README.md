@@ -21,10 +21,10 @@ Deployed Smart Contract's Link: NA
 <!-- Live Project Link: [Provide the link to your live project if applicable] -->
 
 Folder Link to Project Codebase on Tezos-India/TezAsia-2k23 Repository:
-[Provide the link to the specific folder containing your project's code.]
+https://github.com/farfetch08/TezAsia-2k23/tree/main/farfetch
 
 Github Repository Link:
-[Provide the link to your project's GitHub repository.]
+https://github.com/farfetch08/TezAsia-2k23/tree/main/farfetch
 
 PPT File:
 [Provide the link to your project presentation file.]
@@ -34,7 +34,4 @@ Team Members:
    Role: Developer
    GitHub: https://github.com/farfetch08
    
-
-
-[Add more sections if needed for additional information.]
 
