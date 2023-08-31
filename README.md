@@ -96,8 +96,7 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 - BASE_URI='https://ipfs.io/ipfs/xyz'
 - ALCHMEY_API='https://eth-rinkeby.alchemyapi.io/v2/xyz'
 
-## Github repository link  https://github.com/ProgrammingPirates/TezAsia-2k23
-
+## Github repository link  [Github](https://github.com/ProgrammingPirates/Block_Developer)
 
 
 ## Your Team members Info.
