@@ -1,6 +1,8 @@
+
 import React, { useState, useEffect } from "react";
 import { useGame } from "@/contexts/GamesContext";
 import styles from "./Loader.module.css";
+import { Button, Card } from 'flowbite-react';
 interface LoaderProps {
   color?: string;
   size?: string;
@@ -21,7 +23,7 @@ function Loader({ color, size }: LoaderProps) {
       <li key={index} className={styles.bubble}></li>
     ))}
   </ul>
-    <div className='loader-container'>
+  <Card className="max-w-sm bg-transparent border border-transparent border-opacity-0">
       {st && (
         <p className={styles.p}>Starting The Game...</p>
       )}
@@ -31,7 +33,7 @@ function Loader({ color, size }: LoaderProps) {
        {rg && (
         <p className={styles.p}>Joining Ramdom Game...</p>
       )}
-      </div>
+        </Card>
   
     </div>
 
@@ -39,3 +41,4 @@ function Loader({ color, size }: LoaderProps) {
 }
 
 export default Loader;
+
