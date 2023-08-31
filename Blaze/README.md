@@ -37,11 +37,14 @@ https://youtu.be/Lwdmd9blgsQ
 
 ![res](https://user-images.githubusercontent.com/76804228/232283703-29a56137-4b4d-49fa-89f4-c2779c2f914b.png)
 
+![Screenshot 2023-08-31 223119](https://github.com/Sukhendu2002/TezAsia-2k23/assets/76804228/45693150-9479-47a1-a59c-bd5446579028)
+
 
 ## Smart Contract's Link
 https://ghostnet.tzkt.io/KT1QUpHBT4vEzK12hSBH4KJ4CEYyMYTHDiH2/operations/
 
 Live Project Link: https://cryptoballot.vercel.app/
+PPT: [blaze.pptx](https://github.com/Sukhendu2002/TezAsia-2k23/files/12488655/blaze.pptx)
 
 Team Info:
 Team Name: Blaze
