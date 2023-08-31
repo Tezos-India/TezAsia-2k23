@@ -68,3 +68,6 @@ Our solution is a blockchain-based web application that securely stores student 
 
 ## Team
 - Jay Patidar
+
+## Contact
+- iamunknwn20@gmail.com
