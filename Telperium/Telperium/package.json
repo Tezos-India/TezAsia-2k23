@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@taquito/taquito": "^17.2.0"
+  }
+}
