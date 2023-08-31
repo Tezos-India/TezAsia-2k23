@@ -67,6 +67,9 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 - 
 ## Demo Video Link:
  * <a href="https://www.canva.com/design/DAFtGElfoDo/35xtWWO86FUvhRhpamU4pQ/watch?utm_content=DAFtGElfoDo&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel">Video link</a>
+
+ ## PPT Link:
+ * <a href="https://www.canva.com/design/DAFtAqQBeoo/3DjXImN4X-JaROHlCnOhFQ/view?utm_content=DAFtAqQBeoo&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink">PPT link</a>
  
 ## Project Demo Photos,
 
@@ -91,8 +94,6 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 
 ## Github repository link  https://github.com/ProgrammingPirates/TezAsia-2k23
 
-## PPT Link:
- * <a href="https://www.canva.com/design/DAFtAqQBeoo/3DjXImN4X-JaROHlCnOhFQ/view?utm_content=DAFtAqQBeoo&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink">PPT link</a>
 
 
 ## Your Team members Info.
