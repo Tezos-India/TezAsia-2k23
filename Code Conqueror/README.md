@@ -1,9 +1,9 @@
 # TezAsia-Hackathon-3.0 - BLUFF GAME 
 TezAsia Hackathon 3.0 - Team Repository  Welcome to our team's repository for the TezAsia Hackathon 3.0! This repository serves as a centralized hub for our team's project , documentation, code, and collaboration. Here, we will outline the purpose, features, setup instructions, and guidelines for contributing to our project.
 
-not able to conplete these task in hackathon deadline due to some reasons.. -_-
+not able to conplete all these task in hackathon deadline due to some reasons.. -_-
 
-## Here is IDEA and details for this project --
+## But Here is Our IDEA and details for this project --
 
 ## Team Name - Code Conqueror 
 ## Project - Gaming Track
