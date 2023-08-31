@@ -17,10 +17,6 @@ An example web app that demonstrates how you can mint NFTs on the Hedera network
 - [BabelJS](https://babeljs.io/) - A real-time client-to-server framework for node.js
 - [WebPack](https://webpack.js.org/) - Static module bundler for modern JavaScript applications
 
-## Created by
- - Norbert Kulus
- - Patryk Matyjasiak
-
 ## Prerequisites
 
 This demo assumes that you are familiar with [Node.JS](https://nodejs.org) based applications and using [React.JS](https://reactjs.org/) UI framework.
@@ -190,6 +186,9 @@ This project is governed by the
 [Contributor Covenant Code of Conduct](https://github.com/hashgraph/.github/blob/main/CODE_OF_CONDUCT.md). By
 participating, you are expected to uphold this code of conduct. Please report unacceptable behavior
 to [oss@hedera.com](mailto:oss@hedera.com).
+
+##SCREENSHOTS
+
 
 ## LICENSE
 
