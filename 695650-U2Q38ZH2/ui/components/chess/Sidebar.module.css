@@ -1,0 +1,57 @@
+/* 
+.glowingCard {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px red;
+  animation: glowAnimation 2s infinite alternate;
+}
+
+.content {
+  text-align: center;
+  color: #fff;
+}
+
+@keyframes glowAnimation {
+  0% {
+    box-shadow: 0 0 10px #34ffea;
+  }
+  100% {
+    box-shadow: 0 0 40px #34ffea;
+  }
+} */
+/* Sidebar.module.css */
+.glowingCard {
+  background-color: #222;
+
+  border-radius: 10px;
+  box-shadow: 0 0 20px red;
+  animation: glowAnimation 2s infinite alternate;
+}
+
+.content {
+  text-align: center;
+  color: #fff;
+}
+
+@keyframes glowAnimation {
+  0% {
+    box-shadow: 0 0 10px #34ffea;
+  }
+  100% {
+    box-shadow: 0 0 40px #34ffea;
+  }
+}
+
+/* ... Other existing styles ... */
+
+/* Responsive styles */
+@media (max-width: 800px) {
+  .glowingCard {
+
+    box-shadow: 0 0 20px red; 
+  
+  }
+
+}
+

@@ -1,0 +1,245 @@
+Screens:
+    LoginPage:
+        name:"Login"
+        Login:
+    HomePage:
+        name:"Home"
+        Home:
+<Login>:
+    orientation:"vertical"
+    spacing:20
+    size_hint:(.8,.6)
+    pos_hint:{"center_x":.5,"center_y":.5}
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        Rectangle:
+            size:self.size
+            pos:root.pos
+    Label:
+        text:"Login"
+        font_size:100
+        color:(1,1,1,1)
+        size_hint:(1,.8)
+        font_name:"fonts/Super Boys.ttf"
+        canvas.before:
+            Color:
+                rgba:(0,0,0,1)
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius:[20]
+    GridLayout:
+        id:input_area
+        cols:2
+        spacing:20
+        CustomLabel:
+            text:"Enter The User Name:"
+            font_size:50
+            color:(0,0,0,1)
+        CustomColorTextInput:
+            id:user_name
+            font_name:"fonts/OpenSans-Regular.ttf"
+            font_size:80
+            multiline:False
+        CustomLabel:
+            text:"Enter The Password:"
+            font_size:50
+            color:(0,0,0,1)
+        CustomColorTextInput:
+            id:password
+            font_name:"fonts/OpenSans-Regular.ttf"
+            font_size:80
+            password:True
+            multiline:False
+    BoxLayout:
+        spacing:20
+        size_hint:(1,.5)
+        orientation:"horizontal"
+        CustomColorButton:
+            text:"Reset"
+            on_press:
+                root.ids["user_name"].text=""
+                root.ids["password"].text=""
+        CustomColorButton:
+            text:"Submit"
+            on_press:
+                root.submitted()
+<Home>:
+    orientation:"vertical"
+    padding:[20,20,20,20]
+    spacing:20
+    BoxLayout:
+        orientation:"horizontal"
+        spacing:5
+        size_hint:(1,.2)
+        Label:
+            text:"Welcome to DashBoard"
+            font_size:50
+            color:(1,1,1,1)
+            font_name:"fonts/Super Boys.ttf"
+            canvas.before:
+                Color:
+                    rgba:(0,0,0,1)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[20]
+        Button:
+            size_hint:.07,1
+            background_normal:"icons/refresh.png"
+            background_down:"icons/refresh.png"
+            canvas.after:
+                Color:
+                    rgba:(.128,.128,.128,.25)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[10]
+            on_press:
+                root.refresh_all_layouts()
+    BoxLayout:
+        orientation:"horizontal"
+        spacing:20
+        size_hint:1,.1
+        Label:
+            text:"Tickets"
+            color:(1,1,1,1)
+            font_size:40
+            canvas.before:
+                Color:
+                    rgba:(.128,.128,.128,.5)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[20]
+        Label:
+            text:" Your purchases"
+            color:(1,1,1,1)
+            font_size:40
+            canvas.before:
+                Color:
+                    rgba:(.128,.128,.128,.5)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[20]
+    BoxLayout:
+        padding:[0,20,20,20]
+        orientation:"horizontal"
+        spacing:20
+        Tickets:
+        History:
+    CustomColorButton:
+        size_hint:(1,.3)
+        text:"LogOut"
+        on_press:
+            root.parent.manager.current="Login"
+<History>:
+<Get_Key>:
+    orientation:"vertical"
+    padding:[20,20,20,20]
+    spacing:20
+    GridLayout:
+        cols:2
+        spacing:40
+        CustomLabel:
+            text:"Enter your public Key:"
+            color:(1,1,1,1)
+        CustomColorTextInput:
+            id:public_key
+            foreground_color:(1,0,0,1)
+        CustomLabel:
+            text:"Enter your Secret key:"
+            color:(1,1,1,1)
+        CustomColorTextInput:
+            id:secret_key
+            foreground_color:(1,0,0,1)
+    BoxLayout:
+        size_hint:(1,.4)
+        spacing:20
+        Button:
+            text:"reset"
+            background_color:(0,0,0,0)
+            background_normal:""
+            color:(1,1,1,1)
+            canvas.before:
+                Color:
+                    rgba:(1,0,0,1)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[100]
+            on_press:
+                root.ids["public_key"].text=""
+                root.ids["secret_key"].text=""
+        Button:
+            text:"submit"
+            background_color:(0,0,0,0)
+            background_normal:""
+            color:(1,1,1,1)
+            canvas.before:
+                Color:
+                    rgba:(1,0,0,1)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[100]
+            on_press:root.submitted()
+<Label,Button>:
+    font_name:"fonts/OpenSans-Regular.ttf"
+<CustomLabel@Label>
+    font_name:"fonts/Super Boys.ttf"
+<CustomColorTextInput@TextInput>:
+    background_color:(0,0,0,0)
+    foreground_color:(1,0,0,1)
+    font_name:"fonts/Super Boys.ttf"
+    font_size:50
+    canvas.after:
+        Color:
+            rgba:(.25,.25,.25,.2)
+        RoundedRectangle:
+            size:root.size
+            pos:self.pos[0],self.pos[1]+10
+            radius:[30]
+<CustomColorButton@Button>:
+    background_color:(0,0,0,0)
+    background_normal:""
+    color:(1,1,1,1)
+    canvas.before:
+        Color:
+            rgba:(1,0,0,1)
+        RoundedRectangle:
+            size:root.size
+            pos:self.pos
+            radius:[30]
+<CustomPopUp@Popup>
+    separator_color:(1,0,0,1)
+    background_color:(1,1,1,1)
+<RoundedLabelExtra>:
+    canvas.before:
+        Color:
+            rgba:(0,0,0,1)
+        RoundedRectangle:
+            size:self.size[0]*1.95,root.size[1]
+            pos:root.pos
+            radius:[15]
+<CustomButton>:
+    background_color:(0,0,0,0)
+    background_normal:""
+    color:(0,0,0,1)
+    canvas.before:
+        Color:
+            rgba:(1,1,1,1)
+        RoundedRectangle:
+            size:root.size[0],self.size[1]/4
+            pos:self.pos[0],self.pos[1]+self.size[1]/3+5
+            radius:[20]
+<RoundedLabel>
+    canvas.before:
+        Color:
+            rgba:(0,0,0,1)
+        RoundedRectangle:
+            size:root.size
+            pos:root.pos
+            radius:[80]
