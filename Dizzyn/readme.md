@@ -30,7 +30,6 @@
 <h2>Demo Video</h2>
 
 
-
 https://github.com/Pranay-Pandey/TezAsia-2k23/assets/79053599/8c5e98f9-310a-4dd8-99e8-b59ba4464ba5
 
 or access the demo video from [here](https://github.com/Pranay-Pandey/TezAsia-2k23/blob/main/Dizzyn/Application%20Demo.mkv)
