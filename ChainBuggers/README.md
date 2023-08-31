@@ -17,7 +17,6 @@ Traditional movie ticket booking platforms lack transparency in ticket reselling
 ## Tech Stack
 - Tezos Blockchain: For smart contract deployment and execution.
 - SmartPy: Programming language for writing smart contracts.
-- Web3.js: Facilitates communication between the front-end and the Ethereum network.
 - React.js: User interface development.
 - Node.js and Express: Backend server setup.
 - MongDB : Database for storing details
@@ -27,10 +26,10 @@ Traditional movie ticket booking platforms lack transparency in ticket reselling
 [Demo](https://drive.google.com/drive/folders/1pR-StDvUugu-eIaK4UGxXl4ZAzuusLNi?usp=sharing)
 
 ## Deployed Smart Contract
-Smart Contract Address: [Insert Smart Contract Address]
+Smart Contract Address: [KT1S2DUhxuvKwL1w8q51tBAb7kVbdVkF423r]
 
 ## Live Project Link
-[Insert Live Project Link]
+[Project Link](https://flexpass.onrender.com/)
 
 ## Presentation Link
 [PPT Link](https://drive.google.com/drive/folders/1pR-StDvUugu-eIaK4UGxXl4ZAzuusLNi?usp=sharing)
