@@ -49,7 +49,7 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 
 **Technologies Used:**
 
-- **Solidity**: Used for creating smart contracts on the Ethereum blockchain to manage in-game assets and NFTs.
+- **Tezos**: Used for creating smart contracts on the Ethereum blockchain to manage in-game assets and NFTs.
 
 - **IPFS (InterPlanetary File System)**: Utilized for decentralized storage and distribution of NFT data and game content.
 
