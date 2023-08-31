@@ -1,4 +1,4 @@
-# TEZOS-NFT-FORGE
+# NFtz
 
 ## Getting Started
 
@@ -6,7 +6,6 @@
 
 ```bash
 git clone *current_repo*
-cd /path/to/tezos-nft-forge
-pnpm build
-pnpm start
+cd /path/to/NFtz
+pnpm dev
 ```
