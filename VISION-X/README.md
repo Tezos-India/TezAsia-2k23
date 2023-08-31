@@ -27,7 +27,7 @@ Coding Language: SmartPy
 Storage: nft.storage
 Mis: TzKT api, zustand
 
-Project Demo Photos, Videos: [https://drive.google.com/drive/folders/1rLAvG0xc9-ljryJhuEWakSdqvmm-Fyav?usp=sharing ](https://drive.google.com/drive/folders/1rLAvG0xc9-ljryJhuEWakSdqvmm-Fyav?usp=sharing)
+Project Demo Photos, Videos: https://drive.google.com/drive/folders/1rLAvG0xc9-ljryJhuEWakSdqvmm-Fyav?usp=sharing
 
 Your Deployed Smart Contract's Link: 
 JAKARTANET testnet.
@@ -38,8 +38,21 @@ If your project is deployed, then include the Live Project Link: https://tezmint
 
 Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository: 
 
-Github repository link: 
+Github repository link: https://github.com/AmaanSayyad/TezAsia-2k23/tree/main/VISION-X
 
 Your PPT file: https://docs.google.com/presentation/d/1LnVuMT6noQGNk1KulUIdVN0fKDMlHyNvEl0GwQTtm6o/edit?usp=sharing
 
 Your Team members Info: Amaan Sayyad | amaansayyad2001@gmail.com
+
+## Steps to run this project locally
+1. Fork and clone this repo
+2. Run `npm install`
+3. Create `.env` file
+4. Add the following environment variable to your `.env` file
+  ```
+    NEXT_PUBLIC_NFT_STORAGE_TOKEN=<YOUR_NFT_STORAGE_TOKEN_HERE>
+  ```
+
+  You can check how to get your nft.storage api token [here](https://nft.storage/docs/)
+
+5. Run `npm run dev` to start the local server on `localhost:3000`
