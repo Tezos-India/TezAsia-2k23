@@ -4,12 +4,10 @@
 
 ## Team Name  : Block Developer
 
-Project name : Chess Bajar
- 
 
 ## What problem you are trying to solve  : 
 
-Polyess is a groundbreaking platform that seamlessly blends the timeless game of chess with cutting-edge blockchain technology and the exciting world of Web3. Here's a breakdown of its key features and offerings:
+it is one stop for all chess lovers and web3 enthusiasts. It is a combination of decentralized gaming, NFT marketplaces, and the classic and one of the oldest game "Chess". It gives anyone a platform to not only get interested in chess but also blockchain and Web3.
 
 1. **In-Game Currency (HT Token)** 💸
    - Polyess introduces an in-game currency called the HT token.
