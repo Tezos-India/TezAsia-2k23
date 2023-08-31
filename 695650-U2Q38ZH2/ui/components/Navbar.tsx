@@ -9,8 +9,14 @@ import WelcomePopup from "./WelcomePopup";
 import { useAccount } from "@/contexts/AccountContext";
 
 export function Navbar() {
-  const { account, setAccount } = useAccount();
-  const [avatarName, setAvatarName] = useState<string | null>(null);
+  const {
+    account,
+    setAccount,
+    avatarName,
+    setAvatarName,
+    avatarId,
+    setAvatarId,
+  } = useAccount();
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [showDashboard, setShowDashboard] = useState<boolean>(false);
   const [showWelcomePopup, setShowWelcomePopup] = useState<boolean>(false);
@@ -27,9 +33,14 @@ export function Navbar() {
         const data = await response.json();
         if (data && data.avatarName) {
           setAvatarName(data.avatarName);
-          localStorage.setItem("avatarName", data.avatarName);
-          localStorage.setItem("userId", data.id);
-          console.log("Setting userId in localStorage:", data.id);
+          setAvatarId(data.id);
+          console.log(
+            "Setting avatarName and userId in context:",
+            data.avatarName,
+            data.id
+          );
+        } else {
+          handleConnectWallet();
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -53,13 +64,16 @@ export function Navbar() {
         setEditMode(true);
         return;
       }
-
       const user = await response.json();
-
       if (user && user.avatarName) {
-        // User exists
         setAvatarName(user.avatarName);
+        setAvatarId(user.id);
         setShowWelcomePopup(true);
+        console.log(
+          "Setting avatarName and userId in context:",
+          user.avatarName,
+          user.id
+        );
       }
     } catch (err) {
       console.error("Error connecting wallet:", err);
@@ -72,6 +86,8 @@ export function Navbar() {
     setAccount("");
     setShowDropdown(false);
     setShowDashboard(false);
+    setAvatarName(null);
+    setAvatarId(null);
   };
 
   const saveForm = async () => {
@@ -93,7 +109,6 @@ export function Navbar() {
             : "Avatar created successfully"
         );
         setShowDashboard(false);
-        localStorage.setItem("avatarName", avatarName);
       } else {
         const data = await response.json();
         alert("Error saving avatar:" + (data.message || "Unknown error"));
@@ -168,6 +183,7 @@ export function Navbar() {
                 }
               }}
               editMode={editMode}
+              account={account}
             />
           </div>
         </div>

@@ -4,12 +4,14 @@ import Sidebar from "./Sidebar";
 import { useRouter } from "next/router";
 import { useSocket } from "@/contexts/SocketContext";
 import { useGame } from "@/contexts/GamesContext";
+import { useAccount } from "@/contexts/AccountContext";
 
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
 
 import Modal from "./Modal";
 import styles from "./Game.module.css";
+
 export default function GamePage() {
   type Popup = {
     message: string;
@@ -17,37 +19,41 @@ export default function GamePage() {
     element: JSX.Element;
   };
 
+  // Get id from AccountContext
+  const { avatarId } = useAccount();
+  const userId = avatarId;
+
+  console.log(`DEBUG: AvatarId from context: ${userId}`);
+
   const { width, height } = useWindowSize();
   const [showConfetti, setShowConfetti] = useState(false);
+  const [popup, setPopup] = useState<Popup | null>(null);
 
   const socket = useSocket();
-  const [popup, setPopup] = useState<Popup | null>(null);
   const router = useRouter();
   const { gameId } = router.query;
-
-  const { gameOver, orientation } = useGame();
-  const [isRematch, setIsRematch] = useState(0);
+  const { gameOver, orientation, players } = useGame() || {};
   const [hasUpdatedStats, setHasUpdatedStats] = useState(false);
+
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   const updateUserStats = async (result: any) => {
+    console.log("Attempting to update user stats");
+
+    if (!userId) {
+      console.error("UserId not found in AccountContext");
+      return;
+    }
+
     try {
-      const userIdString = localStorage.getItem("userid");
-      if (!userIdString) {
-        throw new Error("UserId not found in localStorage");
-      }
-
-      // Convert userId from string to number
-      const userId = parseInt(userIdString);
-
       const response = await fetch(`${apiUrl}/gameStats/update`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userId: userId, // use the numeric userId
-          result: result,
+          userId: parseInt(userId),
+          result,
         }),
       });
 
@@ -58,94 +64,80 @@ export default function GamePage() {
       const data = await response.json();
       console.log("Game stats updated:", data);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error updating stats:", error);
     }
   };
-  const gotogame = () => {
-    router.push("/Game");
-  };
+
   useEffect(() => {
-    if (!orientation) return;
+    if (!orientation || !gameOver) return;
 
-    if (gameOver != null) {
-      let message, result;
+    let message, result;
+    const winnerName = gameOver.winner === 0 ? "white" : "black";
 
-      if (gameOver.winner != null) {
-        if (
-          (gameOver.winner === 0 && orientation === "white") ||
-          (gameOver.winner === 1 && orientation === "black")
-        ) {
-          message = "You Win!";
-          result = "win";
-        } else {
-          message = (gameOver.winner === 0 ? "white" : "black") + " wins";
-          result = "loss";
-        }
-      } else {
-        message = "Draw";
-        result = "draw";
-      }
-      setShowConfetti(true)
-      setPopup({
-        message,
-        extra:  `Congratulations, ${(gameOver.winner === 0 ? "white" : "black")} ! ${" wins " + "by " + gameOver.reason} , ${(gameOver.winner === 0 ? "white's" : "black's")} wallet is now credited with 9ꜩ`,
-        element: (
-       <><button onClick={gotogame} className={styles["copy-button"]} >Game Page</button></>
-        ),
-      });
-      setIsRematch(0);
-
-      const userId = localStorage.getItem("userid");
-      console.log(`DEBUG: ${message}, user id is${userId}`);
-
-      if (userId && !hasUpdatedStats) {
-        setHasUpdatedStats(true);
-        updateUserStats(result);
-      }
+    if (gameOver.winner != null) {
+      message = orientation === winnerName ? "You Win!" : `${winnerName} wins`;
+      result = orientation === winnerName ? "win" : "loss";
     } else {
-      setPopup(null);
+      message = "Draw";
+      result = "draw";
+    }
+
+    setShowConfetti(true);
+    setPopup({
+      message,
+      extra: `Congratulations, ${winnerName}! Wins by ${gameOver.reason}. ${winnerName}'s wallet is now credited with 9ꜩ`,
+      element: (
+        <button
+          onClick={() => router.push("/Game")}
+          className={styles["copy-button"]}
+        >
+          Game Page
+        </button>
+      ),
+    });
+
+    console.log(
+      `DEBUG: ${message}, user id is ${userId}, has updated stats= ${hasUpdatedStats}`
+    );
+
+    if (userId && !hasUpdatedStats) {
+      setHasUpdatedStats(true);
+      updateUserStats(result);
     }
   }, [gameOver, orientation]);
 
   useEffect(() => {
     if (!socket) return;
 
-    const leaveHandler = () => {
-      router.push("/");
+    const handlers = {
+      leave: () => router.push("/"),
+      "player left": () => {
+        setPopup({
+          message: "Your opponent left.",
+          extra: "9ꜩ have been added to your wallet",
+          element: (
+            <button
+              onClick={() => router.push("/Game")}
+              className={styles["copy-button"]}
+            >
+              Game Page
+            </button>
+          ),
+        });
+      },
+      rematch: () => setHasUpdatedStats(false),
     };
 
-    const gotogame = () => {
-      router.push("/Game");
-    };
-
-    const playerLeftHandler = () => {
-      
-      setPopup({
-        message: "Your opponent left.",
-        extra: "9ꜩ have been added to your wallet",
-        element: <>
-        <button onClick={gotogame} className={styles["copy-button"]} >Game Page</button>
-        </>, 
-      });
-    };
-
-    // 
-
-    const rematchHandler = () => {
-      setIsRematch(1);
-    };
-
-    socket.on("leave", leaveHandler);
-    socket.on("player left", playerLeftHandler);
-    socket.on("rematch", rematchHandler);
+    for (const [event, handler] of Object.entries(handlers)) {
+      socket.on(event, handler);
+    }
 
     return () => {
-      socket.off("leave", leaveHandler);
-      socket.off("player left", playerLeftHandler);
-      socket.off("rematch", rematchHandler);
+      for (const [event, handler] of Object.entries(handlers)) {
+        socket.off(event, handler);
+      }
     };
   }, [socket]);
-  const {  players } = useGame() || {};
 
   return (
     <div className={styles["smokeDarkTheme"]}>
@@ -154,11 +146,10 @@ export default function GamePage() {
         <div className="board-container">
           {gameId && <Game gameId={gameId as string} />}
         </div>
-        {players && players.length === 2 ? <Sidebar
-          gameId={gameId ? (Array.isArray(gameId) ? gameId[0] : gameId) : ""}
-        /> : <></>}
+        {players && players.length === 2 && (
+          <Sidebar gameId={Array.isArray(gameId) ? gameId[0] : gameId || ""} />
+        )}
         {popup && socket && (
-          <>
           <Modal onClose={() => setPopup(null)}>
             <Modal.Header>{popup.message}</Modal.Header>
             <Modal.Body>
@@ -166,7 +157,6 @@ export default function GamePage() {
               {popup.element}
             </Modal.Body>
           </Modal>
-          </>
         )}
       </div>
     </div>
