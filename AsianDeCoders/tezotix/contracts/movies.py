@@ -14,9 +14,13 @@ class TezoTix(sp.Contract):
 
             mint_index = sp.nat(0),
 
-            cityDetails = sp.map(l ={},tkey = sp.TNat, tvalue = sp.TRecord(name = sp.TString, theatreIds= sp.TNat)),
+            movieID = sp.int(0),
 
-            theatreDetails = sp.map(l ={},tkey = sp.TNat, tvalue = sp.TRecord(name = sp.TString,address = sp.TString, movieIds= sp.TInt,theatreOwner=sp.TAddress)),
+            theatreID = sp.int(0),
+
+            cityDetails = sp.map(l ={},tkey = sp.TNat, tvalue = sp.TRecord(name = sp.TString, theatreIds= sp.TSet(t=sp.TInt))),
+
+            theatreDetails = sp.map(l ={},tkey = sp.TInt, tvalue = sp.TRecord(name = sp.TString,address = sp.TString, movieIds= sp.TSet(t=sp.TInt),theatreOwner=sp.TAddress)),
   
             movieDetails = sp.map(l ={},tkey = sp.TInt, tvalue = sp.TRecord(name = sp.TString, description = sp.TString,posterLink = sp.TString,screenNumber = sp.TNat,ticketPrice=sp.TNat,startingDate = sp.TString,timeSlot=sp.TString)),           
             
@@ -30,8 +34,8 @@ class TezoTix(sp.Contract):
     @sp.entry_point
     def add_city(self,_name):
          
-        self.data.cityDetails[self.data.cityIds] = sp.record(name = _name,theatreIds = 0)
-        
+        self.data.cityDetails[self.data.cityIds] = sp.record(name = _name,theatreIds = sp.set())
+ 
         self.data.cityIds +=1
 
 
@@ -40,20 +44,24 @@ class TezoTix(sp.Contract):
         
         sp.set_type(params, sp.TRecord(_cityId=sp.TNat,_name=sp.TString,_address=sp.TString))
 
-        self.data.theatreDetails[self.data.cityDetails[params._cityId].theatreIds] = sp.record(name = params._name,address = params._address, movieIds= 0,theatreOwner = sp.sender)
+        self.data.theatreDetails[self.data.theatreID] = sp.record(name = params._name,address = params._address, movieIds= sp.set(),theatreOwner = sp.sender)
 
-        self.data.cityDetails[params._cityId].theatreIds +=1
+        self.data.cityDetails[params._cityId].theatreIds.add(self.data.theatreID)
+        
+        self.data.theatreID +=1
 
     @sp.entry_point
     def add_movie(self,params):
         
-        sp.set_type(params, sp.TRecord(_theatreId=sp.TNat,_name=sp.TString,_description=sp.TString,_posterLink = sp.TString,_screenNumber = sp.TNat,_ticketPrice = sp.TNat,_startingDate = sp.TString,_timeSlot=sp.TString))
+        sp.set_type(params, sp.TRecord(_theatreId=sp.TInt,_name=sp.TString,_description=sp.TString,_posterLink = sp.TString,_screenNumber = sp.TNat,_ticketPrice = sp.TNat,_startingDate = sp.TString,_timeSlot=sp.TString))
 
         sp.verify(self.data.theatreDetails[params._theatreId].theatreOwner == sp.sender, message = "Not the owner of the theatre")
         
-        self.data.movieDetails[self.data.theatreDetails[params._theatreId].movieIds] = sp.record(name = params._name,description = params._description, posterLink = params._posterLink,screenNumber = params._screenNumber,ticketPrice=params._ticketPrice, startingDate= params._startingDate,timeSlot=params._timeSlot)
+        self.data.movieDetails[self.data.movieID] = sp.record(name = params._name,description = params._description, posterLink = params._posterLink,screenNumber = params._screenNumber,ticketPrice=params._ticketPrice, startingDate= params._startingDate,timeSlot=params._timeSlot)
 
-        self.data.theatreDetails[params._theatreId].movieIds +=1
+        self.data.theatreDetails[params._theatreId].movieIds.add(self.data.movieID)
+        
+        self.data.movieID +=1
 
     @sp.entry_point
     def book_ticket(self,params):
@@ -109,7 +117,7 @@ def test():
     scenario += auction.add_theatre(_cityId=0,_name="Ankit",_address="Ankit").run(sender = alice)
     scenario += auction.add_theatre(_cityId=0,_name="XYZ",_address="Ankit").run(sender = bob)
     scenario += auction.add_movie(_theatreId=0,_name="Brahmastra",_description="Great Movie",_posterLink = "sdfdsdfsddf",_screenNumber=1,_ticketPrice = 100,_startingDate = "16/08/2023",_timeSlot="9 to 12").run(sender = alice)
-    scenario += auction.add_movie(_theatreId=0,_name="John Wick",_description="Great Movie",_posterLink = "sdfdsdfsddf",_screenNumber=1,_ticketPrice = 100,_startingDate = "16/08/2023",_timeSlot="9 to 12").run(sender = alice)
+    scenario += auction.add_movie(_theatreId=1,_name="John Wick",_description="Great Movie",_posterLink = "sdfdsdfsddf",_screenNumber=1,_ticketPrice = 100,_startingDate = "16/08/2023",_timeSlot="9 to 12").run(sender = bob)
     scenario += auction.book_ticket(_movieId=0,_seatNumber=10,_metadata=sp.bytes('0x30')).run(sender = alice)
     scenario += auction.book_ticket(_movieId=1,_seatNumber=11,_metadata=sp.bytes('0x30')).run(sender = bob)
 

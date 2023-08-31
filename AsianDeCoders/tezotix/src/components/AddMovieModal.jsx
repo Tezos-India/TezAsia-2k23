@@ -39,7 +39,7 @@ export default function AddMovieModal({ data, setOpenMovieModal }) {
 				.send();
 			await op.confirmation(1);
 
-			toast.success(`Voting in favour done!`, {
+			toast.success(`Movie Successfully added!`, {
 				position: "top-center",
 				autoClose: 5000,
 				hideProgressBar: false,
@@ -49,8 +49,6 @@ export default function AddMovieModal({ data, setOpenMovieModal }) {
 				progress: undefined,
 				theme: "dark",
 			});
-
-			console.log("Voting in favour done");
 		} catch (err) {
 			throw err;
 		}
