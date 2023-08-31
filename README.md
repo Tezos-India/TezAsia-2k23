@@ -1,10 +1,9 @@
-Team Name  : Block Developer
+## Team Name  : Block Developer
 
 Project name : Chess Bajar
  
 
-
-What problem you are trying to solve  : 
+## What problem you are trying to solve  : 
 
 Polyess is a groundbreaking platform that seamlessly blends the timeless game of chess with cutting-edge blockchain technology and the exciting world of Web3. Here's a breakdown of its key features and offerings:
 
@@ -65,7 +64,10 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 - **Polygon**: Integrated to enhance platform scalability and cost-effectiveness through layer-2 scaling for Ethereum.
 
 - **Full-Stack Web Development**: Comprehensive development approach covering both front-end (React) and back-end (Solidity) for a seamless user experience.
-## Videos link : https://www.canva.com/design/DAFtGElfoDo/35xtWWO86FUvhRhpamU4pQ/watch?utm_content=DAFtGElfoDo&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel
+- 
+## Demo Video Link:
+ * <a href="https://www.canva.com/design/DAFtGElfoDo/35xtWWO86FUvhRhpamU4pQ/watch?utm_content=DAFtGElfoDo&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel">Video link</a>
+ 
 ## Project Demo Photos,
 
 ![3](https://github.com/ProgrammingPirates/TezAsia-2k23/assets/78801686/0fb85a5a-37f1-43ec-a9c5-df56dd84a7fc)
@@ -87,10 +89,10 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 - BASE_URI='https://ipfs.io/ipfs/xyz'
 - ALCHMEY_API='https://eth-rinkeby.alchemyapi.io/v2/xyz'
 
-
-Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository * 
 ## Github repository link  https://github.com/ProgrammingPirates/TezAsia-2k23
-## Your PPT file  : https://www.canva.com/design/DAFtAqQBeoo/3DjXImN4X-JaROHlCnOhFQ/view?utm_content=DAFtAqQBeoo&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+
+## PPT Link:
+ * <a href="https://www.canva.com/design/DAFtAqQBeoo/3DjXImN4X-JaROHlCnOhFQ/view?utm_content=DAFtAqQBeoo&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink">PPT link</a>
 
 
 ## Your Team members Info.
