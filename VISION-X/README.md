@@ -36,8 +36,6 @@ FA2 FUNGIBLE (SFT) DEPLOYED CONTRACT: KT1BkSid4kxYd3Lmht6jv8Z1RdpSkkjEJ8Gq
 
 If your project is deployed, then include the Live Project Link: https://tezmint.vercel.app/
 
-Folder link to project codebase on Tezos-India/TezAsia-2k23 Repository: 
-
 Github repository link: https://github.com/AmaanSayyad/TezAsia-2k23/tree/main/VISION-X
 
 Your PPT file: https://docs.google.com/presentation/d/1LnVuMT6noQGNk1KulUIdVN0fKDMlHyNvEl0GwQTtm6o/edit?usp=sharing
