@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "../static/css/home.css";
-import dynamic from "next/dynamic";
 import {
   Heading,
   Button,
@@ -28,7 +27,6 @@ import {
   Th,
   Td,
 } from "@chakra-ui/react";
-import Field from "./Field";
 import ReactJson from "react-json-view";
 import config from "../config";
 import { char2Bytes, bytes2Char } from "@taquito/utils";

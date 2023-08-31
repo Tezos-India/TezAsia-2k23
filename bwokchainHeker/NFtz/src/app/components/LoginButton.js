@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import { Text, Button } from "@chakra-ui/react";
 // const getActiveAccount = dynamic(() => import('../tezos').then((mod) => mod.getActiveAccount), { ssr: false });
 // const clearActiveAccount = dynamic(() => import('../tezos').then((mod) => mod.clearActiveAccount), { ssr: false });
