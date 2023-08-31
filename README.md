@@ -65,8 +65,8 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 - **Polygon**: Integrated to enhance platform scalability and cost-effectiveness through layer-2 scaling for Ethereum.
 
 - **Full-Stack Web Development**: Comprehensive development approach covering both front-end (React) and back-end (Solidity) for a seamless user experience.
-
-## Project Demo Photos, Videos * 
+## Videos link : https://www.canva.com/design/DAFtGElfoDo/35xtWWO86FUvhRhpamU4pQ/watch?utm_content=DAFtGElfoDo&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel
+## Project Demo Photos,
 
 ![3](https://github.com/ProgrammingPirates/TezAsia-2k23/assets/78801686/0fb85a5a-37f1-43ec-a9c5-df56dd84a7fc)
 
