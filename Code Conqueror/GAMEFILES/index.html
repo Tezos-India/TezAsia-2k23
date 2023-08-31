@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Game</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('Teen-Patti.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+    .player-cards {
+      position: absolute;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+
+    .player-cards.face-down-card4 {
+      left: 0;
+    }
+
+    .player-cards.face-down-card2 {
+      right: 0;
+    }
+
+    .player-cards.face-down-card3 {
+      top: 0;
+    }
+
+    .player-cards.face-down-card {
+      bottom: 0;
+    }
+
+    button {
+      /* Add your button styles here */
+    }
+  </style>
+
+</head>
+<body>
+  
+  <div class="cards-wrapper">
+    <div class="player-cards face-down-card">
+      <h3>Player 1</h3>
+      <button id="player1-btn">Show Cards</button>
+      <div id="player1-cards" style="display: none;"></div>
+    </div>
+
+    <div class="player-cards face-down-card2">
+      <h3>Player 2</h3>
+      <button id="player2-btn">Show Cards</button>
+      <div id="player2-cards" style="display: none; left: 0;"></div>
+    </div>
+
+    <div class="player-cards face-down-card3">
+      <h3>Player 3</h3>
+      <button id="player3-btn">Show Cards</button>
+      <div id="player3-cards" style="display: none; right: 0;"></div>
+    </div>
+
+    <div class="player-cards face-down-card4">
+      <h3>Player 4</h3>
+      <button id="player4-btn">Show Cards</button>
+      <div id="player4-cards" style="display: none;"></div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="chat-room.js"></script>
+  <script src="script.js"></script>
+
+
+</body>
+</html>

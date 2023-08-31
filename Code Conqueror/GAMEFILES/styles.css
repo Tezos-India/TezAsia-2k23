@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  /* Set the background image */
+  background-image: url('Teen-Patti.jpg');
+  /* Set the image to cover the entire viewport */
+  background-size: cover;
+  /* Set the image to not repeat */
+  background-repeat: no-repeat;
+  /* Center the image */
+  background-position: center center;
+  /* Set the fixed position */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.button-wrapper.left {
+  float: right;
+}
+.button-wrapper.right {
+  float: left;
+}
+
+/* <style> */
+/* Your existing styles here */
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.face-down-card {
+  background-color: #000;
+  color: #000;
+}
+
+.player-cards {
+  padding: 10px;
+  margin: 10px;
+  background-color: #f0f0f0;
+}
+/* </style> */

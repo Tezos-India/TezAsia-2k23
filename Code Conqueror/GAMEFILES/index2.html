@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Alignment</title>
+  <link rel="stylesheet" href="styles.css">
+    <style>
+      body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('Teen-Patti.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  
+      .button-wrapper {
+        position: absolute;
+        background-color: #f0f0f0;
+        padding: 10px;
+      }
+  
+      .button-wrapper.left {
+        left: 0;
+      }
+  
+      .button-wrapper.right {
+        right: 0;
+      }
+  
+      .button-wrapper.up {
+        top: 0;
+      }
+  
+      .button-wrapper.down {
+        bottom: 0;
+      }
+  
+      button {
+        /* Add your button styles here */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button-wrapper left">
+      <button>Player 4</button>
+    </div>
+  
+    <div class="button-wrapper right">
+      <button>Player 2</button>
+    </div>
+  
+    <div class="button-wrapper up">
+      <button>Player 3</button>
+    </div>
+  
+    <div class="button-wrapper down">
+      <button>Player 1</button>
+    </div>
+  </body>
+  </html>
