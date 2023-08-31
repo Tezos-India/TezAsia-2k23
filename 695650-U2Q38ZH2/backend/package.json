@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@prisma/client": "^5.0.0",
     "@taquito/signer": "^17.2.0",

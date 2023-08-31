@@ -1,6 +1,5 @@
 // @ts-nocheck
 
-
 import React, {  useState, useEffect } from 'react';
 import { useRef } from 'react'
 import PropTypes from 'prop-types';
@@ -30,7 +29,6 @@ const containerStyle = {
 export default function Game({ gameId }: GameProps) {
   const chessboardRef = useRef<any>();
 
-
   const { game, fen, makeMove, orientation, players, turn, gameOver, lastMove, publicGame, timeLeft } = useGame() || {};
 
   const [moveFrom, setMoveFrom] = useState('');
@@ -41,6 +39,9 @@ export default function Game({ gameId }: GameProps) {
   const socket = useSocket();
   const { id, username } = useUser();
   const [chessboardSize, setChessboardSize] = useState<number | undefined>();
+
+  const [buttonClicked, setButtonClicked] = useState<false | boolean>();
+  
   
   const get_piece_positions = (piece: { color: string; type: string }) => {
     if (!game) {
@@ -90,7 +91,6 @@ useEffect(() => {
     squares[lastMove.to] = { background: color };
     setLastMoveSquares(squares);
 }, [lastMove]);
-
 
   useEffect(() => {
     if (!game) return;
@@ -227,6 +227,7 @@ useEffect(() => {
       
       </> ):
       <>
+      
   <div className={styles.body}>
       <a href="#" className={styles['animated-button']}>
         <span></span>
@@ -248,12 +249,28 @@ useEffect(() => {
                </>
             ) : (
               <>
+           
               <h1>Invite a Friend to the Game</h1>
               <h2>Your Game Id {gameId}</h2>
               <h1>Waiting for opponent...</h1>
-              <button onClick={() => copyToClipboard(gameId)}>
+              { buttonClicked?
+               <div id="toast-success" className="w-full max-w-md p-4 mb-4 text-gray-500 bg-white rounded-lg shadow-md border-2 border-green-400 dark:text-gray-400 dark:bg-gray-800">
+                 <div className="text-center text-sm font-normal">
+                  
+                   <svg className="w-5 h-5 inline-block mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                     <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+                   </svg>
+                 
+                   Copied successfully to the clipboard
+                 </div>
+               </div>
+             
+                     :
+              <button onClick={() => {copyToClipboard(gameId) ; setButtonClicked(true)}}>
                   Copy GameID to Clipboard
                 </button>
+                
+            }
                 </>
             )}
             </div>
@@ -269,4 +286,4 @@ useEffect(() => {
 
 Game.propTypes = {
   gameId: PropTypes.string.isRequired,
-};
+}
