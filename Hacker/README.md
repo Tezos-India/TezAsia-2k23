@@ -4,22 +4,27 @@ PROJECT :
 
 DESCRIPTION : 
 
-	A GROUP OF PEOPLE WILL JOIN IN, GUESS A NUMBER FROM THE RANGE [1, 6], AND THEN PUT A BET UPON THEIR GUESS. 
-	THE ONE WHO GUESSES THE OUTPUT CORRECTLY IS TREATED AS THE
-	WINNER(S). THEN THE ENTIRE POOL OF BETS AUTOMATICALLY GETS DISTRIBUTED ACROSS THESE WINNER(S). THE MAIN
-	CHALLENGE HERE IS TO GENERATE A PERFECTLY RANDOM NUMBER IN THE GIVEN RANGE (OF COURSE ON-CHAIN) SO AS TO
-	AVOID ANY MISLEADS.
+	A group of people will join in, guess a number from the range [1, 6], and then put a bet upon their guess. 
+	The one who guesses the output correctly is treated as the
+	Winner(s). Then the entire pool of bets automatically gets distributed across these winner(s). The main
+	Challenge here is to generate a perfectly random number in the given range (of course on-chain) so as to
+	Avoid any misleads.
 
+![vlcsnap-2023-08-30-20h57m01s371](https://github.com/Ishant-Subhash-Dahiwale/TezAsia-2k23/assets/127649951/5fa7cde3-51d7-4613-88db-24d5f386523d)
+![vlcsnap-2023-08-30-20h58m26s476](https://github.com/Ishant-Subhash-Dahiwale/TezAsia-2k23/assets/127649951/c0daa43c-4563-41c5-8fff-daaaa93a44c6)
+
+![vlcsnap-2023-08-30-20h59m08s719](https://github.com/Ishant-Subhash-Dahiwale/TezAsia-2k23/assets/127649951/26d5e5c3-4097-4532-a658-816bd63d0b3f)
+![vlcsnap-2023-08-30-21h00m05s127](https://github.com/Ishant-Subhash-Dahiwale/TezAsia-2k23/assets/127649951/38cd1739-85c4-4b37-bd66-b17a16fd6470)
 
 
 PROBLEM STATEMENT : 
 
-	BUILD A DICE-ROLLING GAME. A GROUP OF PEOPLE INITIALLY (INVITE ONLY) WILL JOIN IN, GUESS A NUMBER FROM
-	THE RANGE [1, 6], AND THEN PUT A BET UPON THEIR GUESS. THE ONE WHO GUESSES THE OUTPUT CORRECTLY IS TREATED AS THE
-	WINNER(S). THEN THE ENTIRE POOL OF BETS AUTOMATICALLY GETS DISTRIBUTED ACROSS THESE WINNER(S). THE MAIN
-	CHALLENGE HERE IS TO GENERATE A PERFECTLY RANDOM NUMBER IN THE GIVEN RANGE (OF COURSE ON-CHAIN) SO AS TO
-	AVOID ANY MISLEADS. ONCE THIS IS ACHIEVED, A COMPLETE SECTION OF GAMES CAN BE FURTHER BUILT UPON THIS
-	RANDOM MODULE.[PROVIDED FROM PDF]
+	Build a dice-rolling game. A group of people initially (invite only) will join in, guess a number from
+	The range [1, 6], and then put a bet upon their guess. The one who guesses the output correctly is treated as the
+	Winner(s). Then the entire pool of bets automatically gets distributed across these winner(s). The main
+	Challenge here is to generate a perfectly random number in the given range (of course on-chain) so as to
+	Avoid any misleads. Once this is achieved, a complete section of games can be further built upon this
+	Random module.[PROVIDED From pdf]
 
 
 
