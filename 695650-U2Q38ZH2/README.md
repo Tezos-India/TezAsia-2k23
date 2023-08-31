@@ -88,7 +88,12 @@ Blocks Gaming emerges as the beacon in this landscape, specifically tailored to 
 Get a visual taste of the **Blocks Gaming** experience with our demo [here](https://drive.google.com/file/d/1tJ7PEndGZ4tJemGrV1VQlVLz_1f9ZZlY/view?usp=sharing). 
 
 **Demo Screenshots**
-  - [Home](https://drive.google.com/file/d/1NQRbyL7qQUHgPlFtTfx5eEPyop2EeDr6/view?usp=sharing)
+  - [Home](https://github.com/ishaandhyani/TezAsia-2k23/blob/main/695650-U2Q38ZH2/Blocks%20Screenshots/home.png)
+  - [Library](https://github.com/ishaandhyani/TezAsia-2k23/blob/main/695650-U2Q38ZH2/Blocks%20Screenshots/library.png)
+  - [Explore](https://github.com/ishaandhyani/TezAsia-2k23/blob/main/695650-U2Q38ZH2/Blocks%20Screenshots/explore1.png)
+  - [Game Menu](https://github.com/ishaandhyani/TezAsia-2k23/blob/main/695650-U2Q38ZH2/Blocks%20Screenshots/ingame2.png)
+  - [Victory](https://github.com/ishaandhyani/TezAsia-2k23/blob/main/695650-U2Q38ZH2/Blocks%20Screenshots/victory.png)
+  - [Chess Game](https://github.com/ishaandhyani/TezAsia-2k23/blob/main/695650-U2Q38ZH2/Blocks%20Screenshots/ingame4.png)
 
 ## Smart Contract
 
