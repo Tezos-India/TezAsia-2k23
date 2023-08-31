@@ -1,1 +1,0 @@
-import { tezos } from "./tezos";
