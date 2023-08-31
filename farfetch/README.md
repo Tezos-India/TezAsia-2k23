@@ -26,8 +26,8 @@ https://github.com/farfetch08/TezAsia-2k23/tree/main/farfetch
 Github Repository Link:
 https://github.com/farfetch08/TezAsia-2k23/tree/main/farfetch
 
-PPT File:
-[Provide the link to your project presentation file.]
+<!--PPT File:
+[Provide the link to your project presentation file.] -->
 
 Team Members:
 1. Name: Harshit
