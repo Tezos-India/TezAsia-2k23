@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tezos Dice Game</title>
+</head>
+<body>
+  <h1>Tezos Dice Game</h1>
+  <button id="loginButton">Log In</button>
+  <button id="placeBetButton">Place Bet</button>
+  <div id="result"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/conseiljs"></script>
+  <script>
+    const TezosNode = 'https://YOUR_TEZOS_NODE_URL';
+    const ContractAddress = 'YOUR_SMART_CONTRACT_ADDRESS';
+    const Wallet = 'YOUR_WALLET_ADDRESS';
+    const WalletPrivateKey = 'YOUR_WALLET_PRIVATE_KEY';
+
+    const tezosNode = ConseilJS.TezosNodeWriter;
+    tezosNode.setProvider({ url: TezosNode });
+
+    const contract = new ConseilJS.TezosContract(ContractAddress);
+
+    document.getElementById('loginButton').addEventListener('click', async () => {
+      try {
+        await tezosNode.sendContractInvocationOperation(
+          TezosNode,
+          Wallet,
+          WalletPrivateKey,
+          ContractAddress,
+          0,
+          100000,
+          1000000,
+          '',
+          0,
+          'log_in',
+          '{}',
+          ConseilJS.TezosParameterFormat.Michelson
+        );
+        alert('Logged in successfully');
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    document.getElementById('placeBetButton').addEventListener('click', async () => {
+      try {
+        const amount = 1; // Amount of tez to bet
+        const entrypoint = 'place_bet';
+        const parameters = JSON.stringify({ "bet_amount": amount });
+
+        const result = await contract.sendEntryOperation(
+          Wallet,
+          WalletPrivateKey,
+          entrypoint,
+          parameters,
+          amount * 1000000 // Convert tez to mutez
+        );
+
+        const transactionHash = result.contractOperation.groupHash;
+        document.getElementById('result').textContent = `Bet placed. Transaction Hash: ${transactionHash}`;
+      } catch (error) {
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dice Rolling Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Welcome to the Dice Rolling Game!</h1>
+    
+    <div id="login">
+        <h2>Login</h2>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    
+    <div id="game">
+        <h2>Guess the Dice Roll Number</h2>
+        <p>Place your bet:</p>
+        <input type="number" id="betAmount" min="1" max="10" required><br><br>
+        <button onclick="rollDice()">Roll Dice</button>
+        <p id="result"></p>
+        <p id="reward"></p>
+    </div>
+    
+    <div id="jackpot">
+        <h2>Weekly Jackpot</h2>
+        <p>Current Jackpot Amount: $1000</p>
+        <button onclick="participateJackpot()">Participate</button>
+    </div>
+    
+    <div id="luckyDraw">
+        <h2>Weekly Lucky Draw</h2>
+        <p>Participation Tokens: 10</p>
+        <button onclick="participateLuckyDraw()">Participate</button>
+    </div>
+    
+    <div id="streak">
+        <h2>Daily Streak</h2>
+        <p>Current Streak: 3</p>
+        <button onclick="claimStreakReward()">Claim Reward</button>
+    </div>
+    
+    <div id="result">
+        <h2>Result</h2>
+        <p id="resultText"></p>
+        <p id="reward"></p>
+    </div>
+    <p>Click the button to roll the dice:</p>
+    <button id="rollButton">Roll</button>
+    <p id="result"></p>
+
+    <script>
+        const rollButton = document.getElementById('rollButton');
+        const result = document.getElementById('result');
+
+        rollButton.addEventListener('click', () => {
+            // Generate a random number between 1 and 6
+            const randomNumber = Math.floor(Math.random() * 6) + 1;
+            result.textContent = `You rolled a ${randomNumber}!`;
+        });
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
