@@ -1,14 +1,16 @@
-"use client"
-import MintOnIPFS from './components/MintOnIPFS.js';
-import Navbar from './components/Navbar.js';
+"use client";
+import MintOnIPFS from "./components/MintOnIPFS.js";
+import Navbar from "./components/Navbar.js";
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <MintOnIPFS />
-    </>
-  );
+  if (typeof window !== "undefined") {
+    return (
+      <>
+        <Navbar />
+        <MintOnIPFS />
+      </>
+    );
+  }
 }
 
 export default App;

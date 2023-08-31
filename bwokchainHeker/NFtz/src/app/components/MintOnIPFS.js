@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "../static/css/home.css";
-import Transfer from "./Transfer.js";
+import dynamic from "next/dynamic";
 import {
   Heading,
   Button,
@@ -30,9 +30,11 @@ import {
 } from "@chakra-ui/react";
 import Field from "./Field";
 import ReactJson from "react-json-view";
-import { getContractStorage, Tezos } from "../tezos";
 import config from "../config";
 import { char2Bytes, bytes2Char } from "@taquito/utils";
+// const getContractStorage = dynamic(() => import('../tezos').then((mod) => mod.getContractStorage), { ssr: false });
+// const Tezos = dynamic(() => import('../tezos').then((mod) => mod.Tezos), { ssr: false });
+import { getContractStorage, Tezos } from "../tezos";
 
 function MintOnIPFS() {
   const [userData, setUserData] = useState([]);
@@ -43,7 +45,7 @@ function MintOnIPFS() {
   const [secret, setSecret] = useState(process.env.NODE_ENV==="development" ? process.env.NEXT_PUBLIC_PINATA_SECRET : "");
   const [metadataBytes, setMetadataBytes] = useState("");
   const [fieldCount, setFieldCount] = useState(1);
-
+  const [isBrowser, setIsBrowser] = useState(typeof window !== "undefined" ? true : false);
   const isEmpty = !key || !secret;
 
   const formData = new FormData();
@@ -225,7 +227,7 @@ function MintOnIPFS() {
       <Box maxW="2xl" margin={"auto"} borderStyle={"dotted"} p={"2"} borderRadius={"2xl"} borderColor={"yellow"} borderWidth={"thick"}>
         <Heading size={"lg"}>Create JSON Metadata for NFTs</Heading>
         <Box h={"2xs"}>
-          <ReactJson
+          {isBrowser ? <ReactJson
             theme="apathy:inverted"
             src={formInput}
             onEdit={(edit) => {
@@ -241,7 +243,7 @@ function MintOnIPFS() {
               return edit.updated_src;
             }}
             enableClipboard={false}
-          />
+          /> : null}
           <p>
             Shortcut: Press <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + <kbd>enter</kbd> to
             save the value in input.
@@ -267,6 +269,7 @@ function MintOnIPFS() {
             <Input
               id="contractAddress"
               onChange={(e) => handleContractAddressChange(e)}
+              placeholder="KT1NVRsg8nDaLz5BigV21MDwkiyRBkZR69Ga"
               type="text"
             />
             <FormHelperText fontWeight={"thin"}>
@@ -280,8 +283,8 @@ function MintOnIPFS() {
           <Heading size={"lg"}>
             Put your Pinata keys if you want to put File on IPFS
           </Heading>
-            <FormControl maxW={"lg"}>
-            <FormLabel isInvalid={isEmpty} fontWeight={"extrabold"}>Api Key:</FormLabel>
+            <FormControl isInvalid={isEmpty} maxW={"lg"}>
+            <FormLabel fontWeight={"extrabold"}>Api Key:</FormLabel>
             <Input
               id="pinata_key"
               placeholder={"Pinata Key"}

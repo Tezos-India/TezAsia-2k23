@@ -1,5 +1,8 @@
+"use client";
 import React, { useState } from "react"
-import { getContract } from '../tezos';
+// import { getContract } from '../tezos';
+import dynamic from 'next/dynamic';
+const { getContract } = dynamic(() => import('../tezos').then((mod) => mod.getContract), { ssr: false });
 
 import '../static/css/register.css';
 import Modal from 'react-bootstrap/Modal';
