@@ -1,8 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../utils/AuthProvider";
 import { Link } from "react-router-dom";
-
-import searchResults from "../data";
 
 import ConnectBtn from "../components/ConnectBtn";
 import Button from "../components/Button";
@@ -11,15 +9,93 @@ import MovieCard from "../components/MovieCard";
 import AddMovieModal from "../components/AddMovieModal";
 import RegisterTheaterModal from "../components/RegisterTheaterModal";
 
+import { fetchMoviesStorage } from "../utils/tzkt";
+import searchResults from "../data";
+
 export default function Admin() {
-	console.log(searchResults);
+	// const [searchResults, setSearchResults] = useState([]);
 	const { address } = useContext(AuthContext);
 
 	const [data, setData] = useState(searchResults);
-	// const [data, setData] = useState(null)
+
 	const [openAddMovieModal, setOpenAddMovieModal] = useState(false);
 	const [openRegisterTheaterModal, setOpenRegisterTheaterModal] =
 		useState(false);
+
+	// useEffect(() => {
+	// 	fetchData();
+	// }, []);
+
+	// const fetchData = async () => {
+	// 	try {
+	// 		const storage = await fetchMoviesStorage();
+
+	// 		const cityIds = storage.cityIds;
+
+	// 		const movieDetails = storage.movieDetails;
+
+	// 		const theatreDetails = storage.theatreDetails;
+
+	// 		const cityDetails = storage.cityDetails;
+
+	// 		const Data = [];
+	// 		const data1 = [];
+	// 		const data2 = [];
+
+	// 		for (let i = 0; i < cityIds; i++) {
+	// 			const name = cityDetails[i].name;
+
+	// 			const theatreIds = storage.cityDetails[i].theatreIds;
+
+	// 			for (let i = 0; i < theatreIds; i++) {
+	// 				const theatreName = theatreDetails[i].name;
+	// 				const address = theatreDetails[i].address;
+	// 				const movieIds = theatreDetails[i].movieIds;
+
+	// 				for (let i = 0; i < movieIds; i++) {
+	// 					const movieName = movieDetails[i].name;
+	// 					const description = movieDetails[i].description;
+	// 					const posterLink = movieDetails[i].posterLink;
+	// 					const screenNumber = movieDetails[i].screenNumber;
+	// 					const ticketPrice = movieDetails[i].ticketPrice;
+	// 					const startingDate = movieDetails[i].startingDate;
+	// 					const timeSlot = movieDetails[i].timeSlot;
+
+	// 					const fetchedObject = {
+	// 						movieName: movieName,
+	// 						description: description,
+	// 						posterLink: posterLink,
+	// 						screenNumber: screenNumber,
+	// 						ticketPrice: ticketPrice,
+	// 						startingDate: startingDate,
+	// 						timeSlot: timeSlot,
+	// 					};
+
+	// 					data2.push(fetchedObject);
+	// 				}
+
+	// 				const fetchedObject = {
+	// 					theatreName: theatreName,
+	// 					address: address,
+	// 					activeMovies: data2,
+	// 				};
+
+	// 				data1.push(fetchedObject);
+	// 			}
+
+	// 			const fetchedObject = {
+	// 				cityName: name,
+	// 				theatreDetails: data1,
+	// 			};
+
+	// 			Data.push(fetchedObject);
+	// 			setSearchResults(Data);
+	// 			searchResults = Data;
+	// 		}
+	// 	} catch (e) {
+	// 		throw e;
+	// 	}
+	// };
 
 	return (
 		<div className="flex flex-col flex-1 px-28">
@@ -30,8 +106,8 @@ export default function Admin() {
 							<h2 className="text-4xl font-medium">
 								Hey (
 								{data[0].name.length >= 20
-									? data[0].name.slice(0, 20) + "..."
-									: data[0].name}
+									? data[0].cityName.slice(0, 20) + "..."
+									: data[0].cityName}
 								) 👋
 							</h2>
 							<div className="flex gap-3 items-center">

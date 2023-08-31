@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { tezos } from "../utils/tezos";
 import { toast } from "react-toastify";
 import HeadingUnderline from "./HeadingUnderline";
-import Button from "./Button.jsx";
+import Button from "./Button";
+import { tezos } from "../utils/tezos";
+
 import addresses from "../config/config";
-import { fetchMoviesStorage } from "../utils/tzkt";
 
 export default function AddMovieModal({ data, setOpenMovieModal }) {
 	const [loading, setLoading] = useState(false);
@@ -17,13 +17,9 @@ export default function AddMovieModal({ data, setOpenMovieModal }) {
 	const [posterLink, setPosterLink] = useState("");
 	const [timeSlot, setTimeSlot] = useState("");
 
-	const submit = async () => {
+	const addMovie = async () => {
 		try {
 			const contractInstance = await tezos.wallet.at(addresses.movies);
-
-			const storage = await fetchMoviesStorage();
-
-			// const descriptionCIDBytes = await storage.profile[address];
 
 			const op = await contractInstance.methodsObject
 				.add_movie({
@@ -115,12 +111,19 @@ export default function AddMovieModal({ data, setOpenMovieModal }) {
 									Starting date:
 								</p>
 								<input
-									type="date"
+									type="text"
 									className="px-15 py-10 flex-1 border-primary outline-none font-poppins text-sm bg-white/5 rounded-10"
-									onChange={(e) => {
-										setStartingDate(e.target.value);
-										console.log(e.target.value);
-									}}
+									placeholder="Eg. 16/08/2023"
+									onChange={(e) => setTicketPrice(e.target.value)}
+								/>
+							</div>
+							<div className="flex flex-row gap-4 items-center w-1/2">
+								<p className="font-poppins text-lg font-medium">Total shows:</p>
+								<input
+									type="text"
+									className="px-15 py-10 flex-1 border-primary outline-none font-poppins text-sm bg-white/5 rounded-10"
+									placeholder="Eg. 1"
+									onChange={(e) => setStartingDate(e.target.value)}
 								/>
 							</div>
 							<div className="flex flex-row gap-4 items-center w-1/2">
@@ -143,15 +146,17 @@ export default function AddMovieModal({ data, setOpenMovieModal }) {
 									onChange={(e) => setPosterLink(e.target.value)}
 								/>
 							</div>
-							<Button
-								varient="light"
-								gradient={false}
-								weight={"medium"}
-								style="flex bg-green-500/20 border-green-500/30 hover:bg-green-500/30"
-								onClick={submit}
-							>
-								Submit
-							</Button>
+							<div className="flex flex-row items-center justify-center">
+								<Button
+									varient="light"
+									gradient={true}
+									weight={"bold"}
+									style="w-full"
+									onClick={addMovie}
+								>
+									Submit
+								</Button>
+							</div>
 						</div>
 					</>
 				)}

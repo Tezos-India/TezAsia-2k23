@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import poster from "./assets/oppenheimer.png";
 import { fetchMoviesStorage } from "./utils/tzkt";
-import { tezos } from "./utils/tezos";
-
-import addresses from "./config/config";
 
 const searchResults = [
 	{
@@ -1001,8 +998,6 @@ function Data() {
 
 	const fetchData = async () => {
 		try {
-			const contractInstance = await tezos.wallet.at(addresses.movies);
-
 			const storage = await fetchMoviesStorage();
 
 			const cityIds = storage.cityIds;
@@ -1042,8 +1037,8 @@ function Data() {
 							posterLink: posterLink,
 							screenNumber: screenNumber,
 							ticketPrice: ticketPrice,
-							startingDate: startingDate,
-							timeSlot: timeSlot,
+							startingDate: startingDate, //text
+							timeSlot: timeSlot, //text
 						};
 
 						data2.push(fetchedObject);
