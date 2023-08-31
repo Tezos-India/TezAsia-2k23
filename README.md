@@ -87,13 +87,8 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 
 
  
-## Your Deployed Smart Contract's Link * ( write NA if no contract is deployed)
-
-- INFURA_KEY = '254ab7d222334c87bf12345678910027'
-- CONTRACT_ADDRESS = '0x66dy6492j5F212B81A1723336bDaf235b6932ha1'
-- BASE_URI='https://ipfs.io/ipfs/xyz'
-- ALCHMEY_API='https://eth-rinkeby.alchemyapi.io/v2/xyz'
-
+## Your Deployed Smart Contract's Link *
+- NA
 ## Github repository link  [Github](https://github.com/ProgrammingPirates/Block_Developer)
 
 
