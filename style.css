@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #666;
+}
+
+#login {
+    display: none;
+}
+
+#game {
+    display: none;
+}
+
+#jackpot {
+    display: none;
+}
+
+#luckyDraw {
+    display: none;
+}
+
+#streak {
+    display: none;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+#login, #game, #result {
+    margin: 20px auto;
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#game, #result {
+    display: none;
+}
+
+#resultText {
+    font-weight: bold;
+}
+
+#reward {
+    font-style: italic;
+}
+
