@@ -7,7 +7,7 @@ class TezoTix(sp.Contract):
         self.init(
 
             # It contains the contract address of the NFT contract
-            nft_contract_address=sp.address("KT1JoCosSDUHqKPGJuK7BKLKUysX22ZDDN5V"),   
+            nft_contract_address=sp.address("KT1J7wz4sfuB9wSoJHeX1goVDzfmRrdAeL3j"),   
 
             #Ids 
             cityIds = sp.nat(0),
@@ -71,31 +71,31 @@ class TezoTix(sp.Contract):
         
         sp.set_type(params, sp.TRecord(_movieId=sp.TInt,_seatNumber=sp.TInt,_metadata=sp.TBytes))
 
-        self.data.seatDetails[(params._movieId)*45+params._seatNumber] = sp.record(ticketOwner = sp.sender,mint_index=self.data.mint_index,booked=True,metadata=params._metadata,movieId=params._movieId,seatNumber=params._seatNumber)
+        self.data.seatDetails[(params._movieId)*75+params._seatNumber] = sp.record(ticketOwner = sp.sender,mint_index=self.data.mint_index,booked=True,metadata=params._metadata,movieId=params._movieId,seatNumber=params._seatNumber)
   
         # Inter-contract call take place here to mint the artwork
         
-        # c = sp.contract(
-        #     sp.TRecord(
-        #         token_id=sp.TNat,
-        #         amount=sp.TNat,
-        #         address=sp.TAddress,
-        #         metadata=sp.TMap(sp.TString, sp.TBytes),
-        #     ),
-        #     self.data.nft_contract_address,
-        #     "mint",
-        # ).open_some()
+        c = sp.contract(
+            sp.TRecord(
+                token_id=sp.TNat,
+                amount=sp.TNat,
+                address=sp.TAddress,
+                metadata=sp.TMap(sp.TString, sp.TBytes),
+            ),
+            self.data.nft_contract_address,
+            "mint",
+        ).open_some()
 
-        # sp.transfer(
-        #             sp.record(
-        #                 token_id=self.data.mint_index,
-        #                 amount=self.data.movieDetails[params._movieId].ticketPrice,
-        #                 address=sp.sender,
-        #                 metadata={"": self.data.seatDetails[(params._movieId)*45+params._seatNumber].metadata},
-        #             ),
-        #             sp.tez(0),
-        #             c,
-        #         )
+        sp.transfer(
+                    sp.record(
+                        token_id=self.data.mint_index,
+                        amount=1,
+                        address=sp.sender,
+                        metadata={"": self.data.seatDetails[(params._movieId)*75+params._seatNumber].metadata},
+                    ),
+                    sp.utils.nat_to_mutez(self.data.movieDetails[params._movieId].ticketPrice*100000),
+                    c,
+                )
         
         self.data.mint_index += 1
 

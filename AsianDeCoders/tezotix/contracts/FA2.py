@@ -579,8 +579,6 @@ class FA2_change_metadata(FA2_core):
 class FA2_mint(FA2_core):
     @sp.entry_point
     def mint(self, params):
-        sp.verify(self.is_administrator(sp.sender), message = self.error_message.not_admin())
-        # We don't check for pauseness because we're the admin.
         if self.config.single_asset:
             sp.verify(params.token_id == 0,
                       message="single-asset: token-id <> 0")
