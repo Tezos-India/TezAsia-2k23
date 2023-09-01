@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../utils/AuthProvider';
 
-import poster from "../assets/oppenheimer.png"
 
 import ConnectBtn from '../components/ConnectBtn';
 import HeadingUnderline from '../components/HeadingUnderline';
@@ -12,38 +12,7 @@ export default function Account() {
 
     const { address } = useContext(AuthContext);
 
-    const data = [
-        {
-            poster: poster,
-            name: "Oppenheimer",
-            dateTime: "26 Aug 2023, 11:00",
-            theatre: "PVR VEGA Bengaluru",
-            screenNo: "5",
-            seats: ["A1", "A2", "A3"],
-            price: 0.6,
-            address: address
-        },
-        {
-            poster: poster,
-            name: "Oppenheimer",
-            dateTime: "26 Aug 2023, 11:00",
-            theatre: "PVR VEGA Bengaluru",
-            screenNo: "5",
-            seats: ["A1", "A2", "A3"],
-            price: 0.6,
-            address: address
-        },
-        {
-            poster: poster,
-            name: "Oppenheimer",
-            dateTime: "26 Aug 2023, 11:00",
-            theatre: "PVR VEGA Bengaluru",
-            screenNo: "5",
-            seats: ["A1", "A2", "A3"],
-            price: 0.6,
-            address: address
-        },
-    ]
+    const data = [{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" }, { img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" }, { img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" }]
 
 
     return (
@@ -53,23 +22,12 @@ export default function Account() {
                     ? <div className="flex flex-col gap-[70px]">
                         <h2 className="text-4xl font-medium">Hey ({address.slice(0, 4) + "..." + address.slice(-4)}) 👋</h2>
                         <div>
-                            <HeadingUnderline>Upcoming shows</HeadingUnderline>
+                            <HeadingUnderline>Your Tickets</HeadingUnderline>
 
                             <div className="flex mt-30 pb-4 gap-7 max-w-full overflow-x-auto scroll-hor">
                                 {
                                     data.map((item) => {
-                                        return (<MovieCard data={item} withoutBtn={true} withDateTime={true} />)
-                                    })
-                                }
-                            </div>
-                        </div>
-                        <div>
-                            <HeadingUnderline>Past shows</HeadingUnderline>
-
-                            <div className="flex mt-30 pb-4 gap-7 max-w-full overflow-x-auto scroll-hor">
-                                {
-                                    data.map((item) => {
-                                        return (<MovieCard data={item} withoutBtn={true} withDateTime={true} />)
+                                        return (<Link to={"https://ipfs.io/ipfs/" + item.img} target="_blank" rel="noopener noreferrer"><img src={"https://ipfs.io/ipfs/" + item.img} className="w-[200px]" /></Link>)
                                     })
                                 }
                             </div>
