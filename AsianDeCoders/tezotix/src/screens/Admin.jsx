@@ -59,6 +59,7 @@ export default function Admin() {
 						const timeSlot = movieDetails[k].timeSlot;
 
 						const fetchedObject = {
+							movieId: k,
 							movieName: movieName,
 							description: description,
 							posterLink: posterLink,

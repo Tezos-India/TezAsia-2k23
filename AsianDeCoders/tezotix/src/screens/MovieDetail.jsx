@@ -171,10 +171,8 @@ export default function MovieDetail() {
 	const handlePay = async () => {
 		try {
 			const contractInstance = await tezos.wallet.at(addresses.movies);
-			const marketplace = await tezos.wallet.at(addresses.marketplace);
-			const storage = await fetchMoviesStorage();
 
-			const mint_index = storage.mint_index;
+			const storage = await fetchMoviesStorage();
 
 			setTotal(10);
 
@@ -226,45 +224,12 @@ export default function MovieDetail() {
 			const MetadataCID = await storeFiles(metadata);
 			const metadata_bytes = char2Bytes(`${MetadataCID}`);
 
-			// const FA2_contract = await tezos.wallet.at(addresses.FA2);
-			// const op2 = await FA2_contract.methodsObject
-			// 	.update_operators([
-			// 		{
-			// 			add_operator: {
-			// 				owner: address,
-			// 				operator: addresses.marketplace,
-			// 				token_id: mint_index,
-			// 			},
-			// 		},
-			// 	])
-			// 	.send();
-			// await op2.confirmation(1);
-
-			// const op3 = await marketplace.methodsObject
-			// 	.ask({
-			// 		amount: total * 1000000,
-			// 		creator: address,
-			// 		editions: 1,
-			// 		expiry_time: null,
-			// 		shares: [
-			// 			{
-			// 				amount: 1350,
-			// 				recipient: addresses.admin,
-			// 			},
-			// 		],
-			// 		token: {
-			// 			address: addresses.FA2,
-			// 			token_id: mint_index,
-			// 		},
-			// 	})
-			// 	.send();
-			// await op3.confirmation(1);
-
 			const op = await contractInstance.methodsObject
 				.book_ticket({
 					_movieId: 0,
 					_seatNumber: 14,
 					_metadata: metadata_bytes,
+					ticketUrl: NFTTicketIPFS,
 				})
 				.send({ mutez: true, amount: total * 100000 });
 			await op.confirmation(1);
@@ -289,7 +254,7 @@ export default function MovieDetail() {
 				progress: undefined,
 				theme: "dark",
 			});
-			throw err;
+			console.log(err);
 		}
 	};
 

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../utils/AuthProvider";
@@ -7,14 +7,47 @@ import ConnectBtn from "../components/ConnectBtn";
 import HeadingUnderline from "../components/HeadingUnderline";
 import MovieCard from "../components/MovieCard";
 
+import { fetchMoviesStorage } from "../utils/tzkt";
+
 export default function Account() {
 	const { address } = useContext(AuthContext);
 
-	const data = [
-		{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" },
-		{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" },
-		{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" },
-	];
+	const [data, setData] = useState([]);
+
+	// const data = [
+	// 	{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" },
+	// 	{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" },
+	// 	{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" },
+	// ];
+
+	useEffect(() => {
+		fetchData();
+	}, []);
+
+	const fetchData = async () => {
+		try {
+			const storage = await fetchMoviesStorage();
+
+			const data2 = [];
+
+			const ticketUrls = storage.ticketOwner[address];
+
+			console.log(ticketUrls);
+
+			for (let i = 0; i < ticketUrls.length; i++) {
+				const fetchedObject = {
+					img: ticketUrls[i],
+				};
+
+				data2.push(fetchedObject);
+			}
+
+			setData(data2);
+			console.log(data2);
+		} catch (e) {
+			console.log(e);
+		}
+	};
 
 	return (
 		<div className="flex flex-col flex-1 px-28">
