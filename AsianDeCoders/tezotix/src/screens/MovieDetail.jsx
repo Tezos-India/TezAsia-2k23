@@ -223,14 +223,12 @@ export default function MovieDetail() {
 				isBooleanAmount: true,
 				shouldPreferSymbol: false,
 			});
-			const MetadataCID = await storeFiles(metadata);
-			const metadata_bytes = char2Bytes(`${MetadataCID}`);
 
 			const op = await contractInstance.methodsObject
 				.book_ticket({
 					_movieId: id,
 					_seatNumber: selectedSeats[0],
-					_metadata: metadata_bytes,
+					_metadata: "0x01",
 					ticketUrl: NFTTicketIPFS,
 				})
 				.send({ mutez: true, amount: total * 100000 });
