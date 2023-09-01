@@ -1,0 +1,9 @@
+{
+  "name":"TezMint",
+  "version": "1.0.0",
+  "description" : "TezMint is a revolutionary project aimed at bridging the gap between artists, content creators, and technology by providing a seamless, reliable, and user-friendly platform that leverages Web3.0 and blockchain technology. The project's primary focus is a decentralized marketplace that empowers local talented artists, content creators, NFT producers, and distributors. Through TezMint, users can showcase their creativity, monetize their talents, and engage with a thriving community of like-minded individuals.",
+  "imageUri":"ipfs://bafkreie3e34vuppmjywkacyyst4pkwcnncsmnupoed2ojm4nxtgoeymlr4",
+  "interfaces": ["TZIP-012", "TZIP-016"],
+  "authors": ["https://github.com/AmaanSayyad <amaansayyad2001@gmail.com>"],
+  "homepage": "https://tezmint.vercel.app/"
+}
