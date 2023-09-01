@@ -1,0 +1,31 @@
+{
+  "name": "taquito-boilerplate-react",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@taquito/beacon-wallet": "^17.0.0",
+    "@taquito/taquito": "^17.0.0",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "qrcode-generator": "^1.4.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "stream-browserify": "^3.0.0",
+    "styled-components": "^6.0.7",
+    "util": "^0.12.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.2"
+  }
+}
