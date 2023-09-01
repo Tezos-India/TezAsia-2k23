@@ -1,3 +1,0 @@
-pytezos==3.5.0
-kivy==2.0.0
-mysql-connector-python==8.0.27
