@@ -33,7 +33,7 @@ export default function MovieCard({
 	}, [data, withTotalPrice]);
 
 	return (
-		<Link to={`/movie/${data.movieId}`}>
+		<Link to={`/movie/${data.id}`}>
 			<div className="w-[320px] max-w-[320px] flex flex-col justify-center p-10 gap-3 border-primary bg-blackToTrans rounded-20 cursor-pointer">
 				<img src={data.posterLink} className="rounded-10" />
 				<div className="flex flex-row justify-between items-center pl-2 gap-1">
