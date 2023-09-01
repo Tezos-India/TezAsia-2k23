@@ -22,6 +22,7 @@ export default function AddMovieModal({ data, setOpenMovieModal, theatre }) {
 			const contractInstance = await tezos.wallet.at(addresses.movies);
 
 			setTheatreId(theatre);
+			console.log(theatre);
 
 			const op = await contractInstance.methodsObject
 				.add_movie({

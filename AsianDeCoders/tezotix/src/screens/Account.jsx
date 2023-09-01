@@ -1,76 +1,20 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../utils/AuthProvider";
-
-import poster from "../assets/oppenheimer.png";
 
 import ConnectBtn from "../components/ConnectBtn";
 import HeadingUnderline from "../components/HeadingUnderline";
 import MovieCard from "../components/MovieCard";
 
-import { fetchMoviesStorage } from "../utils/tzkt";
-
 export default function Account() {
 	const { address } = useContext(AuthContext);
 
-	const [theatreId, setTheatreId] = useState(null);
-	const [theatreDetails, setTheatreDetails] = useState([]);
-	const [activeMovies, setActiveMovies] = useState([]);
-
-	useEffect(() => {
-		fetchData();
-	}, []);
-
-	const fetchData = async () => {
-		try {
-			const storage = await fetchMoviesStorage();
-
-			const theatreId = storage.theatreOwner[address];
-			setTheatreId(theatreId);
-
-			const theatreDetail = storage.theatreDetails[theatreId];
-
-			const movieIds = storage.theatreDetails[theatreId];
-
-			const movieID = storage.movieID;
-
-			const movieDetails = storage.movieDetails;
-
-			setTheatreDetails(theatreDetail);
-
-			const data2 = [];
-
-			for (let k = 0; k < movieID; k++) {
-				for (let l = 0; l < movieIds.length; l++) {
-					if (movieIds[l] == k) {
-						const movieName = movieDetails[k].name;
-						const description = movieDetails[k].description;
-						const posterLink = movieDetails[k].posterLink;
-						const screenNumber = movieDetails[k].screenNumber;
-						const ticketPrice = movieDetails[k].ticketPrice;
-						const startingDate = movieDetails[k].startingDate;
-						const timeSlot = movieDetails[k].timeSlot;
-
-						const fetchedObject = {
-							movieName: movieName,
-							description: description,
-							posterLink: posterLink,
-							screenNumber: screenNumber,
-							ticketPrice: ticketPrice,
-							startingDate: startingDate, //text
-							timeSlot: timeSlot, //text
-						};
-
-						data2.push(fetchedObject);
-					}
-				}
-			}
-
-			setActiveMovies(data2);
-		} catch (e) {
-			throw e;
-		}
-	};
+	const data = [
+		{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" },
+		{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" },
+		{ img: "bafkreiexppcr3tlbrvf4kezv75qyqm4b6nb5igf7lk2yypifcimocgyj2q" },
+	];
 
 	return (
 		<div className="flex flex-col flex-1 px-28">
@@ -80,31 +24,21 @@ export default function Account() {
 						Hey ({address.slice(0, 4) + "..." + address.slice(-4)}) 👋
 					</h2>
 					<div>
-						<HeadingUnderline>Upcoming shows</HeadingUnderline>
+						<HeadingUnderline>Your Tickets</HeadingUnderline>
 
 						<div className="flex mt-30 pb-4 gap-7 max-w-full overflow-x-auto scroll-hor">
-							{activeMovies.map((item) => {
+							{data.map((item) => {
 								return (
-									<MovieCard
-										data={item}
-										withoutBtn={true}
-										withDateTime={true}
-									/>
-								);
-							})}
-						</div>
-					</div>
-					<div>
-						<HeadingUnderline>Past shows</HeadingUnderline>
-
-						<div className="flex mt-30 pb-4 gap-7 max-w-full overflow-x-auto scroll-hor">
-							{activeMovies.map((item) => {
-								return (
-									<MovieCard
-										data={item}
-										withoutBtn={true}
-										withDateTime={true}
-									/>
+									<Link
+										to={"https://ipfs.io/ipfs/" + item.img}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										<img
+											src={"https://ipfs.io/ipfs/" + item.img}
+											className="w-[200px]"
+										/>
+									</Link>
 								);
 							})}
 						</div>

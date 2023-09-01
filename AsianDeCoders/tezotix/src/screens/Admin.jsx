@@ -36,7 +36,8 @@ export default function Admin() {
 
 			const theatreDetail = storage.theatreDetails[theatreId];
 
-			const movieIds = storage.theatreDetails[theatreId];
+			const movieIds = storage.theatreDetails[theatreId].movieIds;
+			console.log(movieIds);
 
 			const movieID = storage.movieID;
 
@@ -73,6 +74,7 @@ export default function Admin() {
 			}
 
 			setActiveMovies(data2);
+			console.log(data2);
 		} catch (e) {
 			throw e;
 		}
