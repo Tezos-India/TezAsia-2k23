@@ -183,6 +183,7 @@ export default function MovieDetail() {
 				return new Web3Storage({ token: getAccessToken() });
 			}
 			async function makeFileObjects(datauri) {
+				console.log(datauri);
 				var arr = datauri.split(","),
 					mime = arr[0].match(/:(.*?);/)[1],
 					bstr = atob(arr[1]),
@@ -201,6 +202,7 @@ export default function MovieDetail() {
 			}
 
 			const NFTTicketIPFS = await storeFiles(ticketUrl);
+			console.log(NFTTicketIPFS);
 
 			// THIS IS THE UPLOADED IPFS CID OF THE TICKET IMAGE
 
@@ -226,8 +228,8 @@ export default function MovieDetail() {
 
 			const op = await contractInstance.methodsObject
 				.book_ticket({
-					_movieId: 0,
-					_seatNumber: 14,
+					_movieId: id,
+					_seatNumber: selectedSeats[0],
 					_metadata: metadata_bytes,
 					ticketUrl: NFTTicketIPFS,
 				})
@@ -275,6 +277,10 @@ export default function MovieDetail() {
 	useEffect(() => {
 		fetchDetails();
 	}, []);
+
+	useEffect(() => {
+		setTotal(parseInt(movieDetails?.ticketPrice) * selectedSeats.length);
+	}, [selectedSeats, movieDetails]);
 
 	return (
 		<div className="flex flex-col flex-1">
@@ -401,21 +407,9 @@ export default function MovieDetail() {
 																					).toString()
 																				)
 																			) {
-																				setSelectedSeats(
-																					selectedSeats.filter((_) => {
-																						return (
-																							_ !==
-																							(
-																								parseInt(id) * 45 +
-																								ind1 * 10 +
-																								ind2
-																							).toString()
-																						);
-																					})
-																				);
+																				setSelectedSeats([]);
 																			} else {
 																				setSelectedSeats([
-																					...selectedSeats,
 																					(
 																						parseInt(id) * 45 +
 																						ind1 * 10 +
