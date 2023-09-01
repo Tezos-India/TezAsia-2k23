@@ -10,7 +10,7 @@
 
 The current movie-ticketing system is inefficient and vulnerable to duplicates. Our solution will solve this problem by enabling the purchase of tickets on non-transferable NFTs. This will allow anonymity and remove the scope for duplicate or fake tickets. .NFTs will be used as ‘tickets’ that can be transferred or sold without the need for a bank account, credit card or other form of payment. These NFTs will also have limited resale value and are non-transferable. This ensures that tickets cannot be replicated and sold to unsuspecting parties.
 
-Mintix is a blockchain-based ticketing service that will provide an interface for moviegoers to purchase tickets in a way that is faster, more secure and more anonymous than the current model. Using innovative technology, Mintix will issue non-transferable NFTs (tokens) that each represent one ticket. This will enable theater owners to validate tickets and remove the scope for duplicates or fake tickets to be sold, while still keeping holders of the tokens anonymous.
+TezoTix is a blockchain-based ticketing service that will provide an interface for moviegoers to purchase tickets in a way that is faster, more secure and more anonymous than the current model. Using innovative technology, Mintix will issue non-transferable NFTs (tokens) that each represent one ticket. This will enable theater owners to validate tickets and remove the scope for duplicates or fake tickets to be sold, while still keeping holders of the tokens anonymous.
 
 ## Project Demo, Photos, Video
 To get a feel our product, visit the [Live Project Link](https://tez-asia-2k23-idev2n0gf-ankit7241.vercel.app/)
