@@ -179,6 +179,7 @@ export default function Admin() {
 				<AddMovieModal
 					data={openAddMovieModal}
 					setOpenMovieModal={setOpenAddMovieModal}
+					theatre={theatreId}
 				/>
 			)}
 			{openRegisterTheaterModal && (

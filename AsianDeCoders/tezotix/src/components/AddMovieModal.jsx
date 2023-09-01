@@ -6,7 +6,7 @@ import { tezos } from "../utils/tezos";
 
 import addresses from "../config/config";
 
-export default function AddMovieModal({ data, setOpenMovieModal }) {
+export default function AddMovieModal({ data, setOpenMovieModal, theatre }) {
 	const [loading, setLoading] = useState(false);
 	const [theatreId, setTheatreId] = useState(0);
 	const [name, setName] = useState("");
@@ -20,6 +20,8 @@ export default function AddMovieModal({ data, setOpenMovieModal }) {
 	const addMovie = async () => {
 		try {
 			const contractInstance = await tezos.wallet.at(addresses.movies);
+
+			setTheatreId(theatre);
 
 			const op = await contractInstance.methodsObject
 				.add_movie({
