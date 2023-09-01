@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@taquito/tzip16": "^17.2.0",
-    "web3.storage": "^4.5.5"
-  }
-}

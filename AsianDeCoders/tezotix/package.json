@@ -6,6 +6,7 @@
         "@tailwindcss/line-clamp": "^0.4.4",
         "@taquito/beacon-wallet": "^16.0.0",
         "@taquito/taquito": "^16.0.0",
+        "@taquito/tzip16": "^17.3.0",
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
