@@ -1,0 +1,230 @@
+/*dark css*/
+
+
+.appie-dark{
+	background: #292E3C;
+}
+
+.appie-header-area-dark .appie-header-main-menu ul > li > a{
+	color: #fff;
+}
+.appie-header-area-dark .header-nav-box .appie-btn-box .login-btn{
+	color: #fff;
+}
+
+
+
+.appie-hero-area-dark .appie-hero-content .appie-title{
+	color: #fff;
+}
+
+.appie-hero-area-dark .appie-hero-content p{
+	color: #fff;
+}
+
+.appie-hero-area-dark .appie-hero-content ul li a{
+	background: #fff;
+	border-color: #fff;
+	color: #0e1133;
+}
+
+.appie-hero-area-dark .appie-hero-content ul li a:hover{
+	background: transparent;
+	color: #fff;
+}
+
+.appie-hero-area-dark .appie-hero-content ul li a.item-2{
+	color: #fff;
+}
+.appie-hero-area-dark .appie-hero-content ul li a.item-2:hover{
+	background: #fff;
+	color: #0e1133;
+}
+
+.appie-service-area.appie-service-area-dark{
+	background: #1f2128;
+}
+
+.appie-service-area-dark .appie-section-title .appie-title{
+	color: #fff;
+}
+.appie-service-area-dark .appie-section-title p{
+	color: #fff;
+}
+
+.appie-service-area-dark  .appie-single-service{
+	background: #292E3C;
+}
+
+.appie-service-area-dark .appie-single-service p,
+.appie-service-area-dark .appie-single-service .appie-title{
+	color: #fff;
+}
+
+.appie-features-area-dark  .appie-features-tabs-btn .nav a{
+	color: #fff;
+}
+
+.appie-features-area-dark .appie-features-content p,
+.appie-features-area-dark .appie-features-content .title{
+	color: #fff;
+}
+
+.appie-traffic-area-dark .appie-traffic-title p,
+.appie-traffic-area-dark .appie-traffic-title .title{
+	color: #fff;
+}
+
+.appie-traffic-area-dark .appie-traffic-service p,
+.appie-traffic-area-dark .appie-traffic-service .title{
+	color: #fff;
+}
+
+.appie-traffic-area-dark .traffic-btn a.main-btn{
+	color: #fff;
+}
+.appie-traffic-area-dark .traffic-btn a.main-btn:hover{
+	background: #fff;
+	color: #2b70fa;
+}
+
+.appie-team-area-dark .appie-section-title p,
+.appie-team-area-dark .appie-section-title .appie-title{
+	color: #fff;
+}
+
+.appie-team-area-dark .appie-team-item .content span,
+.appie-team-area-dark .appie-team-item .content .title{
+	color: #fff;
+}
+
+.appie-team-area-dark .team-btn a{
+	color: #fff;
+}
+
+
+
+.appie-faq-area-dark.appie-faq-area,
+.appie-pricing-area-dark.appie-pricing-area{
+	background: #1f2128;
+}
+
+.appie-pricing-area-dark .appie-section-title p,
+.appie-pricing-area-dark .appie-section-title .appie-title{
+	color: #fff;
+}
+
+
+
+.appie-pricing-area-dark.appie-pricing-area ul.switch-toggler-list li a{
+	color: #fff;
+	opacity: 0.1;
+}
+.appie-pricing-area-dark.appie-pricing-area ul.switch-toggler-list li.active a{
+	color: #fff;
+	opacity: 1;
+}
+
+
+.appie-pricing-area-dark.appie-pricing-area .pricing-one__single{
+	background: #292E3C;
+	color: #fff;
+}
+
+.appie-pricing-area-dark .pricing-one__single .pricig-heading h6{
+	color: #fff;
+}
+
+.appie-pricing-area-dark .pricing-one__single .pricig-heading .price-range{
+	color: #fff;
+}
+
+.appie-pricing-area-dark .pricing-one__single .pricig-heading .price-range p{
+	color: #fff;
+}
+
+.appie-pricing-area-dark .pricing-one__single .pricig-heading > p{
+	color: #fff;
+}
+
+.appie-pricing-area-dark .pricing-one__single .pricig-body ul li{
+	color: #fff;
+}
+
+.appie-pricing-area-dark  .pricing-one__single .pricig-body .pricing-btn a{
+	color: #fff;
+}
+
+
+
+
+.appie-faq-area.appie-faq-area-dark .appie-section-title p,
+.appie-faq-area.appie-faq-area-dark .appie-section-title .appie-title{
+	color: #fff;
+}
+
+
+.appie-faq-area.appie-faq-area-dark .faq-accrodion .accrodion{
+	background: #292E3C;
+	
+}
+.appie-faq-area.appie-faq-area-dark .faq-accrodion .accrodion .accrodion-inner,
+.appie-faq-area.appie-faq-area-dark .faq-accrodion .accrodion.active .accrodion-inner{
+	border-color: #292E3C;
+	background: #292E3C;
+}
+
+.appie-faq-area.appie-faq-area-dark .faq-accrodion .accrodion .accrodion-content p,
+.appie-faq-area.appie-faq-area-dark .faq-accrodion .accrodion .accrodion-title h4{
+	color: #fff;
+}
+
+.appie-blog-area-dark .appie-section-title p,
+.appie-blog-area-dark .appie-section-title .appie-title{
+	color: #fff;
+}
+.appie-blog-area-dark .appie-blog-item .content > a,
+.appie-blog-area-dark .appie-blog-item .content .title a,
+.appie-blog-area-dark .appie-blog-item .content .blog-meta ul li a,
+.appie-blog-area-dark .appie-blog-item .content .blog-meta ul li{
+	color: #fff;
+}
+
+.appie-blog-area-dark .appie-blog-item .content > a:hover,
+.appie-blog-area-dark .appie-blog-item .content .title a:hover{
+	color: #2b70fa;
+}
+
+
+.appie-footer-area-dark.appie-footer-area{
+	background: #1f2128;
+}
+
+.appie-footer-area-dark .footer-about-widget a,
+.appie-footer-area-dark .footer-about-widget p{
+	color: #fff;
+}
+.appie-footer-area-dark .footer-about-widget a:hover{
+	color: #2b70fa;
+}
+
+.appie-footer-area-dark .footer-widget-info ul li a,
+.appie-footer-area-dark .footer-widget-info .title,
+.appie-footer-area-dark .footer-navigation ul li a,
+.appie-footer-area-dark .footer-navigation .title{
+	color: #fff;
+}
+.appie-footer-area-dark .footer-navigation ul li a:hover{
+	color: #2b70fa;
+}
+
+.appie-footer-area-dark .footer-copyright .copyright-text p{
+	color: #fff;
+}
+
+.appie-footer-area-dark  .footer-copyright .apps-download-btn ul li a:hover{
+	color: #fff;
+}
+.appie-footer-area-dark  .footer-copyright .apps-download-btn ul li a.item-2{
+	color: #fff;
+}

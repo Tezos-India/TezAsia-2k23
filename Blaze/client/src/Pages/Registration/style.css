@@ -1,0 +1,14 @@
+@media screen and (max-width: 768px) {
+  .specia {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .specialImage {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+}
