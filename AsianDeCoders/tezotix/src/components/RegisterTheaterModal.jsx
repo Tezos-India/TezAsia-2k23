@@ -1,12 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import HeadingUnderline from "./HeadingUnderline";
 import Button from "./Button";
 
+import { fetchMoviesStorage } from "../utils/tzkt";
 
 export default function RegisterTheaterModal({ data, setOpenRegisterTheaterModal }) {
 
     const [loading, setLoading] = useState(false);
+    const [cities, setCities] = useState([]);
+    const [current, setCurrent] = useState(0);
+    const [cityName, setCityName] = useState("");
+
+
+    const fetchData = async () => {
+        try {
+            const storage = await fetchMoviesStorage();
+            const cityIds = storage.cityIds;
+
+            const cityDetails = storage.cityDetails;
+
+            const compiledCityDetails = [];
+
+            for (let i = 0; i < cityIds; i++) {
+
+                const fetchedObject = {
+                    cityName: cityDetails[i].name,
+                    cityId: i,
+                };
+                compiledCityDetails.push(fetchedObject);
+
+            }
+            setCities(compiledCityDetails)
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const addCity = async () => {
+        // City name to add -> cityName
+    }
 
 
     return (
@@ -39,11 +76,31 @@ export default function RegisterTheaterModal({ data, setOpenRegisterTheaterModal
                                 </div>
                                 <div className="flex flex-row gap-4 items-center w-full">
                                     <p className="font-poppins text-lg font-medium w-[8ch]">City:</p>
+                                    <select
+                                        onChange={(e) => {
+                                            setCurrent(e.target.value);
+                                        }}
+                                        className="px-15 py-10 rounded-10 outline-none bg-transparent bg-blackToTrans border-primary"
+                                    >
+                                        {cities &&
+                                            cities.length &&
+                                            cities.map((item, index) => {
+                                                return (
+                                                    <option value={index} className="bg-primaryBg">
+                                                        {item.cityName}
+                                                    </option>
+                                                );
+                                            })}
+                                    </select>
+                                    <p className="font-poppins text-sm text-white50">OR</p>
                                     <input
                                         type="text"
                                         className="px-15 py-10 flex-1 border-primary outline-none font-poppins text-sm bg-white/5 rounded-10"
-                                        placeholder="Eg. Bangalore"
+                                        placeholder="Add a city name"
+                                        value={cityName}
+                                        onChange={(e) => setCityName(e.target.value)}
                                     />
+                                    <Button onClick={addCity}>Add City</Button>
                                 </div>
                                 <div className="flex flex-row gap-4 items-center w-full">
                                     <p className="font-poppins text-lg font-medium w-[8ch]">Location:</p>

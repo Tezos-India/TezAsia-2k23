@@ -169,6 +169,11 @@ export default function MovieDetail() {
 
     const handlePay = async () => {
         try {
+
+
+
+
+
             const contractInstance = await tezos.wallet.at(addresses.movies);
             const marketplace = await tezos.wallet.at(addresses.marketplace);
             const storage = await fetchMoviesStorage();
@@ -181,16 +186,25 @@ export default function MovieDetail() {
             function makeStorageClient() {
                 return new Web3Storage({ token: getAccessToken() });
             }
-            async function makeFileObjects(questions) {
-                const files = [new File([questions], "nftInfo.json")];
-                return files;
+            async function makeFileObjects(datauri) {
+                var arr = datauri.split(','), mime = arr[0].match(/:(.*?);/)[1],
+                    bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+                while (n--) {
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                return [new File([u8arr], "nftURI.png", { type: mime })];
             }
-            async function storeFiles(questions) {
-                const files = await makeFileObjects(questions);
+            async function storeFiles(datauri) {
+                const files = await makeFileObjects(datauri);
                 const client = makeStorageClient();
                 const cid = await client.put(files, { wrapWithDirectory: false });
                 return cid;
             }
+
+            const NFTTicketIPFS = await storeFiles(ticketUrl);
+
+            // THIS IS THE UPLOADED IPFS CID OF THE TICKET IMAGE
+
             const metadata = JSON.stringify({
                 name: `sdfdsdf`,
                 rights: "All right reserved.",
