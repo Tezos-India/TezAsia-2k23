@@ -1,0 +1,82 @@
+.openInNew {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 30px;
+  margin-left: 4px;
+
+  svg {
+    width: 22px;
+    height: 22px;
+    pointer-events: none;
+    path {
+      fill: #999;
+    }
+  }
+  @media screen and (max-width: 750px) {
+    height: 22px;
+    margin-left: 2px;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.exportTx {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+  appearance: none;
+  color: #9b9b9b;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  &:hover {
+    color: var(--primary-color);
+  }
+  svg {
+    pointer-events: none;
+  }
+}
+
+.hashCardHeaderRight {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+}
+
+.dasAccount {
+  display: flex;
+  align-items: center;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  height: 32px;
+  border-radius: 4px;
+  padding: 0 4px;
+  margin-left: 12px;
+  max-width: 152px;
+  font-size: 16px;
+  font-weight: 500;
+
+  @media (max-width: 750px) {
+    max-width: 90px;
+    font-size: 13px;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+    border-radius: 50%;
+  }
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #333;
+  }
+}

@@ -1,0 +1,80 @@
+@import './assets/fonts/fonts.css';
+
+body {
+  --primary-color: #00cc9b;
+  --navbar-height: 64px;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+body[data-chain-type='testnet'] {
+  --primary-color: #9a2cec;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Lato, sans-serif, Montserrat, PingFang SC, -apple-system;
+}
+
+.monospace {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+}
+
+*[role]:focus {
+  outline: none;
+}
+
+.container {
+  width: auto;
+  margin: 0 120px;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    width: auto;
+    margin: 0 100px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: auto;
+    margin: 0 45px;
+  }
+}
+
+@media (max-width: 750px) {
+  .container {
+    width: auto;
+    margin: 0 18px;
+  }
+}
+
+a {
+  text-decoration: none;
+  font-size: inherit;
+  font-weight: 500;
+  color: inherit;
+}
+
+@media (max-width: 750px) {
+  .rc-pagination-options-quick-jumper {
+    display: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .ant-popover-inner-content {
+    padding: 5px !important;
+  }
+}
+
+.ant-tooltip-inner {
+  white-space: pre-wrap;
+}
