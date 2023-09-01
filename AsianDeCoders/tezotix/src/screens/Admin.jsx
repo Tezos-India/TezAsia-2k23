@@ -10,161 +10,156 @@ import AddMovieModal from "../components/AddMovieModal";
 import RegisterTheaterModal from "../components/RegisterTheaterModal";
 
 import { fetchMoviesStorage } from "../utils/tzkt";
-import searchResults from "../data";
+// import searchResults from "../data";
 
 export default function Admin() {
-	// const [searchResults, setSearchResults] = useState([]);
 	const { address } = useContext(AuthContext);
 
-	const [data, setData] = useState(searchResults);
+	const [theatreId, setTheatreId] = useState(null);
+	const [theatreDetails, setTheatreDetails] = useState([]);
+	const [activeMovies, setActiveMovies] = useState([]);
 
 	const [openAddMovieModal, setOpenAddMovieModal] = useState(false);
 	const [openRegisterTheaterModal, setOpenRegisterTheaterModal] =
 		useState(false);
 
-	// useEffect(() => {
-	// 	fetchData();
-	// }, []);
+	useEffect(() => {
+		fetchData();
+	}, []);
 
-	// const fetchData = async () => {
-	// 	try {
-	// 		const storage = await fetchMoviesStorage();
+	const fetchData = async () => {
+		try {
+			const storage = await fetchMoviesStorage();
 
-	// 		const cityIds = storage.cityIds;
+			const theatreId = storage.theatreOwner[address];
+			setTheatreId(theatreId);
 
-	// 		const movieDetails = storage.movieDetails;
+			const theatreDetail = storage.theatreDetails[theatreId];
 
-	// 		const theatreDetails = storage.theatreDetails;
+			const movieIds = storage.theatreDetails[theatreId];
 
-	// 		const cityDetails = storage.cityDetails;
+			const movieID = storage.movieID;
 
-	// 		const Data = [];
-	// 		const data1 = [];
-	// 		const data2 = [];
+			const movieDetails = storage.movieDetails;
 
-	// 		for (let i = 0; i < cityIds; i++) {
-	// 			const name = cityDetails[i].name;
+			setTheatreDetails(theatreDetail);
 
-	// 			const theatreIds = storage.cityDetails[i].theatreIds;
+			const data2 = [];
 
-	// 			for (let i = 0; i < theatreIds; i++) {
-	// 				const theatreName = theatreDetails[i].name;
-	// 				const address = theatreDetails[i].address;
-	// 				const movieIds = theatreDetails[i].movieIds;
+			for (let k = 0; k < movieID; k++) {
+				for (let l = 0; l < movieIds.length; l++) {
+					if (movieIds[l] == k) {
+						const movieName = movieDetails[k].name;
+						const description = movieDetails[k].description;
+						const posterLink = movieDetails[k].posterLink;
+						const screenNumber = movieDetails[k].screenNumber;
+						const ticketPrice = movieDetails[k].ticketPrice;
+						const startingDate = movieDetails[k].startingDate;
+						const timeSlot = movieDetails[k].timeSlot;
 
-	// 				for (let i = 0; i < movieIds; i++) {
-	// 					const movieName = movieDetails[i].name;
-	// 					const description = movieDetails[i].description;
-	// 					const posterLink = movieDetails[i].posterLink;
-	// 					const screenNumber = movieDetails[i].screenNumber;
-	// 					const ticketPrice = movieDetails[i].ticketPrice;
-	// 					const startingDate = movieDetails[i].startingDate;
-	// 					const timeSlot = movieDetails[i].timeSlot;
+						const fetchedObject = {
+							movieName: movieName,
+							description: description,
+							posterLink: posterLink,
+							screenNumber: screenNumber,
+							ticketPrice: ticketPrice,
+							startingDate: startingDate, //text
+							timeSlot: timeSlot, //text
+						};
 
-	// 					const fetchedObject = {
-	// 						movieName: movieName,
-	// 						description: description,
-	// 						posterLink: posterLink,
-	// 						screenNumber: screenNumber,
-	// 						ticketPrice: ticketPrice,
-	// 						startingDate: startingDate,
-	// 						timeSlot: timeSlot,
-	// 					};
+						data2.push(fetchedObject);
+					}
+				}
+			}
 
-	// 					data2.push(fetchedObject);
-	// 				}
-
-	// 				const fetchedObject = {
-	// 					theatreName: theatreName,
-	// 					address: address,
-	// 					activeMovies: data2,
-	// 				};
-
-	// 				data1.push(fetchedObject);
-	// 			}
-
-	// 			const fetchedObject = {
-	// 				cityName: name,
-	// 				theatreDetails: data1,
-	// 			};
-
-	// 			Data.push(fetchedObject);
-	// 			setSearchResults(Data);
-	// 			searchResults = Data;
-	// 		}
-	// 	} catch (e) {
-	// 		throw e;
-	// 	}
-	// };
+			setActiveMovies(data2);
+		} catch (e) {
+			throw e;
+		}
+	};
 
 	return (
 		<div className="flex flex-col flex-1 px-28">
 			{address ? (
-				data ? (
-					<div className="flex flex-col gap-[70px]">
-						<div className="flex gap-10 items-center">
-							<h2 className="text-4xl font-medium">
-								Hey (
-								{data[0].name.length >= 20
-									? data[0].cityName.slice(0, 20) + "..."
-									: data[0].cityName}
-								) 👋
-							</h2>
-							<div className="flex gap-3 items-center">
-								<div
-									className="flex gap-3 px-4 h-[45px] justify-between items-center bg-blackToTrans border-primary rounded-20 hover:bg-white/5 transition cursor-pointer"
-									onClick={() => setOpenAddMovieModal(true)}
-								>
-									<p className="text-4xl text-center">+</p>
-									<p className="text-sm text-center font-semibold">
-										List a Movie
-									</p>
+				theatreId ? (
+					theatreDetails ? (
+						<div className="flex flex-col gap-[70px]">
+							<div className="flex gap-10 items-center">
+								<h2 className="text-4xl font-medium">
+									Hey (
+									{theatreDetails.name.length >= 20
+										? theatreDetails.name.slice(0, 20) + "..."
+										: theatreDetails.name}
+									) 👋
+								</h2>
+								<div className="flex gap-3 items-center">
+									<div
+										className="flex gap-3 px-4 h-[45px] justify-between items-center bg-blackToTrans border-primary rounded-20 hover:bg-white/5 transition cursor-pointer"
+										onClick={() => setOpenAddMovieModal(true)}
+									>
+										<p className="text-4xl text-center">+</p>
+										<p className="text-sm text-center font-semibold">
+											List a Movie
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<div>
+								<HeadingUnderline>Upcoming shows</HeadingUnderline>
+
+								<div className="flex mt-30 pb-4 gap-7 max-w-full overflow-x-auto scroll-hor">
+									{activeMovies.map((item) => {
+										return <MovieCard data={item} />;
+									})}
+								</div>
+							</div>
+							<div>
+								<HeadingUnderline>Past shows</HeadingUnderline>
+
+								<div className="flex mt-30 pb-4 gap-7 max-w-full overflow-x-auto scroll-hor">
+									{activeMovies.map((item) => {
+										return (
+											<MovieCard
+												data={item}
+												withoutBtn={true}
+												withTotalPrice={true}
+											/>
+										);
+									})}
 								</div>
 							</div>
 						</div>
-
-						<div>
-							<HeadingUnderline>Upcoming shows</HeadingUnderline>
-
-							<div className="flex mt-30 pb-4 gap-7 max-w-full overflow-x-auto scroll-hor">
-								{data[0].activeMovies.map((item) => {
-									return <MovieCard data={item} />;
-								})}
+					) : (
+						<div className="flex-1 flex flex-col justify-center items-center gap-14">
+							<div className="flex flex-col justify-center items-center gap-3">
+								<h2 className="text-5xl font-semibold">No Theater found!</h2>
+								<p className="text-lg text-center">
+									If you're looking to book tickets, navigate to{" "}
+									<Link className="underline" to="/search">
+										search page
+									</Link>
+									.
+								</p>
 							</div>
+							<Button
+								weight={"700"}
+								onClick={() => setOpenRegisterTheaterModal(true)}
+							>
+								Register your Theatre →
+							</Button>
 						</div>
-						<div>
-							<HeadingUnderline>Past shows</HeadingUnderline>
-
-							<div className="flex mt-30 pb-4 gap-7 max-w-full overflow-x-auto scroll-hor">
-								{data[0].activeMovies.map((item) => {
-									return (
-										<MovieCard
-											data={item}
-											withoutBtn={true}
-											withTotalPrice={true}
-										/>
-									);
-								})}
-							</div>
-						</div>
-					</div>
+					)
 				) : (
 					<div className="flex-1 flex flex-col justify-center items-center gap-14">
 						<div className="flex flex-col justify-center items-center gap-3">
-							<h2 className="text-5xl font-semibold">No Theater found!</h2>
-							<p className="text-lg text-center">
-								If you're looking to book tickets, navigate to{" "}
-								<Link className="underline" to="/search">
-									search page
-								</Link>
-								.
+							<h2 className="text-5xl font-semibold">Oops!</h2>
+							<p className="text-lg font-medium text-center">
+								Looks like you don't have a registered theatre with us!
 							</p>
 						</div>
-						<Button
-							weight={"700"}
-							onClick={() => setOpenRegisterTheaterModal(true)}
-						>
-							Register your Theatre →
+						<Button onClick={() => setOpenRegisterTheaterModal(true)}>
+							Add theatre
 						</Button>
 					</div>
 				)

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import { fetchMoviesStorage } from "../utils/tzkt";
-import { tezos } from "../utils/tezos";
 
-import addresses from "../config/config";
+import { fetchMoviesStorage } from "../utils/tzkt";
 
 export default function MovieCard({
 	data,
@@ -15,29 +13,27 @@ export default function MovieCard({
 	const [totalPriceEarned, setTotalPriceEarned] = useState(0);
 
 	useEffect(() => {
-		// const contractInstance = await tezos.wallet.at(addresses.movies);
-
-		// const storage = await fetchMoviesStorage();
-
-		// const cityIds = storage.cityIds;
-		// const cityDetails = storage.cityDetails;
-		// console.log(cityDetails[0].theatreIds);
-		console.log(data.uniqueId);
+		console.log(data);
 		if (withTotalPrice) {
-			let sum = 0;
-			data.dates.forEach((item) => {
-				console.log(item);
-				item.shows.forEach((item2) => {
-					sum += item2.booked.length * parseInt(data.price);
+			(async () => {
+				const storage = await fetchMoviesStorage();
+
+				let seatCount = 0;
+				Object.keys(storage.seatDetails).forEach(function (key) {
+					if (storage.seatDetails[key].movieId === data.id.toString()) {
+						seatCount += 1;
+					}
 				});
-			});
-			console.log(Math.floor(sum * 100) / 100);
-			setTotalPriceEarned(Math.floor(sum * 100) / 100);
+				console.log(seatCount);
+				setTotalPriceEarned(
+					Math.floor(seatCount * parseInt(data.ticketprice) * 100) / 100
+				);
+			})();
 		}
 	}, [data, withTotalPrice]);
 
 	return (
-		<Link to={`/movie/${data.uniqueId}`}>
+		<Link to={`/movie/${data.id}`}>
 			<div className="w-[320px] max-w-[320px] flex flex-col justify-center p-10 gap-3 border-primary bg-blackToTrans rounded-20 cursor-pointer">
 				<img src={data.posterLink} className="rounded-10" />
 				<div className="flex flex-row justify-between items-center pl-2 gap-1">

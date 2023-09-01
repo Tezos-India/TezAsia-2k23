@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../utils/AuthProvider";
 
-import poster from "../assets/oppenheimer.png";
 import locationPin from "../assets/locationPin.svg";
 import ticketIcon from "../assets/ticketIcon.svg";
 import screenGradient from "../assets/screenGradient.svg";
@@ -19,7 +18,6 @@ import { fetchMoviesStorage } from "../utils/tzkt";
 import addresses from "../config/config";
 import { char2Bytes } from "@taquito/tzip16";
 import { Web3Storage } from "web3.storage/dist/bundle.esm.min.js";
-// import { Web3Storage } from "web3.storage";
 
 export default function MovieDetail() {
 	const { id } = useParams();
@@ -27,8 +25,6 @@ export default function MovieDetail() {
 	const { address, connected, connectWallet, disconnectWallet } =
 		useContext(AuthContext);
 
-	const [selectedDate, setSelectedDate] = useState(0);
-	const [selectedShow, setSelectedShow] = useState(0);
 	const [selectedSeats, setSelectedSeats] = useState([]);
 	const [total, setTotal] = useState(0);
 	const [ticketUrl, setTicketUrl] = useState(null);
@@ -36,7 +32,6 @@ export default function MovieDetail() {
 	const [movieDetails, setMovieDetails] = useState(null);
 	const [bookedSeats, setBookedSeats] = useState({});
 	const [theatreDetail, setTheatreDetail] = useState(null);
-	// const [movieDetails, setMovieDetails] = useState({
 	//     id: 2,
 	//     poster: poster,
 	//     name: "Oppenheimer",

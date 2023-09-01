@@ -114,15 +114,6 @@ export default function AddMovieModal({ data, setOpenMovieModal }) {
 									type="text"
 									className="px-15 py-10 flex-1 border-primary outline-none font-poppins text-sm bg-white/5 rounded-10"
 									placeholder="Eg. 16/08/2023"
-									onChange={(e) => setTicketPrice(e.target.value)}
-								/>
-							</div>
-							<div className="flex flex-row gap-4 items-center w-1/2">
-								<p className="font-poppins text-lg font-medium">Total shows:</p>
-								<input
-									type="text"
-									className="px-15 py-10 flex-1 border-primary outline-none font-poppins text-sm bg-white/5 rounded-10"
-									placeholder="Eg. 1"
 									onChange={(e) => setStartingDate(e.target.value)}
 								/>
 							</div>

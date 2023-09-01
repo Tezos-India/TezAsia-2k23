@@ -4,36 +4,22 @@ import Search from "../assets/Search.svg";
 import LocationPin from "../assets/locationPin.svg";
 import slideshowIcon from "../assets/slideshow.svg";
 
+// import searchResults from "../data";
 import SearchModal from "../components/SearchModal";
 
 import { fetchMoviesStorage } from "../utils/tzkt";
 
 export default function TheatreSearch() {
-	const [cities, setCities] = useState([
-		"Bangalore",
-		"Delhi",
-		"Mumbai",
-		"Kolkata",
-		"Chennai",
-	]);
-	const [searchResults, setSearchResults] = useState([
-		"Bangalore",
-		"Delhi",
-		"Mumbai",
-		"Kolkata",
-		"Chennai",
-	]);
+	// const [cities, setCities] = useState([]);
 	const [current, setCurrent] = useState(0);
 	const [openMovieModal, setOpenMovieModal] = useState(false);
-	useEffect(() => {
-		fetchData();
-	}, []);
+
+	const [searchResults, setSearchResults] = useState([]);
 
 	const fetchData = async () => {
 		try {
 			const storage = await fetchMoviesStorage();
-
-			const cityID = storage.cityIds;
+			const cityIds = storage.cityIds;
 
 			const movieDetails = storage.movieDetails;
 
@@ -41,87 +27,68 @@ export default function TheatreSearch() {
 
 			const cityDetails = storage.cityDetails;
 
-			const movieID = storage.movieID;
+			const compiledCityDetails = [];
 
-			const theatreID = storage.theatreID;
-
-			const Data = [];
-
-			const data3 = [];
-			console.log("Hello");
-
-			for (let i = 0; i < cityID; i++) {
-				const data1 = [];
+			for (let i = 0; i < cityIds; i++) {
 				const name = cityDetails[i].name;
 
 				const theatreIds = storage.cityDetails[i].theatreIds;
-				console.log(theatreIds.length);
+				const compiledTheatreDetails = [];
+				// compiling theatre details
+				for (let i = 0; i < theatreIds.length; i++) {
+					const theatreName = theatreDetails[i].name;
+					const address = theatreDetails[i].address;
 
-				for (let x = 0; x < theatreID; x++) {
-					const data2 = [];
-					for (let j = 0; j < theatreIds.length; j++) {
-						if (theatreIds[j] == x) {
-							console.log(name, x);
-							const theatreName = theatreDetails[x].name;
-							const address = theatreDetails[x].address;
-							const movieIds = theatreDetails[x].movieIds;
+					const movieIds = theatreDetails[i].movieIds;
+					const compiledMovieDetails = [];
+					// compiling movie details
+					for (let i = 0; i < movieIds.length; i++) {
+						const movieName = movieDetails[i].name;
+						const description = movieDetails[i].description;
+						const posterLink = movieDetails[i].posterLink;
+						const screenNumber = movieDetails[i].screenNumber;
+						const ticketPrice = movieDetails[i].ticketPrice;
+						const startingDate = movieDetails[i].startingDate;
+						const timeSlot = movieDetails[i].timeSlot;
 
-							console.log(name, theatreName, movieIds);
+						const fetchedObject = {
+							movieName: movieName,
+							description: description,
+							posterLink: posterLink,
+							screenNumber: screenNumber,
+							ticketPrice: ticketPrice,
+							startingDate: startingDate, //text
+							timeSlot: timeSlot, //text
+						};
 
-							for (let k = 0; k < movieID; k++) {
-								for (let l = 0; l < movieIds.length; l++) {
-									if (movieIds[l] == k) {
-										const movieName = movieDetails[k].name;
-										const description = movieDetails[k].description;
-										const posterLink = movieDetails[k].posterLink;
-										const screenNumber = movieDetails[k].screenNumber;
-										const ticketPrice = movieDetails[k].ticketPrice;
-										const startingDate = movieDetails[k].startingDate;
-										const timeSlot = movieDetails[k].timeSlot;
-										const uniqueId = k;
-
-										const fetchedObject = {
-											movieName: movieName,
-											description: description,
-											posterLink: posterLink,
-											screenNumber: screenNumber,
-											ticketPrice: ticketPrice,
-											startingDate: startingDate, //text
-											timeSlot: timeSlot, //text
-											uniqueId: uniqueId,
-										};
-
-										data2.push(fetchedObject);
-									}
-								}
-							}
-
-							const fetchedObject = {
-								theatreName: theatreName,
-								address: address,
-								activeMovies: data2,
-							};
-
-							data1.push(fetchedObject);
-						}
+						compiledMovieDetails.push(fetchedObject);
 					}
+
+					const fetchedObject = {
+						theatreName: theatreName,
+						address: address,
+						activeMovies: compiledMovieDetails,
+					};
+
+					compiledTheatreDetails.push(fetchedObject);
 				}
 
 				const fetchedObject = {
 					cityName: name,
-					theatreDetails: data1,
+					theatreDetails: compiledTheatreDetails,
 				};
-
-				Data.push(fetchedObject);
-				setSearchResults(Data);
-				console.log(Data[0].theatreDetails);
-				data3.push(name);
-				setCities(data3);
+				compiledCityDetails.push(fetchedObject);
 			}
+			setSearchResults(compiledCityDetails);
+			console.log(compiledCityDetails);
 		} catch (e) {
-			throw e;
+			console.error(e);
 		}
 	};
+
+	useEffect(() => {
+		fetchData();
+	}, []);
 
 	return (
 		<>
@@ -132,7 +99,7 @@ export default function TheatreSearch() {
 						<input
 							type="text"
 							className="border-none outline-none font-poppins text-sm bg-transparent flex-1 "
-							placeholder={`Search for theaters in ${cities[current]}`}
+							placeholder={`Search for theaters in ${searchResults[current]?.cityName}`}
 						/>
 					</div>
 					<select
@@ -141,12 +108,12 @@ export default function TheatreSearch() {
 						}}
 						className="px-15 py-10 rounded-10 outline-none bg-transparent bg-blackToTrans border-primary"
 					>
-						{cities &&
-							cities.length &&
-							cities.map((item, index) => {
+						{searchResults &&
+							searchResults.length &&
+							searchResults.map((item, index) => {
 								return (
 									<option value={index} className="bg-primaryBg">
-										{item}
+										{item.cityName}
 									</option>
 								);
 							})}
@@ -154,13 +121,13 @@ export default function TheatreSearch() {
 				</div>
 
 				<p className="Poppins text-[15px] font-light text-white/40 mt-15">
-					Showing all theaters in {cities[current]}:
+					Showing all theaters in {searchResults[current]?.cityName}:
 				</p>
 
 				<div className="mt-12 flex flex-col gap-5">
-					{searchResults[current].theatreDetails &&
-						searchResults[current].theatreDetails.length &&
-						searchResults[current].theatreDetails.map((item, ind) => {
+					{searchResults[current]?.theatreDetails &&
+					searchResults[current]?.theatreDetails.length ? (
+						searchResults[current]?.theatreDetails.map((item, ind) => {
 							return (
 								<div
 									key={ind}
@@ -186,7 +153,12 @@ export default function TheatreSearch() {
 									</div>
 								</div>
 							);
-						})}
+						})
+					) : (
+						<p className="Poppins text-center text-[20px] font-medium text-white/50 mt-10">
+							No theatres found in {searchResults[current]?.cityName}!
+						</p>
+					)}
 				</div>
 			</div>
 
