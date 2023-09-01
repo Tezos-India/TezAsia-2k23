@@ -1000,7 +1000,7 @@ function Data() {
 		try {
 			const storage = await fetchMoviesStorage();
 
-			const cityIds = storage.cityIds;
+			const cityID = storage.cityIds;
 
 			const movieDetails = storage.movieDetails;
 
@@ -1008,49 +1008,64 @@ function Data() {
 
 			const cityDetails = storage.cityDetails;
 
-			const Data = [];
-			const data1 = [];
-			const data2 = [];
+			const movieID = storage.movieID;
 
-			for (let i = 0; i < cityIds; i++) {
+			const theatreID = storage.theatreID;
+
+			const Data = [];
+
+			for (let i = 0; i < cityID; i++) {
+				const data1 = [];
 				const name = cityDetails[i].name;
 
 				const theatreIds = storage.cityDetails[i].theatreIds;
 
-				for (let i = 0; i < theatreIds; i++) {
-					const theatreName = theatreDetails[i].name;
-					const address = theatreDetails[i].address;
-					const movieIds = theatreDetails[i].movieIds;
+				for (let x = 0; x < theatreID; x++) {
+					const data2 = [];
+					for (let j = 0; j < theatreIds.length; j++) {
+						if (theatreIds[j] == x) {
+							console.log(name, x);
+							const theatreName = theatreDetails[x].name;
+							const address = theatreDetails[x].address;
+							const movieIds = theatreDetails[x].movieIds;
 
-					for (let i = 0; i < movieIds; i++) {
-						const movieName = movieDetails[i].name;
-						const description = movieDetails[i].description;
-						const posterLink = movieDetails[i].posterLink;
-						const screenNumber = movieDetails[i].screenNumber;
-						const ticketPrice = movieDetails[i].ticketPrice;
-						const startingDate = movieDetails[i].startingDate;
-						const timeSlot = movieDetails[i].timeSlot;
+							console.log(name, theatreName, movieIds);
 
-						const fetchedObject = {
-							movieName: movieName,
-							description: description,
-							posterLink: posterLink,
-							screenNumber: screenNumber,
-							ticketPrice: ticketPrice,
-							startingDate: startingDate, //text
-							timeSlot: timeSlot, //text
-						};
+							for (let k = 0; k < movieID; k++) {
+								for (let l = 0; l < movieIds.length; l++) {
+									if (movieIds[l] == k) {
+										const movieName = movieDetails[k].name;
+										const description = movieDetails[k].description;
+										const posterLink = movieDetails[k].posterLink;
+										const screenNumber = movieDetails[k].screenNumber;
+										const ticketPrice = movieDetails[k].ticketPrice;
+										const startingDate = movieDetails[k].startingDate;
+										const timeSlot = movieDetails[k].timeSlot;
 
-						data2.push(fetchedObject);
+										const fetchedObject = {
+											movieName: movieName,
+											description: description,
+											posterLink: posterLink,
+											screenNumber: screenNumber,
+											ticketPrice: ticketPrice,
+											startingDate: startingDate, //text
+											timeSlot: timeSlot, //text
+										};
+
+										data2.push(fetchedObject);
+									}
+								}
+							}
+
+							const fetchedObject = {
+								theatreName: theatreName,
+								address: address,
+								activeMovies: data2,
+							};
+
+							data1.push(fetchedObject);
+						}
 					}
-
-					const fetchedObject = {
-						theatreName: theatreName,
-						address: address,
-						activeMovies: data2,
-					};
-
-					data1.push(fetchedObject);
 				}
 
 				const fetchedObject = {
@@ -1060,7 +1075,6 @@ function Data() {
 
 				Data.push(fetchedObject);
 				setSearchResults(Data);
-				searchResults = Data;
 			}
 		} catch (e) {
 			throw e;

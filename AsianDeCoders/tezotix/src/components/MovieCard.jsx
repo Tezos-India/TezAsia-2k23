@@ -22,12 +22,13 @@ export default function MovieCard({
 		// const cityIds = storage.cityIds;
 		// const cityDetails = storage.cityDetails;
 		// console.log(cityDetails[0].theatreIds);
+		console.log(data.uniqueId);
 		if (withTotalPrice) {
 			let sum = 0;
 			data.dates.forEach((item) => {
 				console.log(item);
 				item.shows.forEach((item2) => {
-					sum += item2.booked.length * data.price;
+					sum += item2.booked.length * parseInt(data.price);
 				});
 			});
 			console.log(Math.floor(sum * 100) / 100);
@@ -36,14 +37,16 @@ export default function MovieCard({
 	}, [data, withTotalPrice]);
 
 	return (
-		<Link to={`/movie/${data.id}`}>
+		<Link to={`/movie/${data.uniqueId}`}>
 			<div className="w-[320px] max-w-[320px] flex flex-col justify-center p-10 gap-3 border-primary bg-blackToTrans rounded-20 cursor-pointer">
-				<img src={data.poster} className="rounded-10" />
+				<img src={data.posterLink} className="rounded-10" />
 				<div className="flex flex-row justify-between items-center pl-2 gap-1">
 					<div className="flex flex-col justify-center pl-2 gap-1">
-						<h2 className="Poppins w-full text-lg font-medium">{data.name}</h2>
+						<h2 className="Poppins w-full text-lg font-medium">
+							{data.movieName}
+						</h2>
 						<p className="Poppins text-sm text-white/50 font-medium w-full">
-							{data.price} ꜩ
+							{data.ticketPrice} ꜩ
 						</p>
 					</div>
 
@@ -54,7 +57,7 @@ export default function MovieCard({
 					)}
 					{withDateTime ? (
 						<p className="Poppins text-xs text-white/50 font-light">
-							{data.dateTime}
+							{data.startingDate}
 						</p>
 					) : null}
 					{withTotalPrice ? (

@@ -22,11 +22,12 @@ class TezoTix(sp.Contract):
 
             theatreDetails = sp.map(l ={},tkey = sp.TInt, tvalue = sp.TRecord(name = sp.TString,address = sp.TString, movieIds= sp.TSet(t=sp.TInt),theatreOwner=sp.TAddress)),
   
-            movieDetails = sp.map(l ={},tkey = sp.TInt, tvalue = sp.TRecord(name = sp.TString, description = sp.TString,posterLink = sp.TString,screenNumber = sp.TNat,ticketPrice=sp.TNat,startingDate = sp.TString,timeSlot=sp.TString)),           
-            
+            movieDetails = sp.map(l ={},tkey = sp.TInt, tvalue = sp.TRecord(name = sp.TString, description = sp.TString,posterLink = sp.TString,screenNumber = sp.TNat,ticketPrice=sp.TNat,startingDate = sp.TString,timeSlot=sp.TString,theatreId=sp.TInt)),           
+
+            theatreOwner = sp.map(l ={},tkey = sp.TAddress, tvalue = sp.TInt),
             #Key is seat number and value are details
             #Seats are fixed i.e. 100 so 1st movie 1 to 100, 2nd movie 101 to 200, 3rd....
-            seatDetails = sp.map(l={}, tkey=sp.TInt, tvalue=sp.TRecord(ticketOwner=sp.TAddress, booked=sp.TBool,mint_index=sp.TNat,metadata=sp.TBytes))
+            seatDetails = sp.map(l={}, tkey=sp.TInt, tvalue=sp.TRecord(ticketOwner=sp.TAddress, booked=sp.TBool,mint_index=sp.TNat,metadata=sp.TBytes,movieId=sp.TInt,seatNumber=sp.TInt))
         )
 
     
@@ -47,6 +48,8 @@ class TezoTix(sp.Contract):
         self.data.theatreDetails[self.data.theatreID] = sp.record(name = params._name,address = params._address, movieIds= sp.set(),theatreOwner = sp.sender)
 
         self.data.cityDetails[params._cityId].theatreIds.add(self.data.theatreID)
+
+        self.data.theatreOwner[sp.sender] = self.data.theatreID
         
         self.data.theatreID +=1
 
@@ -57,7 +60,7 @@ class TezoTix(sp.Contract):
 
         sp.verify(self.data.theatreDetails[params._theatreId].theatreOwner == sp.sender, message = "Not the owner of the theatre")
         
-        self.data.movieDetails[self.data.movieID] = sp.record(name = params._name,description = params._description, posterLink = params._posterLink,screenNumber = params._screenNumber,ticketPrice=params._ticketPrice, startingDate= params._startingDate,timeSlot=params._timeSlot)
+        self.data.movieDetails[self.data.movieID] = sp.record(name = params._name,description = params._description, posterLink = params._posterLink,screenNumber = params._screenNumber,ticketPrice=params._ticketPrice, startingDate= params._startingDate,timeSlot=params._timeSlot,theatreId=params._theatreId)
 
         self.data.theatreDetails[params._theatreId].movieIds.add(self.data.movieID)
         
@@ -68,31 +71,31 @@ class TezoTix(sp.Contract):
         
         sp.set_type(params, sp.TRecord(_movieId=sp.TInt,_seatNumber=sp.TInt,_metadata=sp.TBytes))
 
-        self.data.seatDetails[(params._movieId+1)*100-100+params._seatNumber] = sp.record(ticketOwner = sp.sender,mint_index=self.data.mint_index,booked=True,metadata=params._metadata)
+        self.data.seatDetails[(params._movieId)*45+params._seatNumber] = sp.record(ticketOwner = sp.sender,mint_index=self.data.mint_index,booked=True,metadata=params._metadata,movieId=params._movieId,seatNumber=params._seatNumber)
   
         # Inter-contract call take place here to mint the artwork
         
-        c = sp.contract(
-            sp.TRecord(
-                token_id=sp.TNat,
-                amount=sp.TNat,
-                address=sp.TAddress,
-                metadata=sp.TMap(sp.TString, sp.TBytes),
-            ),
-            self.data.nft_contract_address,
-            "mint",
-        ).open_some()
+        # c = sp.contract(
+        #     sp.TRecord(
+        #         token_id=sp.TNat,
+        #         amount=sp.TNat,
+        #         address=sp.TAddress,
+        #         metadata=sp.TMap(sp.TString, sp.TBytes),
+        #     ),
+        #     self.data.nft_contract_address,
+        #     "mint",
+        # ).open_some()
 
-        sp.transfer(
-                    sp.record(
-                        token_id=self.data.mint_index,
-                        amount=self.data.movieDetails[params._movieId].ticketPrice,
-                        address=sp.sender,
-                        metadata={"": self.data.seatDetails[(params._movieId+1)*100-100+params._seatNumber].metadata},
-                    ),
-                    sp.tez(0),
-                    c,
-                )
+        # sp.transfer(
+        #             sp.record(
+        #                 token_id=self.data.mint_index,
+        #                 amount=self.data.movieDetails[params._movieId].ticketPrice,
+        #                 address=sp.sender,
+        #                 metadata={"": self.data.seatDetails[(params._movieId)*45+params._seatNumber].metadata},
+        #             ),
+        #             sp.tez(0),
+        #             c,
+        #         )
         
         self.data.mint_index += 1
 
@@ -118,6 +121,7 @@ def test():
     scenario += auction.add_theatre(_cityId=0,_name="XYZ",_address="Ankit").run(sender = bob)
     scenario += auction.add_movie(_theatreId=0,_name="Brahmastra",_description="Great Movie",_posterLink = "sdfdsdfsddf",_screenNumber=1,_ticketPrice = 100,_startingDate = "16/08/2023",_timeSlot="9 to 12").run(sender = alice)
     scenario += auction.add_movie(_theatreId=1,_name="John Wick",_description="Great Movie",_posterLink = "sdfdsdfsddf",_screenNumber=1,_ticketPrice = 100,_startingDate = "16/08/2023",_timeSlot="9 to 12").run(sender = bob)
+    scenario += auction.add_movie(_theatreId=1,_name="John Wick",_description="Great Movie",_posterLink = "sdfdsdfsddf",_screenNumber=1,_ticketPrice = 100,_startingDate = "16/08/2023",_timeSlot="9 to 12").run(sender = bob)
     scenario += auction.book_ticket(_movieId=0,_seatNumber=10,_metadata=sp.bytes('0x30')).run(sender = alice)
-    scenario += auction.book_ticket(_movieId=1,_seatNumber=11,_metadata=sp.bytes('0x30')).run(sender = bob)
-
+    scenario += auction.book_ticket(_movieId=1,_seatNumber=45,_metadata=sp.bytes('0x30')).run(sender = bob)
+    scenario += auction.book_ticket(_movieId=2,_seatNumber=45,_metadata=sp.bytes('0x30')).run(sender = bob)
