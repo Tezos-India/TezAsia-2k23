@@ -24,7 +24,6 @@ export default function AuthHolder(props) {
         }
     };
     const connectWallet = async () => {
-        wallet.disconnect()
         await wallet.requestPermissions({ network: { type: "ghostnet" } });
 
         const account = await getAccount();

@@ -43,7 +43,7 @@ export default function ConnectBtn() {
             weight={"700"}
             onClick={address ? onDisconnectWallet : onConnectWallet}
         >
-            {connected ? address.slice(0, 5) + "..." + address.slice(-5) : "Connect wallet"}
+            {address ? address.slice(0, 5) + "..." + address.slice(-5) : "Connect wallet"}
         </Button>
     )
 }
