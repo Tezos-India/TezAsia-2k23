@@ -33,6 +33,10 @@ To start the project locally:
 
 There is a NFT hidden among these cards. Flip a card and try your luck to win an NFT. You get one chance every trial. If you loose click on try again for another chance.
 
+## Video
+
+https://drive.google.com/file/d/1GvYnwEITpXEtj0I7BCM9NIGjTKNKT5WJ/view?usp=sharing
+
 ## Images
 
 ![Alt text](<Screenshot (146).png>)
