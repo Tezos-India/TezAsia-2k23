@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: "Space Grotesk", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a0b0d;
+  color: #fff;
+}
+
+.SpaceGrotesk {
+  font-family: "Space Grotesk", sans-serif;
+}
+.Poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-100 {
+  font-weight: 100;
+}
+.font-200 {
+  font-weight: 200;
+}
+.font-300 {
+  font-weight: 300;
+}
+.font-400 {
+  font-weight: 400;
+}
+.font-500 {
+  font-weight: 500;
+}
+.font-600 {
+  font-weight: 600;
+}
+.font-700 {
+  font-weight: 700;
+}
+.font-800 {
+  font-weight: 800;
+}
+.font-900 {
+  font-weight: 900;
+}
+
+.scroll-hor::-webkit-scrollbar {
+  height: 7px;
+}
+.scroll-ver::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll-hor::-webkit-scrollbar-track,
+.scroll-ver::-webkit-scrollbar-track {
+  border-radius: 10px;
+  border: 0.3px solid rgba(255, 255, 255, 0.2);
+}
+
+.scroll-hor::-webkit-scrollbar-thumb,
+.scroll-ver::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.scroll-hor::-webkit-scrollbar-thumb:hover,
+.scroll-ver::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
