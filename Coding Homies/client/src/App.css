@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+    background-color: black;
+    color: white;
+}
+@font-face {
+    font-family: 'MyFont';
+    src: url('./assets/fonts/badgrunge.ttf');
+  }
+  @font-face {
+    font-family: 'paragraph';
+    src: url('./assets/fonts/Athelas-Bold.ttf');
+  }
+
