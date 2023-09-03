@@ -50,10 +50,6 @@ The project is created with:
 
 <a href="https://socket.io">
 <img src="https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101" /> </a>
-
-<a href="https://mantine.dev">
-<img src="https://img.shields.io/badge/mantine.dev-%20-blue" />
-</a>
 </p>
 
 
