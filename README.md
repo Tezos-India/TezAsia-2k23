@@ -1,39 +1,56 @@
-# TezoTix - NFT Movie ticketing solution
-**Team Name**: AsianDeCoders
+# TezAsia-2k23
 
-**Project Name**: TezoTix
+![tezosindia1](https://github.com/TauqeerAhmad5201/TezAsia-2k23/assets/68806440/735f95af-4a62-4095-bdbd-c9fe4f4c57b1)
 
-**Target Track**: Web3 Integration with Web2
+Welcome to [**Tezasia '23 Hackathon**](https://unstop.com/competitions/tezasia-hackathon-30-tezos-india-695650?ref=NvNQjzFl) powered by [**Tezos India**](https://tezosindia.org.in/)
+Please find attached the rules and steps to submit your project for the hackathon :
 
-## Project Description
-**Problem Statement**: Ticket selling using Tezos Technology (Bookmyshow in Web3)
+## Step - 1: Fork the repository
 
-The current movie-ticketing system is inefficient and vulnerable to duplicates. Our solution will solve this problem by enabling the purchase of tickets on non-transferable NFTs. This will allow anonymity and remove the scope for duplicate or fake tickets. .NFTs will be used as ‘tickets’ that can be transferred or sold without the need for a bank account, credit card or other form of payment. These NFTs will also have limited resale value and are non-transferable. This ensures that tickets cannot be replicated and sold to unsuspecting parties.
+Fork the given repository to your GitHub profile.
 
-TezoTix is a blockchain-based ticketing service that will provide an interface for moviegoers to purchase tickets in a way that is faster, more secure and more anonymous than the current model. Using innovative technology, Mintix will issue non-transferable NFTs (tokens) that each represent one ticket. This will enable theater owners to validate tickets and remove the scope for duplicates or fake tickets to be sold, while still keeping holders of the tokens anonymous.
+![Screenshot from 2023-07-25 22-28-46](https://github.com/TauqeerAhmad5201/TezAsia-2k23/assets/68806440/ab08cb62-2521-4968-8933-14356844026b)
 
-## Project Demo, Photos, Video
-To get a feel our product, visit the [Live Project Link](https://tez-asia-2k23-idev2n0gf-ankit7241.vercel.app/)
+## Step - 2: Create your folder
 
-Github repo: [Link](https://github.com/ankit7241/TezAsia-2k23)
+After forking the repository, clone the repository to your pc/desktop, and then create a folder with your **TeamName** as the folder name.
 
-[Please view the video demo here](https://drive.google.com/file/d/12jNgCGF5A35oOTt3FqBbdfr-BER42IMB/view?usp=sharing)
+Unclear about cloning? No problem, we've got your back. Click [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) to learn about it.
 
-![Movie detail page](https://github.com/ankit7241/TezAsia-2k23/assets/97945699/5fafd877-1ffd-405b-8465-693306c442ce)
-![Search page](https://github.com/ankit7241/TezAsia-2k23/assets/97945699/f4ddc9ba-179e-491b-9c00-624180338227)
+## Step - 3: Project Code Base
 
-## Tech Stack
-- **SmartPy**: For smart contracts on the Tezos blockchain
-- **ReactJS**: For building a user-friendly frontend
-- **Tailwind CSS**: 
-- **Taquito JS Library**: To interact with Tezos smart contracts
-- **Beacon**: for user authentication via crypto wallet
-- **Web3 Storage/IPFS**: For storing images and text on IPFS
-- and more...
+Push Your code base in this folder.
+This should include all your files for frontend as well as the backend
 
-## Deployed Contract Address
-Our smart contracts are deployed at: [https://ghostnet.tzkt.io/KT1DwWKfHMU1xY11jQYJWXm1K5jEDTKgGVje/operations/](https://ghostnet.tzkt.io/KT1DwWKfHMU1xY11jQYJWXm1K5jEDTKgGVje/operations/)
+- Make sure to include your smart contract code in a file and upload it here.
 
-## Team AsianDeCoders
-1) [Ankit Choudhary](https://twitter.com/ankit7241)
-2) [Atharv Varshney](https://twitter.com/Atharvvarshney7)
+## Step - 4: Team Info and Project Info
+
+In your **TeamName** folder, make sure to include the below details in the README.md:
+
+1. Your Project
+2. Your Project's Description
+3. What problem you are trying to solve
+4. Tech Stack used while building the project
+5. Project Demo Photos, Videos
+6. Your Deployed Smart Contract's Link
+7. If your project is deployed, then include the Live Project Link
+8. Your PPT link (Make sure to upload the PPT in this folder along with the project)
+9. Your Team Members' Info.
+
+## Step - 5: Submitting the code: Making a Pull request
+
+After you have pushed your files and code base,
+[create an issue](https://github.com/Tezos-India/TezAsia-2k23/issues/new) in the main repository as:
+
+- Issue: Team Name: Submission
+- Issue description should include a small glimpse of your project, what is it doing, and how are you trying to achieve it.
+
+After the issue is assigned, make a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) from your forked repo to this repo's main branch while mentioning issue no. assigned to it.
+
+## Guides and Rules for submission:
+
+1. Make sure you fork the repository first, and create a folder with your team name.
+2. Make all your code added to your forked repo, and then push the code to your main branch after your project is complete.
+3. Make sure to push files to your folder only.
+4. Changing or doing any edits to other folders is strictly prohibited.
