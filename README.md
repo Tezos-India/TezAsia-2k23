@@ -57,16 +57,18 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 
 - **Flutter**: Employed for developing the Android app, ensuring a consistent user experience across platforms.
 
-- **Web3**: Enabling decentralized gaming and NFT ownership through integration with blockchain and cryptocurrency technologies.
 
 - **Blockchain**: The underlying technology powering secure and transparent transactions, NFT ownership, and the HT token.
 
 - **ERC-1155**: A multi-token standard used to manage the NFT marketplace, allowing for the creation and exchange of various NFTs.
 
 - **Polygon**: Integrated to enhance platform scalability and cost-effectiveness through layer-2 scaling for Ethereum.
+- **SmartPy**: For smart contracts on the Tezos blockchain
+- **Taquito JS Library**: To interact with Tezos smart contracts
+- **Beacon**: for user authentication via crypto wallet
 
-- **Full-Stack Web Development**: Comprehensive development approach covering both front-end (React) and back-end (Solidity) for a seamless user experience.
-- 
+
+
 ## Demo Video Link:
  * <a href="https://www.canva.com/design/DAFtGElfoDo/35xtWWO86FUvhRhpamU4pQ/watch?utm_content=DAFtGElfoDo&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel">Video link</a>
 
@@ -88,7 +90,8 @@ Certainly, here's a concise list of the key technologies used in Polyess for you
 
  
 ## Your Deployed Smart Contract's Link *
-- NA
+- [smart contract](https://ghostnet.tzkt.io/KT1JTQ3Af8CjkzA3V45hWHt5eZiwBCKJwpxN/operations/)
+
 ## Github repository link  [Github](https://github.com/ProgrammingPirates/Block_Developer)
 
 
