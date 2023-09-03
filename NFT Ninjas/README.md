@@ -29,17 +29,46 @@ The following third party services are being used by Homebase:
 
 ### Version: 13.0.1
 
+## Running the project
+
+To run the project:
+
+- Make sure you have node installed
+- `git clone git@github.com:dOrgTech/homebase-app.git`
+- `cd homebase-app`
+- `yarn`
+- Create a `.env` file in the root, based on the `.env.example` provided in the code and ask one of the maintainers for the Pinata API Key
+- `yarn dev`
+
+# Screenshots
+
+![image 1](https://github.com/Prasannaverse13/TezAsia-2k23/assets/85429816/3498235b-cd77-4980-bb21-413b84b06b10)
+![image 2](https://github.com/Prasannaverse13/TezAsia-2k23/assets/85429816/f09f9204-1dbf-4380-ba3b-3c4691bbb6d8)
+![image 3](https://github.com/Prasannaverse13/TezAsia-2k23/assets/85429816/e6405cef-e5e2-4fa8-85b4-475d2c2b1191)
+![image 4](https://github.com/Prasannaverse13/TezAsia-2k23/assets/85429816/a66ec36b-525f-423e-abb7-ba037eb1aa11)
+![image 5](https://github.com/Prasannaverse13/TezAsia-2k23/assets/85429816/82d99a68-29de-41cf-b1ec-1e9ec94fb931)
+
+# DEMO VIDEO (WORKING)
+# ** Please Visit the above link for working demo ** -> https://youtu.be/4YwaTPad2KY
+
+# PPT -> https://www.canva.com/design/DAFtHXaGvuc/6N2SougupqTuhzZiw0fa1A/edit?utm_content=DAFtHXaGvuc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+#  Team Members' Info.
+# Prasannaram R - sit20cs130@sairamatap.edu.in
+# Rohit das - sit20cs081@sairamtap.edu.in
+# Vigneshwaran V - sit20cs034@sairamtap.edu.in
+# Nihaal Tharwat - sit20cs038@sairamtap.edu.in
+
 # Using Homebase
 
 ## Creating a DAO
 
-1. Go to https://tezos-homebase.io/
-2. Click on the `Create a DAO` button
+1. Click on the `Create a DAO` button
 
 You will be taken to the DAO Creator, from which you will be asked to choose on the currently supported DAO templates.
 
-3. Select one of the supported DAO templates
-4. Fill the DAO creation form. You will be asked to fill:
+2. Select one of the supported DAO templates
+3. Fill the DAO creation form. You will be asked to fill:
 
 **DAO Settings**:
 
@@ -136,53 +165,10 @@ There are 2 types of registry proposals:
 
 At a contract level, there is no such distinction, but in the UI it exists to let the user create a new key or select a key from a dropdown of existing keys, depending on his intention.
 
-**Proposal JSON signature**:
-
-```json
-{
-  "foo": "baz",
-  "bar": "qux",
-  ...
-}
-```
-
 ### **Treasury**
 
 **Holdings/Treasury** page: this page contains a table with all DAO holdings organized by token (currently, only supporting `XTZ`). And also contains a table with all outbound transfers made from the DAO.
 
-**Proposal JSON signature**:
-
-```json
-[
-  {
-    "amount": 15,
-    "recipient": "tz1RKPcdraL3D3SQitGbvUZmBoqefepxRW1x"
-  },
-  {
-    "amount": 20,
-    "recipient": "tz1Zqb3hBBN8wLcJYhADcasi1jZdp2YLdG3L"
-  },
-  ...
-]
-```
-
-# Contributing
-
-## Developer Docs
-
-- [Tezos Homebase Docs](https://docs.google.com/document/d/1zZwcvX0jNE8PycOMNSULy2i-mcjg1LJ9FFYbGP4m9TM/edit?usp=sharing)
-- [Tezos Homebase - Local Env Setup](https://docs.google.com/document/d/1GDnJzwezXXEGiwZAWioOlfvmcSuHuREpO7GIKMLjYmk/edit?usp=sharing)
-
-## Running the project
-
-To run the project:
-
-- Make sure you have node installed
-- `git clone git@github.com:dOrgTech/homebase-app.git`
-- `cd homebase-app`
-- `yarn`
-- Create a `.env` file in the root, based on the `.env.example` provided in the code and ask one of the maintainers for the Pinata API Key
-- `yarn dev`
 
 # Glossary
 
