@@ -1,4 +1,4 @@
-# Project Title: Gaming Marketplace - Play, Stake, and Earn with Tezos
+# Project Title: Gamify - Play, Stake, and Earn with Tezos
 
 ## Introduction
 
@@ -10,7 +10,7 @@ Our platform is designed to cater to gaming enthusiasts and crypto enthusiasts a
 
 ## Key Features
 
-1. **Game Selection:** Currently, our platform features the classic card game Uno, with more mini-games, including Chess, in the pipeline. We intend to expand our game library continuously to keep our users engaged and entertained.
+1. **Game Selection:** Currently, our platform features the classic card game Uno, with more mini-games, including Chess, in the pipeline. We intend to expand our game library continuously to keep our users engaged and entertained. Aso of now we have only created and implemented UNO Card Game.
 
 2. **Staking Tezos:** Users have the opportunity to stake Tezos (XTZ) on our platform, allowing them to earn rewards while enjoying their favorite games. This innovative approach to staking combines the benefits of blockchain technology with the excitement of gaming.
 
@@ -20,8 +20,6 @@ Our platform is designed to cater to gaming enthusiasts and crypto enthusiasts a
 
 5. **Leaderboard and Challenges:** To further engage our users, we plan to introduce a leaderboard system with weekly challenges. This will encourage healthy competition and give players the chance to earn additional rewards and recognition.
 
-6. **Digital-NFTs (D-NFTs):** As part of our long-term vision, we intend to create and sell game-specific Digital Non-Fungible Tokens (D-NFTs) on our platform. These tokens can be used within the games or for various other purposes, adding a unique dimension to the gaming experience.
-
 ## Future Plans
 
 We believe in the potential of this project to transform the gaming industry and create new opportunities for gamers and blockchain enthusiasts. Our future plans include:
@@ -30,7 +28,7 @@ We believe in the potential of this project to transform the gaming industry and
 
 2. **D-NFT Marketplace:** Launching a dedicated marketplace for game-specific D-NFTs, allowing users to buy, sell, and trade these tokens.
 
-3. **Partnerships:** Collaborating with game developers and Tezos ecosystem partners to enhance the platform's offerings and reach.
+3. **Digital-NFTs (D-NFTs):** As part of our long-term vision, we intend to create and sell game-specific Digital Non-Fungible Tokens (D-NFTs) on our platform. These tokens can be used within the games or for various other purposes, adding a unique dimension to the gaming experience.
 
 
 
@@ -58,6 +56,10 @@ We believe in the potential of this project to transform the gaming industry and
 The Gaming Marketplace is not just a project; it's a vision. It's a vision of a future where gaming is not just about entertainment but also an avenue for earning and financial empowerment. We invite you to join us on this exciting journey as we continue to innovate and redefine the boundaries of gaming and blockchain technology.
 
 Thank you for considering our project, and we look forward to the opportunity to bring this vision to life. Together, we can make gaming more rewarding than ever before.
+
+## PPT LINK
+
+https://drive.google.com/file/d/1cOPn2W_CMm8I-eeaykQFDRO2Zh3_QjTK/view?usp=sharing
 
 ## ScreenShots
 
