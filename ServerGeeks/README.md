@@ -32,7 +32,30 @@ We believe in the potential of this project to transform the gaming industry and
 
 3. **Partnerships:** Collaborating with game developers and Tezos ecosystem partners to enhance the platform's offerings and reach.
 
-4. **Mobile App:** Developing a mobile application for a seamless gaming experience on smartphones and tablets.
+
+
+The project is created with:
+
+<p align="center">
+<a href="https://reactjs.org">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /></a>
+
+<a href="https://nodejs.org/en/">
+<img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" /></a>
+
+<a href="https://www.javascript.com">
+<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" /> </a>
+
+<a href="https://expressjs.com">
+<img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge" /></a>
+
+<a href="https://socket.io">
+<img src="https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101" /> </a>
+
+<a href="https://mantine.dev">
+<img src="https://img.shields.io/badge/mantine.dev-%20-blue" />
+</a>
+</p>
 
 ## Conclusion
 
