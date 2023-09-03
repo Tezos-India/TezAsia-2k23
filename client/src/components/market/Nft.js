@@ -121,7 +121,7 @@ function Nft(props) {
 
         <div className="farm-leaderboard__content container py-3 px-3 my-4">
           <p className=" farm-leaderboard__content__p1 btn-primary py-1 px-3">
-            15-12-2021
+            15-09-2023
           </p>
           <p>{nftData.bid && nftData.bid.bidder_name}</p>
           <p>{nftData.bid && nftData.bid.price}</p>
