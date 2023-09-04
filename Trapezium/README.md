@@ -21,7 +21,7 @@ The Tezos blockchain community lacked a dedicated NFT marketplace that provided 
 - **Blockchain Development Framework:** SmartPy
 
 ##
-https://imgur.com/a/ngdDztt
+ ![Trapezium Marketplace Images] (https://imgur.com/a/ngdDztt)
 ## Team Members
 
 - **Lakshya Mishra:** Full Stack Developer
