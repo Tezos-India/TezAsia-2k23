@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car Rental Contract</title>
+  <script src="https://smartpy.io/static/SmartPyBasic.js"></script>
+</head>
+<body>
+  <h1>Car Rental Contract</h1>
+
+  <div id="output"></div>
+
+  <script>
+    // Contract address
+    const contractAddress = "<KT1M6C1CvfFqFoaY3C1VQgB7YmB85BS7VRJB>";
+
+    // Define SmartPy contract interface
+    const contract = new SmartPyContract(SmartPyInterface, contractAddress);
+
+    // Add Car
+    function addCar() {
+      const carId = parseInt(document.getElementById("carId").value);
+      const carName = document.getElementById("carName").value;
+
+      contract.add_car({ car_id: carId, car_name: carName })
+        .then(response => {
+          document.getElementById("output").innerHTML = "Car added successfully!";
+        })
+        .catch(error => {
+          document.getElementById("output").innerHTML = "Error: " + error;
+        });
+    }
+
+    // Reserve Car
+    function reserveCar() {
+      const carId = parseInt(document.getElementById("carId").value);
+      const uniqueId = parseInt(document.getElementById("uniqueId").value);
+
+      contract.reserve_car({ car_id: carId, unique_ID: uniqueId })
+        .then(response => {
+          document.getElementById("output").innerHTML = "Car reserved successfully!";
+        })
+        .catch(error => {
+          document.getElementById("output").innerHTML = "Error: " + error;
+        });
+    }
+
+    // Remove Car
+    function removeCar() {
+      const carId = parseInt(document.getElementById("carId").value);
+
+      contract.remove_car({ car_id: carId })
+        .then(response => {
+          document.getElementById("output").innerHTML = "Car removed successfully!";
+        })
+        .catch(error => {
+          document.getElementById("output").innerHTML = "Error: " + error;
+        });
+    }
+
+    // Cancel Reservation
+    function cancelReservation() {
+      const carId = parseInt(document.getElementById("carId").value);
+
+      contract.cancel_reservation({ car_id: carId })
+        .then(response => {
+          document.getElementById("output").innerHTML = "Reservation canceled successfully!";
+        })
+        .catch(error => {
+          document.getElementById("output").innerHTML = "Error: " + error;
+        });
+    }
+  </script>
+
+  <h2>Add Car</h2>
+  <label for="carId">Car ID:</label>
+  <input type="number" id="carId" required>
+  <br>
+  <label for="carName">Car Name:</label>
+  <input type="text" id="carName" required>
+  <br>
+  <button onclick="addCar()">Add Car</button>
+
+  <h2>Reserve Car</h2>
+  <label for="carId">Car ID:</label>
+  <input type="number" id="carId" required>
+  <br>
+  <label for="uniqueId">Unique ID:</label>
+  <input type="number" id="uniqueId" required>
+  <br>
+  <button onclick="reserveCar()">Reserve Car</button>
+
+  <h2>Remove Car</h2>
+  <label for="carId">Car ID:</label>
+  <input type="number" id="carId" required>
+  <br>
+  <button onclick="removeCar()">Remove Car</button>
+
+  <h2>Cancel Reservation</h2>
+  <label for="carId">Car ID:</label>
+  <input type="number" id="carId" required>
+  <br>
+  <button onclick="cancelReservation()">Cancel Reservation</button>
+</body>
+</html>
