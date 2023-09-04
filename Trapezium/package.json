@@ -1,0 +1,53 @@
+{
+  "name": "nft-marketplace",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@airgap/beacon-sdk": "^3.3.0",
+    "@taquito/beacon-wallet": "^14.0.0",
+    "@taquito/ledger-signer": "^14.0.0",
+    "@taquito/taquito": "^14.0.0",
+    "@taquito/tzip12": "^14.0.0",
+    "axios": "^0.21.1",
+    "nft.storage": "^7.0.0",
+    "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.9.0",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2",
+    "use-file-picker": "^1.5.1",
+    "web-vitals": "^3.0.4"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "os-browserify": "^0.3.0",
+    "stream-browserify": "^3.0.0"
+  }
+}

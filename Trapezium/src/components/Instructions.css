@@ -1,0 +1,41 @@
+.instruction-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #f7f7f7;
+    color: #333;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  
+  ol {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  p {
+    margin-bottom: 20px;
+  }
+  
+  a {
+    color: #333;
+    text-decoration: underline;
+  }
+  
+  a:hover {
+    color: #666;
+  }
+  

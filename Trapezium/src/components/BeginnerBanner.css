@@ -1,0 +1,62 @@
+.beginner-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .beginner-banner h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .beginner-banner p {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  
+  .beginner-banner ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .beginner-banner li {
+    margin-bottom: 8px;
+  }
+  
+  .beginner-banner li a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+  }
+  
+  .beginner-banner li a:hover {
+    text-decoration: underline;
+  }
+  
+  .beginner-banner button {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .beginner-banner button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+  }
+  
