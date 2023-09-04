@@ -1,0 +1,46 @@
+.start-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #081d46;
+    
+  }
+  
+  .logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 24px;
+  }
+  
+  .title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #FFFFFF;
+  }
+  
+  .subtitle {
+    font-size: 24px;
+    margin-bottom: 32px;
+    color: #FFFFFF;
+
+  }
+  
+  .start-button {
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #0066FF;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .start-button:hover {
+    background-color: #0044CC;
+  }
+  
+  
