@@ -20,17 +20,17 @@ The Tezos blockchain community lacked a dedicated NFT marketplace that provided 
 - **Front-end:** React
 - **Blockchain Development Framework:** SmartPy
 
-##
-
- ![Trapezium Marketplace Images] 
  ## Homepage
- https://i.imgur.com/lgCV8EM.png
+ ![Trapezium Marketplace Homepage](https://i.imgur.com/lgCV8EM.png)
+
  ## Instructions
- https://i.imgur.com/wnwyx57.png
+ ![Trapezium Marketplace Instructions](https://i.imgur.com/wnwyx57.png)
+
  ## Easy Transact
- https://i.imgur.com/HWyo5fd.png
+ ![Trapezium Marketplace Easy Transact](https://i.imgur.com/HWyo5fd.png)
+
  ## Generate your own NFT
- https://i.imgur.com/XttCL40.png
+ ![Trapezium Marketplace Generate your own NFT](https://i.imgur.com/XttCL40.png)
 ## Team Members
 
 - **Lakshya Mishra:** Full Stack Developer
