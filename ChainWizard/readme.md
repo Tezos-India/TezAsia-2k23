@@ -1,6 +1,6 @@
 # CrowdFunding DaAp
 ## Built By
-Tarang Ahuja
+Tarang Ahuja (tarangahuja78@gmail.com)
 
 Sujata Gahlaut
 
@@ -8,14 +8,14 @@ Vanshika Chandan
 
 
 ## Presentation Link
-
+https://github.com/Tezos-India/TezAsia-2k23/blob/main/ChainWizard/Crowd%20Funding%20App.mp4
 (If above link not working)
 https://www.canva.com/design/DAFnG10_tgw/qlNFbGp9nwfSeNOej-bg5g/edit?utm_content=DAFnG10_tgw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ## Getting Started with CrownFunding App
 
 ## DEPLOYED 
-Deployed at : [https://crowd-funding-by-stv.vercel.app/](https://crowd-funding-by-1t7aua7a1-stv-crowdfund.vercel.app/)
+[Deployment link](https://crowd-funding-by-1t7aua7a1-stv-crowdfund.vercel.app/)
 
 ## Available Scripts
 
