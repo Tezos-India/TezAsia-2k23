@@ -1,0 +1,27 @@
+{
+  "name": "flexpass_backend",
+  "version": "1.0.0",
+  "description": "\"# Backend\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChainBuggers-TezAsia/Backend.git"
+  },
+  "author": "Sanjeeban",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChainBuggers-TezAsia/Backend/issues"
+  },
+  "homepage": "https://github.com/ChainBuggers-TezAsia/Backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.3",
+    "validator": "^13.11.0"
+  }
+}
