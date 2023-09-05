@@ -1,0 +1,79 @@
+  .top {
+    margin: 40px;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .choose {
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #5aff15, #00b712);
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+  }
+  .choose:hover {
+    box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+  }
+  .textArea {
+    color: white;
+  }
+  
+  .upload {
+    border: 1px solid #13aa52;
+    background-color: #13aa52;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-left: 10px;
+  }
+  
+  .upload:hover {
+    border: 1px solid #13aa52;
+    background-color: #a5efc1;
+    color: #ffffff;
+    padding: 5px 10px;
+  }
+  
+  .upload:disabled,
+  .upload[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+  }
+  
+  div {
+    padding: 5px 10px;
+  }
+  .loader {
+    border: 12px solid #f3f3f3; /* Light grey */
+    border-top: 12px solid #3498db; /* Blue */
+    border-bottom: 12px solid #3498db; /* Blue */
+
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 2s linear infinite;
+    margin: auto;
+    margin-top: 210px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .Background {
+    width: 800px;
+    height: 495px;
+    background-color:#5555;    
+  margin-left: 15%;
+    backdrop-filter: blur(40px);
+  margin-top: -200px;
+  position: fixed;
+    
+  }

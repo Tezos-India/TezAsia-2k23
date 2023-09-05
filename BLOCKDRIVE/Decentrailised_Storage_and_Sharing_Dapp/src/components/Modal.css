@@ -1,0 +1,169 @@
+    *{
+      box-sizing: border-box;
+    }
+    .modalBackground {
+        width: 80vw;
+        height: 89vh;
+        background-color:#5555;
+      position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+      margin-left: 8%;
+        backdrop-filter: blur(10px);
+   margin-top: -45px;
+        z-index: 3;
+      }
+      
+      .modalContainer {
+        width: 400px;
+        height: 530px;
+        border-radius: 12px;
+        background-color: white;
+        box-shadow: white 5px 5px 15px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        position:relative;
+        z-index: 56;
+        margin-bottom: 1%;
+      }
+      
+      .modalContainer {
+        display: inline-block;
+        text-align: center;
+      }
+      
+      
+      
+      .titleCloseBtn {
+        display: flex;
+        justify-content: flex-end;
+      }
+      
+      .titleCloseBtn button {
+        background-color: transparent;
+        border: none;
+        font-size: 1px;
+        cursor: pointer;
+      }
+      
+      .modalContainer .body {
+    
+       
+       
+        margin-top: 30px;
+     
+        font-size: 1.7rem;
+        /* text-align: center; */
+      }
+      
+      
+      
+      
+      .modalContainer .footer button {
+        width: 100%;
+        height: 40px;
+      
+        border: none;
+        background-color: cornflowerblue;
+        color: white;
+        border-radius: 4px;
+        font-size: 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+       
+      }
+      
+     
+      .address{
+        display: block;
+        height: 43px;
+       
+         font-size: 17px;
+        text-align: center;
+    }
+    .url{
+      display: block;
+      height: 43px;
+     
+       font-size: 17px;
+      text-align: center;
+  }
+  
+    
+    
+    
+      
+      input[type="text"]:focus {
+        background-color: lightblue;
+       
+      }
+      .myForm{
+        display:flex;
+        flex-direction: column;
+      
+       padding-top: 5px;
+       padding-bottom: 5px;
+       margin-top: 15px;
+      }
+    #selectNumber{
+      height:35px;
+    
+        width: 95%;
+        margin-left: 10px;
+      }
+
+      #selectImages{
+        height:35px;
+      
+          width: 95%;
+          margin-left: 10px;
+        }
+      .body input{
+        width: 100%;
+      }
+      .img{
+        width: 100%;
+        height: 50%;
+       
+       
+      }
+      img{
+        width:100%;
+        height:80%
+      }
+      option{
+        margin-left: 35px;
+      }
+      .loader {
+
+        border: 12px solid #f3f3f3; /* Light grey */
+        border-top: 12px solid #3498db; /* Blue */
+        border-bottom: 12px solid #3498db; /* Blue */
+
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        animation: spin 2s linear infinite;
+        margin: auto;
+        margin-top: 210px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .ModalBackground {
+        width: 550px;
+        height: 503px;
+        background-color:#5555;    
+      margin-left: -100px;
+        backdrop-filter: blur(20px);
+      margin-top: -200px;
+      /* position: fixed; */
+        
+      }
+  
