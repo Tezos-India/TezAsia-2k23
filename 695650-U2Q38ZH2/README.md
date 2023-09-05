@@ -110,9 +110,20 @@ To dive deeper into the intricacies of our project, its development phases, and 
 
 ## Team Members
 
-**Presented by BLOCKS Gaming**:
-- Paras
-- Harsh
-- Yadnyesh
-- Ishaan
+**This MVP is presented by the BLOCKS Gaming Team**:
+- **Paras**
+  - Email: parasraut2511@gmail.com
+  - LinkedIn: https://www.linkedin.com/in/paras-raut/
+  - GitHub: https://github.com/parasraut21
+  - Personal : https://parasraut.netlify.app/
+- **Harsh**
+  - Email : harshtuli452@gmail.com
+  - LinkedIn : https://www.linkedin.com/in/harsh-t-85a1b622b
+- **Yadnyesh**
+  - LinkedIn - https://www.linkedin.com/in/yadnyesh-mahadeshwar-72532a11a/
+  - Email - yadnyesh.mahadeshwar@gmail.com
+- **Ishaan**
+  - LinkedIn - https://www.linkedin.com/in/ishaan-dhyani-9b25ba187/
+  - Email - ishaandhyani1999@gmail.com
+
 
