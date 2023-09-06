@@ -178,7 +178,7 @@ export default function CataloguePage() {
                       .get(token_id.toNumber())
                       ?.thumbnailUri?.replace(
                         "ipfs://",
-                        "https://gateway.pinata.cloud/ipfs/"
+                        "https://ipfs.io/ipfs/"
                       )}
                   />
 

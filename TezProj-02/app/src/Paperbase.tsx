@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Toolbar from "@mui/material/Toolbar";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import * as React from "react";
+import SnackbarContent from '@mui/material/SnackbarContent';
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Header from "./Header";
 import MintPage from "./MintPage";
@@ -276,6 +277,7 @@ export default function Paperbase() {
           </Route>
         </Routes>
       </BrowserRouter>
+      <SnackbarContent/>      
     </ThemeProvider>
   );
 }
