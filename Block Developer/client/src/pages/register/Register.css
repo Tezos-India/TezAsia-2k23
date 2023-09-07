@@ -1,0 +1,87 @@
+.register-screen {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .register-screen__form {
+    width: 380px;
+    padding: 1.5rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    background: #000;
+    border: 2px solid #e55835;
+    border-radius: 20px;
+    color: #fff;
+  }
+  
+  .register-screen__title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .register-screen__subtext {
+    font-size: 0.7rem;
+    display: block;
+    margin: 0.5rem 0;
+  }
+  .form-group,
+.form-group label,
+.form-group input {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+}
+
+.form-group input {
+  padding: 10px 20px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background-color: #000;
+  outline-width: 0;
+  font-size: 1rem;
+  color: grey;
+}
+
+.form-group input:focus {
+  border-bottom: 3px solid coral;
+}
+
+.form-btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+}
+
+.form-btn:hover {
+  opacity: 0.8;
+}
+
+.form-btn-primary {
+  background-color: rgb(229, 88, 53);
+  color: #fff;
+}
+
+.error-message {
+  width: 100%;
+  display: inline-block;
+  padding: 5px;
+  background: red;
+  color: #fff;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.success-message {
+  width: 100%;
+  display: inline-block;
+  padding: 5px;
+  background: green;
+  color: #fff;
+  text-align: center;
+  margin: 0.5rem 0;
+}
