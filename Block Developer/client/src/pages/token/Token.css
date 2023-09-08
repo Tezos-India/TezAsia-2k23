@@ -1,0 +1,98 @@
+.farm-mystrey__left {
+  background: linear-gradient(
+    95.33deg,
+    rgba(146, 71, 219, 0.2) 0%,
+    rgba(11, 53, 153, 0.2) 103.1%
+  );
+}
+
+.farm-mystrey__left p {
+  margin-bottom: 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+}
+
+.p2 p {
+  margin-bottom: 0;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+}
+
+.farm-mystrey__left__dot {
+  max-width: 0.5px;
+  max-height: 0.5px;
+  border-radius: 150px;
+  background: red;
+  box-shadow: -3px 3px 6px #00d953, 3px -3px 6px #00ff71;
+}
+
+.farm-mystrey__left__bottom {
+  background: rgba(0, 0, 0, 0.466);
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.farm-mystrey__button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.farm-mystrey__button button {
+  padding: 0.5rem 1.5rem;
+  margin: 0;
+  border: none;
+  background: linear-gradient(
+    95.33deg,
+    rgba(146, 71, 219, 0.2) 0%,
+    rgba(11, 53, 153, 0.2) 103.1%
+  );
+  border-radius: 10px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.farm-mastrey__right__box {
+  max-width: 500px !important;
+  border-radius: 25px;
+}
+
+.form-floating > .form-control {
+  padding: 0 0.75rem;
+}
+
+.form-floating > .form-control,
+.form-floating > .form-select {
+  height: 0;
+  line-height: 1;
+}
+
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+  padding-top: 0.725rem;
+  padding-bottom: 0.725rem;
+}
+
+@media (min-width: 576px) {
+  .m-sm-3 {
+    margin: 0 !important;
+  }
+}

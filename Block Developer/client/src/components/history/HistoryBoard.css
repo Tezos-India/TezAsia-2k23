@@ -1,0 +1,80 @@
+.historyboard__outer {
+    margin-top: 4rem;
+  }
+  
+  .historyboard__outer label {
+    background: #1f252b;
+    border-radius: 8px;
+    font-family: "Roboto";
+    border-radius: none;
+    font-style: normal;
+    font-size: 18px;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+  }
+  .historyboard__outer label:hover {
+    color: #ffffff;
+  }
+  
+  .historyboard__outer label:active {
+    color: #ff0000;
+  }
+  
+  .historyboard {
+    position: relative;
+    padding: 2rem;
+    margin: 2rem auto;
+    margin-top: 2rem;
+    background: linear-gradient(
+      95.33deg,
+      rgba(146, 71, 219, 0.2) 0%,
+      rgba(11, 53, 153, 0.2) 103.1%
+    );
+    border-radius: 14px;
+  }
+  
+  .historyboard__head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+  }
+  
+  .historyboard__content {
+    background: linear-gradient(
+      95.33deg,
+      #52366d33 0%,
+      #0b359933 103.1%
+    );
+    max-width: 400px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .historyboard__content p {
+    margin-bottom: 0;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+  }
+  
+  .historyboard__content__p1 {
+    border-radius: 10px;
+    background-color: rgb(255, 102, 0) !important;
+  }

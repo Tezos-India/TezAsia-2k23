@@ -1,0 +1,30 @@
+.profile .nav-link{
+    color: rgb(255, 255, 255);
+    background: linear-gradient(
+        95.33deg,
+        rgba(146, 71, 219, 0.2) 0%,
+        rgba(11, 53, 153, 0.2) 103.1%
+      );
+}
+.profile .nav-link.active{
+    border-color: aquamarine;
+    background: linear-gradient(
+      95.33deg,
+      rgba(146, 71, 219, 0.2) 0%,
+      rgba(11, 53, 153, 0.2) 103.1%
+    );
+    color: rgb(255, 255, 255);
+}
+  .nav-tabs{
+    border-color: aquamarine;
+    border-width: 2px;
+  }
+  
+  .profile{
+    background: linear-gradient(
+      95.33deg,
+      rgba(146, 71, 219, 0.2) 0%,
+      rgba(11, 53, 153, 0.2) 103.1%
+    );
+    border-radius: 14px;
+  }

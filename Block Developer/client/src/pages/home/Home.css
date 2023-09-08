@@ -1,0 +1,185 @@
+/* utility classes  */
+.transAll {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Home Section  */
+.home {
+  background: url('https://cdn.pixabay.com/photo/2021/07/25/03/51/chess-6490816__340.png') no-repeat center center/cover;
+}
+.homeContainer {
+  margin: 0 5rem;
+  padding-top: 7rem;
+  padding-left: 3.5rem;
+  height: 80vh;
+}
+
+.homeContent {
+  display: flex;
+  margin: 1rem 2rem;
+  color: #fff;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.homeContentHeading h2 {
+  font-size: 2.2rem;
+}
+
+.homeContentHeading h2 span {
+  color: #d1996d;
+}
+
+.homeContentHeading {
+  margin-bottom: 1rem;
+}
+
+.homeContentButton button {
+  background: linear-gradient(135deg, #ba8964 0, #d1ac90 100%);
+  color: #0a0a0a;
+  outline: none;
+  border: none;
+  font-size: 2rem;
+  margin: 1rem 0;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 0.2rem 1rem;
+}
+
+.homeContentButton button:hover {
+  box-shadow: 0px 7px 10px #a87a57;
+}
+
+/* Game Modes Section  */
+.modesContainer {
+  margin: 2rem auto;
+}
+
+.modesContentHeading h1 {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.modesColumns {
+  margin: 0 2rem;
+}
+
+.scene {
+  perspective: 600px;
+  width: 40vh;
+  height: 40vh;
+  margin: 22px;
+}
+.items {
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.item {
+  position: absolute;
+  backface-visibility: hidden;
+}
+.back {
+  transform: rotateY(180deg);
+}
+.items-2 {
+  transform-origin: center right;
+}
+.items-2:hover {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+.items-3 {
+  transform-origin: center left
+}
+.items-3:hover {
+  transform: translateX(100%) rotateY(-180deg);
+}
+
+/* Nft MarketPlace  */
+.nftContent {
+  padding: 3rem 0;
+}
+
+.nftContentHeading h1 {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.nftContentImg img {
+  width: 40%;
+}
+
+.nftContentImg img:hover {
+  transform: scale(1.2);
+}
+
+/* Stake Section  */
+.stakeContent{
+  padding: 3rem 0;
+}
+
+.stakeContentHeading h1 {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.stakeContentImg img {
+  width: 40%;
+}
+
+.stakeContentImg img:hover {
+  transform: scale(1.2);
+}
+
+/* WhyUs Container */
+.whyUsContainer {
+  margin: 2rem auto;
+}
+
+.whyUsTitle h1 {
+  color: #fff;
+}
+
+.whyUsContentHeading h1 {
+  color: #fff;
+}
+
+
+@media only screen and (max-width: 1285px) {
+  .homeContainer {
+    margin: 0 0;
+    padding-top: 6rem;
+    padding-left: 0;
+  }
+  .homeContent {
+    margin: 1rem 3rem;
+  }
+  .nftContainer, .stakeContainer, .tokenContainer, .whyUsContainer {
+    padding: 0 2rem;
+  }
+  .stakeContentImg img {
+    width: 60%;
+  }
+  .nftContentImg img {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .stakeContentImg img {
+    width: 60%;
+  }
+  .nftContentImg img {
+    width: 50%;
+  }
+  .nftContentImg, .stakeContentImg {
+    margin: 3rem 0 ;
+  }
+}
