@@ -171,7 +171,7 @@ export default function CataloguePage() {
                     }
                   />
                   <CardMedia
-                    sx={{ width: "auto", marginLeft: "33%" }}
+                    sx={{ width: "auto", mx: "auto", marginTop:"7vh" }}
                     component="img"
                     height="100px"
                     image={nftContratTokenMetadataMap
