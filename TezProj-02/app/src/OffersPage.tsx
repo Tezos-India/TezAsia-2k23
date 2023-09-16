@@ -19,7 +19,7 @@ import {
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import BigNumber from "bignumber.js";
-import { useFormik } from "formik";
+import { Formik } from "formik";
 import { useSnackbar } from "notistack";
 import React, { Fragment, useEffect, useState } from "react";
 import * as yup from "yup";
@@ -45,7 +45,7 @@ type Offer = {
 export default function OffersPage() {
   const [selectedTokenId, setSelectedTokenId] = React.useState<number>(0);
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(1);
-
+  const [selling, setSelling] = useState<boolean>(false);
   let [offersTokenIDMap, setOffersTokenIDMap] = React.useState<Map<nat, Offer>>(
     new Map()
   );
@@ -64,17 +64,6 @@ export default function OffersPage() {
   } = React.useContext(UserContext) as UserContextType;
 
   const { enqueueSnackbar } = useSnackbar();
-
-  const formik = useFormik({
-    initialValues: {
-      price: 0,
-    },
-    validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log("onSubmit: (values)", values, selectedTokenId);
-      sell(selectedTokenId, values.price);
-    },
-  });
 
   const initPage = async () => {
     if (storage) {
@@ -263,44 +252,54 @@ export default function OffersPage() {
                         />
                       </Box>
                     ) : (
-                      <form
-                        style={{ width: "100%" }}
-                        onSubmit={(values) => {
-                          setSelectedTokenId(token_id.toNumber());
-                          formik.handleSubmit(values);
-                        }}
-                      >
-                        <span>
-                          <TextField
-                            type="number"
-                            name="price"
-                            label="price"
-                            placeholder="Enter a price"
-                            variant="filled"
-                            value={formik.values.price}
-                            onChange={formik.handleChange}
-                            error={
-                              formik.touched.price &&
-                              Boolean(formik.errors.price)
-                            }
-                            helperText={
-                              formik.touched.price && formik.errors.price
-                            }
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <Button
-                                    type="submit"
-                                    aria-label="add to favorites"
-                                  >
-                                    <SellIcon /> Sell
-                                  </Button>
-                                </InputAdornment>
-                              ),
-                            }}
-                          />
-                        </span>
-                      </form>
+                      <Formik initialValues={{price:0}} validationSchema={validationSchema}
+                          onSubmit={async (values) => {
+                            setSelling(true);
+                            await sell(selectedTokenId, values.price);
+                            setSelling(false);
+                          }}>
+                          {props =>
+                            <form
+                              style={{ width: "100%" }}
+                              onSubmit={(values) => {
+                                setSelectedTokenId(token_id.toNumber());
+                                props.handleSubmit(values);
+                              }}
+                            >
+                              <span>
+                                <TextField
+                                  type="number"
+                                  name="price"
+                                  label="price"
+                                  placeholder="Enter a price"
+                                  variant="filled"
+                                  value={props.values.price}
+                                  onChange={props.handleChange}
+                                  error={
+                                    props.touched.price &&
+                                    Boolean(props.errors.price)
+                                  }
+                                  helperText={
+                                    props.touched.price && props.errors.price
+                                  }
+                                  InputProps={{
+                                    endAdornment: (
+                                      <InputAdornment position="end">
+                                        <Button
+                                          type="submit"
+                                          disabled={selling}
+                                          aria-label="add to favorites"
+                                        >
+                                          <SellIcon /> Sell
+                                        </Button>
+                                      </InputAdornment>
+                                    ),
+                                  }}
+                                />
+                              </span>
+                            </form>
+                          }
+                      </Formik>
                     )}
                   </CardActions>
                 </Card>

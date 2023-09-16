@@ -1,4 +1,4 @@
-import sha256 from "sha256";
+import sha256 from 'sha256';
 import { InfoOutlined } from "@mui/icons-material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
@@ -19,7 +19,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { char2Bytes } from "@taquito/utils";
 import BigNumber from "bignumber.js";
-import { useFormik } from "formik";
+import { Formik } from "formik";
 import { useSnackbar } from "notistack";
 import React, { Fragment, useState } from "react";
 import * as yup from "yup";
@@ -37,7 +37,9 @@ type Offer = {
   price: nat;
 };
 
-const validationSchema = yup.object({});
+const validationSchema = yup.object({
+  answer: yup.string().required("Answer is Required!")
+});
 
 export default function CataloguePage() {
   const {
@@ -53,18 +55,8 @@ export default function CataloguePage() {
   } = React.useContext(UserContext) as UserContextType;
   const [selectedOfferEntry, setSelectedOfferEntry] =
     React.useState<OfferEntry | null>(null);
-
-  const formik = useFormik({
-    initialValues: {
-      quantity: 1,
-      answer:""
-    },
-    validationSchema: validationSchema,
-    onSubmit: (values) => {
-      console.log("onSubmit: (values)", values, selectedOfferEntry);
-      buy(selectedOfferEntry!, sha256(values.answer));
-    },
-  });
+  const [buying, setBuying] =
+    React.useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
   const [currentPageIndex, setCurrentPageIndex] = useState<number>(1);
 
@@ -74,7 +66,7 @@ export default function CataloguePage() {
         .buy(
           BigNumber(selectedOfferEntry[0]) as nat,
           selectedOfferEntry[1].owner,
-          char2Bytes(inputAnswer) as bytes
+	        char2Bytes(inputAnswer) as bytes
         )
         .send({
           amount: selectedOfferEntry[1].price.toNumber() + 1,
@@ -205,11 +197,21 @@ export default function CataloguePage() {
                         />
                       </Box>
                     ) : (
+                      <Formik initialValues={{
+                        quantity: 1,
+                        answer: ""
+                      }} validationSchema={validationSchema} onSubmit={async (values) => {
+                        setBuying(true);
+                        await buy(selectedOfferEntry!, sha256(values.answer));
+                        setBuying(false);
+                      }}
+                        >
+                      {props =>    
                       <form
                         style={{ width: "100%" }}
                         onSubmit={(values) => {
                           setSelectedOfferEntry([token_id, offer]);
-                          formik.handleSubmit(values);
+                          props.handleSubmit(values);
                         }}
                         >
                           <TextField
@@ -218,19 +220,20 @@ export default function CataloguePage() {
                           name="answer"
                           label="Answer To Question"
                           required
-                          value={formik.values.answer}
-                          onChange={formik.handleChange}
-                          error={formik.touched.answer && Boolean(formik.errors.answer)}
+                          value={props.values.answer}
+                          onChange={props.handleChange}
+                          error={props.touched.answer && Boolean(props.errors.answer)}
                           helperText={
-                            formik.touched.answer && formik.errors.answer
+                            props.touched.answer && props.errors.answer
                           }
                           variant="filled"
                         />
                         <br />
-                        <Button type="submit" aria-label="add to favorites" sx={{marginTop:"2vw"}}>
+                        <Button type="submit" disabled={buying} aria-label="add to favorites" sx={{marginTop:"2vw"}}>
                           <ShoppingCartIcon /> BUY
                         </Button>
-                      </form>
+                      </form>}
+                      </Formik>    
                     )}
                   </CardActions>
                 </Card>

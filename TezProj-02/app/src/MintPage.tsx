@@ -77,7 +77,7 @@ export default function MintPage() {
     onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(true);
       const newDescription = `QuestionDescription: ${values.question} AnswerType: ${values.answerType} AnswerLength(in Chars) ${values.answerLength}`;
-      console.log(values);
+      console.log("Mint page", values.answer, char2Bytes(values.answer), sha256(values.answer));
       await mint({
         name: values.name,
         description: newDescription,

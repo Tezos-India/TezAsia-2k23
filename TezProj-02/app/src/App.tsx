@@ -3,7 +3,7 @@ import { BeaconWallet } from "@taquito/beacon-wallet";
 import { TezosToolkit } from "@taquito/taquito";
 import { TokenMetadata, tzip12, Tzip12Module } from "@taquito/tzip12";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import SnackbarContent from '@mui/material/SnackbarContent';
+import {SnackbarProvider} from 'notistack';
 import "./App.css";
 import { NftWalletType, Storage } from "./nft.types";
 import Paperbase from "./Paperbase";
@@ -125,7 +125,7 @@ function App() {
       }}
     >
       <Paperbase />
-      <SnackbarContent/>
+      <SnackbarProvider/>
     </UserContext.Provider>
   );
 }
