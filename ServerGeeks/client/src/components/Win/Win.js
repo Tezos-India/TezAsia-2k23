@@ -45,7 +45,7 @@ function Win() {
   const onEndGame = async () => {
     try {
       setLoading(true);
-      await endGameOperation();
+      await endGameOperation(id, score);
       alert("Game Ended")
       setTransSuccess(true);
     } catch (error) {
@@ -77,7 +77,7 @@ function Win() {
         <Center>
           <Group position="center" direction="column">
             <Text color={theme.colors.yellow[2]} size="xl" weight={800}>
-              WINNER!
+              {(userName === winner.name) ? "WINNER!" : "YOU LOST!"}
             </Text>
 
             <NameTag id={winner.avatarID} />
@@ -90,7 +90,7 @@ function Win() {
                   textDecoration: "underline",
                 }}
               >
-                {score}{" "}
+                {(userName === winner.name) ? score + " " : "0 "}
               </span>
             </Text>
 

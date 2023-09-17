@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   useMantineTheme,
   createStyles,
@@ -15,6 +15,7 @@ import logo from "../../assets/logo.png";
 import { AVATARS } from "../../utils/constants";
 import socket from "../../app/socket";
 import { useNavigate } from "react-router-dom";
+import { refund } from "../../utils/operation";
 
 const useStyles = createStyles((theme) => ({
   avatar: {
@@ -31,7 +32,21 @@ function Lobby({ id, roomName, playersList, waitingPlayers, maxRoomLength }) {
   const theme = useMantineTheme();
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false);
+
+  const claimRefund = async () => {
+    try {
+      setLoading(true);
+      await refund();
+      alert("Game Ended")
+    } catch (error) {
+      throw error;
+    }
+    setLoading(false);
+  };
+
   function handleLeave() {
+    claimRefund();
     socket.emit("wait_room_leave", id);
     navigate("/", { replace: true });
   }
@@ -142,7 +157,7 @@ function Lobby({ id, roomName, playersList, waitingPlayers, maxRoomLength }) {
         <Space h="md" />
 
         <Button size="xs" color="red" onClick={handleLeave}>
-          Leave Room
+          {loading ? "transacting..." : "Leave Room"}
         </Button>
       </Card>
     </>

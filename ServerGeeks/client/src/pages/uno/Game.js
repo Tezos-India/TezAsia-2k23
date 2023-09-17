@@ -39,6 +39,7 @@ import { DoorExit, LetterX } from "tabler-icons-react";
 import Error from "../../components/Error/Error";
 import Chat from "../../components/Chat/Chat";
 import { addMessage, updateUnreadCount } from "../../feature/chatSlice";
+import { endGameOperation } from "../../utils/operation";
 
 const useStyles = createStyles((theme) => ({
   icon: {
@@ -67,12 +68,27 @@ function Game() {
   const [found, setFound] = useState("");
   const [playerLeaveMessage, setPlayerLeaveMessage] = useState("");
   const [opened, setOpened] = useState(true);
+  const [transLoading, setTransLoading] = useState(false);
+  const [transSuccess, setTransSuccess] = useState(false);
 
   const playersList = useSelector((state) => state.game.players);
   const isWildCard = useSelector((state) => state.game.isWild);
   const isWin = useSelector((state) => state.game.isWin);
 
   const positions = [TopHand, RightHand, LeftHand];
+
+  const onEndGame = async () => {
+    try {
+      setTransLoading(true);
+      await endGameOperation();
+      alert("Game Ended")
+      setTransSuccess(true);
+    } catch (error) {
+      setTransSuccess(true);
+      throw error;
+    }
+    setTransLoading(false);
+  };
 
   useEffect(() => {
     // navigate back
@@ -257,9 +273,23 @@ function Game() {
             >
               <Group position="center">
                 <Text>{message}</Text>
-                <Button color="dark" onClick={handleLeaveGame}>
+                <Button color="dark" onClick={handleLeaveGame} disabled={!transSuccess}>
                   Exit Game
                 </Button>
+
+                { 
+                  <Button
+                    color="dark"
+                    size="md"
+                    onClick={() => {
+                      onEndGame();
+                    }}
+                    disabled={transSuccess}
+                  >
+                    {transLoading ? "transacting...." : "Claim Reward"}
+                  </Button>
+                }
+                
               </Group>
             </Modal>
           )}
