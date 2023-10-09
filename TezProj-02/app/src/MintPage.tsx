@@ -34,6 +34,8 @@ import { address, bytes, nat } from "./type-aliases";
 
 import SwipeableViews from "react-swipeable-views";
 
+const descriptionRegex = /^(QuestionDescription: )(.*?)( AnswerType: )(.*?)( AnswerLength\(in Chars\) )(.*)/i;
+
 export default function MintPage() {
   const {
     userAddress,
@@ -43,10 +45,16 @@ export default function MintPage() {
     nftContrat,
   } = React.useContext(UserContext) as UserContextType;
 
+  const questionsArray : Array<string|undefined> = Array.from(nftContratTokenMetadataMap!.entries()).map(([token_id, token]) => { 
+    return token?.name;
+  });
+  
   const isTablet = useMediaQuery("(min-width:600px)");
 
   const validationSchema = yup.object({
-    name: yup.string().required("Question is required!"),
+    name: yup.string()
+      .notOneOf(questionsArray, 'Question Already Minted!')
+      .required("Question is required!"),
     symbol: yup.string().required("Symbol is required!"),
     question: yup.string().required("Question Description is required, write the question again if it is enough!"),
     answerType: yup.string().required("Answer Type is required!"),
@@ -69,7 +77,7 @@ export default function MintPage() {
     onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(true);
       const newDescription = `QuestionDescription: ${values.question} AnswerType: ${values.answerType} AnswerLength(in Chars) ${values.answerLength}`;
-      console.log(values);
+      console.log("Mint page", values.answer, char2Bytes(values.answer), sha256(values.answer));
       await mint({
         name: values.name,
         description: newDescription,
@@ -84,7 +92,6 @@ export default function MintPage() {
   const [pictureUrl, setPictureUrl] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
 
-  //open mint drawer if admin
   const [formOpen, setFormOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -139,7 +146,7 @@ export default function MintPage() {
 
         const thumbnailUri = `ipfs://${responseJson.IpfsHash}`;
         setPictureUrl(
-          `https://gateway.pinata.cloud/ipfs/${responseJson.IpfsHash}`
+          `https://ipfs.io/ipfs/${responseJson.IpfsHash}`
         );
 
         const op = await nftContrat!.methods
@@ -412,7 +419,7 @@ export default function MintPage() {
                       isTablet
                         ? {
                             width: "auto",
-                            marginLeft: "33%",
+                            mx: "auto",
                             maxHeight: "50vh",
                           }
                         : { width: "100%", maxHeight: "40vh" }
@@ -420,10 +427,13 @@ export default function MintPage() {
                     component="img"
                     image={token.thumbnailUri?.replace(
                       "ipfs://",
-                      `https://gateway.pinata.cloud/ipfs/`,
+                      "https://ipfs.io/ipfs/",
                     )}
                   />
                   <CardHeader
+                    sx={{
+                      marginTop: "4vh"
+                    }}
                     titleTypographyProps={
                       isTablet ? { fontSize: "1.3em" } : { fontSize: "0.8em" }
                     }
@@ -431,10 +441,16 @@ export default function MintPage() {
                   />
                   <CardContent>
                     <Box>
-                      <Typography>{"ID : " + token_id}</Typography>
-                      <Typography>{"Symbol : " + token.symbol}</Typography>
                       <Typography>
-                        {"Description : " + token.description}
+                        <strong>ID : </strong> {token_id}
+                      </Typography>
+                      <Typography>
+                        <strong>Symbol :</strong> {token.symbol}
+                      </Typography>
+                      <Typography>
+                        {<><strong>Description: </strong> {token.description?.match(descriptionRegex)?.[2]}<br /></>}
+                        {<><strong>Answer Type: </strong>{token.description?.match(descriptionRegex)?.[4]}<br /></>}
+                        {<><strong>Answer Length: </strong>{token.description?.match(descriptionRegex)?.[6]}<br /></>}
                       </Typography>
                     </Box>
                   </CardContent>

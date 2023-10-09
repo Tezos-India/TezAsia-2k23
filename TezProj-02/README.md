@@ -7,6 +7,7 @@ Team Members (1):
 	-	Profile Link: https://unstop.com/u/sakshbis3672
 	-	Email: sakshambisen123@gmail.com
 
+Demo Video Link: https://youtu.be/Nz3vPGTG-R8?si=yp9aZAJfxul4X-nm
 
 https://github.com/sb-saksham/TezAsia-2k23/tree/main/TezProj-02
 

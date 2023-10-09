@@ -8,7 +8,7 @@
       ["4", "You entered a quantity to buy than is more than the offer quantity"],
       ["5", "Not enough funds, you need to pay at least quantity * offer price to get the tokens"],
       ["6", "Cannot find the contract relative to implicit address"],
-      ["7", "Answer Hash provided is Incorrect Cannot buy"],
+      ["7", "Answer provided is Incorrect Cannot buy"],
       ["8", "Invaild question answer not stored"]
     ]));
 */
@@ -192,7 +192,7 @@ const sell = ([token_id, price]: [nat, nat], s: storage): ret => {
       Tezos.get_self_address(),
       token_id
     );
-  //DECISION CHOICE: if offer already exists, we just override it
+  //if offer already exists, we just override it
 
   return [
     list([]) as list<operation>,
@@ -211,12 +211,12 @@ const sell = ([token_id, price]: [nat, nat], s: storage): ret => {
 @entry
 const buy = ([token_id, seller, answerHash]: [nat, address, bytes], s: storage): ret => {
   //search for the offer
-
   return match(
     Map.find_opt(token_id, s.offers),
     {
       None: () => failwith("3"),
       Some: (offer: offer) => {
+        // let answerHash : bytes = Crypto.sha256(answer);
         // Check if answer hash is correct
         let storedMetadata : NFT.TokenMetadata.data = NFT.TokenMetadata.get_token_metadata(token_id, s.token_metadata);
         let storedAnswerHash :  bytes = match(Map.find_opt("answerHash", storedMetadata.token_info),{

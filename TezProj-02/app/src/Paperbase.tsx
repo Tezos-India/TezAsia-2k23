@@ -14,18 +14,18 @@ import CataloguePage from "./CataloguePage";
 let theme = createTheme({
   palette: {
     primary: {
-      main: "#9ACD32", // Yellow Green
+      main: "#000000",
     },
     secondary: {
-      main: "#FFFF66", // Yellow
+      main: "#ffffff",
     },
     background: {
-      default: "#DDDDDD", // Light Grey
-      paper: "#F0FFF0",   // Honeydew
+      default: "#F0F0F0", // Light Gray
+      paper: "#FFFFFF", // White
     },
     text: {
-      primary: "#333333", // Dark Gray
-      secondary: "#555555", // Slightly Dark Gray
+      primary: "#000000", // Black
+      secondary: "#333333", // Dark Gray
     },
   },
     typography: {
@@ -275,7 +275,7 @@ export default function Paperbase() {
             <Route path={PagesPaths.MINT} element={<MintPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>      
     </ThemeProvider>
   );
 }
