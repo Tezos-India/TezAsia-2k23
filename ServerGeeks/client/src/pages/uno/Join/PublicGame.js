@@ -45,12 +45,14 @@ function PublicGame() {
   const [publicGames, setPublicGames] = useState([]);
   const [error, setError] = useState("");
   const [roomID, setRoomID] = useState("");
+  const [stakedAmt, setStakedAmt] = useState();
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
     socket.emit("get_public_games", (response) => {
       if (response) {
         setPublicGames(response);
+        console.log(response)
       }
     });
 
@@ -73,7 +75,7 @@ function PublicGame() {
   }, [publicGames]);
 
   const games = publicGames.map((game) => (
-    <tr key={game.roomID} onClick={() => handleRoomClick(game.roomID)}>
+    <tr key={game.roomID} onClick={() => handleRoomClick(game.roomID, game.stakeAmt)}>
       <td
         style={{
           fontWeight: "bold",
@@ -95,8 +97,9 @@ function PublicGame() {
     window.location.reload();
   }
 
-  function handleRoomClick(id) {
+  function handleRoomClick(id, stakeAmt) {
     setRoomID(id);
+    setStakedAmt(stakeAmt);
     setOpened(true);
   }
 
@@ -119,7 +122,7 @@ function PublicGame() {
           >
             Join Game
           </Title>
-          <PublicForm roomID={roomID} />
+          <PublicForm roomID={roomID} stakeAmt={stakedAmt} />
 
           {error && (
             <Text weight={500} color="red">

@@ -1,7 +1,7 @@
 import { BeaconWallet } from "@taquito/beacon-wallet";
 
 export const wallet = new BeaconWallet({
-    name : "StoryCraft",
+    name : "mrkc2303",
     preferredNetwork: "ghostnet",
 });
 

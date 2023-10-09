@@ -44,9 +44,9 @@ class GameConnection {
     socket.on("disconnect", () => this.disconnect());
   }
 
-  createGame({ room, name, maxPlayers, publicGameCheck, password }) {
+  createGame({ room, name, maxPlayers, publicGameCheck, password, stakeAmt }) {
     //create gamestate to keep state of uno game
-
+    // console.log(stakeAmt);
     const gamestate = new GameState();
     const newRoomInfo = {
       room: room,
@@ -54,6 +54,7 @@ class GameConnection {
       password: password,
       publicGameCheck: publicGameCheck,
       gamestate: gamestate,
+      stakeAmt: stakeAmt,
     };
 
     //create new server connection
@@ -119,11 +120,13 @@ class GameConnection {
     const publicGames = [];
     const games = getAllGames();
     games.forEach((value, key) => {
+      // console.log(value.stakeAmt);
       const game = {
         roomID: key,
         roomName: value.roomName,
         maxPlayers: value.maxPlayers,
         playersLength: value.gamestate.players.length,
+        stakeAmt:  value.stakeAmt,
       };
       if (value.publicGameCheck === "public" && !value.gamestate.gameStart) {
         publicGames.push(game);
@@ -140,13 +143,14 @@ class GameConnection {
         roomName: server.roomName,
         maxPlayers: server.maxPlayers,
         players: server.gamestate.players,
+        stakeAmt:  server.gamestate.stakeAmt,
       });
     }
   }
 
   //when either player tries to play a card in their hand.
   //Also checks for if the current player has played their last card( has won game)
-  Move({ roomID, card, player }) {
+  Move({ roomID, card, player, stakeAmt }) {
     const server = getGame(roomID);
     if (server) {
       const gamestate = server.gamestate;
@@ -156,6 +160,7 @@ class GameConnection {
         roomID: roomID,
         playerID: player,
         cardPlayed: card,
+        stakeAmt:  stakeAmt,
       };
 
       const updatedInfo = gamestate.Move(moveInfo);
@@ -173,7 +178,7 @@ class GameConnection {
     }
   }
 
-  Draw({ roomID, playerID }) {
+  Draw({ roomID, playerID, stakeAmt }) {
     const server = getGame(roomID);
     if (server) {
       const gamestate = server.gamestate;
@@ -182,6 +187,7 @@ class GameConnection {
         io: this.io,
         roomID: roomID,
         playerID: playerID,
+        stakeAmt:  stakeAmt,
       };
 
       const drawInfo = gamestate.Draw(gameInfo);

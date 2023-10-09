@@ -22,7 +22,7 @@ import { useClipboard } from "@mantine/hooks";
 import { useForm } from "@mantine/form";
 import { EyeCheck, EyeOff } from "tabler-icons-react";
 import socket from "../../app/socket";
-import { buyTicketOperation } from "../../utils/operation";
+import { buyTicketOperation, endGameOperation } from "../../utils/operation";
 
 const useStyles = createStyles((theme) => ({
   background: {
@@ -49,6 +49,7 @@ function CreateGame() {
   const [roomID, setRoomID] = useState("");
   const [loading, setLoading] = useState(false);
   const [staked, isStaked] = useState(false);
+  const [stakeAmt, setStakeAmt] = useState(false);
   const [isPrivateGame, setIsPrivateGame] = useState(false);
   const navigate = useNavigate();
   const theme = useMantineTheme();
@@ -107,9 +108,10 @@ function CreateGame() {
 
   const handleNavigate = useCallback(
     (id) => {
-      const waitingRoomPath = generatePath("/uno/WaitingRoom/gameroom=:id", {
+      const waitingRoomPath = generatePath(`/uno/WaitingRoom/gameroom=:id`, {
         id: id,
       });
+      console.log(waitingRoomPath);
       navigate(waitingRoomPath);
     },
     [navigate]
@@ -132,37 +134,44 @@ function CreateGame() {
   }
 
   const onBuyTicket = async () => {
+    if(stakeAmt > 0 && stakeAmt < 10) {
+      try {
+        setLoading(true);
+        const res = await buyTicketOperation(stakeAmt);
+        alert("Your TEZOS is now on stake")
+        isStaked(true);
+      } catch (error) {
+        throw error;
+      }
+      setLoading(false);
+    } else {
+      alert("Invalid Amount")
+    }
+  };
+
+  const onEndGame = async () => {
     try {
       setLoading(true);
-      const res = await buyTicketOperation();
-      alert("1 TEZOS is now on stake")
-      isStaked(true);
+      await endGameOperation();
+      alert("Game Ended")
     } catch (error) {
       throw error;
     }
     setLoading(false);
   };
 
-  // const onEndGame = async () => {
-  //   try {
-  //     setLoading(true);
-  //     await endGameOperation();
-  //     alert("Game Ended")
-  //   } catch (error) {
-  //     throw error;
-  //   }
-  //   setLoading(false);
-  // };
-
 
   function joinRoom(values) {
+    console.log(stakeAmt);
     const gameInfo = {
       room: values.roomName,
       name: values.name,
       maxPlayers: values.numOfPlayers,
       password: values.password,
       publicGameCheck: values.checked ? "private" : "public",
+      stakeAmt: stakeAmt,
     };
+    console.log(gameInfo);
     socket.emit("create_game", gameInfo);
   }
 
@@ -201,6 +210,19 @@ function CreateGame() {
                 radius="xl"
                 size="md"
                 {...form.getInputProps("name")}
+              />
+
+              <TextInput
+                required
+                placeholder="Amount to be Staked (1-9 TEZ)"
+                label="TEZ to be Staked"
+                radius="xl"
+                size="md"
+                type="number"
+                min={1}
+                max={9}
+                {...form.getInputProps("stakedAmt")}
+                onChange={(e) => setStakeAmt(e.target.value)}
               />
 
               <RadioGroup

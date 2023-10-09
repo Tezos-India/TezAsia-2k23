@@ -5,7 +5,7 @@ import socket from "../../app/socket";
 import {connectWallet, disconnectWallet, getAccount} from "../../utils/wallet";
 import { buyTicketOperation, endGameOperation } from "../../utils/operation";
 
-function PublicForm({ roomID }) {
+function PublicForm({ roomID, stakeAmt }) {
   const [loading, setLoading] = useState(false);
   const [staked, isStaked] = useState(false);
   const [account, setAccount] = useState("");
@@ -32,6 +32,7 @@ function PublicForm({ roomID }) {
   }
 
   useEffect(() => {
+    console.log(stakeAmt);
     (async () => {
         const account = await getAccount();
         setAccount(account);        
@@ -42,8 +43,8 @@ function PublicForm({ roomID }) {
   const onBuyTicket = async () => {
     try {
       setLoading(true);
-      const res = await buyTicketOperation();
-      alert("1 TEZOS is now on stake")
+      const res = await buyTicketOperation(stakeAmt);
+      alert("Your TEZOS is now on stake")
       isStaked(true);
     } catch (error) {
       throw error;

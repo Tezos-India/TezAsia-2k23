@@ -61,7 +61,26 @@ Thank you for considering our project, and we look forward to the opportunity to
 
 https://drive.google.com/file/d/1cOPn2W_CMm8I-eeaykQFDRO2Zh3_QjTK/view?usp=sharing
 
+https://docs.google.com/presentation/d/1FVFOwNRSie89_DEmeiueFfLTi3_TNk8MbIsPXxlBxHE/edit?usp=sharing
+
+## Smart-Contract
+
+Address: KT18u7bGQUhwBhsUuSqbzBZvJ4TfakNwSJy8
+
+Better Dev Call: https://better-call.dev/ghostnet/KT18u7bGQUhwBhsUuSqbzBZvJ4TfakNwSJy8/storage
+
+
 ## ScreenShots
+
+<img width="1512" alt="Screenshot 2023-09-16 at 10 26 44 PM" src="https://github.com/yellowberard/tezAsia23/assets/67221487/54b29d54-239d-4089-9f4b-4473fb6ba75e">
+
+<img width="1511" alt="Screenshot 2023-09-16 at 10 26 59 PM" src="https://github.com/yellowberard/tezAsia23/assets/67221487/fb98b5a7-61d6-49ed-8ab1-2d0e08379bb9">
+
+<img width="1512" alt="Screenshot 2023-09-16 at 10 28 05 PM" src="https://github.com/yellowberard/tezAsia23/assets/67221487/a0696d35-c87b-4123-b130-41fe4e4035e3">
+
+<img width="1512" alt="Screenshot 2023-09-16 at 10 27 16 PM" src="https://github.com/yellowberard/tezAsia23/assets/67221487/26ecf1e0-87c4-4cbe-a185-80715aabc40a">
+
+<img width="1512" alt="Screenshot 2023-09-16 at 10 28 34 PM" src="https://github.com/yellowberard/tezAsia23/assets/67221487/21235b66-fc98-486c-9a42-bfadce707900">
 
 <img width="1512" alt="Screenshot 2023-09-03 at 11 52 49 PM" src="https://github.com/mrkc2303/TezAsia-2k23/assets/67221487/6c51368d-f104-4974-9370-e84fd6b890f8">
 

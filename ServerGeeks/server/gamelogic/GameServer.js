@@ -2,13 +2,14 @@ const { v4 } = require("uuid");
 const { shuffle } = require("./utils/utils");
 
 class GameServer {
-  constructor({ room, maxPlayers, password, publicGameCheck, gamestate }) {
+  constructor({ room, maxPlayers, password, publicGameCheck, gamestate, stakeAmt }) {
     this.roomID = v4().substring(0, 16);
     this.roomName = room;
     this.maxPlayers = Number(maxPlayers);
     this.password = password;
     this.publicGameCheck = publicGameCheck;
     this.gamestate = gamestate;
+    this.stakeAmt = Number(stakeAmt);
   }
 
   joinRoom({ socket, name, password }) {

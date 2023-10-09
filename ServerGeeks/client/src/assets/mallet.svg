@@ -1,0 +1,30 @@
+<svg viewBox="0 0 380 191" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect y="85" width="380" height="20" rx="10" fill="hsl(42, 55%, 45%)"/>
+  <rect y="85" width="380" height="20" rx="10" fill="url(#a)"/>
+  <path d="M167 166c0 13.807-33.579 25-75 25s-75-11.193-75-25 33.579-25 75-25 75 11.193 75 25z" fill="hsl(0, 0%, 35%)"/>
+  <path d="M167 166c0 13.807-33.579 25-75 25s-75-11.193-75-25 33.579-25 75-25 75 11.193 75 25z" fill="url(#b)"/>
+  <path d="M17 25h150v141H17V25z" fill="hsl(0, 0%, 35%)"/>
+  <path d="M17 25h150v141H17V25z" fill="url(#c)"/>
+  <path d="M167 25c0 13.807-33.579 25-75 25S17 38.807 17 25 50.579 0 92 0s75 11.193 75 25z" fill="hsl(0, 0%, 35%)"/>
+  <path d="M167 25c0 13.807-33.579 25-75 25S17 38.807 17 25 50.579 0 92 0s75 11.193 75 25z" fill="url(#d)"/>
+  <defs>
+    <linearGradient id="a" x1="190" y1="85" x2="190" y2="105" gradientUnits="userSpaceOnUse">
+      <stop stop-color="hsl(42, 55%, 65%)"/>
+      <stop offset="1" stop-color="transparent" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="b" x1="167" y1="113.5" x2="17" y2="113.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="hsl(0, 0%, 15%)"/>
+      <stop offset=".897" stop-color="transparent" stop-opacity="0"/>
+      <stop offset="1" stop-color="hsl(0, 0%, 20%)"/>
+    </linearGradient>
+    <linearGradient id="c" x1="167" y1="113.5" x2="17" y2="113.5" gradientUnits="userSpaceOnUse">
+      <stop stop-color="hsl(0, 0%, 15%)"/>
+      <stop offset=".897" stop-color="transparent" stop-opacity="0"/>
+      <stop offset="1" stop-color="hsl(0, 0%, 15%)"/>
+    </linearGradient>
+    <radialGradient id="d" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 25 -75 0 92 25)">
+      <stop offset=".625" stop-color="hsl(0, 0%, 4%)" stop-opacity="0"/>
+      <stop offset="1" stop-color="hsl(0, 0%, 8%)"/>
+    </radialGradient>
+  </defs>
+</svg>

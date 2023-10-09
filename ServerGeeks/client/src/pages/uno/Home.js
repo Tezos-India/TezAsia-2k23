@@ -27,7 +27,6 @@ import {
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useNavigate } from "react-router-dom";
-import { InfoCircle, PlayCard } from "tabler-icons-react";
 
 import { useDispatch } from "react-redux";
 import { reset } from "../../feature/gameSlice";
@@ -35,7 +34,6 @@ import { resetChat } from "../../feature/chatSlice";
 
 import Background from "../../components/Background/Background";
 import logo from "../../assets/logo.png";
-import Credits from "../../components/Credits/Credits";
 
 const useStyles = createStyles((theme) => ({
   img: {

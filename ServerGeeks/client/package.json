@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "-": "^0.0.1",
     "@mantine/core": "^4.2.1",
     "@mantine/form": "^4.2.1",
     "@mantine/hooks": "^4.2.1",
     "@mantine/notifications": "^4.2.1",
+    "@material-tailwind/react": "^2.1.2",
     "@reduxjs/toolkit": "^1.8.1",
     "@taquito/beacon-wallet": "^17.3.0",
     "@taquito/taquito": "^17.3.0",
@@ -14,16 +16,24 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^14.1.1",
+    "canvas-confetti": "^1.6.0",
+    "gsap": "^3.12.2",
+    "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.11.0",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^4.0.3",
     "redux-persist": "^6.0.0",
+    "save": "^2.9.0",
     "socket.io-client": "^4.5.0",
+    "splitting": "^1.0.6",
+    "stream": "^0.0.2",
     "tabler-icons-react": "^1.47.0",
+    "tw-elements-react": "^1.0.0-alpha1",
     "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
@@ -41,7 +51,10 @@
   },
   "browserslist": [
     ">0.2%",
-   "not dead",
-   "not op_mini all"
- ]
+    "not dead",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
 }

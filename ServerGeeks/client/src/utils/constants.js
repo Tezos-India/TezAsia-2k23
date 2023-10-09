@@ -23,3 +23,6 @@ export const AVATARS = [
 ];
 
 export const BACKCARD = "/images/Cards/Deck.png";
+// export const contractAddr = "KT1BCWtdQrNJZKZySxKRam2DZ7UDE4xkr1Bb";
+export const contractAddr = "KT18u7bGQUhwBhsUuSqbzBZvJ4TfakNwSJy8"; //With Weekly
+export const adminWlt = "tz1UvdiFF6hkJ9ddyoUAyg1LKHSz7yKFEFM8";
